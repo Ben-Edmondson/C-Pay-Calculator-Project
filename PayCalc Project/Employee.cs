@@ -25,7 +25,7 @@
             set
             {
                 if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("First name must not be blank");
+                    throw new ArgumentException("Last name must not be blank");
                 LastName = value;
             }
         }

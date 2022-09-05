@@ -20,5 +20,10 @@ namespace PayCalc_Project
             aSalary = annualSalary;
             aBonus = annualBonus;
         }
+
+        public double TotalAnnualPay()
+        {
+            return aSalary + aBonus;
+        }
     }
 }

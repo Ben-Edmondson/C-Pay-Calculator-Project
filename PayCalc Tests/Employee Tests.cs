@@ -8,12 +8,12 @@ namespace PayCalc_Tests
         public void JoeBloggsDataTest()
         {
             //arrange
-            Employee joeBloggs = new Employee() {typeOfEmployment = "Permanent", fname = "Joe", lname = "Bloggs", aSalary =40000, aBonus = 5000};
-            double tAP = 45000;
-            double hrActual = 21.98;
+            Employee joeBloggs = new Employee() {TypeOfEmployment = "Permanent", FirstName = "Joe", LastName = "Bloggs", Salary =40000, Bonus = 5000};
+            decimal tAP = 45000;
+            decimal hrActual = 21.98M;
             //act
-            double tAPCorrect = joeBloggs.TotalAnnualPay();
-            double hrCorrect = joeBloggs.doubleHourlyRate();
+            decimal tAPCorrect = joeBloggs.TotalAnnualPay();
+            decimal hrCorrect = joeBloggs.doubleHourlyRate();
             //assert
             Assert.That(hrCorrect, Is.EqualTo(hrActual));
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
@@ -22,12 +22,12 @@ namespace PayCalc_Tests
         public void JohnSmithDataTest()
         {
             //arrange
-            Employee johnSmith = new Employee() { typeOfEmployment = "Permanent", fname = "John", lname = "Smith", aSalary = 45000, aBonus = 2500 };
-            double tAP = 47500;
-            double hrActual = 24.73;
+            Employee johnSmith = new Employee() { TypeOfEmployment = "Permanent", FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 };
+            decimal tAP = 47500;
+            decimal hrActual = 24.73M;
             //act
-            double tAPCorrect = johnSmith.TotalAnnualPay();
-            double hrCorrect = johnSmith.doubleHourlyRate();
+            decimal tAPCorrect = johnSmith.TotalAnnualPay();
+            decimal hrCorrect = johnSmith.doubleHourlyRate();
             //assert
             Assert.That(hrCorrect, Is.EqualTo(hrActual));
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
@@ -36,12 +36,12 @@ namespace PayCalc_Tests
         public void ClareJonesDataTest()
         {
             //arrange
-            Employee clareJones = new Employee() { typeOfEmployment = "Temporary", fname = "Clare", lname = "Jones", dayRate = 350, weeksWorked = 40};
-            double tAP = 70000;
-            double hrActual = 50;
+            Employee clareJones = new Employee() { TypeOfEmployment = "Temporary", FirstName = "Clare",LastName = "Jones", DayRate = 350, WeeksWorked = 40};
+            decimal tAP = 70000;
+            decimal hrActual = 50;
             //act
-            double tAPCorrect = clareJones.TotalAnnualPay();
-            double hrCorrect = clareJones.doubleHourlyRate();
+            decimal tAPCorrect = clareJones.TotalAnnualPay();
+            decimal hrCorrect = clareJones.doubleHourlyRate();
             //assert
             Assert.That(hrCorrect, Is.EqualTo(hrActual));
             Assert.That(tAPCorrect, Is.EqualTo(tAP));

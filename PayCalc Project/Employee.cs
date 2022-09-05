@@ -2,41 +2,43 @@
 {
     public class Employee
     {
-        public string? typeOfEmployment;
-        public string? fname;
-        public string? lname;
-        public double aSalary;
-        public double aBonus;
-        public double dayRate;
-        public int weeksWorked;
-
-        public double TotalAnnualPay()
+        //enums
+        public string? TypeOfEmployment;
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
+        public decimal Salary {get; set; }
+        public decimal Bonus {get; set; } 
+        public decimal DayRate { get; set; }
+        public int WeeksWorked {get; set; }
+        //properties
+        
+        public decimal TotalAnnualPay()
         {
-            if(typeOfEmployment == "Permanent")
+            if(TypeOfEmployment == "Permanent")
             {
-                return aSalary + aBonus;
+                return Salary + Bonus;
             }
             else
             {
                 int days = 5;
-                return Math.Round(dayRate * (days * weeksWorked), 2);
+                return Math.Round(DayRate * (days * WeeksWorked), 2);
             }
 
         }
 
-        public double doubleHourlyRate()
+        public decimal doubleHourlyRate()
         {
-            if (typeOfEmployment == "Permanent")
+            if (TypeOfEmployment == "Permanent")
             {
                 int weeks = 52;
                 int days = 5;
                 int hours = 7;
-                return Math.Round(aSalary / (days * hours) / weeks, 2);
+                return Math.Round(Salary / (days * hours) / weeks, 2);
             }
             else
             {
                 int hours = 7;
-                return Math.Round(dayRate / hours, 2);
+                return Math.Round(DayRate / hours, 2);
             }
         }
     }

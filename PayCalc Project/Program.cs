@@ -10,13 +10,14 @@ namespace PayCalc_Project
     {
         static void Main(string[] args)
         {
-            Employee joeBloggs = new Employee() { typeOfEmployment = "Permanent", fname = "Joe", lname = "Bloggs", aSalary = 40000, aBonus = 5000 };
-            Employee johnSmith = new Employee() { typeOfEmployment = "Permanent", fname = "John", lname = "Smith", aSalary = 45000, aBonus = 2500 };
-            Employee clareJones = new Employee() { typeOfEmployment = "Temporary", fname = "Clare", lname = "Jones", dayRate = 350, weeksWorked = 40 };
-            Console.WriteLine($"User: {clareJones.fname} {clareJones.lname} Employment Type: {clareJones.typeOfEmployment} Annual Pay: {clareJones.TotalAnnualPay()} Hourly Rate: {clareJones.doubleHourlyRate()}");
-            Console.WriteLine($"User: {joeBloggs.fname} {joeBloggs.lname} Employment Type: {joeBloggs.typeOfEmployment} Annual Pay: {joeBloggs.TotalAnnualPay()} Hourly Rate: {joeBloggs.doubleHourlyRate()}");
-            Console.WriteLine($"User: {johnSmith.fname} {johnSmith.lname} Employment Type: {johnSmith.typeOfEmployment} Annual Pay: {johnSmith.TotalAnnualPay()} Hourly Rate: {johnSmith.doubleHourlyRate()}");
+            Employee joeBloggs = new Employee() { TypeOfEmployment = "Permanent", FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 };
+            Employee johnSmith = new Employee() { TypeOfEmployment = "Permanent", FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 };
+            Employee clareJones = new Employee() { TypeOfEmployment = "Temporary", FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 };
+            Console.WriteLine($"User: {clareJones.FirstName} {clareJones.LastName} || Employment Type: {clareJones.TypeOfEmployment} || Annual Pay: {clareJones.TotalAnnualPay()} || Hourly Rate: {clareJones.doubleHourlyRate()}");
+            Console.WriteLine($"User: {joeBloggs.FirstName} {joeBloggs.LastName} || Employment Type: {joeBloggs.TypeOfEmployment} || Annual Pay: {joeBloggs.TotalAnnualPay()} || Hourly Rate: {joeBloggs.doubleHourlyRate()}");
+            Console.WriteLine($"User: {johnSmith.FirstName} {johnSmith.LastName} || Employment Type: {johnSmith.TypeOfEmployment} || Annual Pay: {johnSmith.TotalAnnualPay()} || Hourly Rate: {johnSmith.doubleHourlyRate()}");
             Console.ReadLine();
+            //user can add employee to system, can get a list of them and data
         }
     }
 }

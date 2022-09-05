@@ -3,13 +3,12 @@
     public class Employee
     {
         public string? typeOfEmployment;
-        public string fname;
-        public string lname;
+        public string? fname;
+        public string? lname;
         public double aSalary;
         public double aBonus;
         public double dayRate;
         public int weeksWorked;
-        public int days;
 
         public double TotalAnnualPay()
         {
@@ -19,6 +18,7 @@
             }
             else
             {
+                int days = 5;
                 return Math.Round(dayRate * (days * weeksWorked), 2);
             }
 

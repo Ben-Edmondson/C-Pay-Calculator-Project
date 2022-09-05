@@ -1,20 +1,44 @@
 ﻿namespace PayCalc_Project
 {
+    public enum TypeOfEmployment
+    {
+        Permanent,
+        Temporary,
+        Contractor
+    }
     public class Employee
     {
-        //enums
-        public string? TypeOfEmployment;
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
+        public TypeOfEmployment EmploymentType;
+        public string? FirstName
+        {
+            get => FirstName;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("First name must not be blank");
+                FirstName = value;
+            }
+        }
+        public string? LastName
+        {
+            get => LastName;
+            set
+            {
+                if (string.IsNullOrWhiteSpace(value))
+                    throw new ArgumentException("First name must not be blank");
+                LastName = value;
+            }
+        }
         public decimal Salary {get; set; }
         public decimal Bonus {get; set; } 
         public decimal DayRate { get; set; }
         public int WeeksWorked {get; set; }
+        public string? FullName => $"{FirstName} {LastName}";
         //properties
         
         public decimal TotalAnnualPay()
         {
-            if(TypeOfEmployment == "Permanent")
+            if(EmploymentType == TypeOfEmployment.Permanent)
             {
                 return Salary + Bonus;
             }
@@ -28,7 +52,7 @@
 
         public decimal doubleHourlyRate()
         {
-            if (TypeOfEmployment == "Permanent")
+            if (EmploymentType == TypeOfEmployment.Permanent)
             {
                 int weeks = 52;
                 int days = 5;

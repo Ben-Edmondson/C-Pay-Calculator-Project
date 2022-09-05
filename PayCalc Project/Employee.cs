@@ -37,13 +37,13 @@ namespace PayCalc_Project
         public int weeksPerYear = 30;
         public double TotalAnnualPay()
         {
-            return dayRate * (days * weeksPerYear);
+            return Math.Round(dayRate * (days * weeksPerYear),2);
         }
 
         public double doubleHourlyRate()
         {
             int hours = 7;
-            return Math.Round(dayRate / hours);
+            return Math.Round(dayRate / hours, 2);
         }
 
 

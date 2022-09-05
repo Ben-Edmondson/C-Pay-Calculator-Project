@@ -5,7 +5,7 @@ namespace PayCalc_Tests
     {
 
         [Test]
-        public void TotalAnnPay()
+        public void TotalAnnPayPerm()
         {
             //arrange
             Employee employee = new Employee();
@@ -17,7 +17,7 @@ namespace PayCalc_Tests
         }
 
         [Test]
-        public void TotalHourly()
+        public void TotalHourlyPerm()
         {
             //arrange
             Employee employee = new Employee();
@@ -27,6 +27,29 @@ namespace PayCalc_Tests
             //assert
             Assert.That(result, Is.EqualTo(actual));
 
+        }
+
+        [Test]
+        public void TotalHourlyTemp()
+        {
+            //arrange
+            TempEmployee employee = new TempEmployee();
+            double actual = 42.86;
+            //act
+            double result = employee.doubleHourlyRate();
+            //assert
+            Assert.That(result, Is.EqualTo(actual));
+        }
+
+        [Test]
+        public void TotalAnnPayTemp()
+        {
+            //arrange
+            TempEmployee tempEmployee = new TempEmployee();
+            double actual = 45000;
+            //act
+            double result = tempEmployee.TotalAnnualPay();
+            Assert.That(result, Is.EqualTo(actual));
         }
     }
 }

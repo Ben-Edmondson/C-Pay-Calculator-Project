@@ -25,5 +25,13 @@ namespace PayCalc_Project
         {
             return aSalary + aBonus;
         }
+
+        public double doubleHourlyRate()
+        {
+            int weeks = 52;
+            int days = 5;
+            int hours = 7;
+            return aSalary / (days * hours) / weeks;
+        }
     }
 }

@@ -34,7 +34,6 @@
         public decimal DayRate { get; set; }
         public int WeeksWorked {get; set; }
         public string? FullName => $"{FirstName} {LastName}";
-        //properties
         
         public decimal TotalAnnualPay()
         {

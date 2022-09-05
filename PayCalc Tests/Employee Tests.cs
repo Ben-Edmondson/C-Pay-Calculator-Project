@@ -1,11 +1,17 @@
+using PayCalc_Project;
 namespace PayCalc_Tests
 {
     public class EmployeeTests
     {
 
         [Test]
-        public void Test1()
+        public void TotalAnnPay()
         {
+            //arrange
+
+            //act
+
+            //assert
             Assert.Pass();
         }
     }

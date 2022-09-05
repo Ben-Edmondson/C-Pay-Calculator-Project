@@ -8,18 +8,10 @@ namespace PayCalc_Project
 {
     class Employee
     {
-        public string? fName;
-        public string? lName;
-        public double aSalary;
-        public double aBonus;
-
-        public Employee(string firstName, string lastName, double annualSalary, double annualBonus)
-        {
-            fName = firstName;
-            lName = lastName;
-            aSalary = annualSalary;
-            aBonus = annualBonus;
-        }
+        public string fname = "Joe";
+        public string lname = "Bloggs";
+        public double aSalary = 20000;
+        public double aBonus = 2000;
 
         public double TotalAnnualPay()
         {

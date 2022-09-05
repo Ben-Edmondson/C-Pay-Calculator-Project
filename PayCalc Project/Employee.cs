@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -25,5 +26,26 @@ namespace PayCalc_Project
             int hours = 7;
             return Math.Round(aSalary / (days * hours) / weeks, 2);
         }
+    }
+
+    public class TempEmployee
+    {
+        public string fname = "Bob";
+        public string lname = "Builder";
+        public double dayRate = 300;
+        public int days = 5;
+        public int weeksPerYear = 30;
+        public double TotalAnnualPay()
+        {
+            return dayRate * (days * weeksPerYear);
+        }
+
+        public double doubleHourlyRate()
+        {
+            int hours = 7;
+            return Math.Round(dayRate / hours);
+        }
+
+
     }
 }

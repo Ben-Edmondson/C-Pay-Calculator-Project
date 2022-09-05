@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PayCalc_Project
 {
-    class Employee
+    public class Employee
     {
         public string fname = "Joe";
         public string lname = "Bloggs";
@@ -23,7 +23,7 @@ namespace PayCalc_Project
             int weeks = 52;
             int days = 5;
             int hours = 7;
-            return aSalary / (days * hours) / weeks;
+            return Math.Round(aSalary / (days * hours) / weeks, 2);
         }
     }
 }

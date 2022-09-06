@@ -39,14 +39,15 @@
                     employees.Add(new Employee() { EmploymentType = TypeOfEmployment.Temporary, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked });
 
                 }
-                for(int i = 0; i < employees.Count; i++)
-                {
-                    Console.WriteLine(employees[i].EmploymentType.ToString() + employees[i].FirstName);
-                }
+
 
             }
             //use this data to create new employee
-
+            for (int i = 0; i < employees.Count; i++)
+            {
+                Console.WriteLine($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {employees[i].TotalAnnualPay()} Hourly Pay: {employees[i].doubleHourlyRate()}");
+            }
         }
+
     }
 }

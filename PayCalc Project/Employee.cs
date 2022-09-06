@@ -9,26 +9,8 @@
     public class Employee
     {
         public TypeOfEmployment EmploymentType;
-        public string? FirstName
-        {
-            get => FirstName;
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("First name must not be blank");
-                FirstName = value;
-            }
-        }
-        public string? LastName
-        {
-            get => LastName;
-            set
-            {
-                if (string.IsNullOrWhiteSpace(value))
-                    throw new ArgumentException("Last name must not be blank");
-                LastName = value;
-            }
-        }
+        public string? FirstName { get; set; }
+        public string? LastName { get; set; }
         public decimal Salary {get; set; }
         public decimal Bonus {get; set; } 
         public decimal DayRate { get; set; }

@@ -28,7 +28,7 @@ namespace PayCalc_Project
                     decimal Salary = decimal.Parse(Console.ReadLine());
                     Console.WriteLine("Please enter a bonus");
                     decimal Bonus = decimal.Parse(Console.ReadLine());
-                    employees.Add(new Employee() { EmploymentType = TypeOfEmployment.Permanent, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus });
+                    employees.Add(new Employee() {GuID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus });
                 }
                 else
                 {
@@ -45,7 +45,7 @@ namespace PayCalc_Project
             //use this data to create new employee
             for (int i = 0; i < employees.Count; i++)
             {
-                Console.WriteLine($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {employees[i].TotalAnnualPay()} Hourly Pay: {employees[i].doubleHourlyRate()}");
+                Console.WriteLine($"{employees[i].GuID.ToString()} {employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {employees[i].TotalAnnualPay()} Hourly Pay: {employees[i].doubleHourlyRate()}");
             }
             Console.ReadLine();
 

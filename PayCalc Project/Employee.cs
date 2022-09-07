@@ -8,6 +8,7 @@
     }
     public class Employee
     {
+        public Guid GuID = Guid.NewGuid();
         public TypeOfEmployment EmploymentType;
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

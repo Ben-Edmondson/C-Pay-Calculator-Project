@@ -1,4 +1,6 @@
 using PayCalc_Project;
+using System.Data;
+
 namespace PayCalc_Tests
 {
     public class EmployeeTests
@@ -8,7 +10,7 @@ namespace PayCalc_Tests
         public void JoeBloggsDataTest()
         {
             //arrange
-            Employee joeBloggs = new Employee() { EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary =40000, Bonus = 5000};
+            Employee joeBloggs = new Employee() {GuID = Guid.NewGuid() ,EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary =40000, Bonus = 5000};
             decimal tAP = 45000;
             decimal hrActual = 21.98M;
             //act
@@ -22,7 +24,7 @@ namespace PayCalc_Tests
         public void JohnSmithDataTest()
         {
             //arrange
-            Employee johnSmith = new Employee() { EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 };
+            Employee johnSmith = new Employee() { GuID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 };
             decimal tAP = 47500;
             decimal hrActual = 24.73M;
             //act
@@ -36,7 +38,7 @@ namespace PayCalc_Tests
         public void ClareJonesDataTest()
         {
             //arrange
-            Employee clareJones = new Employee() { EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare",LastName = "Jones", DayRate = 350, WeeksWorked = 40};
+            Employee clareJones = new Employee() { GuID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare",LastName = "Jones", DayRate = 350, WeeksWorked = 40};
             decimal tAP = 70000;
             decimal hrActual = 50;
             //act

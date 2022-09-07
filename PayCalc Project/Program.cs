@@ -1,27 +1,27 @@
-﻿namespace PayCalc_Project
+﻿using System.ComponentModel;
+using System.Runtime.InteropServices;
+
+namespace PayCalc_Project
 {
     class Program
     {
         static void Main(string[] args)
         {
             List<Employee> employees = new List<Employee>();
-            employees.Add(new Employee() { EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
-            employees.Add(new Employee() { EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
-            employees.Add(new Employee() { EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
+            employees.Add(new Employee() { GuID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
+            employees.Add(new Employee() { GuID = Guid.NewGuid() ,EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
+            employees.Add(new Employee() { GuID = Guid.NewGuid() ,EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
             //user can add employee to system, can get a list of them and data
             Console.WriteLine("Add employee?");
             string? employeeAdd = Console.ReadLine();
             if (employeeAdd == "y")
             {
-                string? EmployeeType;
-                string? FirstName;
-                string? LastName;
                 Console.WriteLine("Is employee permanent or temporary?");
-                EmployeeType = Console.ReadLine();
+                string? EmployeeType = Console.ReadLine();
                 Console.WriteLine("Enter a first name");
-                FirstName = Console.ReadLine();
+                string? FirstName = Console.ReadLine();
                 Console.WriteLine("Please enter a last name");
-                LastName = Console.ReadLine();
+                string? LastName = Console.ReadLine();
                 if (EmployeeType.ToLower() == "permanent")
                 {
                     Console.WriteLine("Please enter a salary");
@@ -47,6 +47,8 @@
             {
                 Console.WriteLine($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {employees[i].TotalAnnualPay()} Hourly Pay: {employees[i].doubleHourlyRate()}");
             }
+            Console.ReadLine();
+
         }
 
     }

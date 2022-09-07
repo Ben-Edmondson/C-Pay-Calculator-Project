@@ -45,7 +45,7 @@ namespace PayCalc_Project
             //use this data to create new employee
             for (int i = 0; i < employees.Count; i++)
             {
-                Console.WriteLine($"{employees[i].GuID.ToString()} {employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {employees[i].TotalAnnualPay()} Hourly Pay: {employees[i].doubleHourlyRate()}");
+                Console.WriteLine($"{employees[i].GuID.ToString()} {employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
             }
             Console.ReadLine();
 

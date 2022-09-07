@@ -1,6 +1,5 @@
 using PayCalc_Project;
 using System.Data;
-
 namespace PayCalc_Tests
 {
     public class EmployeeTests
@@ -14,8 +13,8 @@ namespace PayCalc_Tests
             decimal tAP = 45000;
             decimal hrActual = 21.98M;
             //act
-            decimal tAPCorrect = joeBloggs.TotalAnnualPay();
-            decimal hrCorrect = joeBloggs.doubleHourlyRate();
+            decimal tAPCorrect = Calculations.TotalAnnualPay();
+            decimal hrCorrect = Calculations.doubleHourlyRate();
             //assert
             Assert.That(hrCorrect, Is.EqualTo(hrActual));
             Assert.That(tAPCorrect, Is.EqualTo(tAP));

@@ -8,10 +8,9 @@ namespace PayCalc_Project
         static void Main(string[] args)
         {
             List<Employee> employees = new List<Employee>();
-            employees.Add(new Employee() { GuID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
-            employees.Add(new Employee() { GuID = Guid.NewGuid() ,EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
-            employees.Add(new Employee() { GuID = Guid.NewGuid() ,EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
-            //user can add employee to system, can get a list of them and data
+            employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
+            employees.Add(new Employee() { ID = Guid.NewGuid() ,EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
+            employees.Add(new Employee() { ID = Guid.NewGuid() ,EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
             Console.WriteLine("Add employee?");
             string? employeeAdd = Console.ReadLine();
             if (employeeAdd == "y")
@@ -28,7 +27,7 @@ namespace PayCalc_Project
                     decimal Salary = decimal.Parse(Console.ReadLine());
                     Console.WriteLine("Please enter a bonus");
                     decimal Bonus = decimal.Parse(Console.ReadLine());
-                    employees.Add(new Employee() {GuID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus });
+                    employees.Add(new Employee() {ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus });
                 }
                 else
                 {
@@ -36,7 +35,7 @@ namespace PayCalc_Project
                     decimal DayRate = decimal.Parse(Console.ReadLine());
                     Console.WriteLine("Please enter number of weeks worked per year");
                     int WeeksWorked = int.Parse(Console.ReadLine());
-                    employees.Add(new Employee() { EmploymentType = TypeOfEmployment.Temporary, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked });
+                    employees.Add(new Employee() {ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Temporary, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked });
 
                 }
 
@@ -45,7 +44,7 @@ namespace PayCalc_Project
             //use this data to create new employee
             for (int i = 0; i < employees.Count; i++)
             {
-                Console.WriteLine($"{employees[i].GuID.ToString()} {employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
+                Console.WriteLine($"{employees[i].ID.ToString()} {employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
             }
             Console.ReadLine();
 

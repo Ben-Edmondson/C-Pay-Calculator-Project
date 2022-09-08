@@ -1,7 +1,7 @@
 ﻿namespace PayCalc_Project
 {
     public class Calculations
-    {
+    { 
         public static decimal TotalAnnualPay(List<Employee>employees, int i)
         {
             List<Employee> employeeList = employees;

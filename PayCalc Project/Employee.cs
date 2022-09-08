@@ -3,12 +3,11 @@
     public enum TypeOfEmployment
     {
         Permanent,
-        Temporary,
-        Contractor
+        Temporary
     }
     public class Employee
     {
-        public Guid GuID {get; set;}
+        public Guid ID {get; set;}
         public TypeOfEmployment EmploymentType;
         public string? FirstName { get; set; }
         public string? LastName { get; set; }

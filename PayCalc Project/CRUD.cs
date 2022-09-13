@@ -29,9 +29,17 @@
             Console.ReadLine();
         }
 
-        public List<Employee> Update(List<Employee> employees)
+        public List<Employee> Update(List<Employee> employees, int i)
         {
-            //need to implement
+            employees[i] = new Employee()
+            {
+                ID = Guid.NewGuid(),
+                EmploymentType = TypeOfEmployment.Permanent,
+                FirstName = Input.FirstNameInput(),
+                LastName = Input.LastNameInput(),
+                DayRate = Input.DayRate(),
+                WeeksWorked = Input.WeeksWorked()
+            };
             return employees;
         }
 

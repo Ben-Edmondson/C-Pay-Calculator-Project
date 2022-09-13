@@ -2,7 +2,20 @@
 {
     class Input
     {
-
+        public static string TypeOfEmployment()
+        {
+            Console.WriteLine("Is employee permanent or temporary?");
+            string? EmployeeType = Console.ReadLine();
+            if(EmployeeType == null || EmployeeType == "")
+            {
+                do
+                {
+                    Console.WriteLine("Please enter a valid employment type");
+                    EmployeeType = Console.ReadLine();
+                } while (EmployeeType == null || EmployeeType == "");
+            }
+            return EmployeeType;
+        }
         public static string FirstNameInput()
         {
             Console.WriteLine("Enter a first name");

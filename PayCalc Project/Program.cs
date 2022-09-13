@@ -13,8 +13,7 @@
             string? employeeAdd = Console.ReadLine();
             if (employeeAdd == "y")
             {
-                Console.WriteLine("Is employee permanent or temporary?");
-                string? EmployeeType = Console.ReadLine();
+                string EmployeeType = Input.TypeOfEmployment();
                 string FirstName = Input.FirstNameInput();
                 string LastName = Input.LastNameInput();
                 if (EmployeeType.ToLower() == "permanent")

@@ -39,9 +39,8 @@ namespace PayCalc_Project
                     CRUD.AddTempEmployee(employees, FirstName, LastName, DayRate, WeeksWorked);
                  }
             }
-
-
-
+            CRUD.Read(employees);
+            CRUD.ReadSingle(employees, 2);
         }
 
     }

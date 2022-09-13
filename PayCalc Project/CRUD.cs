@@ -14,7 +14,7 @@
             return employees;
         }
 
-        public void Read(List<Employee>employees)
+        public static void Read(List<Employee>employees)
         {
             for (int i = 0; i < employees.Count; i++)
             {
@@ -23,7 +23,7 @@
             Console.ReadLine();
         }
 
-        public void ReadSingle(List<Employee>employees, int i)
+        public static void ReadSingle(List<Employee>employees, int i)
         {
             Console.WriteLine($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
             Console.ReadLine();

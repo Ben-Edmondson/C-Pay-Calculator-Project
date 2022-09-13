@@ -2,6 +2,7 @@
 {
     class Input
     {
+        //update to return an enum
         public static string TypeOfEmployment()
         {
             Console.WriteLine("Is employee permanent or temporary?");

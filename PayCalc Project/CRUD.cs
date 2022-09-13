@@ -33,6 +33,7 @@
         {
             employees[i] = new Employee()
             {
+                //need to update to get enum from Input function
                 ID = Guid.NewGuid(),
                 EmploymentType = TypeOfEmployment.Permanent,
                 FirstName = Input.FirstNameInput(),

@@ -1,7 +1,4 @@
-﻿using System.ComponentModel;
-using System.Runtime.InteropServices;
-
-namespace PayCalc_Project
+﻿namespace PayCalc_Project
 {
     class Program
     {

@@ -7,13 +7,13 @@
         {
             Console.WriteLine("Enter a first name");
             string? FirstName = Console.ReadLine();
-            if(FirstName == "")
+            if(FirstName == "" || FirstName == null)
             {
                 do
                 {
                     Console.WriteLine("Please enter a valid First Name!");
                     FirstName = Console.ReadLine();
-                } while(FirstName == "");
+                } while(FirstName == "" ||FirstName == null);
             }
             return FirstName;
         }
@@ -21,13 +21,13 @@
         {
             Console.WriteLine("Please enter a last name");
             string? LastName = Console.ReadLine();
-            if (LastName == "")
+            if (LastName == "" || LastName == null)
             {
                 do
                 {
                     Console.WriteLine("Please enter a valid Last Name!");
                     LastName = Console.ReadLine();
-                } while (LastName == "");
+                } while (LastName == ""|| LastName == null);
             }
             return LastName;
         }

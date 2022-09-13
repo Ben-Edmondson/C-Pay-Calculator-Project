@@ -36,8 +36,8 @@ namespace PayCalc_Project
                     decimal DayRate = decimal.Parse(Console.ReadLine());
                     Console.WriteLine("Please enter number of weeks worked per year");
                     int WeeksWorked = int.Parse(Console.ReadLine());
-                    employees.Add(new Employee() {ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Temporary, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked });
-                }
+                    CRUD.AddTempEmployee(employees, FirstName, LastName, DayRate, WeeksWorked);
+                 }
             }
 
 

@@ -8,6 +8,12 @@
             return employees;
         }
 
+        public static List<Employee> AddTempEmployee(List<Employee>employees, string FirstName, string LastName, decimal DayRate, int WeeksWorked)
+        {
+            employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked= WeeksWorked });
+            return employees;
+        }
+
         public void Read(List<Employee>employees)
         {
             for (int i = 0; i < employees.Count; i++)

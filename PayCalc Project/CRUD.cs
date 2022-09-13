@@ -41,5 +41,11 @@
             return employees;
         }
 
+        public List<Employee> RemoveAll(List<Employee>employees)
+        {
+            employees.Clear();
+            return employees;
+        }
+
     }
 }

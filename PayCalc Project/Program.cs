@@ -18,24 +18,18 @@ namespace PayCalc_Project
             {
                 Console.WriteLine("Is employee permanent or temporary?");
                 string? EmployeeType = Console.ReadLine();
-                Console.WriteLine("Enter a first name");
-                string? FirstName = Console.ReadLine();
-                Console.WriteLine("Please enter a last name");
-                string? LastName = Console.ReadLine();
+                string FirstName = Input.FirstNameInput();
+                string LastName = Input.LastNameInput();
                 if (EmployeeType.ToLower() == "permanent")
                 {
-                    Console.WriteLine("Please enter a salary");
-                    decimal Salary = decimal.Parse(Console.ReadLine());
-                    Console.WriteLine("Please enter a bonus");
-                    decimal Bonus = decimal.Parse(Console.ReadLine());
+                    decimal Salary = Input.SalaryInput();
+                    decimal Bonus = Input.BonusInput();
                     CRUD.AddPermanentEmployee(employees, FirstName, LastName, Salary, Bonus);
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a dayrate");
-                    decimal DayRate = decimal.Parse(Console.ReadLine());
-                    Console.WriteLine("Please enter number of weeks worked per year");
-                    int WeeksWorked = int.Parse(Console.ReadLine());
+                    decimal DayRate = Input.DayRate();
+                    int WeeksWorked = Input.WeeksWorked();
                     CRUD.AddTempEmployee(employees, FirstName, LastName, DayRate, WeeksWorked);
                  }
             }

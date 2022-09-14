@@ -14,10 +14,10 @@
                                     3. Update Employees
                                     4. Delete Employees");
 
-                Console.WriteLine("Add employee?");
-                string? employeeAdd = Console.ReadLine();
-                if (employeeAdd == "y")
+                string Selection = Console.ReadLine();
+                if (Selection == "1")
                 {
+                    Console.Clear();
                     Console.WriteLine("Is employee permanent or temporary?");
                     string? EmployeeType = Console.ReadLine();
                     if (EmployeeType == null || EmployeeType == "")
@@ -86,6 +86,9 @@
                             } while (x == true);
                         }
                         repo.AddPermanentEmployee(FirstName, LastName, DecSalary, DecBonus);
+                        Console.WriteLine("Employee added!");
+                        Console.ReadLine();
+                        Console.Clear();
                     }
                     else
                     {
@@ -123,9 +126,26 @@
                         }
                         repo.AddTempEmployee(FirstName, LastName, DecDayRate, IntWeeksWorked);
                     }
+                } else if (Selection == "2")
+                {
+                    repo.Read();
+
+                    repo.ReadSingle(2);
+                }else if (Selection == "3")
+                {
+                    //updates
+                }else if (Selection == "4")
+                {
+                    //delete
                 }
-                repo.Read(employees);
-                repo.ReadSingle(employees, 2);
+                else
+                {
+                    Console.WriteLine("This was not a valid option. Please try again.");
+                    Console.ReadLine();
+                    Console.Clear();
+                }
+
+
             }
         }
     }

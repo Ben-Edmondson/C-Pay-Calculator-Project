@@ -15,9 +15,9 @@
                                     4. Delete Employees");
 
                 string Selection = Console.ReadLine();
+                Console.Clear();
                 if (Selection == "1")
                 {
-                    Console.Clear();
                     Console.WriteLine("Is employee permanent or temporary?");
                     string? EmployeeType = Console.ReadLine();
                     if (EmployeeType == null || EmployeeType == "")
@@ -128,9 +128,28 @@
                     }
                 } else if (Selection == "2")
                 {
-                    repo.Read();
+                    Console.WriteLine("Would you like to see all employees or 1?");
+                    string ReadSelect = Console.ReadLine();
+                    if (ReadSelect == "1")
+                    {
+                        List<string> employeeInfo = repo.Read();
+                        for(int i = 0; i < employeeInfo.Count; i++)
+                        {
+                            Console.WriteLine(employeeInfo[i]);
+                        }
+                        Console.ReadLine();
+                    }else if (ReadSelect == "2")
+                    {
+                        Console.WriteLine(repo.ReadSingle(2));
+                        Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("This was not a valid choice.");
+                    }
 
-                    repo.ReadSingle(2);
+
+
                 }else if (Selection == "3")
                 {
                     //updates
@@ -160,6 +179,12 @@
                             Console.WriteLine("Employees wiped!");
                         }
                         Console.ReadLine();
+                    }
+                    else
+                    {
+                        Console.WriteLine("This was not a valid option. Please try again.");
+                        Console.ReadLine();
+                        Console.Clear();
                     }
                 }
                 else

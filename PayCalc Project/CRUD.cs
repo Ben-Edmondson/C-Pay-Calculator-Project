@@ -32,10 +32,10 @@
             Console.ReadLine();
         }
 
-        public static void ReadSingle(List<Employee>employees, int i)
+        public static string ReadSingle(List<Employee>employees, int i)
         {
-            Console.WriteLine($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
-            Console.ReadLine();
+            string ReadSingleEmployee = ($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
+            return ReadSingleEmployee;
         }
 
         public List<Employee> Update(List<Employee> employees, int i)
@@ -68,16 +68,16 @@
             return employees;
         }
 
-        public List<Employee> Delete(List<Employee> employees,int i)
+        public bool Delete(List<Employee> employees,int i)
         {
             employees.RemoveAt(i);
-            return employees;
+            return true;
         }
 
-        public List<Employee> RemoveAll(List<Employee>employees)
+        public bool RemoveAll(List<Employee>employees)
         {
             employees.Clear();
-            return employees;
+            return true;
         }
 
     }

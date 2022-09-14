@@ -28,6 +28,7 @@
             CRUD.Read(employees);
             CRUD.ReadSingle(employees, 2);
         }
+
         public static string TypeOfEmploymentString()
         {
             Console.WriteLine("Is employee permanent or temporary?");

@@ -15,6 +15,6 @@
         public decimal Bonus {get; set; } 
         public decimal DayRate { get; set; }
         public int WeeksWorked {get; set; }
-        public string? FullName => $"{FirstName} {LastName}";
+        public string FullName => $"{FirstName} {LastName}";
     }
 }

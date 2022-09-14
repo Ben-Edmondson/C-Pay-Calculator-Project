@@ -35,8 +35,13 @@
 
         public static string ReadSingle(List<Employee>employees, int i)
         {
-            string ReadSingleEmployee = ($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
-            return ReadSingleEmployee;
+            if (employees.Count() > i)
+            {
+                string ReadSingleEmployee = ($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
+                return ReadSingleEmployee;
+            }
+            string Failed = "Failed to read, ID is too high.";
+            return Failed;
         }
 
         public List<Employee> Update(List<Employee> employees, int i)

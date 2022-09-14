@@ -21,21 +21,21 @@
             return true;
         }
 
-        public static List<string> Read(List<Employee>employees)
+        public List<string> Read()
         {
             List<string> ReadAll = new List<string>();
             for (int i = 0; i < employees.Count; i++)
             {
-                ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
+                ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)}");
             }
             return ReadAll;
         }
 
-        public static string ReadSingle(List<Employee>employees, int i)
+        public string ReadSingle(int i)
         {
             if (employees.Count() > i)
             {
-                string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ";
+                string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} ";
                 return ReadSingleEmployee;
             }
             string Failed = "Failed to read, ID is too high.";
@@ -72,7 +72,7 @@
             return employees;
         }
 
-        public bool Delete(List<Employee> employees,int i)
+        public bool Delete(int i)
         {
             int EmployeeCount = employees.Count();
             employees.RemoveAt(i);
@@ -83,7 +83,7 @@
             return true;
         }
 
-        public bool RemoveAll(List<Employee>employees)
+        public bool RemoveAll()
         {
             employees.Clear();
             if(employees.Count() > 0)

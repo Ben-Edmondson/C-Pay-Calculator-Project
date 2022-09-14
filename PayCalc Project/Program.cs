@@ -124,8 +124,8 @@
                         repo.AddTempEmployee(FirstName, LastName, DecDayRate, IntWeeksWorked);
                     }
                 }
-                CRUD.Read(employees);
-                CRUD.ReadSingle(employees, 2);
+                repo.Read(employees);
+                repo.ReadSingle(employees, 2);
             }
         }
     }

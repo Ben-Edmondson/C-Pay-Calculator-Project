@@ -42,19 +42,19 @@
             return Failed;
         }
 
-        public bool Update(int i)
+        public bool Update(int i,string FirstName, string LastName,decimal Salary, decimal Bonus, decimal DayRate, int WeeksWorked)
         {
-            employees[i].FirstName = null;
-            employees[i].LastName = null;
+            employees[i].FirstName = FirstName;
+            employees[i].LastName = LastName;
             if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
             {
-                employees[i].Salary = 0;
-                employees[i].Bonus = 0;
+                employees[i].Salary = Salary;
+                employees[i].Bonus = Salary;
             }
             else
             {
-                employees[i].DayRate = 0;
-                employees[i].WeeksWorked = 0;
+                employees[i].DayRate = DayRate;
+                employees[i].WeeksWorked = WeeksWorked;
             }
             return true;
         }

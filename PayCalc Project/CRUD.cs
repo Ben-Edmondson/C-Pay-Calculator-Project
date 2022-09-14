@@ -3,21 +3,19 @@
     class CRUD
     {
 
-        public static List<Employee> EmployeesInit() {
-            List<Employee> employees = new List<Employee>();
-            employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
-            employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
-            employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
-            return employees;
-        }
+        public List<Employee> employees = new List<Employee>() {
+            new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
+            new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
+            new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
+        };
 
-        public static bool AddPermanentEmployee(List<Employee>employees, string FirstName, string Surname, decimal Salary, decimal Bonus)
+        public bool AddPermanentEmployee(string FirstName, string Surname, decimal Salary, decimal Bonus)
         {
             employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = FirstName, LastName = Surname, Salary = Salary, Bonus = Bonus });
             return true;
         }
 
-        public static bool AddTempEmployee(List<Employee>employees, string FirstName, string LastName, decimal DayRate, int WeeksWorked)
+        public bool AddTempEmployee( string FirstName, string LastName, decimal DayRate, int WeeksWorked)
         {
             employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked= WeeksWorked });
             return true;
@@ -37,7 +35,7 @@
         {
             if (employees.Count() > i)
             {
-                string ReadSingleEmployee = ($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
+                string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ";
                 return ReadSingleEmployee;
             }
             string Failed = "Failed to read, ID is too high.";

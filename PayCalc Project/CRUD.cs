@@ -23,13 +23,14 @@
             return employees;
         }
 
-        public static void Read(List<Employee>employees)
+        public static List<string> Read(List<Employee>employees)
         {
+            List<string> ReadAll = new List<string>;
             for (int i = 0; i < employees.Count; i++)
             {
-                Console.WriteLine($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
+                ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");
             }
-            Console.ReadLine();
+            return ReadAll;
         }
 
         public static string ReadSingle(List<Employee>employees, int i)

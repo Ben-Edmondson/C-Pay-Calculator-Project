@@ -2,6 +2,15 @@
 {
     class CRUD
     {
+
+        public static List<Employee> EmployeesInit() {
+            List<Employee> employees = new List<Employee>();
+            employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
+            employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
+            employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Temporary, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
+            return employees;
+        }
+
         public static List<Employee> AddPermanentEmployee(List<Employee>employees, string FirstName, string Surname, decimal Salary, decimal Bonus)
         {
             employees.Add(new Employee() { ID = Guid.NewGuid(), EmploymentType = TypeOfEmployment.Permanent, FirstName = FirstName, LastName = Surname, Salary = Salary, Bonus = Bonus });
@@ -31,17 +40,17 @@
 
         public List<Employee> Update(List<Employee> employees, int i)
         {
-            string strEmployType = Input.TypeOfEmployment();
+            string strEmployType = Program.TypeOfEmploymentString();
             if (strEmployType.ToLower() == "permanent")
             {
                 employees[i] = new Employee()
                 {
                     ID = Guid.NewGuid(),
                     EmploymentType = TypeOfEmployment.Permanent,
-                    FirstName = Input.FirstNameInput(),
-                    LastName = Input.LastNameInput(),
-                    Salary = Input.SalaryInput(),
-                    Bonus = Input.BonusInput()
+                    FirstName = Program.FirstNameInput(),
+                    LastName = Program.LastNameInput(),
+                    Salary = Program.SalaryInput(),
+                    Bonus = Program.BonusInput()
                 };
             }
             else
@@ -50,10 +59,10 @@
                 {
                     ID = Guid.NewGuid(),
                     EmploymentType = TypeOfEmployment.Temporary,
-                    FirstName = Input.FirstNameInput(),
-                    LastName = Input.LastNameInput(),
-                    DayRate = Input.DayRate(),
-                    WeeksWorked = Input.WeeksWorked()
+                    FirstName = Program.FirstNameInput(),
+                    LastName = Program.LastNameInput(),
+                    DayRate = Program.DayRateInput(),
+                    WeeksWorked = Program.WeeksWorkedInput()
                 };
             }
             return employees;

@@ -9,8 +9,8 @@
     {
         public Guid ID {get; set;}
         public TypeOfEmployment EmploymentType;
-        public string? FirstName { get; set; }
-        public string? LastName { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
         public decimal Salary {get; set; }
         public decimal Bonus {get; set; } 
         public decimal DayRate { get; set; }

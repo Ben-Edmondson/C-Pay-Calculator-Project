@@ -31,16 +31,31 @@
 
         public List<Employee> Update(List<Employee> employees, int i)
         {
-            employees[i] = new Employee()
+            string strEmployType = Input.TypeOfEmployment();
+            if (strEmployType.ToLower() == "permanent")
             {
-                //need to update to get enum from Input function
-                ID = Guid.NewGuid(),
-                EmploymentType = TypeOfEmployment.Permanent,
-                FirstName = Input.FirstNameInput(),
-                LastName = Input.LastNameInput(),
-                DayRate = Input.DayRate(),
-                WeeksWorked = Input.WeeksWorked()
-            };
+                employees[i] = new Employee()
+                {
+                    ID = Guid.NewGuid(),
+                    EmploymentType = TypeOfEmployment.Permanent,
+                    FirstName = Input.FirstNameInput(),
+                    LastName = Input.LastNameInput(),
+                    Salary = Input.SalaryInput(),
+                    Bonus = Input.BonusInput()
+                };
+            }
+            else
+            {
+                employees[i] = new Employee()
+                {
+                    ID = Guid.NewGuid(),
+                    EmploymentType = TypeOfEmployment.Temporary,
+                    FirstName = Input.FirstNameInput(),
+                    LastName = Input.LastNameInput(),
+                    DayRate = Input.DayRate(),
+                    WeeksWorked = Input.WeeksWorked()
+                };
+            }
             return employees;
         }
 

@@ -152,7 +152,8 @@
 
                 }else if (Selection == "3")
                 {
-                    //updates
+                    repo.Update(0, "Ben", "Edmondson", 55000, 5000, 0,0);
+
                 }else if (Selection == "4")
                 {
                     Console.WriteLine("Would you like to delete one employee or all?");

@@ -71,13 +71,22 @@
 
         public bool Delete(List<Employee> employees,int i)
         {
+            int EmployeeCount = employees.Count();
             employees.RemoveAt(i);
+            if (employees.Count() >= EmployeeCount)
+            {
+                return false;
+            }
             return true;
         }
 
         public bool RemoveAll(List<Employee>employees)
         {
             employees.Clear();
+            if(employees.Count() > 0)
+            {
+                return false;
+            }
             return true;
         }
 

@@ -140,11 +140,26 @@
                     string DelSelect = Console.ReadLine();
                     if (DelSelect == "1")
                     {
-                        repo.Delete(2);
+                       if(repo.Delete(2) == false)
+                        {
+                            Console.WriteLine("No Employee to be removed at location"!);
+                        }
+                        else
+                        {
+                            Console.WriteLine("Employee removed!");
+                        }
 
                     }else if (DelSelect == "2")
                     {
-                        repo.RemoveAll();
+                        if (repo.RemoveAll() == false)
+                        {
+                            Console.WriteLine("No Employees to be removed!");
+                        }
+                        else
+                        {
+                            Console.WriteLine("Employees wiped!");
+                        }
+                        Console.ReadLine();
                     }
                 }
                 else

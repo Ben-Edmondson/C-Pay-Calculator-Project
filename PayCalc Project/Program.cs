@@ -136,7 +136,16 @@
                     //updates
                 }else if (Selection == "4")
                 {
-                    //delete
+                    Console.WriteLine("Would you like to delete one employee or all?");
+                    string DelSelect = Console.ReadLine();
+                    if (DelSelect == "1")
+                    {
+                        repo.Delete(2);
+
+                    }else if (DelSelect == "2")
+                    {
+                        repo.RemoveAll();
+                    }
                 }
                 else
                 {

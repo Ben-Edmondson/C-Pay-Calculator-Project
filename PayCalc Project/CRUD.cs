@@ -25,7 +25,7 @@
 
         public static List<string> Read(List<Employee>employees)
         {
-            List<string> ReadAll = new List<string>;
+            List<string> ReadAll = new List<string>();
             for (int i = 0; i < employees.Count; i++)
             {
                 ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} Hourly Pay: {Calculations.doubleHourlyRate(employees, i)} ");

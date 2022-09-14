@@ -42,34 +42,21 @@
             return Failed;
         }
 
-        public List<Employee> Update(List<Employee> employees, int i)
+        public bool Update(int i)
         {
-            string strEmployType = Program.TypeOfEmploymentString();
-            if (strEmployType.ToLower() == "permanent")
+            employees[i].FirstName = null;
+            employees[i].LastName = null;
+            if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
             {
-                employees[i] = new Employee()
-                {
-                    ID = Guid.NewGuid(),
-                    EmploymentType = TypeOfEmployment.Permanent,
-                    FirstName = Program.FirstNameInput(),
-                    LastName = Program.LastNameInput(),
-                    Salary = Program.SalaryInput(),
-                    Bonus = Program.BonusInput()
-                };
+                employees[i].Salary = 0;
+                employees[i].Bonus = 0;
             }
             else
             {
-                employees[i] = new Employee()
-                {
-                    ID = Guid.NewGuid(),
-                    EmploymentType = TypeOfEmployment.Temporary,
-                    FirstName = Program.FirstNameInput(),
-                    LastName = Program.LastNameInput(),
-                    DayRate = Program.DayRateInput(),
-                    WeeksWorked = Program.WeeksWorkedInput()
-                };
+                employees[i].DayRate = 0;
+                employees[i].WeeksWorked = 0;
             }
-            return employees;
+            return true;
         }
 
         public bool Delete(int i)

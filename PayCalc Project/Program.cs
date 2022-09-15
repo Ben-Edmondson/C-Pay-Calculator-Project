@@ -7,6 +7,7 @@
             CRUD repo = new CRUD();
             while (true)
             {
+                Console.Clear();
                 Console.WriteLine(@"Welcome to the PayCalc program!
                                     Please Select an Option Below.
                                     1. Add employee
@@ -88,8 +89,6 @@
                         }
                         repo.AddPermanentEmployee(FirstName, LastName, DecSalary, DecBonus);
                         Console.WriteLine("Permanent Employee added!");
-                        Console.ReadLine();
-                        Console.Clear();
                     }
                     else
                     {
@@ -143,7 +142,6 @@
                     }else if (ReadSelect == "2")
                     {
                         Console.WriteLine(repo.ReadSingle(0));
-                        Console.ReadLine();
                     }
                     else
                     {
@@ -154,7 +152,7 @@
 
                 }else if (Selection == "3")
                 {
-                   if( repo.UpdatePerm(0, "Ben", "Edmondson", 6000, 5000))
+                   if( repo.UpdatePerm(0, "Ben", "Edmondson", 60000, 5000))
                     {
                         Console.WriteLine("Employee updated!");
                     }
@@ -162,7 +160,6 @@
                     {
                         Console.WriteLine("Failed to update Employee");
                     }
-                    Console.ReadLine();
 
                 }else if (Selection == "4")
                 {
@@ -189,23 +186,21 @@
                         {
                             Console.WriteLine("Employees wiped!");
                         }
-                        Console.ReadLine();
                     }
                     else
                     {
                         Console.WriteLine("This was not a valid option. Please try again.");
-                        Console.ReadLine();
-                        Console.Clear();
                     }
                 }
                 else if (Selection == "5")
                 {
                     Console.WriteLine(Calculations.TotalAnnualPay(repo.employees,0));
-                    Console.ReadLine();
-                    Console.Clear();
                 }
-
-
+                else
+                {
+                    Console.WriteLine("You did not pick a valid option");
+                }
+                Console.ReadLine();
             }
         }
     }

@@ -87,7 +87,7 @@
                             } while (x == true);
                         }
                         repo.AddPermanentEmployee(FirstName, LastName, DecSalary, DecBonus);
-                        Console.WriteLine("Employee added!");
+                        Console.WriteLine("Permanent Employee added!");
                         Console.ReadLine();
                         Console.Clear();
                     }
@@ -126,6 +126,7 @@
                             } while (x == true);
                         }
                         repo.AddTempEmployee(FirstName, LastName, DecDayRate, IntWeeksWorked);
+                        Console.WriteLine("Temporary Employee added!");
                     }
                 } else if (Selection == "2")
                 {

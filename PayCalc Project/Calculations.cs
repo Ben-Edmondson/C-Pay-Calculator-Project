@@ -6,7 +6,7 @@
         {
             if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
             {
-                return employees[i].Salary + employees[i].Bonus;
+                return employees[i].Salary += employees[i].Bonus;
             }
             else
             {

@@ -140,7 +140,7 @@
                         Console.ReadLine();
                     }else if (ReadSelect == "2")
                     {
-                        Console.WriteLine(repo.ReadSingle(2));
+                        Console.WriteLine(repo.ReadSingle(0));
                         Console.ReadLine();
                     }
                     else
@@ -152,7 +152,7 @@
 
                 }else if (Selection == "3")
                 {
-                    repo.Update(0, "Ben", "Edmondson", 55000, 5000, 0,0);
+                    repo.UpdatePerm(0, "Ben", "Edmondson", 60000, 5000);
 
                 }else if (Selection == "4")
                 {

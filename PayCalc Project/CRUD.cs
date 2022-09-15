@@ -26,7 +26,15 @@
             List<string> ReadAll = new List<string>();
             for (int i = 0; i < employees.Count; i++)
             {
-                ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Salary: {employees[i].Salary} Bonus {employees[i].Bonus}");
+                if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
+                {
+                    ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Salary: {employees[i].Salary} Bonus {employees[i].Bonus}");
+                }
+                else
+                {
+                    ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Day Rate: {employees[i].DayRate} Weeks Worked: {employees[i].WeeksWorked}");
+
+                }
             }
             return ReadAll;
         }
@@ -35,8 +43,15 @@
         {
             if (employees.Count() > i)
             {
-                string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Salary: {employees[i].Salary} Bonus {employees[i].Bonus} ";
-                return ReadSingleEmployee;
+                if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
+                {
+                    string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Salary: {employees[i].Salary} Bonus {employees[i].Bonus} ";
+                    return ReadSingleEmployee;
+                }
+                else
+                {
+                    string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Day Rate: {employees[i].DayRate} Weeks Worked: {employees[i].WeeksWorked}";
+                }
             }
             string Failed = "Failed to read, ID is too high.";
             return Failed;

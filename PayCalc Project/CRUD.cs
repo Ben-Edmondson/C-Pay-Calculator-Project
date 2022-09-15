@@ -51,6 +51,7 @@
                 else
                 {
                     string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Day Rate: {employees[i].DayRate} Weeks Worked: {employees[i].WeeksWorked}";
+                    return ReadSingleEmployee;
                 }
             }
             string Failed = "Failed to read, ID is too high.";

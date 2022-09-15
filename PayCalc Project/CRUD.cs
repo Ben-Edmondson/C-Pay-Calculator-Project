@@ -1,6 +1,6 @@
 ﻿namespace PayCalc_Project
 {
-    class CRUD
+    public class CRUD
     {
 
         public List<Employee> employees = new List<Employee>() {
@@ -26,7 +26,7 @@
             List<string> ReadAll = new List<string>();
             for (int i = 0; i < employees.Count; i++)
             {
-                ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)}");
+                ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Salary: {employees[i].Salary} Bonus {employees[i].Bonus}");
             }
             return ReadAll;
         }
@@ -35,7 +35,7 @@
         {
             if (employees.Count() > i)
             {
-                string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Annual Pay: {Calculations.TotalAnnualPay(employees, i)} ";
+                string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Salary: {employees[i].Salary} Bonus {employees[i].Bonus} ";
                 return ReadSingleEmployee;
             }
             string Failed = "Failed to read, ID is too high.";
@@ -47,7 +47,7 @@
             employees[i].FirstName = FirstName;
             employees[i].LastName = LastName;
             employees[i].Salary = Salary;
-            employees[i].Bonus = Salary;
+            employees[i].Bonus = Bonus;
             return true;
         }
         public bool UpdateTemp(int i, string FirstName, string LastName, decimal DayRate, int WeeksWorked)

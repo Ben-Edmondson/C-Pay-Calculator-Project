@@ -12,7 +12,8 @@
                                     1. Add employee
                                     2. Read Employees
                                     3. Update Employees
-                                    4. Delete Employees");
+                                    4. Delete Employees
+                                    5. Total Annual Salary (pretax)");
 
                 string Selection = Console.ReadLine();
                 Console.Clear();
@@ -152,7 +153,15 @@
 
                 }else if (Selection == "3")
                 {
-                    repo.UpdatePerm(0, "Ben", "Edmondson", 60000, 5000);
+                   if( repo.UpdatePerm(0, "Ben", "Edmondson", 6000, 5000))
+                    {
+                        Console.WriteLine("Employee updated!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("Failed to update Employee");
+                    }
+                    Console.ReadLine();
 
                 }else if (Selection == "4")
                 {
@@ -188,9 +197,9 @@
                         Console.Clear();
                     }
                 }
-                else
+                else if (Selection == "5")
                 {
-                    Console.WriteLine("This was not a valid option. Please try again.");
+                    Console.WriteLine(Calculations.TotalAnnualPay(repo.employees,0));
                     Console.ReadLine();
                     Console.Clear();
                 }

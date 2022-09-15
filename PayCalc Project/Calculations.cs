@@ -1,12 +1,13 @@
 ﻿namespace PayCalc_Project
 {
     public class Calculations
-    { 
-        public static decimal TotalAnnualPay(List<Employee>employees, int i)
+    {
+        public static decimal TotalAnnualPay(List<Employee> employees,int i)
         {
+
             if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
             {
-                return employees[i].Salary += employees[i].Bonus;
+                return employees[i].Salary + employees[i].Bonus;
             }
             else
             {

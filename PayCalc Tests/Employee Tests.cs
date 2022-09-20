@@ -4,7 +4,7 @@ namespace PayCalc_Tests
     [TestFixture]
     public class EmployeeTests
     {
-        CRUD _repo = new CRUD();
+        EmployeeRepository _repo = new EmployeeRepository();
         [Test]
         public void JoeBloggsDataTest()
         {

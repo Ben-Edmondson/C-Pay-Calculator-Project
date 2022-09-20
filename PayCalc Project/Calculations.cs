@@ -16,5 +16,18 @@
             }
 
         }
+
+        public static decimal HourlyPay(List<Employee> employees, int i)
+        {
+            if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
+            {
+
+            }
+            else
+            {
+
+            }
+            return 0;
+        }
     }
 }

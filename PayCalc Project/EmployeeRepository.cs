@@ -1,6 +1,6 @@
 ﻿namespace PayCalc_Project
 {
-    public class CRUD
+    public class EmployeeRepository
     {
 
         public List<Employee> employees = new List<Employee>() {
@@ -33,7 +33,6 @@
                 else
                 {
                     ReadAll.Add($"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Day Rate: {employees[i].DayRate} Weeks Worked: {employees[i].WeeksWorked}");
-
                 }
             }
             return ReadAll;

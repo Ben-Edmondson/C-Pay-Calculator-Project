@@ -4,7 +4,7 @@
     {
         static void Main(string[] args)
         {
-            CRUD repo = new CRUD();
+            EmployeeRepository repo = new EmployeeRepository();
             while (true)
             {
                 Console.Clear();

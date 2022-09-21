@@ -9,24 +9,16 @@ namespace PayCalc_Project
     class EmployeePermRepo : EmployeePerm
     {
 
-        public List<EmployeePerm> employees = new List<Employee>() {
-            new Employee() { ID = Guid.NewGuid(), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
-            new Employee() { ID = Guid.NewGuid(), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
-            new Employee() { ID = Guid.NewGuid(), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
+        public List<EmployeePerm> employees = new List<EmployeePerm>() {
+            new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
+            new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
         };
 
         public bool AddPermanentEmployee(string FirstName, string Surname, decimal Salary, decimal Bonus)
         {
-            employees.Add(new Employee() { ID = Guid.NewGuid(), FirstName = FirstName, LastName = Surname, Salary = Salary, Bonus = Bonus });
+            employees.Add(new EmployeePerm() { ID = Guid.NewGuid(), FirstName = FirstName, LastName = Surname, Salary = Salary, Bonus = Bonus });
             return true;
         }
-
-        public bool AddTempEmployee(string FirstName, string LastName, decimal DayRate, int WeeksWorked)
-        {
-            employees.Add(new Employee() { ID = Guid.NewGuid(), FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked });
-            return true;
-        }
-
         public List<string> Read()
         {
             List<string> ReadAll = new List<string>();
@@ -42,7 +34,7 @@ namespace PayCalc_Project
             if (employees.Count() > i)
             {
 
-                    string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Salary: {employees[i].Salary} Bonus {employees[i].Bonus} ";
+                    string ReadSingleEmployee = $"{employees[i].FullName} Status: Permanent Salary: {employees[i].Salary} Bonus {employees[i].Bonus} ";
                     return ReadSingleEmployee;
             }
             string Failed = "Failed to read, ID is too high.";

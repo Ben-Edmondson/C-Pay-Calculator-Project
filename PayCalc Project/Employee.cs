@@ -1,6 +1,6 @@
 ﻿namespace PayCalc_Project
 {
-    public class Employee
+    public abstract class Employee
     {
         public Guid ID {get; set;}
         public string FirstName { get; set; }

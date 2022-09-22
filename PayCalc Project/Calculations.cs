@@ -2,34 +2,15 @@
 
 namespace PayCalc_Project
 {
-    public class Calculations
+    class Calculations
     {
-        public static decimal TotalAnnualPay(List<Employee> employees,int i)
+        public decimal? TotalAnnualPay(List<EmployeePerm> employees,int i)
         {
-
-            if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
-            {
-                return employees[i].Salary + employees[i].Bonus;
-            }
-            else
-            {
-                int days = 5;
-                return Math.Round(employees[i].DayRate * (days * employees[i].WeeksWorked), 2);
-            }
-
+            decimal? Salary = employees[i].Salary;
+            decimal? Bonus = employees[i].Bonus;
+            decimal? Together = Salary + Bonus;
+            return Together;
         }
 
-        public static decimal HourlyPay(List<Employee> employees, int i)
-        {
-            if (employees[i].EmploymentType == TypeOfEmployment.Permanent)
-            {
-
-            }
-            else
-            {
-
-            }
-            return 0;
-        }
     }
 }

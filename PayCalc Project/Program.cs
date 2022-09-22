@@ -1,10 +1,13 @@
-﻿namespace PayCalc_Project
+﻿using PayCalc_Project.Repository;
+
+namespace PayCalc_Project
 {
     class Program
     {
         static void Main(string[] args)
         {
-            EmployeeRepository repo = new EmployeeRepository();
+            EmployeePermRepo repoPerm = new EmployeePermRepo();
+            EmployeeTempRepo repoTemp = new EmployeeTempRepo();
             while (true)
             {
                 Console.Clear();
@@ -87,7 +90,7 @@
                                 }
                             } while (x == true);
                         }
-                        repo.AddPermanentEmployee(FirstName, LastName, DecSalary, DecBonus);
+                        repoPerm.AddEmployee(FirstName, LastName, DecSalary, DecBonus, null, null);
                         Console.WriteLine("Permanent Employee added!");
                     }
                     else
@@ -124,7 +127,7 @@
                                 }
                             } while (x == true);
                         }
-                        repo.AddTempEmployee(FirstName, LastName, DecDayRate, IntWeeksWorked);
+                        repoTemp.AddEmployee(FirstName, LastName,null, null, DecDayRate, IntWeeksWorked);
                         Console.WriteLine("Temporary Employee added!");
                     }
                 } else if (Selection == "2")

@@ -3,28 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using PayCalc_Project.Models;
 
-namespace PayCalc_Project
+namespace PayCalc_Project.Repository
 {
-    class EmployeePermRepo : EmployeePerm
+    class EmployeeTempRepo : IEmployeeRepository<EmployeeTemp>
     {
 
-        public List<EmployeePerm> employees = new List<EmployeePerm>() {
-            new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
-            new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
+        public List<EmployeeTemp> employees = new List<EmployeeTemp>() {
+           new EmployeeTemp() { ID = Guid.NewGuid(), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
         };
 
-        public bool AddPermanentEmployee(string FirstName, string Surname, decimal Salary, decimal Bonus)
+        public bool AddTempEmployee(string FirstName, string LastName, decimal DayRate, int WeeksWorked)
         {
-            employees.Add(new EmployeePerm() { ID = Guid.NewGuid(), FirstName = FirstName, LastName = Surname, Salary = Salary, Bonus = Bonus });
+            employees.Add(new EmployeeTemp() { ID = Guid.NewGuid(), FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked });
             return true;
         }
+
         public List<string> Read()
         {
             List<string> ReadAll = new List<string>();
             for (int i = 0; i < employees.Count; i++)
             {
-                ReadAll.Add($"{employees[i].FullName} Status: Permanent Salary: {employees[i].Salary} Bonus {employees[i].Bonus}");
+
+                ReadAll.Add($"{employees[i].FullName} Status: Temporary Day Rate: {employees[i].DayRate} Weeks Worked: {employees[i].WeeksWorked}");
+
             }
             return ReadAll;
         }
@@ -34,21 +37,23 @@ namespace PayCalc_Project
             if (employees.Count() > i)
             {
 
-                    string ReadSingleEmployee = $"{employees[i].FullName} Status: Permanent Salary: {employees[i].Salary} Bonus {employees[i].Bonus} ";
-                    return ReadSingleEmployee;
+                string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Day Rate: {employees[i].DayRate} Weeks Worked: {employees[i].WeeksWorked}";
+                return ReadSingleEmployee;
+
             }
             string Failed = "Failed to read, ID is too high.";
             return Failed;
         }
 
-        public bool UpdatePerm(int i, string FirstName, string LastName, decimal Salary, decimal Bonus)
+        public bool UpdateTemp(int i, string FirstName, string LastName, decimal DayRate, int WeeksWorked)
         {
             employees[i].FirstName = FirstName;
             employees[i].LastName = LastName;
-            employees[i].Salary = Salary;
-            employees[i].Bonus = Bonus;
+            employees[i].DayRate = DayRate;
+            employees[i].WeeksWorked = WeeksWorked;
             return true;
         }
+
         public bool Delete(int i)
         {
             int EmployeeCount = employees.Count();

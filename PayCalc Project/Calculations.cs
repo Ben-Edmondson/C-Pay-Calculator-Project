@@ -1,4 +1,6 @@
-﻿namespace PayCalc_Project
+﻿using PayCalc_Project.Models;
+
+namespace PayCalc_Project
 {
     public class Calculations
     {

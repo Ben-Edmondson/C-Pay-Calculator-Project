@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace PayCalc_Project
+namespace PayCalc_Project.Models
 {
     class EmployeeTemp : Employee
     {

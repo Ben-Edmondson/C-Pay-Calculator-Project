@@ -13,47 +13,6 @@ namespace PayCalc_Project.Repository
         public List<EmployeeTemp> employees = new List<EmployeeTemp>() {
            new EmployeeTemp() { ID = Guid.NewGuid(), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
         };
-
-        public bool AddTempEmployee(string FirstName, string LastName, decimal DayRate, int WeeksWorked)
-        {
-            employees.Add(new EmployeeTemp() { ID = Guid.NewGuid(), FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked });
-            return true;
-        }
-
-        public List<string> Read()
-        {
-            List<string> ReadAll = new List<string>();
-            for (int i = 0; i < employees.Count; i++)
-            {
-
-                ReadAll.Add($"{employees[i].FullName} Status: Temporary Day Rate: {employees[i].DayRate} Weeks Worked: {employees[i].WeeksWorked}");
-
-            }
-            return ReadAll;
-        }
-
-        public string ReadSingle(int i)
-        {
-            if (employees.Count() > i)
-            {
-
-                string ReadSingleEmployee = $"{employees[i].FullName} Status: {employees[i].EmploymentType.ToString()} Day Rate: {employees[i].DayRate} Weeks Worked: {employees[i].WeeksWorked}";
-                return ReadSingleEmployee;
-
-            }
-            string Failed = "Failed to read, ID is too high.";
-            return Failed;
-        }
-
-        public bool UpdateTemp(int i, string FirstName, string LastName, decimal DayRate, int WeeksWorked)
-        {
-            employees[i].FirstName = FirstName;
-            employees[i].LastName = LastName;
-            employees[i].DayRate = DayRate;
-            employees[i].WeeksWorked = WeeksWorked;
-            return true;
-        }
-
         public bool Delete(int i)
         {
             int EmployeeCount = employees.Count();
@@ -73,6 +32,39 @@ namespace PayCalc_Project.Repository
                 return false;
             }
             return true;
+        }
+
+        public EmployeeTemp AddEmployee(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        {
+            EmployeeTemp addNew = new EmployeeTemp() { ID = Guid.NewGuid(), FirstName = FirstName, LastName = Surname, DayRate = DayRate, WeeksWorked = WeeksWorked};
+            return addNew;
+        }
+
+        public List<EmployeeTemp> ReadAll()
+        {
+            List<EmployeeTemp> ReadAll = new List<EmployeeTemp>();
+            for (int i = 0; i < employees.Count; i++)
+            {
+                ReadAll.Add(employees[i]);
+            }
+            return ReadAll;
+        }
+
+        EmployeeTemp IEmployeeRepository<EmployeeTemp>.ReadSingle(int i)
+        {
+            if (employees.Count() > i)
+            {
+
+                EmployeeTemp ReadSingle = new EmployeeTemp() { ID = employees[i].ID, FirstName = employees[i].FirstName, LastName = employees[i].LastName, DayRate = employees[i].DayRate, WeeksWorked = employees[i].WeeksWorked };
+                return ReadSingle;
+            }
+            return null;
+        }
+
+        public EmployeeTemp Update(int i, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        {
+            EmployeeTemp employeePerm = new EmployeeTemp() { ID = employees[i].ID, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked};
+            return employeePerm;
         }
     }
 }

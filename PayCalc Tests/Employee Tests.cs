@@ -1,17 +1,20 @@
 using PayCalc_Project;
+using PayCalc_Project.Repository;
+using PayCalc_Project.Services;
 namespace PayCalc_Tests
 {
     [TestFixture]
     public class EmployeeTests
     {
-        EmployeeRepository _repo = new EmployeeRepository();
+        EmployeePermRepo _repoPerm = new EmployeePermRepo();
+        EmployeeTempRepo _repoTemp = new EmployeeTempRepo();
         [Test]
         public void JoeBloggsDataTest()
         {
             //arrange
-            decimal tAP = 45000;
+            decimal? tAP = 45000;
             //act
-            decimal tAPCorrect = Calculations.TotalAnnualPay(_repo.employees,0);
+            decimal? tAPCorrect = Calculations.TotalAnnualPayPerm(_repoPerm.employees,0);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -19,9 +22,9 @@ namespace PayCalc_Tests
         public void JohnSmithDataTest()
         {
             //arrange
-            decimal tAP = 47500;
+            decimal? tAP = 47500;
             //act
-            decimal tAPCorrect = Calculations.TotalAnnualPay(_repo.employees,1);
+            decimal? tAPCorrect = Calculations.TotalAnnualPayPerm(_repoPerm.employees,1);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -29,9 +32,9 @@ namespace PayCalc_Tests
         public void ClareJonesDataTest()
         {
             //arrange
-            decimal tAP = 70000;
+            decimal? tAP = 70000;
             //act
-            decimal tAPCorrect = Calculations.TotalAnnualPay(_repo.employees, 2);
+            decimal? tAPCorrect = Calculations.TotalAnnualPayTemp(_repoTemp.employees, 0);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }

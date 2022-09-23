@@ -7,7 +7,7 @@ using PayCalc_Project.Models;
 
 namespace PayCalc_Project.Repository
 {
-    class EmployeeTempRepo : IEmployeeRepository<EmployeeTemp>
+    public class EmployeeTempRepo : IEmployeeRepository<EmployeeTemp>
     {
 
         public List<EmployeeTemp> employees = new List<EmployeeTemp>() {

@@ -1,4 +1,6 @@
-﻿using PayCalc_Project.Repository;
+﻿using PayCalc_Project.Models;
+using PayCalc_Project.Repository;
+using PayCalc_Project.Services;
 
 namespace PayCalc_Project
 {
@@ -12,13 +14,12 @@ namespace PayCalc_Project
             {
                 Console.Clear();
                 Console.WriteLine(@"Welcome to the PayCalc program!
-                                    Please Select an Option Below.
-                                    1. Add employee
-                                    2. Read Employees
-                                    3. Update Employees
-                                    4. Delete Employees
-                                    5. Total Annual Salary (pretax)");
-
+Please Select an Option Below.
+1. Add employee
+2. Read Employees
+3. Update Employees
+4. Delete Employees
+5. Total Annual Salary (pretax)");
                 string Selection = Console.ReadLine();
                 Console.Clear();
                 if (Selection == "1")
@@ -33,7 +34,6 @@ namespace PayCalc_Project
                             EmployeeType = Console.ReadLine();
                         } while (EmployeeType == null || EmployeeType == "");
                     }
-
                     Console.WriteLine("Enter a first name");
                     string? FirstName = Console.ReadLine();
                     if (FirstName == "" || FirstName == null)
@@ -44,7 +44,6 @@ namespace PayCalc_Project
                             FirstName = Console.ReadLine();
                         } while (FirstName == "" || FirstName == null);
                     }
-
                     Console.WriteLine("Please enter a last name");
                     string? LastName = Console.ReadLine();
                     if (LastName == "" || LastName == null)
@@ -55,7 +54,6 @@ namespace PayCalc_Project
                             LastName = Console.ReadLine();
                         } while (LastName == "" || LastName == null);
                     }
-
                     if (EmployeeType.ToLower() == "permanent")
                     {
                         Console.WriteLine("Please enter a salary");
@@ -127,50 +125,55 @@ namespace PayCalc_Project
                                 }
                             } while (x == true);
                         }
-                        repoTemp.AddEmployee(FirstName, LastName,null, null, DecDayRate, IntWeeksWorked);
+                        repoTemp.AddEmployee(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked);
                         Console.WriteLine("Temporary Employee added!");
                     }
                 } else if (Selection == "2")
                 {
-                    Console.WriteLine("Would you like to see all employees or 1?");
+                    Console.WriteLine(@"1.Temporary employees
+2. Permanent employees");
+                    string ReadTempPerm = Console.ReadLine();
+                    Console.WriteLine(@"1.All Employees
+2.One employee(enter ID for which");
                     string ReadSelect = Console.ReadLine();
-                    if (ReadSelect == "1")
+                    if (ReadTempPerm == "1")
                     {
-                        List<string> employeeInfo = repo.Read();
-                        for(int i = 0; i < employeeInfo.Count; i++)
+                        if (ReadSelect == "1")
                         {
-                            Console.WriteLine(employeeInfo[i]);
+                            List<EmployeePerm> employeeInfo = repoPerm.ReadAll();
+                            for (int i = 0; i < employeeInfo.Count; i++)
+                            {
+                                Console.WriteLine(employeeInfo[i].ToString);
+                            }
+                        } else if (ReadSelect == "2")
+                        {
+                            List<EmployeeTemp> employeeInfo = repoTemp.ReadAll();
+                            for (int i = 0; i < employeeInfo.Count; i++)
+                            {
+                                Console.WriteLine(employeeInfo[i]);
+                            }
                         }
                         Console.ReadLine();
-                    }else if (ReadSelect == "2")
+                    } else if (ReadTempPerm == "2")
                     {
-                        Console.WriteLine(repo.ReadSingle(0));
+                        Console.WriteLine(repoPerm.ReadSingle(0));
                     }
                     else
                     {
                         Console.WriteLine("This was not a valid choice.");
                     }
-
-
-
-                }else if (Selection == "3")
+                } else if (Selection == "3")
                 {
-                   if( repo.UpdatePerm(0, "Ben", "Edmondson", 60000, 5000))
-                    {
-                        Console.WriteLine("Employee updated!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("Failed to update Employee");
-                    }
-
-                }else if (Selection == "4")
+                    repoPerm.employees[0] = repoPerm.Update(0, "Ben", "Edmondson", 60000, 5000, null, null);
+                    Console.WriteLine("Employee Updated!");
+                }
+                else if (Selection == "4")
                 {
                     Console.WriteLine("Would you like to delete one employee or all?");
                     string DelSelect = Console.ReadLine();
                     if (DelSelect == "1")
                     {
-                       if(repo.Delete(2) == false)
+                       if(repoPerm.Delete(2) == false)
                         {
                             Console.WriteLine("No Employee to be removed at location"!);
                         }
@@ -178,10 +181,9 @@ namespace PayCalc_Project
                         {
                             Console.WriteLine("Employee removed!");
                         }
-
                     }else if (DelSelect == "2")
                     {
-                        if (repo.RemoveAll() == false)
+                        if (repoPerm.RemoveAll() == false)
                         {
                             Console.WriteLine("No Employees to be removed!");
                         }
@@ -197,7 +199,7 @@ namespace PayCalc_Project
                 }
                 else if (Selection == "5")
                 {
-                    Console.WriteLine(Calculations.TotalAnnualPay(repo.employees,0));
+                    Console.WriteLine(Calculations.TotalAnnualPayPerm(repoPerm.employees, 0));
                 }
                 else
                 {

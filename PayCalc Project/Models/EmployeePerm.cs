@@ -1,8 +1,14 @@
-﻿namespace PayCalc_Project.Models
+﻿using System.Xml.Linq;
+
+namespace PayCalc_Project.Models
 {
-    class EmployeePerm : Employee
+    public class EmployeePerm : Employee
     {
         public decimal? Salary { get; set; }
         public decimal? Bonus { get; set; }
+        public override string ToString()
+        {
+            return $"\nID: {ID} Name: {FirstName} {LastName} Salary: £{Salary} Bonus: £{Bonus}";
+        }
     }
 }

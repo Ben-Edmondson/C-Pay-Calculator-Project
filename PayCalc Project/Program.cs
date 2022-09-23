@@ -130,8 +130,8 @@ Please Select an Option Below.
                     }
                 } else if (Selection == "2")
                 {
-                    Console.WriteLine(@"1.Temporary employees
-2. Permanent employees");
+                    Console.WriteLine(@"1.Permanent employees
+2.Temporary employees");
                     string ReadTempPerm = Console.ReadLine();
                     Console.WriteLine(@"1.All Employees
 2.One employee(enter ID for which");
@@ -143,7 +143,7 @@ Please Select an Option Below.
                             List<EmployeePerm> employeeInfo = repoPerm.ReadAll();
                             for (int i = 0; i < employeeInfo.Count; i++)
                             {
-                                Console.WriteLine(employeeInfo[i].ToString);
+                                Console.WriteLine(employeeInfo[i]);
                             }
                         }
                         else if (ReadSelect == "2")

@@ -7,7 +7,6 @@ namespace PayCalc_Tests
     public class CRUD_Tests
     {
         EmployeePermRepo _repoPerm = new EmployeePermRepo();
-        EmployeeTempRepo _repoTemp = new EmployeeTempRepo();
         [Test]
         public void UpdateTest()
         {
@@ -24,6 +23,35 @@ namespace PayCalc_Tests
 //            Assert.That(_Sal, Is.EqualTo(Sal));
             Assert.That(_Bonus, Is.EqualTo(Bonus));
             Assert.That(_TotalAnnual, Is.EqualTo(TotalAnnual));
+        }
+        [Test]
+        public void AddTest()
+        {
+            //arrange
+            int employeeCounter = _repoPerm.employees.Count() - 1;
+            //act
+            _repoPerm.AddEmployee("Ben", "Edmondson", 25000, 3000, null, null);
+            employeeCounter = employeeCounter + 1;
+            //assert
+            Assert.That(employeeCounter, Is.EqualTo(_repoPerm.employees.Count()));
+        }
+        [Test]
+        public void RemoveAllTest()
+        {
+            //act
+            _repoPerm.RemoveAll();
+            int employeeCounter = 0;
+            //assert
+            Assert.That(employeeCounter, Is.EqualTo(_repoPerm.employees.Count()));
+        }
+        [Test]
+        public void RemoveOne()
+        {
+            int employeeCounter = _repoPerm.employees.Count();
+            _repoPerm.Delete(0);
+            employeeCounter = employeeCounter - 1;
+            Assert.That(employeeCounter, Is.EqualTo(_repoPerm.employees.Count()));
+
         }
     }
 }

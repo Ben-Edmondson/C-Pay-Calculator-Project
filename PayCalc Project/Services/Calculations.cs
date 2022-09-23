@@ -10,9 +10,10 @@ namespace PayCalc_Project.Services
             decimal? Bonus = employees[i].Bonus;
             decimal? Together = Salary + Bonus;
 
-            int Basic = 20;
-            int Higher = 40;
-            int Additional = 45;
+            decimal noTax = 12570;
+            decimal BandOne = 12571;
+            decimal BandTwo = 50271;
+            decimal BandThree = 150001;
             decimal? TaxedIncome = Together - 12570;
             if (Together > 150000)
             {
@@ -20,12 +21,12 @@ namespace PayCalc_Project.Services
                 decimal? ResultAdditional = (AdditionalRate / 100) * 45;
                 decimal? HigherRate = 150000 - 50271;
                 decimal? ResultHigher = (HigherRate / 100) * 40;
-                decimal? BasicRate = 37701;
+                decimal? BasicRate = 50271 - 12570;
                 decimal? ResultBasic = (BasicRate / 100) * 20;
                 decimal? TotalTax = ResultAdditional + ResultHigher + ResultBasic;
                 return TotalTax;
             }
-            else if (Together > 50271)
+            else if (Together > 50270)
             {
                 decimal? HigherRate = Together - 50271;
                 decimal? ResultHigher = (HigherRate / 100) * 40;
@@ -47,7 +48,6 @@ namespace PayCalc_Project.Services
             int? days = 5;
             decimal? DayRate = employees[i].DayRate;
             int? WeeksWorked = employees[i].WeeksWorked;
-           
             decimal? Total = Math.Round((decimal)(DayRate * (days * WeeksWorked)), 2);
             if (Total > 150000)
             {
@@ -55,12 +55,12 @@ namespace PayCalc_Project.Services
                 decimal? ResultAdditional = (AdditionalRate / 100) * 45;
                 decimal? HigherRate = 150000 - 50271;
                 decimal? ResultHigher = (HigherRate / 100) * 40;
-                decimal? BasicRate = 37701;
+                decimal? BasicRate = 50270 - 12570;
                 decimal? ResultBasic = (BasicRate / 100) * 20;
                 decimal? TotalTax = ResultAdditional + ResultHigher + ResultBasic;
                 return TotalTax;
             }
-            else if (Total > 50271)
+            else if (Total > 50270)
             {
                 decimal? HigherRate = Total - 50271;
                 decimal? ResultHigher = (HigherRate / 100) * 40;

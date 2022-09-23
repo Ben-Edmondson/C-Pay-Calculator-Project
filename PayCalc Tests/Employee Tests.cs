@@ -12,7 +12,7 @@ namespace PayCalc_Tests
         public void JoeBloggsDataTest()
         {
             //arrange
-            decimal? tAP = 45000;
+            decimal? tAP = 6484.20M;
             //act
             decimal? tAPCorrect = Calculations.TotalAnnualPayPerm(_repoPerm.employees,0);
             //assert
@@ -22,7 +22,7 @@ namespace PayCalc_Tests
         public void JohnSmithDataTest()
         {
             //arrange
-            decimal? tAP = 47500;
+            decimal? tAP = 6884.20M;
             //act
             decimal? tAPCorrect = Calculations.TotalAnnualPayPerm(_repoPerm.employees,1);
             //assert
@@ -32,7 +32,7 @@ namespace PayCalc_Tests
         public void ClareJonesDataTest()
         {
             //arrange
-            decimal? tAP = 70000;
+            decimal? tAP = 15428.40M;
             //act
             decimal? tAPCorrect = Calculations.TotalAnnualPayTemp(_repoTemp.employees, 0);
             //assert

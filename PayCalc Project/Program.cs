@@ -88,7 +88,7 @@ Please Select an Option Below.
                                 }
                             } while (x == true);
                         }
-                        repoPerm.AddEmployee(FirstName, LastName, DecSalary, DecBonus, null, null);
+                        repoPerm.employees.Add(repoPerm.AddEmployee(FirstName, LastName, DecSalary, DecBonus, null, null));
                         Console.WriteLine("Permanent Employee added!");
                     }
                     else
@@ -125,7 +125,7 @@ Please Select an Option Below.
                                 }
                             } while (x == true);
                         }
-                        repoTemp.AddEmployee(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked);
+                        repoTemp.employees.Add(repoTemp.AddEmployee(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked));
                         Console.WriteLine("Temporary Employee added!");
                     }
                 } else if (Selection == "2")

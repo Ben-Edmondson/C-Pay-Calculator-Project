@@ -50,7 +50,7 @@ namespace PayCalc_Project.Repository
             return ReadAll;
         }
 
-        EmployeeTemp IEmployeeRepository<EmployeeTemp>.ReadSingle(int i)
+        public EmployeeTemp ReadSingle(int i)
         {
             if (employees.Count() > i)
             {

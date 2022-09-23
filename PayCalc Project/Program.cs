@@ -145,18 +145,24 @@ Please Select an Option Below.
                             {
                                 Console.WriteLine(employeeInfo[i].ToString);
                             }
-                        } else if (ReadSelect == "2")
+                        }
+                        else if (ReadSelect == "2")
                         {
+                            Console.WriteLine(repoPerm.ReadSingle(0));
+                        }
+                    }
+                    else if (ReadTempPerm == "2")
+                    {
+                        if (ReadSelect == "1") { 
                             List<EmployeeTemp> employeeInfo = repoTemp.ReadAll();
                             for (int i = 0; i < employeeInfo.Count; i++)
                             {
-                                Console.WriteLine(employeeInfo[i]);
+                            Console.WriteLine(employeeInfo[i]);
                             }
+                        }else if (ReadSelect == "2")
+                        {
+                            Console.WriteLine(repoTemp.ReadSingle(0));
                         }
-                        Console.ReadLine();
-                    } else if (ReadTempPerm == "2")
-                    {
-                        Console.WriteLine(repoPerm.ReadSingle(0));
                     }
                     else
                     {

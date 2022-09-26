@@ -179,7 +179,7 @@ Please Select an Option Below.
                     string DelSelect = Console.ReadLine();
                     if (DelSelect == "1")
                     {
-                       if(repoPerm.Delete(2) == false)
+                       if(repoPerm.Delete(1) == false)
                         {
                             Console.WriteLine("No Employee to be removed at location"!);
                         }

@@ -4,7 +4,7 @@ using PayCalc_Project.Services;
 namespace PayCalc_Tests
 {
     [TestFixture]
-    public class CRUD_Tests
+    public class PermRepoTests
     {
         EmployeePermRepo _repoPerm = new EmployeePermRepo();
         [Test]

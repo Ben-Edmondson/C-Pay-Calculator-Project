@@ -10,4 +10,9 @@
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PayCalc Class Library\PayCalc Class Library\PayCalc Class Library.csproj" />
+    <ProjectReference Include="..\PayCalc Project\PayCalc Project.csproj" />
+  </ItemGroup>
+
 </Project>

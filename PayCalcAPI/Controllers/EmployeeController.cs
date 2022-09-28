@@ -1,4 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PayCalc_Project.Models;
+using PayCalc_Project.Repository;
+using PayCalc_Project.Services;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -10,9 +13,12 @@ namespace PayCalcAPI.Controllers
     {
         // GET: api/<EmployeeController>
         [HttpGet]
-        public IEnumerable<string> Get()
+        public List<EmployeePerm> Get()
         {
-            return new string[] { "value1", "value2" };
+            List<EmployeePerm> employees = new List<EmployeePerm>();
+            employees.Add(new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
+            employees.Add(new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
+            return employees;
         }
 
         // GET api/<EmployeeController>/5

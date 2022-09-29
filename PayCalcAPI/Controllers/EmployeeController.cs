@@ -15,9 +15,8 @@ namespace PayCalcAPI.Controllers
         [HttpGet]
         public List<EmployeePerm> Get()
         {
-            List<EmployeePerm> employees = new List<EmployeePerm>();
-            employees.Add(new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
-            employees.Add(new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
+            EmployeePermRepo employeePerm = new EmployeePermRepo();
+            List<EmployeePerm> employees = employeePerm.ReadAll();
             return employees;
         }
 
@@ -25,7 +24,9 @@ namespace PayCalcAPI.Controllers
         [HttpGet("{id}")]
         public string Get(int id)
         {
-            return "value";
+            EmployeePermRepo employeePerm = new EmployeePermRepo();
+            string ReadSingle = employeePerm.ReadSingle(id).ToString();
+            return ReadSingle;
         }
 
         // POST api/<EmployeeController>

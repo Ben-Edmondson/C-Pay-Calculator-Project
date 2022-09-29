@@ -45,6 +45,8 @@ namespace PayCalcAPI.Controllers
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
+            EmployeePermRepo permRepo = new EmployeePermRepo();
+            permRepo.Delete(id);
         }
     }
 }

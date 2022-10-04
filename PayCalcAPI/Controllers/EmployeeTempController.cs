@@ -1,17 +1,18 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
 using System.Text.Json;
 
 namespace PayCalcAPI.Controllers
 {
-    public class EmployeeTempController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class EmployeeTempController : ControllerBase
     {
         // GET: EmployeeTempController
 
         EmployeeTempRepo _employeeTemporaryRepository = new EmployeeTempRepo();
-        // GET: api/<EmployeeController>
+        // GET: api/<EmployeeTempController>
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -23,7 +24,7 @@ namespace PayCalcAPI.Controllers
             }
             return Ok(x);
         }
-        // GET api/<EmployeeController>/5
+        // GET api/<EmployeeTempController>/5
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
@@ -34,7 +35,7 @@ namespace PayCalcAPI.Controllers
             }
             return Ok(ReadSingle);
         }
-        // POST api/<EmployeeController>
+        // POST api/<EmployeeTempController>
         //POST == Create
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
@@ -42,7 +43,7 @@ namespace PayCalcAPI.Controllers
             _employeeTemporaryRepository.employees.Add(_employeeTemporaryRepository.AddEmployee(FirstName, Surname, null, null, DayRate, WeeksWorked));
             return NoContent();
         }
-        // PUT api/<EmployeeController>/5
+        // PUT api/<EmployeeTempController>/5
         //UPDATE
         [HttpPut("{id}")]
         public IActionResult Put(int id, string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
@@ -57,7 +58,7 @@ namespace PayCalcAPI.Controllers
                 return NotFound();
             }
         }
-        // DELETE api/<EmployeeController>/5
+        // DELETE api/<EmployeeTempController>/5
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {

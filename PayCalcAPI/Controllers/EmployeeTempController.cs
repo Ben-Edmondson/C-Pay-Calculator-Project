@@ -9,8 +9,6 @@ namespace PayCalcAPI.Controllers
     [ApiController]
     public class EmployeeTempController : ControllerBase
     {
-        // GET: EmployeeTempController
-
         EmployeeTempRepo _employeeTemporaryRepository = new EmployeeTempRepo();
         // GET: api/<EmployeeTempController>
         [HttpGet]
@@ -36,7 +34,6 @@ namespace PayCalcAPI.Controllers
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeTempController>
-        //POST == Create
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         { 
@@ -44,7 +41,6 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeTempController>/5
-        //UPDATE
         [HttpPut("{id}")]
         public IActionResult Put(int id, string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         {
@@ -72,7 +68,6 @@ namespace PayCalcAPI.Controllers
             }
 
         }
-
         [HttpDelete]
         public IActionResult DeleteAll()
         {
@@ -85,7 +80,6 @@ namespace PayCalcAPI.Controllers
             {
                 return NotFound();
             }
-
         }
     }
 }

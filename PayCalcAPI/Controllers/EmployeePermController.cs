@@ -36,7 +36,6 @@ namespace PayCalcAPI.Controllers
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeController>
-        //POST == Create
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
@@ -44,7 +43,6 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
-        //UPDATE
         [HttpPut("{id}")]
         public IActionResult Put(int id, string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
@@ -72,7 +70,6 @@ namespace PayCalcAPI.Controllers
             }
 
         }
-
         [HttpDelete]
         public IActionResult DeleteAll()
         {
@@ -85,7 +82,6 @@ namespace PayCalcAPI.Controllers
             {
                 return NotFound() ;
             }
-
         }
     }
 }

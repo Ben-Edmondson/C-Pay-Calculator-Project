@@ -14,7 +14,7 @@ namespace PayCalc_Project.Services
             new { Lower = 150001m, Upper = decimal.MaxValue, Rate = 0.45m }
             };
 
-            var salary = employees[i].Salary;
+            var salary = employees[i].Salary + employees[i].Bonus;
 
             decimal? taxToBePaid = 0m;
 
@@ -34,7 +34,7 @@ namespace PayCalc_Project.Services
             int? days = 5;
             decimal? DayRate = employees[i].DayRate;
             int? WeeksWorked = employees[i].WeeksWorked;
-            decimal? Total = Math.Round((decimal)(DayRate * (days * WeeksWorked)), 2);
+            decimal? TotalPay = DayRate * (days * WeeksWorked);
             var taxBands = new[]
             {
             new { Lower = 0m, Upper = 12570m, Rate = 0.0m },
@@ -43,20 +43,19 @@ namespace PayCalc_Project.Services
             new { Lower = 150001m, Upper = decimal.MaxValue, Rate = 0.45m }
             };
 
-            var salary = Total;
 
             decimal? taxToBePaid = 0m;
 
             foreach (var band in taxBands)
             {
-                if (salary > band.Lower)
+                if (TotalPay > band.Lower)
                 {
-                    decimal? taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)salary - band.Lower);
+                    decimal? taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)TotalPay - band.Lower);
                     decimal? taxThisBand = taxableAtThisRate * band.Rate;
                     taxToBePaid += taxThisBand;
                 }
             }
-            return salary - taxToBePaid;
+            return taxToBePaid;
         }
 
     }

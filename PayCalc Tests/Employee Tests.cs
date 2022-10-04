@@ -12,9 +12,9 @@ namespace PayCalc_Tests
         public void JoeBloggsDataTest()
         {
             //arrange
-            decimal? tAP = 6484.20M;
+            decimal? tAP = 6486;
             //act
-            decimal? tAPCorrect = Calculations.TotalAnnualPayPerm(_repoPerm.employees,0);
+            decimal? tAPCorrect = Math.Round((decimal)Calculations.TotalAnnualPayPerm(_repoPerm.employees,0),0);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -22,9 +22,9 @@ namespace PayCalc_Tests
         public void JohnSmithDataTest()
         {
             //arrange
-            decimal? tAP = 6884.20M;
+            decimal? tAP = 6986;
             //act
-            decimal? tAPCorrect = Calculations.TotalAnnualPayPerm(_repoPerm.employees,1);
+            decimal? tAPCorrect = Math.Round((decimal)Calculations.TotalAnnualPayPerm(_repoPerm.employees,1),0);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -32,9 +32,9 @@ namespace PayCalc_Tests
         public void ClareJonesDataTest()
         {
             //arrange
-            decimal? tAP = 15428.40M;
+            decimal? tAP = 15431M;
             //act
-            decimal? tAPCorrect = Calculations.TotalAnnualPayTemp(_repoTemp.employees, 0);
+            decimal? tAPCorrect = Math.Round((decimal)Calculations.TotalAnnualPayTemp(_repoTemp.employees, 0),0);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }

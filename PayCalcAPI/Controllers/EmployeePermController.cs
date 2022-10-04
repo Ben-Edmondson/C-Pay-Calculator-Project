@@ -9,7 +9,7 @@ namespace PayCalcAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeController : ControllerBase
+    public class EmployeePermController : ControllerBase
     {
         EmployeePermRepo _employeePermanentRepository = new EmployeePermRepo();
         // GET: api/<EmployeeController>

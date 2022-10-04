@@ -22,12 +22,12 @@ namespace PayCalc_Project.Services
             {
                 if (salary > band.Lower)
                 {
-                    decimal? taxableAtThisRate = Math.Min(band.Upper - band.Lower, (byte)salary - band.Lower);
+                    decimal? taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)salary - band.Lower);
                     decimal? taxThisBand = taxableAtThisRate * band.Rate;
                     taxToBePaid += taxThisBand;
                 }
             }
-            return salary - taxToBePaid;
+            return taxToBePaid;
         }
         public static decimal? TotalAnnualPayTemp(List<EmployeeTemp> employees, int i)
         {
@@ -51,7 +51,7 @@ namespace PayCalc_Project.Services
             {
                 if (salary > band.Lower)
                 {
-                    decimal? taxableAtThisRate = Math.Min(band.Upper - band.Lower, (byte)salary - band.Lower);
+                    decimal? taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)salary - band.Lower);
                     decimal? taxThisBand = taxableAtThisRate * band.Rate;
                     taxToBePaid += taxThisBand;
                 }

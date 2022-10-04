@@ -50,7 +50,7 @@ namespace PayCalc_Project.Repository
             if (employees.Count() > id)
             {
 
-                EmployeeTemp ReadSingle = new EmployeeTemp() { ID = employees[id].ID, FirstName = employees[id].FirstName, LastName = employees[id].LastName, DayRate = employees[id].DayRate, WeeksWorked = employees[d].WeeksWorked };
+                EmployeeTemp ReadSingle = new EmployeeTemp() { ID = employees[id].ID, FirstName = employees[id].FirstName, LastName = employees[id].LastName, DayRate = employees[id].DayRate, WeeksWorked = employees[id].WeeksWorked };
                 return ReadSingle;
             }
             return null;

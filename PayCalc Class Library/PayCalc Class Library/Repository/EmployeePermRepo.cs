@@ -10,8 +10,8 @@ namespace PayCalc_Project.Repository
         public bool Delete(int id)
         {
             int EmployeeCount = employees.Count();
-            employees.RemoveAt(i);
-            if (employees.Count() >= EmployeeCount)
+            employees.RemoveAt(id);
+            if (employees.Count() > EmployeeCount)
             {
                 return false;
             }
@@ -42,16 +42,16 @@ namespace PayCalc_Project.Repository
         }
         public EmployeePerm ReadSingle(int id)
         {
-            if (employees.Count() > i)
+            if (employees.Count() > id)
             {
-                EmployeePerm ReadSingle = new EmployeePerm() { ID = employees[i].ID, FirstName = employees[i].FirstName, LastName = employees[i].LastName, Salary = employees[i].Salary, Bonus = employees[i].Bonus };
+                EmployeePerm ReadSingle = new EmployeePerm() { ID = employees[id].ID, FirstName = employees[id].FirstName, LastName = employees[id].LastName, Salary = employees[id].Salary, Bonus = employees[id].Bonus };
                 return ReadSingle;
             }
             return null;
         }
         public EmployeePerm Update(int id, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            EmployeePerm employeePerm = new EmployeePerm() { ID = employees[i].ID, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus };
+            EmployeePerm employeePerm = new EmployeePerm() { ID = employees[id].ID, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus };
             return employeePerm;
         }
     }

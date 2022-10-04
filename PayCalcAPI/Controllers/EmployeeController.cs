@@ -32,22 +32,49 @@ namespace PayCalcAPI.Controllers
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeController>
+        //POST == Create
         [HttpPost]
         public IActionResult Post([FromBody] EmployeePerm employee)
         {
+            _employeePermanentRepository.AddEmployee();
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
+        //UPDATE
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] string value)
         {
+            _employeePermanentRepository.Update();
             return NoContent();
         }
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
-            _employeePermanentRepository.Delete(id);
+            if (_employeePermanentRepository.Delete(id) == true)
+            {
+                return Ok(JsonSerializer.Serialize(_employeePermanentRepository.ReadAll()));
+            }
+            else
+            {
+                return NoContent();
+            }
+
+        }
+
+        [HttpDelete]
+        public IActionResult DeleteAll()
+        {
+            _employeePermanentRepository.RemoveAll();
+            if (_employeePermanentRepository.employees.Count() == 0)
+            {
+                return NoContent();
+            }
+            else
+            {
+                return Ok(JsonSerializer.Serialize("Failed"));
+            }
+
         }
     }
 }

@@ -38,16 +38,25 @@ namespace PayCalcAPI.Controllers
         // POST api/<EmployeeController>
         //POST == Create
         [HttpPost]
-        public IActionResult Post([FromBody] EmployeePerm employee)
+        public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
+            _employeePermanentRepository.employees.Add(_employeePermanentRepository.AddEmployee(FirstName, Surname, Salary, Bonus, null, null));
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
         //UPDATE
         [HttpPut("{id}")]
-        public IActionResult Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
-            return NoContent();
+            if (_employeePermanentRepository.employees.Count() >= id)
+            {
+                _employeePermanentRepository.employees[id] = _employeePermanentRepository.Update(id, FirstName, Surname, Salary, Bonus, null, null);
+                return NoContent();
+            }
+            else
+            {
+                return NotFound();
+            }
         }
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]

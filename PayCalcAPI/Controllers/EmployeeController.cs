@@ -18,9 +18,9 @@ namespace PayCalcAPI.Controllers
         {
             List<EmployeePerm> employees = _employeePermanentRepository.ReadAll();
             var x = JsonSerializer.Serialize(employees);
-            if (employees.Count < 0)
+            if (employees.Count() <= 0)
             {
-                return NoContent();
+                return NotFound();
             }
             return Ok(x);
         }
@@ -29,6 +29,10 @@ namespace PayCalcAPI.Controllers
         public IActionResult Get(int id)
         {
             var ReadSingle = JsonSerializer.Serialize(_employeePermanentRepository.ReadSingle(id));
+            if (ReadSingle == null)
+            {
+                return NotFound();
+            }
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeController>
@@ -36,7 +40,6 @@ namespace PayCalcAPI.Controllers
         [HttpPost]
         public IActionResult Post([FromBody] EmployeePerm employee)
         {
-            _employeePermanentRepository.AddEmployee();
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
@@ -44,7 +47,6 @@ namespace PayCalcAPI.Controllers
         [HttpPut("{id}")]
         public IActionResult Put(int id, [FromBody] string value)
         {
-            _employeePermanentRepository.Update();
             return NoContent();
         }
         // DELETE api/<EmployeeController>/5

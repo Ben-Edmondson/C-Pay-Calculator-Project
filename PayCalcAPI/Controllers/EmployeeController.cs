@@ -53,11 +53,11 @@ namespace PayCalcAPI.Controllers
         {
             if (_employeePermanentRepository.Delete(id) == true)
             {
-                return Ok(JsonSerializer.Serialize(_employeePermanentRepository.ReadAll()));
+                return NoContent();
             }
             else
             {
-                return NoContent();
+                return NotFound();
             }
 
         }
@@ -72,7 +72,7 @@ namespace PayCalcAPI.Controllers
             }
             else
             {
-                return Ok(JsonSerializer.Serialize("Failed"));
+                return NotFound() ;
             }
 
         }

@@ -7,7 +7,7 @@ namespace PayCalc_Project.Repository
             new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
             new EmployeePerm() { ID = Guid.NewGuid(), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
         };
-        public bool Delete(int i)
+        public bool Delete(int id)
         {
             int EmployeeCount = employees.Count();
             employees.RemoveAt(i);
@@ -40,7 +40,7 @@ namespace PayCalc_Project.Repository
             }
             return ReadAll;
         }
-        public EmployeePerm ReadSingle(int i)
+        public EmployeePerm ReadSingle(int id)
         {
             if (employees.Count() > i)
             {
@@ -49,7 +49,7 @@ namespace PayCalc_Project.Repository
             }
             return null;
         }
-        public EmployeePerm Update(int i, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public EmployeePerm Update(int id, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
             EmployeePerm employeePerm = new EmployeePerm() { ID = employees[i].ID, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus };
             return employeePerm;

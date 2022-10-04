@@ -4,19 +4,19 @@ using PayCalc_Project.Repository;
 using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-
+//Postman
 namespace PayCalcAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class EmployeeController : ControllerBase
     {
+        EmployeePermRepo _employeePermanentRepository = new EmployeePermRepo();
         // GET: api/<EmployeeController>
         [HttpGet]
         public IActionResult GetAll() 
         {
-            EmployeePermRepo employeePerm = new EmployeePermRepo();
-            List<EmployeePerm> employees = employeePerm.ReadAll();
+            List<EmployeePerm> employees = _employeePermanentRepository.ReadAll();
             var x = JsonSerializer.Serialize(employees);
             if (employees.Count < 0)
             {
@@ -28,28 +28,26 @@ namespace PayCalcAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            EmployeePermRepo employeePerm = new EmployeePermRepo();
-            string ReadSingle = employeePerm.ReadSingle(id).ToString();
-            var x = JsonSerializer.Serialize(ReadSingle);
-            return Ok(x);
+            var ReadSingle = JsonSerializer.Serialize(_employeePermanentRepository.ReadSingle(id));
+            return Ok(ReadSingle);
         }
         // POST api/<EmployeeController>
         [HttpPost]
-        public List<EmployeePerm> Post([FromBody] EmployeePerm employee)
+        public IActionResult Post([FromBody] EmployeePerm employee)
         {
-            return null;
+            return NoContent();
         }
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] string value)
         {
+            return NoContent();
         }
         // DELETE api/<EmployeeController>/5
         [HttpDelete("{id}")]
         public void Delete(int id)
         {
-            EmployeePermRepo permRepo = new EmployeePermRepo();
-            permRepo.Delete(id);
+            _employeePermanentRepository.Delete(id);
         }
     }
 }

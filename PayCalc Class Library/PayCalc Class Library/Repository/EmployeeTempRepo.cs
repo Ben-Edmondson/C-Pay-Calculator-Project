@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using PayCalc_Project.Models;
+﻿using PayCalc_Project.Models;
 
 namespace PayCalc_Project.Repository
 {
@@ -13,10 +8,10 @@ namespace PayCalc_Project.Repository
         public List<EmployeeTemp> employees = new List<EmployeeTemp>() {
            new EmployeeTemp() { ID = Guid.NewGuid(), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
         };
-        public bool Delete(int i)
+        public bool Delete(int id)
         {
             int EmployeeCount = employees.Count();
-            employees.RemoveAt(i);
+            employees.RemoveAt(id);
             if (employees.Count() >= EmployeeCount)
             {
                 return false;
@@ -50,20 +45,20 @@ namespace PayCalc_Project.Repository
             return ReadAll;
         }
 
-        public EmployeeTemp ReadSingle(int i)
+        public EmployeeTemp ReadSingle(int id)
         {
-            if (employees.Count() > i)
+            if (employees.Count() > id)
             {
 
-                EmployeeTemp ReadSingle = new EmployeeTemp() { ID = employees[i].ID, FirstName = employees[i].FirstName, LastName = employees[i].LastName, DayRate = employees[i].DayRate, WeeksWorked = employees[i].WeeksWorked };
+                EmployeeTemp ReadSingle = new EmployeeTemp() { ID = employees[id].ID, FirstName = employees[id].FirstName, LastName = employees[id].LastName, DayRate = employees[id].DayRate, WeeksWorked = employees[d].WeeksWorked };
                 return ReadSingle;
             }
             return null;
         }
 
-        public EmployeeTemp Update(int i, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public EmployeeTemp Update(int id, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            EmployeeTemp employeePerm = new EmployeeTemp() { ID = employees[i].ID, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked};
+            EmployeeTemp employeePerm = new EmployeeTemp() { ID = employees[id].ID, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked};
             return employeePerm;
         }
     }

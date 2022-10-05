@@ -49,10 +49,12 @@ namespace PayCalc_Project.Repository
             }
             return null;
         }
-        public EmployeePerm Update(int i, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public void Update(int index, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            EmployeePerm employeePerm = new EmployeePerm() { ID = employees[i].ID, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus };
-            return employeePerm;
+            employees[index].FirstName = FirstName;
+            employees[index].LastName = LastName;
+            employees[index].Salary = Salary;
+            employees[index].Bonus = Bonus;
         }
     }
 }

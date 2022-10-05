@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using PayCalc_Project.Models;
@@ -61,10 +62,12 @@ namespace PayCalc_Project.Repository
             return null;
         }
 
-        public EmployeeTemp Update(int i, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public void Update(int index, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            EmployeeTemp employeePerm = new EmployeeTemp() { ID = employees[i].ID, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked};
-            return employeePerm;
+            employees[index].FirstName = FirstName;
+            employees[index].LastName = LastName;
+            employees[index].DayRate = DayRate;
+            employees[index].WeeksWorked = WeeksWorked;
         }
     }
 }

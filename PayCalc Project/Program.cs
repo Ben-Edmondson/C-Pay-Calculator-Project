@@ -28,33 +28,33 @@ Please Select an Option Below.
                 {
                     Console.WriteLine("Is employee permanent or temporary?");
                     string? EmployeeType = Console.ReadLine();
-                    if (EmployeeType == null || EmployeeType == "")
+                    if (String.IsNullOrEmpty(EmployeeType))
                     {
                         do
                         {
                             Console.WriteLine("Please enter a valid employment type");
                             EmployeeType = Console.ReadLine();
-                        } while (EmployeeType == null || EmployeeType == "");
+                        } while (String.IsNullOrEmpty(EmployeeType));
                     }
                     Console.WriteLine("Enter a first name");
                     string? FirstName = Console.ReadLine();
-                    if (FirstName == "" || FirstName == null)
+                    if (String.IsNullOrEmpty(FirstName))
                     {
                         do
                         {
                             Console.WriteLine("Please enter a valid First Name!");
                             FirstName = Console.ReadLine();
-                        } while (FirstName == "" || FirstName == null);
+                        } while (String.IsNullOrEmpty(FirstName));
                     }
                     Console.WriteLine("Please enter a last name");
                     string? LastName = Console.ReadLine();
-                    if (LastName == "" || LastName == null)
+                    if (String.IsNullOrEmpty(LastName)) 
                     {
                         do
                         {
                             Console.WriteLine("Please enter a valid Last Name!");
                             LastName = Console.ReadLine();
-                        } while (LastName == "" || LastName == null);
+                        } while (String.IsNullOrEmpty(LastName));
                     }
                     if (EmployeeType.ToLower() == "permanent")
                     {

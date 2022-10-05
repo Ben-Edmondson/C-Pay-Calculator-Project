@@ -10,7 +10,8 @@ namespace PayCalc_Project
         {
             EmployeePermRepo repoPerm = new EmployeePermRepo();
             EmployeeTempRepo repoTemp = new EmployeeTempRepo();
-            while (true)
+            bool GameLoop = true;
+            while (GameLoop == true)
             {
                 Console.Clear();
                 Console.WriteLine(@"Welcome to the PayCalc program!
@@ -19,7 +20,8 @@ Please Select an Option Below.
 2. Read Employees
 3. Update Employees
 4. Delete Employees
-5. Total Annual Salary (pretax)");
+5. Total Annual Salary
+6.Exit");
                 string Selection = Console.ReadLine();
                 Console.Clear();
                 if (Selection == "1")
@@ -207,11 +209,17 @@ Please Select an Option Below.
                 {
                     Console.WriteLine(Calculations.TotalAnnualPayPerm(repoPerm.employees, 0));
                 }
+                else if (Selection == "6")
+                {
+                    GameLoop = false;
+                    Console.WriteLine("Now Exiting");
+                }
                 else
                 {
                     Console.WriteLine("You did not pick a valid option");
                 }
                 Console.ReadLine();
+                
             }
         }
     }

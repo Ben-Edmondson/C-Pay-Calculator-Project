@@ -22,7 +22,7 @@ Please Select an Option Below.
 4. Delete Employees
 5. Total Annual Salary
 6.Exit");
-                string Selection = Console.ReadLine();
+                string? Selection = Console.ReadLine();
                 Console.Clear();
                 if (Selection == "1")
                 {
@@ -172,7 +172,7 @@ Please Select an Option Below.
                     }
                 } else if (Selection == "3")
                 {
-                    repoPerm.employees[0] = repoPerm.Update(0, "Ben", "Edmondson", 60000, 5000, null, null);
+                    repoPerm.Update(0, "Ben", "Edmondson", 60000, 5000, null, null);
                     Console.WriteLine("Employee Updated!");
                 }
                 else if (Selection == "4")
@@ -219,7 +219,6 @@ Please Select an Option Below.
                     Console.WriteLine("You did not pick a valid option");
                 }
                 Console.ReadLine();
-                
             }
         }
     }

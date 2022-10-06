@@ -14,10 +14,10 @@ namespace PayCalc_Project.Repository
         public List<EmployeeTemp> employees = new List<EmployeeTemp>() {
            new EmployeeTemp() { ID = Guid.NewGuid(), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
         };
-        public bool Delete(int i)
+        public bool Delete(int id)
         {
             int EmployeeCount = employees.Count();
-            employees.RemoveAt(i);
+            employees.RemoveAt(id);
             if (employees.Count() >= EmployeeCount)
             {
                 return false;
@@ -51,12 +51,12 @@ namespace PayCalc_Project.Repository
             return ReadAll;
         }
 
-        public EmployeeTemp ReadSingle(int i)
+        public EmployeeTemp ReadSingle(int id)
         {
-            if (employees.Count() > i)
+            if (employees.Count() > id)
             {
 
-                EmployeeTemp ReadSingle = new EmployeeTemp() { ID = employees[i].ID, FirstName = employees[i].FirstName, LastName = employees[i].LastName, DayRate = employees[i].DayRate, WeeksWorked = employees[i].WeeksWorked };
+                EmployeeTemp ReadSingle = new EmployeeTemp() { ID = employees[id].ID, FirstName = employees[id].FirstName, LastName = employees[id].LastName, DayRate = employees[id].DayRate, WeeksWorked = employees[id].WeeksWorked };
                 return ReadSingle;
             }
             return null;

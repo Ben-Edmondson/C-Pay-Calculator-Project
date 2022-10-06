@@ -4,9 +4,9 @@
     {
         public T AddEmployee(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked);
         public List<T> ReadAll();
-        public T ReadSingle(int i);
-        public void Update(int i, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked);
-        public bool Delete(int i);
+        public T ReadSingle(int id);
+        public void Update(int id, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked);
+        public bool Delete(int id);
         public bool RemoveAll();
 
     }

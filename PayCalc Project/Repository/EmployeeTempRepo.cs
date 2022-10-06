@@ -16,12 +16,9 @@ namespace PayCalc_Project.Repository
         };
         public bool Delete(int id)
         {
+            if (id > employees.Count()) return false;
             int EmployeeCount = employees.Count();
             employees.RemoveAt(id);
-            if (employees.Count() >= EmployeeCount)
-            {
-                return false;
-            }
             return true;
         }
 

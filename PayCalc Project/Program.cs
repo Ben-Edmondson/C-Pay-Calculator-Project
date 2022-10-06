@@ -30,11 +30,11 @@ Please Select an Option Below.
                     string? EmployeeType = Console.ReadLine();
                     if (String.IsNullOrEmpty(EmployeeType))
                     {
-                        do //while loop instead of do while
+                        while (String.IsNullOrEmpty(EmployeeType))
                         {
                             Console.WriteLine("Please enter a valid employment type");
                             EmployeeType = Console.ReadLine();
-                        } while (String.IsNullOrEmpty(EmployeeType));
+                        }
                     }
                     Console.WriteLine("Enter a first name");
                     string? FirstName = Console.ReadLine();

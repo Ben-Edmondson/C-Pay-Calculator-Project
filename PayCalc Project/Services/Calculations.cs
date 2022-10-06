@@ -1,11 +1,10 @@
 ﻿using PayCalc_Project.Models;
-
 namespace PayCalc_Project.Services
 {
     //Interface this
     public class Calculations
     {
-        public static decimal? TotalAnnualPayPerm(List<EmployeePerm> employees, int i)
+        public static decimal? TotalAnnualPayPerm(List<EmployeePerm> employees, int index)
         {
             var taxBands = new[]
             {
@@ -30,7 +29,7 @@ namespace PayCalc_Project.Services
             }
             return taxToBePaid;
         }
-        public static decimal? TotalAnnualPayTemp(List<EmployeeTemp> employees, int i)
+        public static decimal? TotalAnnualPayTemp(List<EmployeeTemp> employees, int index)
         {
             int? days = 5;
             decimal? DayRate = employees[i].DayRate;

@@ -1,6 +1,4 @@
-﻿using System.Xml.Linq;
-
-namespace PayCalc_Project.Models
+﻿namespace PayCalc_Project.Models
 {
     public class EmployeePerm : Employee
     {

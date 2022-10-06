@@ -30,7 +30,7 @@ Please Select an Option Below.
                     string? EmployeeType = Console.ReadLine();
                     if (String.IsNullOrEmpty(EmployeeType))
                     {
-                        do
+                        do //while loop instead of do while
                         {
                             Console.WriteLine("Please enter a valid employment type");
                             EmployeeType = Console.ReadLine();
@@ -40,21 +40,21 @@ Please Select an Option Below.
                     string? FirstName = Console.ReadLine();
                     if (String.IsNullOrEmpty(FirstName))
                     {
-                        do
+                        while(String.IsNullOrEmpty(FirstName))
                         {
                             Console.WriteLine("Please enter a valid First Name!");
                             FirstName = Console.ReadLine();
-                        } while (String.IsNullOrEmpty(FirstName));
+                        }
                     }
                     Console.WriteLine("Please enter a last name");
                     string? LastName = Console.ReadLine();
                     if (String.IsNullOrEmpty(LastName)) 
                     {
-                        do
+                        while(String.IsNullOrEmpty(LastName))
                         {
                             Console.WriteLine("Please enter a valid Last Name!");
                             LastName = Console.ReadLine();
-                        } while (String.IsNullOrEmpty(LastName));
+                        }
                     }
                     if (EmployeeType.ToLower() == "permanent")
                     {
@@ -64,7 +64,7 @@ Please Select an Option Below.
                         else
                         {
                             bool x = true;
-                            do
+                            while (x == true)
                             {
                                 Console.WriteLine("Please enter a valid salary");
                                 Salary = Console.ReadLine();
@@ -72,7 +72,7 @@ Please Select an Option Below.
                                 {
                                     x = false;
                                 }
-                            } while (x == true);
+                            } ;
                         }
                         Console.WriteLine("Please enter a Bonus");
                         string? Bonus = Console.ReadLine();
@@ -80,7 +80,7 @@ Please Select an Option Below.
                         else
                         {
                             bool x = true;
-                            do
+                            while (x == true)
                             {
                                 Console.WriteLine("Please enter a valid Bonus");
                                 Bonus = Console.ReadLine();
@@ -88,7 +88,7 @@ Please Select an Option Below.
                                 {
                                     x = false;
                                 }
-                            } while (x == true);
+                            } ;
                         }
                         repoPerm.employees.Add(repoPerm.AddEmployee(FirstName, LastName, DecSalary, DecBonus, null, null));
                         Console.WriteLine("Permanent Employee added!");
@@ -101,7 +101,7 @@ Please Select an Option Below.
                         else
                         {
                             bool x = true;
-                            do
+                            while (x == true)
                             {
                                 Console.WriteLine("Please enter a valid Day Rate");
                                 DayRate = Console.ReadLine();
@@ -109,7 +109,7 @@ Please Select an Option Below.
                                 {
                                     x = false;
                                 }
-                            } while (x == true);
+                            } ;
                         }
                         Console.WriteLine("Please enter Weeks Worked");
                         string? WeeksWorked = Console.ReadLine();
@@ -117,7 +117,7 @@ Please Select an Option Below.
                         else
                         {
                             bool x = true;
-                            do
+                            while (x == true)
                             {
                                 Console.WriteLine("Please enter a valid amount of Weeks Worked");
                                 WeeksWorked = Console.ReadLine();
@@ -125,7 +125,7 @@ Please Select an Option Below.
                                 {
                                     x = false;
                                 }
-                            } while (x == true);
+                            }
                         }
                         repoTemp.employees.Add(repoTemp.AddEmployee(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked));
                         Console.WriteLine("Temporary Employee added!");

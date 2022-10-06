@@ -9,6 +9,7 @@ namespace PayCalc_Project.Repository
         };
         public bool Delete(int id)
         {
+            //check for ID instead of checking if removed
             int EmployeeCount = employees.Count();
             employees.RemoveAt(id);
             if (employees.Count() >= EmployeeCount)
@@ -51,6 +52,7 @@ namespace PayCalc_Project.Repository
         }
         public void Update(int index, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
+            //Nullable arguments to allow for optional field updates
             employees[index].FirstName = FirstName;
             employees[index].LastName = LastName;
             employees[index].Salary = Salary;

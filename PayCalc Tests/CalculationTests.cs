@@ -3,8 +3,9 @@ using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
 namespace PayCalc_Tests
 {
+    //Moq this
     [TestFixture]
-    public class EmployeeTests
+    public class CalculationTests
     {
         EmployeePermRepo _repoPerm = new EmployeePermRepo();
         EmployeeTempRepo _repoTemp = new EmployeeTempRepo();

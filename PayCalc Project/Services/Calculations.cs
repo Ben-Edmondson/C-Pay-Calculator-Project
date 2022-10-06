@@ -2,6 +2,7 @@
 
 namespace PayCalc_Project.Services
 {
+    //Interface this
     public class Calculations
     {
         public static decimal? TotalAnnualPayPerm(List<EmployeePerm> employees, int i)

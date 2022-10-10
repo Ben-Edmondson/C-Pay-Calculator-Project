@@ -136,7 +136,7 @@ Please Select an Option Below.
 2.Temporary employees");
                     string ReadTempPerm = Console.ReadLine();
                     Console.WriteLine(@"1.All Employees
-2.One employee(enter ID for which");
+2.One employee");
                     string ReadSelect = Console.ReadLine();
                     if (ReadTempPerm == "1")
                     {

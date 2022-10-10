@@ -31,9 +31,9 @@ namespace PayCalc_Project.Repository
         public List<EmployeePerm> ReadAll()
         {
             List<EmployeePerm> ReadAll = new List<EmployeePerm>();
-            for (int i = 0; i < employees.Count; i++)
+            foreach(EmployeePerm emp in employees)
             {
-                ReadAll.Add(employees[i]);
+                ReadAll.Add(emp);
             }
             return ReadAll;
         }

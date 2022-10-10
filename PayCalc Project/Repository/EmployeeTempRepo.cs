@@ -41,9 +41,9 @@ namespace PayCalc_Project.Repository
         public List<EmployeeTemp> ReadAll()
         {
             List<EmployeeTemp> ReadAll = new List<EmployeeTemp>();
-            for (int i = 0; i < employees.Count; i++)
+            foreach(EmployeeTemp emp in employees)
             {
-                ReadAll.Add(employees[i]);
+                ReadAll.Add(emp);
             }
             return ReadAll;
         }

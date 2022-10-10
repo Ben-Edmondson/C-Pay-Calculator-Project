@@ -14,7 +14,7 @@ namespace PayCalc_Project.Services
             new { Lower = 150001m, Upper = decimal.MaxValue, Rate = 0.45m }
             };
 
-            var salary = employees[i].Salary + employees[i].Bonus;
+            var salary = employees[index].Salary + employees[index].Bonus;
 
             decimal? taxToBePaid = 0m;
 
@@ -32,8 +32,8 @@ namespace PayCalc_Project.Services
         public static decimal? TotalAnnualPayTemp(List<EmployeeTemp> employees, int index)
         {
             int? days = 5;
-            decimal? DayRate = employees[i].DayRate;
-            int? WeeksWorked = employees[i].WeeksWorked;
+            decimal? DayRate = employees[index].DayRate;
+            int? WeeksWorked = employees[index].WeeksWorked;
             decimal? TotalPay = DayRate * (days * WeeksWorked);
             var taxBands = new[]
             {

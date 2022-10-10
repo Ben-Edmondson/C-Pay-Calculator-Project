@@ -48,7 +48,7 @@ namespace PayCalc_Project.Repository
             return ReadAll;
         }
 
-        public EmployeeTemp ReadSingle(int id)
+        public EmployeeTemp? ReadSingle(int id)
         {
             if (employees.Count() > id)
             {

@@ -37,7 +37,7 @@ namespace PayCalc_Project.Repository
             }
             return ReadAll;
         }
-        public EmployeePerm ReadSingle(int id)
+        public EmployeePerm? ReadSingle(int id)
         {
             if (employees.Count() > id)
             {

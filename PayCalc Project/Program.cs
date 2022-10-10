@@ -150,7 +150,26 @@ Please Select an Option Below.
                         }
                         else if (ReadSelect == "2")
                         {
-                            Console.WriteLine(repoPerm.ReadSingle(0));
+                            Console.WriteLine("Select an employee ID");
+                            string? SelectID = Console.ReadLine();
+                            if (int.TryParse(SelectID, out int IntSelectID))
+                            {
+
+                            }
+                            else
+                            {
+
+                                bool x = true;
+                                while (x == true)
+                                {
+                                    Console.WriteLine("Please enter a valid number");
+                                    if(int.TryParse(SelectID, out IntSelectID))
+                                    {
+                                        x = false;
+                                    }
+                                }
+                            }
+                            Console.WriteLine(repoPerm.ReadSingle(IntSelectID));
                         }
                     }
                     else if (ReadTempPerm == "2")
@@ -163,7 +182,26 @@ Please Select an Option Below.
                             }
                         }else if (ReadSelect == "2")
                         {
-                            Console.WriteLine(repoTemp.ReadSingle(0));
+                            Console.WriteLine("Select an employee ID");
+                            string? SelectID = Console.ReadLine();
+                            if (int.TryParse(SelectID, out int IntSelectID))
+                            {
+
+                            }
+                            else
+                            {
+
+                                bool x = true;
+                                while (x == true)
+                                {
+                                    Console.WriteLine("Please enter a valid number");
+                                    if (int.TryParse(SelectID, out IntSelectID))
+                                    {
+                                        x = false;
+                                    }
+                                }
+                            }
+                            Console.WriteLine(repoTemp.ReadSingle(IntSelectID));
                         }
                     }
                     else

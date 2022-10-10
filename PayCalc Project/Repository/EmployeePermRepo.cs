@@ -46,7 +46,7 @@ namespace PayCalc_Project.Repository
             }
             return null;
         }
-        public void Update(int index, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public void Update(int index, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
             //Nullable arguments to allow for optional field updates
             employees[index].FirstName = FirstName;

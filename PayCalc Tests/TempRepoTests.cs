@@ -42,11 +42,8 @@ namespace PayCalc_Tests
         [Test]
         public void RemoveOne()
         {
-            int employeeCounter = _repoTemp.employees.Count();
-            _repoTemp.Delete(0);
-            employeeCounter = employeeCounter - 1;
-            Assert.That(employeeCounter, Is.EqualTo(_repoTemp.employees.Count()));
-
+            Assert.That(_repoTemp.Delete(1111), Is.EqualTo(true));
+            Assert.That(_repoTemp.Delete(1112), Is.EqualTo(false));
         }
 
     }

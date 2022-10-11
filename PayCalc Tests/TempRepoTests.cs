@@ -33,11 +33,7 @@ namespace PayCalc_Tests
         [Test]
         public void RemoveAllTest()
         {
-            //act
-            _repoTemp.RemoveAll();
-            int employeeCounter = 0;
-            //assert
-            Assert.That(employeeCounter, Is.EqualTo(_repoTemp.employees.Count()));
+            Assert.That(_repoTemp.RemoveAll(), Is.EqualTo(true));
         }
         [Test]
         public void RemoveOne()

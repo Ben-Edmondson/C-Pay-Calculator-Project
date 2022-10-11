@@ -145,7 +145,7 @@ Please Select an Option Below.
                             List<EmployeePerm> employeeInfo = repoPerm.ReadAll();
                             foreach(EmployeePerm employee in employeeInfo)
                             {
-                                Console.WriteLine(employeeInfo);
+                                Console.WriteLine(employee);
                             }
                         }
                         else if (ReadSelect == "2")
@@ -178,7 +178,7 @@ Please Select an Option Below.
                             List<EmployeeTemp> employeeInfo = repoTemp.ReadAll();
                             foreach(EmployeeTemp employee in employeeInfo)
                             {
-                            Console.WriteLine(employeeInfo);
+                            Console.WriteLine(employee);
                             }
                         }else if (ReadSelect == "2")
                         {

@@ -1,11 +1,12 @@
-﻿using PayCalc_Project.Models;
+﻿using PayCalc_Project.Factories;
+using PayCalc_Project.Models;
 namespace PayCalc_Project.Repository
 {
     public class EmployeePermRepo : IEmployeeRepository<EmployeePerm>
     {
         public List<EmployeePerm> employees = new List<EmployeePerm>() {
-            new EmployeePerm() {FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
-            new EmployeePerm() {FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
+            new EmployeePerm() {ID = 0001, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
+            new EmployeePerm() {ID = 0002, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
         };
         public bool Delete(int id)
         {
@@ -25,7 +26,7 @@ namespace PayCalc_Project.Repository
         }
         public EmployeePerm AddEmployee(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            EmployeePerm addNew = new EmployeePerm() {FirstName = FirstName, LastName = Surname, Salary = Salary, Bonus = Bonus };
+            EmployeePerm addNew = PermEmployeeFactory.CreateEmployee(FirstName, Surname, Salary, Bonus);
             return addNew;
         }
         public List<EmployeePerm> ReadAll()
@@ -41,7 +42,7 @@ namespace PayCalc_Project.Repository
         {
             if (employees.Count() > id)
             {
-                EmployeePerm ReadSingle = new EmployeePerm() {FirstName = employees[id].FirstName, LastName = employees[id].LastName, Salary = employees[id].Salary, Bonus = employees[id].Bonus };
+                EmployeePerm ReadSingle = new EmployeePerm() {ID = employees[id].ID, FirstName = employees[id].FirstName, LastName = employees[id].LastName, Salary = employees[id].Salary, Bonus = employees[id].Bonus };
                 return ReadSingle;
             }
             return null;

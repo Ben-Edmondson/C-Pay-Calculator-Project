@@ -17,7 +17,7 @@ namespace PayCalc_Project.Repository
         };
         public bool Delete(int id)
         {
-            if (employees.Find(x => x.ID == id) != null)
+            if (employees.Exists(x => x.ID == id) == true)
             {
                 employees.Remove(employees.Find(x => x.ID == id));
                 return true;

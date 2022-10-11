@@ -12,6 +12,7 @@ namespace PayCalc_Project.Repository
         {   
             if (employees.Exists(x => x.ID == id) ==true)
             {
+                //fix me later
                 employees.Remove(employees.Find(x => x.ID == id));
                 return true;
             }

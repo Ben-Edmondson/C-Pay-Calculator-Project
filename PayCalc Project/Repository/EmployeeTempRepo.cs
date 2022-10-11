@@ -51,13 +51,8 @@ namespace PayCalc_Project.Repository
 
         public EmployeeTemp? ReadSingle(int id)
         {
-            if (employees.Count() > id)
-            {
-
-                EmployeeTemp ReadSingle = new EmployeeTemp() {ID = employees[id].ID, FirstName = employees[id].FirstName, LastName = employees[id].LastName, DayRate = employees[id].DayRate, WeeksWorked = employees[id].WeeksWorked };
+                EmployeeTemp? ReadSingle = employees.Find(x => x.ID == id);
                 return ReadSingle;
-            }
-            return null;
         }
 
         public void Update(int index, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)

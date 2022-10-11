@@ -169,7 +169,15 @@ Please Select an Option Below.
                                     }
                                 }
                             }
-                            Console.WriteLine(repoPerm.ReadSingle(IntSelectID));
+                            if(repoPerm.ReadSingle(IntSelectID) != null)
+                            {
+                                Console.WriteLine(repoPerm.ReadSingle(IntSelectID));
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("No user with this ID exists");
+                            }
                         }
                     }
                     else if (ReadTempPerm == "2")
@@ -201,7 +209,15 @@ Please Select an Option Below.
                                     }
                                 }
                             }
-                            Console.WriteLine(repoTemp.ReadSingle(IntSelectID));
+                            if (repoTemp.ReadSingle(IntSelectID) != null)
+                            {
+                                Console.WriteLine(repoPerm.ReadSingle(IntSelectID));
+
+                            }
+                            else
+                            {
+                                Console.WriteLine("No user with this ID exists");
+                            }
                         }
                     }
                     else

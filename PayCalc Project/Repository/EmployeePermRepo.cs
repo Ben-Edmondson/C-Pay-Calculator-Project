@@ -40,12 +40,8 @@ namespace PayCalc_Project.Repository
         }
         public EmployeePerm? ReadSingle(int id)
         {
-            if (employees.Count() > id)
-            {
-                EmployeePerm ReadSingle = new EmployeePerm() {ID = employees[id].ID, FirstName = employees[id].FirstName, LastName = employees[id].LastName, Salary = employees[id].Salary, Bonus = employees[id].Bonus };
-                return ReadSingle;
-            }
-            return null;
+            EmployeePerm? ReadSingle = employees.Find(x => x.ID == id);
+            return ReadSingle;
         }
         public void Update(int index, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {

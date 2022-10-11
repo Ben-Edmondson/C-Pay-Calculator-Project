@@ -1,6 +1,4 @@
-﻿using PayCalc_Project;
-using PayCalc_Project.Repository;
-using PayCalc_Project.Services;
+﻿using PayCalc_Project.Repository;
 namespace PayCalc_Tests
 {
     [TestFixture]
@@ -14,7 +12,7 @@ namespace PayCalc_Tests
             decimal Sal = 55000;
             decimal Bonus = 5000m;
             //act
-            _repoPerm.employees[0] = _repoPerm.Update(0, "Ben", "Edmondson", Sal, Bonus, null, null);
+            _repoPerm.Update(0, "Ben", "Edmondson", Sal, Bonus, null, null);
             decimal? _Sal = _repoPerm.employees[0].Salary;
             decimal? _Bonus = _repoPerm.employees[0].Bonus;
             //assert

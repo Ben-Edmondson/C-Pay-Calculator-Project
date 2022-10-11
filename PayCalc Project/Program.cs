@@ -60,7 +60,10 @@ Please Select an Option Below.
                     {
                         Console.WriteLine("Please enter a salary");
                         string? Salary = Console.ReadLine();
-                        if (decimal.TryParse(Salary, out decimal DecSalary)) ;
+                        if (decimal.TryParse(Salary, out decimal DecSalary))
+                        {
+
+                        }
                         else
                         {
                             bool x = true;
@@ -76,7 +79,10 @@ Please Select an Option Below.
                         }
                         Console.WriteLine("Please enter a Bonus");
                         string? Bonus = Console.ReadLine();
-                        if (decimal.TryParse(Bonus, out decimal DecBonus)) ;
+                        if (decimal.TryParse(Bonus, out decimal DecBonus))
+                        {
+
+                        }
                         else
                         {
                             bool x = true;
@@ -97,7 +103,10 @@ Please Select an Option Below.
                     {
                         Console.WriteLine("Please enter a Day Rate");
                         string? DayRate = Console.ReadLine();
-                        if (decimal.TryParse(DayRate, out decimal DecDayRate)) ;
+                        if (decimal.TryParse(DayRate, out decimal DecDayRate))
+                        {
+
+                        }
                         else
                         {
                             bool x = true;
@@ -113,7 +122,10 @@ Please Select an Option Below.
                         }
                         Console.WriteLine("Please enter Weeks Worked");
                         string? WeeksWorked = Console.ReadLine();
-                        if (int.TryParse(WeeksWorked, out int IntWeeksWorked)) ;
+                        if (int.TryParse(WeeksWorked, out int IntWeeksWorked))
+                        {
+
+                        }
                         else
                         {
                             bool x = true;
@@ -134,10 +146,10 @@ Please Select an Option Below.
                 {
                     Console.WriteLine(@"1.Permanent employees
 2.Temporary employees");
-                    string ReadTempPerm = Console.ReadLine();
+                    string? ReadTempPerm = Console.ReadLine();
                     Console.WriteLine(@"1.All Employees
 2.One employee");
-                    string ReadSelect = Console.ReadLine();
+                    string? ReadSelect = Console.ReadLine();
                     if (ReadTempPerm == "1")
                     {
                         if (ReadSelect == "1")
@@ -231,27 +243,97 @@ Please Select an Option Below.
                 }
                 else if (Selection == "4")
                 {
-                    Console.WriteLine("Would you like to delete one employee or all?");
-                    string DelSelect = Console.ReadLine();
+                    Console.WriteLine(@"1.Delete Permanent employees
+2.Delete Temporary employees");
+                    string? DelSelect = Console.ReadLine();
+                    Console.WriteLine(@"1.One Employee
+2.All Employees");
+                    string? DelSec = Console.ReadLine();
+
                     if (DelSelect == "1")
                     {
-                       if(repoPerm.Delete(1) == false)
+                        if (DelSec == "1")
                         {
-                            Console.WriteLine("No Employee to be removed at location"!);
-                        }
-                        else
+                            Console.WriteLine("Please enter an ID");
+                            string? ID = Console.ReadLine();
+                            if (int.TryParse(ID, out int IntID))
+                            {
+
+                            }
+                            else
+                            {
+
+                                bool x = true;
+                                while (x == true)
+                                {
+                                    Console.WriteLine("Please enter a valid number");
+                                    if (int.TryParse(ID, out IntID))
+                                    {
+                                        x = false;
+                                    }
+                                }
+                            }
+                            if (repoPerm.Delete(IntID) == false)
+                            {
+                                Console.WriteLine("No Employee to be removed with this ID!"!);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Employee removed!");
+                            }
+                        }else if(DelSec == "2")
                         {
-                            Console.WriteLine("Employee removed!");
+                            if (repoPerm.RemoveAll() == false)
+                            {
+                                Console.WriteLine("No Employees to be removed!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Employees wiped!");
+                            }
                         }
                     }else if (DelSelect == "2")
                     {
-                        if (repoPerm.RemoveAll() == false)
+                        if (DelSec == "1")
                         {
-                            Console.WriteLine("No Employees to be removed!");
+                            Console.WriteLine("Please enter an ID");
+                            string? ID = Console.ReadLine();
+                            if (int.TryParse(ID, out int IntID))
+                            {
+
+                            }
+                            else
+                            {
+
+                                bool x = true;
+                                while (x == true)
+                                {
+                                    Console.WriteLine("Please enter a valid number");
+                                    if (int.TryParse(ID, out IntID))
+                                    {
+                                        x = false;
+                                    }
+                                }
+                            }
+                            if (repoTemp.Delete(IntID) == false)
+                            {
+                                Console.WriteLine("No Employee to be removed at location"!);
+                            }
+                            else
+                            {
+                                Console.WriteLine("Employee removed!");
+                            }
                         }
-                        else
+                        else if (DelSec == "2")
                         {
-                            Console.WriteLine("Employees wiped!");
+                            if (repoTemp.RemoveAll() == false)
+                            {
+                                Console.WriteLine("No Employees to be removed!");
+                            }
+                            else
+                            {
+                                Console.WriteLine("Employees wiped!");
+                            }
                         }
                     }
                     else

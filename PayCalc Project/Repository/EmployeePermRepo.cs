@@ -9,11 +9,13 @@ namespace PayCalc_Project.Repository
             new EmployeePerm() {ID = 1113, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
         };
         public bool Delete(int id)
-        {
-            if (id > employees.Count()) return false;
-            int EmployeeCount = employees.Count();
-            employees.RemoveAt(id);
-            return true;
+        {   
+            if (employees.Find(x => x.ID == id) != null)
+            {
+                employees.Remove(employees.Find(x => x.ID == id));
+                return true;
+            }
+            return false;
         }
         public bool RemoveAll()
         {

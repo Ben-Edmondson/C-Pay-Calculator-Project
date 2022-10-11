@@ -13,7 +13,7 @@ namespace PayCalc_Project.Repository
     {
 
         public List<EmployeeTemp> employees = new List<EmployeeTemp>() {
-           new EmployeeTemp() {ID = 0003, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
+           new EmployeeTemp() {ID = 1111, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
         };
         public bool Delete(int id)
         {

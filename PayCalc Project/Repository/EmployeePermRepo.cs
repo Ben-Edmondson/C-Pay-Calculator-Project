@@ -5,8 +5,8 @@ namespace PayCalc_Project.Repository
     public class EmployeePermRepo : IEmployeeRepository<EmployeePerm>
     {
         public List<EmployeePerm> employees = new List<EmployeePerm>() {
-            new EmployeePerm() {ID = 0001, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
-            new EmployeePerm() {ID = 0002, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
+            new EmployeePerm() {ID = 1112, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
+            new EmployeePerm() {ID = 1113, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
         };
         public bool Delete(int id)
         {

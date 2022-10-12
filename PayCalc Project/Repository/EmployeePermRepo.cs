@@ -33,11 +33,7 @@ namespace PayCalc_Project.Repository
         }
         public List<EmployeePerm> ReadAll()
         {
-            List<EmployeePerm> ReadAll = new List<EmployeePerm>();
-            foreach(EmployeePerm emp in employees)
-            {
-                ReadAll.Add(emp);
-            }
+            List<EmployeePerm> ReadAll = employees;
             return ReadAll;
         }
         public EmployeePerm? ReadSingle(int id)
@@ -45,23 +41,23 @@ namespace PayCalc_Project.Repository
             EmployeePerm? ReadSingle = employees.Find(x => x.ID == id);
             return ReadSingle;
         }
-        public void Update(int index, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public void Update(int id, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
             if (String.IsNullOrEmpty(FirstName) == false)
             {
-                employees[index].FirstName = FirstName;
+                employees[id].FirstName = FirstName;
             }
             if(String.IsNullOrEmpty(LastName) == false)
             {
-                employees[index].LastName = LastName;
+                employees[id].LastName = LastName;
             }
             if(Salary != null)
             {
-                employees[index].Salary = Salary;
+                employees[id].Salary = Salary;
             }
             if(Bonus != null)
             {
-                employees[index].Bonus = Bonus;
+                employees[id].Bonus = Bonus;
             }
         }
     }

@@ -28,10 +28,6 @@ namespace PayCalc_Project.Repository
         public bool RemoveAll()
         {
             employees.Clear();
-            if (employees.Count() > 0)
-            {
-                return false;
-            }
             return true;
         }
 

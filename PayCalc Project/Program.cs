@@ -170,7 +170,6 @@ Please Select an Option Below.
                             }
                             else
                             {
-
                                 bool x = true;
                                 while (x == true)
                                 {
@@ -224,7 +223,6 @@ Please Select an Option Below.
                             if (repoTemp.ReadSingle(IntSelectID) != null)
                             {
                                 Console.WriteLine(repoPerm.ReadSingle(IntSelectID));
-
                             }
                             else
                             {
@@ -249,7 +247,6 @@ Please Select an Option Below.
                     Console.WriteLine(@"1.One Employee
 2.All Employees");
                     string? DelSec = Console.ReadLine();
-
                     if (DelSelect == "1")
                     {
                         if (DelSec == "1")
@@ -262,7 +259,6 @@ Please Select an Option Below.
                             }
                             else
                             {
-
                                 bool x = true;
                                 while (x == true)
                                 {
@@ -304,7 +300,6 @@ Please Select an Option Below.
                             }
                             else
                             {
-
                                 bool x = true;
                                 while (x == true)
                                 {

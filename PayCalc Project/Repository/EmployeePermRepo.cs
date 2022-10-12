@@ -12,7 +12,6 @@ namespace PayCalc_Project.Repository
         {   
             if (employees.Exists(x => x.ID == id) ==true)
             {
-                //fix me later
                 employees.Remove(employees.Find(x => x.ID == id));
                 return true;
             }
@@ -48,11 +47,22 @@ namespace PayCalc_Project.Repository
         }
         public void Update(int index, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            //Nullable arguments to allow for optional field updates
-            employees[index].FirstName = FirstName;
-            employees[index].LastName = LastName;
-            employees[index].Salary = Salary;
-            employees[index].Bonus = Bonus;
+            if (String.IsNullOrEmpty(FirstName) == false)
+            {
+                employees[index].FirstName = FirstName;
+            }
+            if(String.IsNullOrEmpty(LastName) == false)
+            {
+                employees[index].LastName = LastName;
+            }
+            if(Salary != null)
+            {
+                employees[index].Salary = Salary;
+            }
+            if(Bonus != null)
+            {
+                employees[index].Bonus = Bonus;
+            }
         }
     }
 }

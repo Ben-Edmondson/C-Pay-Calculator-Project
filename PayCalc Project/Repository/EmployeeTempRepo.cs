@@ -19,7 +19,6 @@ namespace PayCalc_Project.Repository
         {
             if (employees.Exists(x => x.ID == id) == true)
             {
-                //fix later
                 employees.Remove(employees.Find(x => x.ID == id));
                 return true;
             }
@@ -38,14 +37,14 @@ namespace PayCalc_Project.Repository
 
         public EmployeeTemp AddEmployee(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            EmployeeTemp addNew = TempEmployeeFactory.CreateEmployee(FirstName,Surname,DayRate,WeeksWorked);
+            EmployeeTemp addNew = TempEmployeeFactory.CreateEmployee(FirstName, Surname, DayRate, WeeksWorked);
             return addNew;
         }
 
         public List<EmployeeTemp> ReadAll()
         {
             List<EmployeeTemp> ReadAll = new List<EmployeeTemp>();
-            foreach(EmployeeTemp emp in employees)
+            foreach (EmployeeTemp emp in employees)
             {
                 ReadAll.Add(emp);
             }
@@ -54,16 +53,28 @@ namespace PayCalc_Project.Repository
 
         public EmployeeTemp? ReadSingle(int id)
         {
-                EmployeeTemp? ReadSingle = employees.Find(x => x.ID == id);
-                return ReadSingle;
+            EmployeeTemp? ReadSingle = employees.Find(x => x.ID == id);
+            return ReadSingle;
         }
 
         public void Update(int index, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            employees[index].FirstName = FirstName;
-            employees[index].LastName = LastName;
-            employees[index].DayRate = DayRate;
-            employees[index].WeeksWorked = WeeksWorked;
+            if (String.IsNullOrEmpty(FirstName) == false)
+            {
+                employees[index].FirstName = FirstName;
+            }
+            if (String.IsNullOrEmpty(LastName) == false)
+            {
+                employees[index].LastName = LastName;
+            }
+            if (DayRate != null)
+            {
+                employees[index].DayRate = DayRate;
+            }
+            if (WeeksWorked != null)
+            {
+                employees[index].WeeksWorked = WeeksWorked;
+            }
         }
     }
 }

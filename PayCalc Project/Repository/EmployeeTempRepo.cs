@@ -11,10 +11,7 @@ namespace PayCalc_Project.Repository
 {
     public class EmployeeTempRepo : IEmployeeRepository<EmployeeTemp>
     {
-
-        public List<EmployeeTemp> employees = new List<EmployeeTemp>() {
-           new EmployeeTemp() {ID = 1111, FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
-        };
+        public List<EmployeeTemp> employees = new List<EmployeeTemp>();
         public bool Delete(int id)
         {
             if (employees.Exists(x => x.ID == id) == true)

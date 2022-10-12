@@ -4,10 +4,7 @@ namespace PayCalc_Project.Repository
 {
     public class EmployeePermRepo : IEmployeeRepository<EmployeePerm>
     {
-        public List<EmployeePerm> employees = new List<EmployeePerm>() {
-            new EmployeePerm() {ID = 1112, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
-            new EmployeePerm() {ID = 1113, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 },
-        };
+        public List<EmployeePerm> employees = new List<EmployeePerm>();
         public bool Delete(int id)
         {   
             if (employees.Exists(x => x.ID == id) ==true)

@@ -1,4 +1,5 @@
-﻿using PayCalc_Project.Models;
+﻿using PayCalc_Project.Factories;
+using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
 
@@ -10,6 +11,9 @@ namespace PayCalc_Project
         {
             EmployeePermRepo repoPerm = new EmployeePermRepo();
             EmployeeTempRepo repoTemp = new EmployeeTempRepo();
+            repoTemp.AddEmployee("Clare", "Jones",null,null,350, 40);
+            repoPerm.AddEmployee("Joe", "Bloggs", 40000, 5000,null,null);
+            repoPerm.AddEmployee("John", "Smith", 45000, 2500, null, null);
             bool GameLoop = true;
             while (GameLoop == true)
             {

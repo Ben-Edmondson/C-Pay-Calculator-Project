@@ -12,7 +12,7 @@ namespace PayCalc_Tests
             decimal? DayRate = 350;
             int? WeeksWorked = 52;
             //act
-            _repoTemp.Update(0, "Ben", "Edmondson", null,null,DayRate,WeeksWorked);
+            _repoTemp.Update(1111, "Ben", "Edmondson", null,null,DayRate,WeeksWorked);
             decimal? _DayRate = _repoTemp.employees[0].DayRate;
             int? _WeeksWorked = _repoTemp.employees[0].WeeksWorked;
             //assert

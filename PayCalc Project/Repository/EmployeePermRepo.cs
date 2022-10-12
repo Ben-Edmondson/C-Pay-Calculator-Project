@@ -41,24 +41,32 @@ namespace PayCalc_Project.Repository
             EmployeePerm? ReadSingle = employees.Find(x => x.ID == id);
             return ReadSingle;
         }
-        public void Update(int id, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public bool Update(int id, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            if (String.IsNullOrEmpty(FirstName) == false)
+            foreach (EmployeePerm employee in employees)
             {
-                employees[id].FirstName = FirstName;
+                if (employee.ID == id)
+                {
+                    if (String.IsNullOrEmpty(FirstName) == false)
+                    {
+                        employee.FirstName = FirstName;
+                    }
+                    if (String.IsNullOrEmpty(LastName) == false)
+                    {
+                        employee.LastName = LastName;
+                    }
+                    if (Salary != null)
+                    {
+                        employee.Salary = Salary;
+                    }
+                    if (Bonus != null)
+                    { 
+                        employee.Bonus = Bonus;
+                    }
+                    return true;
+                }
             }
-            if(String.IsNullOrEmpty(LastName) == false)
-            {
-                employees[id].LastName = LastName;
-            }
-            if(Salary != null)
-            {
-                employees[id].Salary = Salary;
-            }
-            if(Bonus != null)
-            {
-                employees[id].Bonus = Bonus;
-            }
+            return false;
         }
     }
 }

@@ -236,7 +236,7 @@ Please Select an Option Below.
                     }
                 } else if (Selection == "3")
                 {
-                    repoPerm.Update(0, "Ben", "Edmondson", 60000, 5000, null, null);
+                    repoPerm.Update(1112, "Ben", "Edmondson", 60000, 5000, null, null);
                     Console.WriteLine("Employee Updated!");
                 }
                 else if (Selection == "4")

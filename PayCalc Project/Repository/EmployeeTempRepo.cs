@@ -53,24 +53,32 @@ namespace PayCalc_Project.Repository
             return ReadSingle;
         }
 
-        public void Update(int index, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public bool Update(int id, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            if (String.IsNullOrEmpty(FirstName) == false)
+            foreach (EmployeeTemp employee in employees)
             {
-                employees[index].FirstName = FirstName;
+                if (employee.ID == id)
+                {
+                    if (String.IsNullOrEmpty(FirstName) == false)
+                    {
+                        employee.FirstName = FirstName;
+                    }
+                    if (String.IsNullOrEmpty(LastName) == false)
+                    {
+                        employee.LastName = LastName;
+                    }
+                    if (DayRate != null)
+                    {
+                        employee.DayRate = DayRate;
+                    }
+                    if (WeeksWorked != null)
+                    {
+                        employee.WeeksWorked = WeeksWorked;
+                    }
+                    return true;
+                }
             }
-            if (String.IsNullOrEmpty(LastName) == false)
-            {
-                employees[index].LastName = LastName;
-            }
-            if (DayRate != null)
-            {
-                employees[index].DayRate = DayRate;
-            }
-            if (WeeksWorked != null)
-            {
-                employees[index].WeeksWorked = WeeksWorked;
-            }
+            return false;
         }
     }
 }

@@ -27,12 +27,6 @@ namespace PayCalc_Project.Repository
             return true;
         }
 
-        public EmployeeTemp AddEmployee(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
-        {
-            EmployeeTemp addNew = TempEmployeeFactory.CreateEmployee(FirstName, Surname, DayRate, WeeksWorked);
-            return addNew;
-        }
-
         public List<EmployeeTemp> ReadAll()
         {
             List<EmployeeTemp> ReadAll = employees;
@@ -73,7 +67,7 @@ namespace PayCalc_Project.Repository
             return false;
         }
 
-        public EmployeeTemp Create(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public EmployeeTemp Create(string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
             Random idGen = new Random();
             int id = idGen.Next(1111, 10000);

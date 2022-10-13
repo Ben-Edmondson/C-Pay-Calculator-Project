@@ -142,7 +142,7 @@ Please Select an Option Below.
                                 }
                             }
                         }
-                        repoTemp.employees.Add(repoTemp.AddEmployee(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked));
+                        repoTemp.AddEmployee(repoTemp.AddEmployee(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked));
                         Console.WriteLine("Temporary Employee added!");
                     }
                 } else if (Selection == "2")

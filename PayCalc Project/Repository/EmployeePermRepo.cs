@@ -1,5 +1,4 @@
-﻿using PayCalc_Project.Factories;
-using PayCalc_Project.Models;
+﻿using PayCalc_Project.Models;
 namespace PayCalc_Project.Repository
 {
     public class EmployeePermRepo : IEmployeeRepository<EmployeePerm>
@@ -19,10 +18,16 @@ namespace PayCalc_Project.Repository
             employees.Clear();
             return true;
         }
-        public EmployeePerm AddEmployee(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public EmployeePerm Create(string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            EmployeePerm addNew = PermEmployeeFactory.CreateEmployee(FirstName, Surname, Salary, Bonus);
-            return addNew;
+            Random idGen = new Random();
+            int id = idGen.Next(1111, 10000);
+            EmployeePerm employee = new EmployeePerm() { ID = id, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus };
+            return employee;
+        }
+        public void AddEmployee(EmployeePerm employee)
+        {
+            employees.Add(employee);
         }
         public List<EmployeePerm> ReadAll()
         {

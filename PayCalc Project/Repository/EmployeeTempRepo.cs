@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using PayCalc_Project.Factories;
 using PayCalc_Project.Models;
 
 namespace PayCalc_Project.Repository
@@ -72,6 +71,19 @@ namespace PayCalc_Project.Repository
                 }
             }
             return false;
+        }
+
+        public EmployeeTemp Create(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        {
+            Random idGen = new Random();
+            int id = idGen.Next(1111, 10000);
+            EmployeeTemp employee = new EmployeeTemp() { ID = id, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked };
+            return employee;
+        }
+
+        public void AddEmployee(EmployeeTemp employee)
+        {
+            employees.Add(employee);
         }
     }
 }

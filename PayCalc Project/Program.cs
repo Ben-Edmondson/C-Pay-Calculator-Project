@@ -1,5 +1,4 @@
-﻿using PayCalc_Project.Factories;
-using PayCalc_Project.Models;
+﻿using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
 
@@ -14,8 +13,8 @@ namespace PayCalc_Project
             repoTemp.AddEmployee("Clare", "Jones",null,null,350, 40);
             repoPerm.AddEmployee("Joe", "Bloggs", 40000, 5000,null,null);
             repoPerm.AddEmployee("John", "Smith", 45000, 2500, null, null);
-            bool GameLoop = true;
-            while (GameLoop == true)
+            var gameLoop = true;
+            while (gameLoop == true)
             {
                 Console.Clear();
                 Console.WriteLine(@"Welcome to the PayCalc program!
@@ -342,7 +341,7 @@ Please Select an Option Below.
                 }
                 else if (Selection == "5")
                 {
-                    Console.WriteLine(Calculations.TotalAnnualPayPerm(repoPerm.employees, 0));
+                    Console.WriteLine(TempCalculations.TotalAnnualPayPerm(repoPerm.employees, 0));
                 }
                 else if (Selection == "6")
                 {

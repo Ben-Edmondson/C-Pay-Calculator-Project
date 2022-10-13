@@ -1,16 +1,15 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
-using PayCalc_Project.Models;
+﻿using PayCalc_Project.Models;
 
 namespace PayCalc_Project.Repository
 {
     public class EmployeeTempRepo : IEmployeeRepository<EmployeeTemp>
     {
-        public List<EmployeeTemp> employees = new List<EmployeeTemp>();
+        static Random rnd = new Random();
+
+        public List<EmployeeTemp> employees = new List<EmployeeTemp>()
+        {
+            new EmployeeTemp(){ID = rnd.Next(1111,10000), FirstName = "Clare", LastName = "Jones",DayRate = 350,WeeksWorked = 40} 
+        };
         public bool Delete(int id)
         {
             if (employees.Exists(x => x.ID == id) == true)

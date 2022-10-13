@@ -1,7 +1,7 @@
 ﻿using PayCalc_Project.Models;
 namespace PayCalc_Project.Services
 {
-    class PermCalculations : ICalculations
+    class PermCalculations : ICalculations<EmployeePerm>
     {
         public decimal? TotalAnnualPay(List<EmployeePerm> employees, int index)
         {

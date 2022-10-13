@@ -3,7 +3,13 @@ namespace PayCalc_Project.Repository
 {
     public class EmployeePermRepo : IEmployeeRepository<EmployeePerm>
     {
-        public List<EmployeePerm> employees = new List<EmployeePerm>();
+        static Random rnd = new Random();
+
+        public List<EmployeePerm> employees = new List<EmployeePerm>()
+        {
+            new EmployeePerm(){ID = rnd.Next(1111,10000),FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000},
+            new EmployeePerm(){ID = rnd.Next(1111,10000),FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 }
+        };
         public bool Delete(int id)
         {   
             if (employees.Exists(x => x.ID == id) ==true)

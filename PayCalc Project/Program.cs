@@ -6,11 +6,14 @@ namespace PayCalc_Project
 {
     class Program
     {
+        public string Output(string selector)
+        {
+
+        }
         static void Main(string[] args)
         {
             EmployeePermRepo repoPerm = new EmployeePermRepo();
             EmployeeTempRepo repoTemp = new EmployeeTempRepo();
-            repoTemp.AddEmployee("Clare", "Jones",null,null,350, 40);
             repoPerm.AddEmployee("Joe", "Bloggs", 40000, 5000,null,null);
             repoPerm.AddEmployee("John", "Smith", 45000, 2500, null, null);
             var gameLoop = true;
@@ -31,34 +34,27 @@ Please Select an Option Below.
                 {
                     Console.WriteLine("Is employee permanent or temporary?");
                     string? EmployeeType = Console.ReadLine();
-                    if (String.IsNullOrEmpty(EmployeeType))
-                    {
                         while (String.IsNullOrEmpty(EmployeeType))
                         {
                             Console.WriteLine("Please enter a valid employment type");
                             EmployeeType = Console.ReadLine();
                         }
-                    }
+                    
                     Console.WriteLine("Enter a first name");
                     string? FirstName = Console.ReadLine();
-                    if (String.IsNullOrEmpty(FirstName))
-                    {
+
                         while(String.IsNullOrEmpty(FirstName))
                         {
                             Console.WriteLine("Please enter a valid First Name!");
                             FirstName = Console.ReadLine();
                         }
-                    }
                     Console.WriteLine("Please enter a last name");
                     string? LastName = Console.ReadLine();
-                    if (String.IsNullOrEmpty(LastName)) 
-                    {
                         while(String.IsNullOrEmpty(LastName))
                         {
                             Console.WriteLine("Please enter a valid Last Name!");
                             LastName = Console.ReadLine();
-                        }
-                    }
+                        }                    
                     if (EmployeeType.ToLower() == "permanent")
                     {
                         Console.WriteLine("Please enter a salary");
@@ -99,7 +95,7 @@ Please Select an Option Below.
                                 }
                             } ;
                         }
-                        repoPerm.employees.Add(repoPerm.AddEmployee(FirstName, LastName, DecSalary, DecBonus, null, null));
+                        repoPerm.employees.Add(repoPerm.Create(FirstName, LastName, DecSalary, DecBonus, null, null));
                         Console.WriteLine("Permanent Employee added!");
                     }
                     else
@@ -142,7 +138,7 @@ Please Select an Option Below.
                                 }
                             }
                         }
-                        repoTemp.AddEmployee(repoTemp.AddEmployee(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked));
+                        repoTemp.AddEmployee(repoTemp.Create(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked));
                         Console.WriteLine("Temporary Employee added!");
                     }
                 } else if (Selection == "2")
@@ -341,11 +337,11 @@ Please Select an Option Below.
                 }
                 else if (Selection == "5")
                 {
-                    Console.WriteLine(TempCalculations.TotalAnnualPayPerm(repoPerm.employees, 0));
+                    Console.WriteLine(TempCalculations.TotalAnnualPay(repoPerm.employees, 0));
                 }
                 else if (Selection == "6")
                 {
-                    GameLoop = false;
+                    gameLoop = false;
                     Console.WriteLine("Now Exiting");
                 }
                 else

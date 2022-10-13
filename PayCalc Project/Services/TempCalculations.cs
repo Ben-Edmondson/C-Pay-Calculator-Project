@@ -1,7 +1,7 @@
 ﻿using PayCalc_Project.Models;
 namespace PayCalc_Project.Services
 {
-    public class TempCalculations : ICalculations
+    public class TempCalculations : ICalculations<EmployeeTemp>
     {
         public decimal? TotalAnnualPay(List<EmployeeTemp> employees, int index)
         {

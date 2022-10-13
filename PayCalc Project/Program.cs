@@ -6,16 +6,10 @@ namespace PayCalc_Project
 {
     class Program
     {
-        public string Output(string selector)
-        {
-
-        }
         static void Main(string[] args)
         {
             EmployeePermRepo repoPerm = new EmployeePermRepo();
             EmployeeTempRepo repoTemp = new EmployeeTempRepo();
-            repoPerm.AddEmployee("Joe", "Bloggs", 40000, 5000,null,null);
-            repoPerm.AddEmployee("John", "Smith", 45000, 2500, null, null);
             var gameLoop = true;
             while (gameLoop == true)
             {

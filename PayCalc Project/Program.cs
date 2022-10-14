@@ -1,6 +1,7 @@
 ﻿using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
+using PayCalc_Project.Input;
 
 namespace PayCalc_Project
 {
@@ -10,6 +11,8 @@ namespace PayCalc_Project
         {
             EmployeePermRepo repoPerm = new EmployeePermRepo();
             EmployeeTempRepo repoTemp = new EmployeeTempRepo();
+            PermCalculations permCalculations = new PermCalculations();
+            UserInput userInput = new UserInput();
             var gameLoop = true;
             while (gameLoop == true)
             {
@@ -22,130 +25,50 @@ Please Select an Option Below.
 4. Delete Employees
 5. Total Annual Salary
 6.Exit");
-                string? Selection = Console.ReadLine();
+                var Selection = Console.ReadLine();
                 Console.Clear();
                 if (Selection == "1")
                 {
                     Console.WriteLine("Is employee permanent or temporary?");
-                    string? EmployeeType = Console.ReadLine();
-                        while (String.IsNullOrEmpty(EmployeeType))
-                        {
-                            Console.WriteLine("Please enter a valid employment type");
-                            EmployeeType = Console.ReadLine();
-                        }
-                    
-                    Console.WriteLine("Enter a first name");
-                    string? FirstName = Console.ReadLine();
+                    string? employeeType = userInput.GetUserInput("Please enter a valid employment type!");
 
-                        while(String.IsNullOrEmpty(FirstName))
-                        {
-                            Console.WriteLine("Please enter a valid First Name!");
-                            FirstName = Console.ReadLine();
-                        }
+                    Console.WriteLine("Enter a first name");
+                    var firstName = userInput.GetUserInput("Please enter a valid first name!");
+
                     Console.WriteLine("Please enter a last name");
-                    string? LastName = Console.ReadLine();
-                        while(String.IsNullOrEmpty(LastName))
-                        {
-                            Console.WriteLine("Please enter a valid Last Name!");
-                            LastName = Console.ReadLine();
-                        }                    
-                    if (EmployeeType.ToLower() == "permanent")
+                    var lastName = userInput.GetUserInput("Please enter a valid last name!");
+
+                    if (employeeType.ToLower() == "permanent")
                     {
                         Console.WriteLine("Please enter a salary");
-                        string? Salary = Console.ReadLine();
-                        if (decimal.TryParse(Salary, out decimal DecSalary))
-                        {
 
-                        }
-                        else
-                        {
-                            bool x = true;
-                            while (x == true)
-                            {
-                                Console.WriteLine("Please enter a valid salary");
-                                Salary = Console.ReadLine();
-                                if (decimal.TryParse(Salary, out DecSalary))
-                                {
-                                    x = false;
-                                }
-                            } ;
-                        }
+                        var decSalary = userInput.GetUserDecimal("Please enter a valid Salary");
                         Console.WriteLine("Please enter a Bonus");
-                        string? Bonus = Console.ReadLine();
-                        if (decimal.TryParse(Bonus, out decimal DecBonus))
-                        {
-
-                        }
-                        else
-                        {
-                            bool x = true;
-                            while (x == true)
-                            {
-                                Console.WriteLine("Please enter a valid Bonus");
-                                Bonus = Console.ReadLine();
-                                if (decimal.TryParse(Bonus, out DecBonus))
-                                {
-                                    x = false;
-                                }
-                            } ;
-                        }
-                        repoPerm.employees.Add(repoPerm.Create(FirstName, LastName, DecSalary, DecBonus, null, null));
+                        var decBonus = userInput.GetUserDecimal("Please enter a valid Bonus");
+                        repoPerm.employees.Add(repoPerm.Create(firstName, lastName, decSalary, decBonus, null, null));
                         Console.WriteLine("Permanent Employee added!");
                     }
                     else
                     {
                         Console.WriteLine("Please enter a Day Rate");
-                        string? DayRate = Console.ReadLine();
-                        if (decimal.TryParse(DayRate, out decimal DecDayRate))
-                        {
-
-                        }
-                        else
-                        {
-                            bool x = true;
-                            while (x == true)
-                            {
-                                Console.WriteLine("Please enter a valid Day Rate");
-                                DayRate = Console.ReadLine();
-                                if (decimal.TryParse(DayRate, out DecDayRate))
-                                {
-                                    x = false;
-                                }
-                            } ;
-                        }
+                        var DayRate = userInput.GetUserDecimal("Please enter a valid Day Rate");
                         Console.WriteLine("Please enter Weeks Worked");
-                        string? WeeksWorked = Console.ReadLine();
-                        if (int.TryParse(WeeksWorked, out int IntWeeksWorked))
-                        {
-
-                        }
-                        else
-                        {
-                            bool x = true;
-                            while (x == true)
-                            {
-                                Console.WriteLine("Please enter a valid amount of Weeks Worked");
-                                WeeksWorked = Console.ReadLine();
-                                if (int.TryParse(WeeksWorked, out IntWeeksWorked))
-                                {
-                                    x = false;
-                                }
-                            }
-                        }
-                        repoTemp.AddEmployee(repoTemp.Create(FirstName, LastName, null, null, DecDayRate, IntWeeksWorked));
+                        int IntWeeksWorked = userInput.GetUserInt("Please enter a valid amount of weeks worked!");
+                        repoTemp.AddEmployee(repoTemp.Create(firstName, lastName, null, null, DayRate, IntWeeksWorked));
                         Console.WriteLine("Temporary Employee added!");
                     }
-                } else if (Selection == "2")
+                }
+                else if (Selection == "2")
                 {
                     Console.WriteLine(@"1.Permanent employees
 2.Temporary employees");
-                    string? ReadTempPerm = Console.ReadLine();
+                    var ReadTempPerm = Console.ReadLine();
                     Console.WriteLine(@"1.All Employees
 2.One employee");
-                    string? ReadSelect = Console.ReadLine();
+                    var readSelect = Console.ReadLine();
                     if (ReadTempPerm == "1")
                     {
-                        if (ReadSelect == "1")
+                        if (readSelect == "1")
                         {
                             List<EmployeePerm> employeeInfo = repoPerm.ReadAll();
                             foreach(EmployeePerm employee in employeeInfo)
@@ -153,30 +76,13 @@ Please Select an Option Below.
                                 Console.WriteLine(employee);
                             }
                         }
-                        else if (ReadSelect == "2")
+                        else if (readSelect == "2")
                         {
                             Console.WriteLine("Select an employee ID");
-                            string? SelectID = Console.ReadLine();
-                            if (int.TryParse(SelectID, out int IntSelectID))
+                            var SelectID = userInput.GetUserInt("Please enter a valid number");
+                            if(repoPerm.ReadSingle(SelectID) != null)
                             {
-
-                            }
-                            else
-                            {
-                                bool x = true;
-                                while (x == true)
-                                {
-                                    Console.WriteLine("Please enter a valid number");
-                                    if(int.TryParse(SelectID, out IntSelectID))
-                                    {
-                                        x = false;
-                                    }
-                                }
-                            }
-                            if(repoPerm.ReadSingle(IntSelectID) != null)
-                            {
-                                Console.WriteLine(repoPerm.ReadSingle(IntSelectID));
-
+                                Console.WriteLine(repoPerm.ReadSingle(SelectID));
                             }
                             else
                             {
@@ -186,36 +92,19 @@ Please Select an Option Below.
                     }
                     else if (ReadTempPerm == "2")
                     {
-                        if (ReadSelect == "1") { 
+                        if (readSelect == "1") { 
                             List<EmployeeTemp> employeeInfo = repoTemp.ReadAll();
                             foreach(EmployeeTemp employee in employeeInfo)
                             {
                             Console.WriteLine(employee);
                             }
-                        }else if (ReadSelect == "2")
+                        }else if (readSelect == "2")
                         {
                             Console.WriteLine("Select an employee ID");
-                            string? SelectID = Console.ReadLine();
-                            if (int.TryParse(SelectID, out int IntSelectID))
+                            var selectID = userInput.GetUserInt("Select a valid number");
+                            if (repoTemp.ReadSingle(selectID) != null)
                             {
-
-                            }
-                            else
-                            {
-
-                                bool x = true;
-                                while (x == true)
-                                {
-                                    Console.WriteLine("Please enter a valid number");
-                                    if (int.TryParse(SelectID, out IntSelectID))
-                                    {
-                                        x = false;
-                                    }
-                                }
-                            }
-                            if (repoTemp.ReadSingle(IntSelectID) != null)
-                            {
-                                Console.WriteLine(repoPerm.ReadSingle(IntSelectID));
+                                Console.WriteLine(repoPerm.ReadSingle(selectID));
                             }
                             else
                             {
@@ -239,30 +128,14 @@ Please Select an Option Below.
                     string? DelSelect = Console.ReadLine();
                     Console.WriteLine(@"1.One Employee
 2.All Employees");
-                    string? DelSec = Console.ReadLine();
+                    var DelSec = Console.ReadLine();
                     if (DelSelect == "1")
                     {
                         if (DelSec == "1")
                         {
                             Console.WriteLine("Please enter an ID");
-                            string? ID = Console.ReadLine();
-                            if (int.TryParse(ID, out int IntID))
-                            {
-
-                            }
-                            else
-                            {
-                                bool x = true;
-                                while (x == true)
-                                {
-                                    Console.WriteLine("Please enter a valid number");
-                                    if (int.TryParse(ID, out IntID))
-                                    {
-                                        x = false;
-                                    }
-                                }
-                            }
-                            if (repoPerm.Delete(IntID) == false)
+                            var ID = userInput.GetUserInt("Please enter a valid number!");
+                            if (repoPerm.Delete(ID) == false)
                             {
                                 Console.WriteLine("No Employee to be removed with this ID!"!);
                             }
@@ -286,24 +159,8 @@ Please Select an Option Below.
                         if (DelSec == "1")
                         {
                             Console.WriteLine("Please enter an ID");
-                            string? ID = Console.ReadLine();
-                            if (int.TryParse(ID, out int IntID))
-                            {
-
-                            }
-                            else
-                            {
-                                bool x = true;
-                                while (x == true)
-                                {
-                                    Console.WriteLine("Please enter a valid number");
-                                    if (int.TryParse(ID, out IntID))
-                                    {
-                                        x = false;
-                                    }
-                                }
-                            }
-                            if (repoTemp.Delete(IntID) == false)
+                            var ID = userInput.GetUserInt("Please enter a valid number");
+                            if (repoTemp.Delete(ID) == false)
                             {
                                 Console.WriteLine("No Employee to be removed at location"!);
                             }
@@ -331,7 +188,7 @@ Please Select an Option Below.
                 }
                 else if (Selection == "5")
                 {
-                    Console.WriteLine(TempCalculations.TotalAnnualPay(repoPerm.employees, 0));
+                    Console.WriteLine(permCalculations.TotalAnnualPay(repoPerm.employees, 0));
                 }
                 else if (Selection == "6")
                 {
@@ -344,6 +201,9 @@ Please Select an Option Below.
                 }
                 Console.ReadLine();
             }
-        }
+
+
     }
-}
+
+
+    }

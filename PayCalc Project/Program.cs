@@ -2,6 +2,7 @@
 using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
 using PayCalc_Project.Input;
+using System.Collections.Immutable;
 
 namespace PayCalc_Project
 {
@@ -12,6 +13,7 @@ namespace PayCalc_Project
             EmployeePermRepo repoPerm = new EmployeePermRepo();
             EmployeeTempRepo repoTemp = new EmployeeTempRepo();
             PermCalculations permCalculations = new PermCalculations();
+            TempCalculations tempCalculations = new TempCalculations();
             UserInput userInput = new UserInput();
             var gameLoop = true;
             while (gameLoop == true)
@@ -192,7 +194,34 @@ Please Select an Option Below.
                 }
                 else if (Selection == "5")
                 {
-                    Console.WriteLine(permCalculations.TotalAnnualPay(repoPerm.employees, 0));
+                    Console.WriteLine(@"1.Permanent employees
+2.Temporary employees");
+                    var readTempPerm = userInput.GetUserInput("Please enter a choice.");
+                    if (readTempPerm.ToLower() == "permanent")
+                    {
+                        Console.WriteLine("Please enter an ID");
+                        var ID = userInput.GetUserInt("Please enter a valid number!");
+                        if (permCalculations.TotalAnnualPay(repoPerm.employees, ID) == null)
+                        {
+                            Console.WriteLine("This was not a valid ID ");
+                        }else
+                        {
+                            Console.WriteLine(permCalculations.TotalAnnualPay(repoPerm.employees, ID));
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter an ID");
+                        var ID = userInput.GetUserInt("Please enter a valid number!");
+                        if (tempCalculations.TotalAnnualPay(repoTemp.employees, ID) == null)
+                        {
+                            Console.WriteLine("This was not a valid ID ");
+                        }
+                        else
+                        {
+                            Console.WriteLine(permCalculations.TotalAnnualPay(repoPerm.employees, ID));
+                        }
+                    }
                 }
                 else if (Selection == "6")
                 {

@@ -20,8 +20,6 @@ namespace PayCalc_Project.Services
             new { Lower = 50271m, Upper = 150000m, Rate = 0.4m },
             new { Lower = 150001m, Upper = decimal.MaxValue, Rate = 0.45m }
             };
-
-
                     decimal? taxToBePaid = 0m;
 
                     foreach (var band in taxBands)

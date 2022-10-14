@@ -41,7 +41,6 @@ Please Select an Option Below.
                     if (employeeType.ToLower() == "permanent")
                     {
                         Console.WriteLine("Please enter a salary");
-
                         var decSalary = userInput.GetUserDecimal("Please enter a valid Salary");
                         Console.WriteLine("Please enter a Bonus");
                         var decBonus = userInput.GetUserDecimal("Please enter a valid Bonus");

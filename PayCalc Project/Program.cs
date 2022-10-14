@@ -30,7 +30,7 @@ Please Select an Option Below.
                 if (Selection == "1")
                 {
                     Console.WriteLine("Is employee permanent or temporary?");
-                    string? employeeType = userInput.GetUserInput("Please enter a valid employment type!");
+                    var employeeType = userInput.GetUserInput("Please enter a valid employment type!");
 
                     Console.WriteLine("Enter a first name");
                     var firstName = userInput.GetUserInput("Please enter a valid first name!");
@@ -51,10 +51,10 @@ Please Select an Option Below.
                     else
                     {
                         Console.WriteLine("Please enter a Day Rate");
-                        var DayRate = userInput.GetUserDecimal("Please enter a valid Day Rate");
+                        var dayRate = userInput.GetUserDecimal("Please enter a valid Day Rate");
                         Console.WriteLine("Please enter Weeks Worked");
-                        int IntWeeksWorked = userInput.GetUserInt("Please enter a valid amount of weeks worked!");
-                        repoTemp.AddEmployee(repoTemp.Create(firstName, lastName, null, null, DayRate, IntWeeksWorked));
+                        var weeksWorked = userInput.GetUserInt("Please enter a valid amount of weeks worked!");
+                        repoTemp.AddEmployee(repoTemp.Create(firstName, lastName, null, null, dayRate, weeksWorked));
                         Console.WriteLine("Temporary Employee added!");
                     }
                 }
@@ -62,16 +62,16 @@ Please Select an Option Below.
                 {
                     Console.WriteLine(@"1.Permanent employees
 2.Temporary employees");
-                    var ReadTempPerm = Console.ReadLine();
+                    var readTempPerm = Console.ReadLine();
                     Console.WriteLine(@"1.All Employees
 2.One employee");
                     var readSelect = Console.ReadLine();
-                    if (ReadTempPerm == "1")
+                    if (readTempPerm == "1")
                     {
                         if (readSelect == "1")
                         {
                             List<EmployeePerm> employeeInfo = repoPerm.ReadAll();
-                            foreach(EmployeePerm employee in employeeInfo)
+                            foreach (EmployeePerm employee in employeeInfo)
                             {
                                 Console.WriteLine(employee);
                             }
@@ -80,7 +80,7 @@ Please Select an Option Below.
                         {
                             Console.WriteLine("Select an employee ID");
                             var SelectID = userInput.GetUserInt("Please enter a valid number");
-                            if(repoPerm.ReadSingle(SelectID) != null)
+                            if (repoPerm.ReadSingle(SelectID) != null)
                             {
                                 Console.WriteLine(repoPerm.ReadSingle(SelectID));
                             }
@@ -90,15 +90,17 @@ Please Select an Option Below.
                             }
                         }
                     }
-                    else if (ReadTempPerm == "2")
+                    else if (readTempPerm == "2")
                     {
-                        if (readSelect == "1") { 
+                        if (readSelect == "1")
+                        {
                             List<EmployeeTemp> employeeInfo = repoTemp.ReadAll();
-                            foreach(EmployeeTemp employee in employeeInfo)
+                            foreach (EmployeeTemp employee in employeeInfo)
                             {
-                            Console.WriteLine(employee);
+                                Console.WriteLine(employee);
                             }
-                        }else if (readSelect == "2")
+                        }
+                        else if (readSelect == "2")
                         {
                             Console.WriteLine("Select an employee ID");
                             var selectID = userInput.GetUserInt("Select a valid number");
@@ -116,7 +118,8 @@ Please Select an Option Below.
                     {
                         Console.WriteLine("This was not a valid choice.");
                     }
-                } else if (Selection == "3")
+                }
+                else if (Selection == "3")
                 {
                     repoPerm.Update(1112, "Ben", "Edmondson", 60000, 5000, null, null);
                     Console.WriteLine("Employee Updated!");
@@ -125,13 +128,13 @@ Please Select an Option Below.
                 {
                     Console.WriteLine(@"1.Delete Permanent employees
 2.Delete Temporary employees");
-                    string? DelSelect = Console.ReadLine();
+                    string? delSelect = Console.ReadLine();
                     Console.WriteLine(@"1.One Employee
 2.All Employees");
-                    var DelSec = Console.ReadLine();
-                    if (DelSelect == "1")
+                    var delSec = Console.ReadLine();
+                    if (delSelect == "1")
                     {
-                        if (DelSec == "1")
+                        if (delSec == "1")
                         {
                             Console.WriteLine("Please enter an ID");
                             var ID = userInput.GetUserInt("Please enter a valid number!");
@@ -143,7 +146,8 @@ Please Select an Option Below.
                             {
                                 Console.WriteLine("Employee removed!");
                             }
-                        }else if(DelSec == "2")
+                        }
+                        else if (delSec == "2")
                         {
                             if (repoPerm.RemoveAll() == false)
                             {
@@ -154,9 +158,10 @@ Please Select an Option Below.
                                 Console.WriteLine("Employees wiped!");
                             }
                         }
-                    }else if (DelSelect == "2")
+                    }
+                    else if (delSelect == "2")
                     {
-                        if (DelSec == "1")
+                        if (delSec == "1")
                         {
                             Console.WriteLine("Please enter an ID");
                             var ID = userInput.GetUserInt("Please enter a valid number");
@@ -169,7 +174,7 @@ Please Select an Option Below.
                                 Console.WriteLine("Employee removed!");
                             }
                         }
-                        else if (DelSec == "2")
+                        else if (delSec == "2")
                         {
                             if (repoTemp.RemoveAll() == false)
                             {
@@ -201,9 +206,6 @@ Please Select an Option Below.
                 }
                 Console.ReadLine();
             }
-
-
+        }
     }
-
-
-    }
+}

@@ -26,8 +26,7 @@ namespace PayCalc_Project.Repository
         }
         public PermanentEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-            Random idGen = new Random();
-            int id = idGen.Next(1111, 10000);
+            rnd.Next(1111, 10000);
             PermanentEmployee employee = new PermanentEmployee() { ID = id, FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus };
             employees.Add(employee);
             return employee;

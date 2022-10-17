@@ -1,4 +1,5 @@
 ﻿using PayCalc_Project.Models;
+using System.Runtime.Serialization;
 
 namespace PayCalc_Project.Repository
 {
@@ -68,8 +69,7 @@ namespace PayCalc_Project.Repository
 
         public TemporaryEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-            Random idGen = new Random();
-            int id = idGen.Next(1111, 10000);
+            rnd.Next(1111, 10000);
             TemporaryEmployee employee = new TemporaryEmployee() { ID = id, FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };
             employees.Add(employee);
             return employee;

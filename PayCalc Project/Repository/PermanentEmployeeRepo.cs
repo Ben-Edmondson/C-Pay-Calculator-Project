@@ -1,15 +1,20 @@
 ﻿using PayCalc_Project.Models;
+using System.Runtime.CompilerServices;
+
 namespace PayCalc_Project.Repository
 {
     public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>
     {
-        static Random rnd = new Random();
+        private Random rnd = new Random();
 
-        private List<PermanentEmployee> employees = new List<PermanentEmployee>()
+        private List<PermanentEmployee> employees = new List<PermanentEmployee>();
+
+        PermanentEmployeeRepo()
         {
-            new PermanentEmployee(){ID = rnd.Next(1111,10000),FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000},
-            new PermanentEmployee(){ID = rnd.Next(1111,10000),FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 }
-        };
+            employees.Add( new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000});
+            employees.Add( new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
+        }
+
         public bool Delete(int id)
         {   
             if (employees.Exists(x => x.ID == id) ==true)

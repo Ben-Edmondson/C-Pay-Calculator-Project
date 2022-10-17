@@ -5,12 +5,15 @@ namespace PayCalc_Project.Repository
 {
     public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
-        static Random rnd = new Random();
+        private Random rnd = new Random();
 
-        private List<TemporaryEmployee> employees = new List<TemporaryEmployee>()
+        private List<TemporaryEmployee> employees = new List<TemporaryEmployee>();
+
+        TemporaryEmployeeRepo()
         {
-            new TemporaryEmployee(){ID = rnd.Next(1111,10000), FirstName = "Clare", LastName = "Jones",DayRate = 350,WeeksWorked = 40} 
-        };
+            employees.Add(new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
+        }
+
         public bool Delete(int id)
         {
             if (employees.Exists(x => x.ID == id) == true)

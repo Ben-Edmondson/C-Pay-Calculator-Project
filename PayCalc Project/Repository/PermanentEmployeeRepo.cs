@@ -24,11 +24,11 @@ namespace PayCalc_Project.Repository
             employees.Clear();
             return true;
         }
-        public PermanentEmployee Create(string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public PermanentEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             Random idGen = new Random();
             int id = idGen.Next(1111, 10000);
-            PermanentEmployee employee = new PermanentEmployee() { ID = id, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus };
+            PermanentEmployee employee = new PermanentEmployee() { ID = id, FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus };
             return employee;
         }
         public void AddEmployee(PermanentEmployee employee)
@@ -45,27 +45,27 @@ namespace PayCalc_Project.Repository
             PermanentEmployee? ReadSingle = employees.Find(x => x.ID == id);
             return ReadSingle;
         }
-        public bool Update(int id, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public bool Update(int id, string? firstName, string? lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             foreach (PermanentEmployee employee in employees)
             {
                 if (employee.ID == id)
                 {
-                    if (String.IsNullOrEmpty(FirstName) == false)
+                    if (String.IsNullOrEmpty(firstName) == false)
                     {
-                        employee.FirstName = FirstName;
+                        employee.FirstName = firstName;
                     }
-                    if (String.IsNullOrEmpty(LastName) == false)
+                    if (String.IsNullOrEmpty(lastName) == false)
                     {
-                        employee.LastName = LastName;
+                        employee.LastName = lastName;
                     }
-                    if (Salary != null)
+                    if (salary != null)
                     {
-                        employee.Salary = Salary;
+                        employee.Salary = salary;
                     }
-                    if (Bonus != null)
+                    if (bonus != null)
                     { 
-                        employee.Bonus = Bonus;
+                        employee.Bonus = bonus;
                     }
                     return true;
                 }

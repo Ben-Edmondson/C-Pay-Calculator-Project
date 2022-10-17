@@ -38,27 +38,27 @@ namespace PayCalc_Project.Repository
             return ReadSingle;
         }
 
-        public bool Update(int id, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public bool Update(int id, string? firstName, string? lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             foreach (TemporaryEmployee employee in employees)
             {
                 if (employee.ID == id)
                 {
-                    if (String.IsNullOrEmpty(FirstName) == false)
+                    if (String.IsNullOrEmpty(firstName) == false)
                     {
-                        employee.FirstName = FirstName;
+                        employee.FirstName = firstName;
                     }
-                    if (String.IsNullOrEmpty(LastName) == false)
+                    if (String.IsNullOrEmpty(lastName) == false)
                     {
-                        employee.LastName = LastName;
+                        employee.LastName = lastName;
                     }
-                    if (DayRate != null)
+                    if (dayRate != null)
                     {
-                        employee.DayRate = DayRate;
+                        employee.DayRate = dayRate;
                     }
-                    if (WeeksWorked != null)
+                    if (weeksWorked != null)
                     {
-                        employee.WeeksWorked = WeeksWorked;
+                        employee.WeeksWorked = weeksWorked;
                     }
                     return true;
                 }
@@ -66,11 +66,11 @@ namespace PayCalc_Project.Repository
             return false;
         }
 
-        public TemporaryEmployee Create(string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public TemporaryEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             Random idGen = new Random();
             int id = idGen.Next(1111, 10000);
-            TemporaryEmployee employee = new TemporaryEmployee() { ID = id, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked };
+            TemporaryEmployee employee = new TemporaryEmployee() { ID = id, FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };
             return employee;
         }
 

@@ -3,11 +3,11 @@ using PayCalc_Project.Repository;
 
 namespace PayCalc_Project.Services
 {
-    class PermCalculations : ICalculations<EmployeePerm>
+    class PermanentCalculations : ICalculations<PermanentEmployee>
     {
-        public decimal? TotalAnnualPay(List<EmployeePerm> employees, int id)
+        public decimal? TotalAnnualPay(List<PermanentEmployee> employees, int id)
         {
-            foreach (EmployeePerm employee in employees)
+            foreach (PermanentEmployee employee in employees)
             {
                 if (employee.ID == id)
                 {

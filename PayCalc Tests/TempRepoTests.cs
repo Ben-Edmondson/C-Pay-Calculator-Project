@@ -4,7 +4,7 @@ namespace PayCalc_Tests
     [TestFixture]
     public class TempRepoTests
     {
-        EmployeeTempRepo _repoTemp = new EmployeeTempRepo();
+        TemporaryEmployeeRepo _repoTemp = new TemporaryEmployeeRepo();
         [Test]
         public void UpdateTest()
         {

@@ -1,14 +1,14 @@
 ﻿using PayCalc_Project.Models;
 namespace PayCalc_Project.Repository
 {
-    public class EmployeePermRepo : IEmployeeRepository<EmployeePerm>
+    public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>
     {
         static Random rnd = new Random();
 
-        public List<EmployeePerm> employees = new List<EmployeePerm>()
+        public List<PermanentEmployee> employees = new List<PermanentEmployee>()
         {
-            new EmployeePerm(){ID = rnd.Next(1111,10000),FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000},
-            new EmployeePerm(){ID = rnd.Next(1111,10000),FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 }
+            new PermanentEmployee(){ID = rnd.Next(1111,10000),FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000},
+            new PermanentEmployee(){ID = rnd.Next(1111,10000),FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 }
         };
         public bool Delete(int id)
         {   
@@ -24,30 +24,30 @@ namespace PayCalc_Project.Repository
             employees.Clear();
             return true;
         }
-        public EmployeePerm Create(string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public PermanentEmployee Create(string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
             Random idGen = new Random();
             int id = idGen.Next(1111, 10000);
-            EmployeePerm employee = new EmployeePerm() { ID = id, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus };
+            PermanentEmployee employee = new PermanentEmployee() { ID = id, FirstName = FirstName, LastName = LastName, Salary = Salary, Bonus = Bonus };
             return employee;
         }
-        public void AddEmployee(EmployeePerm employee)
+        public void AddEmployee(PermanentEmployee employee)
         {
             employees.Add(employee);
         }
-        public List<EmployeePerm> ReadAll()
+        public List<PermanentEmployee> ReadAll()
         {
-            List<EmployeePerm> ReadAll = employees;
+            List<PermanentEmployee> ReadAll = employees;
             return ReadAll;
         }
-        public EmployeePerm? ReadSingle(int id)
+        public PermanentEmployee? ReadSingle(int id)
         {
-            EmployeePerm? ReadSingle = employees.Find(x => x.ID == id);
+            PermanentEmployee? ReadSingle = employees.Find(x => x.ID == id);
             return ReadSingle;
         }
         public bool Update(int id, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            foreach (EmployeePerm employee in employees)
+            foreach (PermanentEmployee employee in employees)
             {
                 if (employee.ID == id)
                 {

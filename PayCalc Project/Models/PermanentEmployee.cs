@@ -1,6 +1,6 @@
 ﻿namespace PayCalc_Project.Models
 {
-    public class EmployeePerm : Employee
+    public class PermanentEmployee : Employee
     {
         public decimal? Salary { get; set; }
         public decimal? Bonus { get; set; }

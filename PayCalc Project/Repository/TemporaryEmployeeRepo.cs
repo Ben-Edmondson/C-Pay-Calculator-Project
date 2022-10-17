@@ -2,13 +2,13 @@
 
 namespace PayCalc_Project.Repository
 {
-    public class EmployeeTempRepo : IEmployeeRepository<EmployeeTemp>
+    public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
         static Random rnd = new Random();
 
-        public List<EmployeeTemp> employees = new List<EmployeeTemp>()
+        public List<TemporaryEmployee> employees = new List<TemporaryEmployee>()
         {
-            new EmployeeTemp(){ID = rnd.Next(1111,10000), FirstName = "Clare", LastName = "Jones",DayRate = 350,WeeksWorked = 40} 
+            new TemporaryEmployee(){ID = rnd.Next(1111,10000), FirstName = "Clare", LastName = "Jones",DayRate = 350,WeeksWorked = 40} 
         };
         public bool Delete(int id)
         {
@@ -26,21 +26,21 @@ namespace PayCalc_Project.Repository
             return true;
         }
 
-        public List<EmployeeTemp> ReadAll()
+        public List<TemporaryEmployee> ReadAll()
         {
-            List<EmployeeTemp> ReadAll = employees;
+            List<TemporaryEmployee> ReadAll = employees;
             return ReadAll;
         }
 
-        public EmployeeTemp? ReadSingle(int id)
+        public TemporaryEmployee? ReadSingle(int id)
         {
-            EmployeeTemp? ReadSingle = employees.Find(x => x.ID == id);
+            TemporaryEmployee? ReadSingle = employees.Find(x => x.ID == id);
             return ReadSingle;
         }
 
         public bool Update(int id, string? FirstName, string? LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
-            foreach (EmployeeTemp employee in employees)
+            foreach (TemporaryEmployee employee in employees)
             {
                 if (employee.ID == id)
                 {
@@ -66,15 +66,15 @@ namespace PayCalc_Project.Repository
             return false;
         }
 
-        public EmployeeTemp Create(string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
+        public TemporaryEmployee Create(string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked)
         {
             Random idGen = new Random();
             int id = idGen.Next(1111, 10000);
-            EmployeeTemp employee = new EmployeeTemp() { ID = id, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked };
+            TemporaryEmployee employee = new TemporaryEmployee() { ID = id, FirstName = FirstName, LastName = LastName, DayRate = DayRate, WeeksWorked = WeeksWorked };
             return employee;
         }
 
-        public void AddEmployee(EmployeeTemp employee)
+        public void AddEmployee(TemporaryEmployee employee)
         {
             employees.Add(employee);
         }

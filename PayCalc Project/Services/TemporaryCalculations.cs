@@ -1,11 +1,11 @@
 ﻿using PayCalc_Project.Models;
 namespace PayCalc_Project.Services
 {
-    public class TempCalculations : ICalculations<EmployeeTemp>
+    public class TemporaryCalculations : ICalculations<TemporaryEmployee>
     {
-        public decimal? TotalAnnualPay(List<EmployeeTemp> employees, int id)
+        public decimal? TotalAnnualPay(List<TemporaryEmployee> employees, int id)
         {
-            foreach (EmployeeTemp employee in employees)
+            foreach (TemporaryEmployee employee in employees)
             {
                 if(employee.ID == id)
                 {

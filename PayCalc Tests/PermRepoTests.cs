@@ -4,7 +4,7 @@ namespace PayCalc_Tests
     [TestFixture]
     public class PermRepoTests
     {
-        EmployeePermRepo _repoPerm = new EmployeePermRepo();
+        PermanentEmployeeRepo _repoPerm = new PermanentEmployeeRepo();
         [Test]
         public void UpdateTest()
         {

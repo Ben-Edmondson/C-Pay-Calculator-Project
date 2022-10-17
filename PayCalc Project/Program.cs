@@ -10,10 +10,10 @@ namespace PayCalc_Project
     {
         static void Main(string[] args)
         {
-            EmployeePermRepo repoPerm = new EmployeePermRepo();
-            EmployeeTempRepo repoTemp = new EmployeeTempRepo();
-            PermCalculations permCalculations = new PermCalculations();
-            TempCalculations tempCalculations = new TempCalculations();
+            PermanentEmployeeRepo repoPerm = new PermanentEmployeeRepo();
+            TemporaryEmployeeRepo repoTemp = new TemporaryEmployeeRepo();
+            PermanentCalculations permCalculations = new PermanentCalculations();
+            TemporaryCalculations tempCalculations = new TemporaryCalculations();
             UserInput userInput = new UserInput();
             var gameLoop = true;
             while (gameLoop == true)
@@ -71,8 +71,8 @@ Please Select an Option Below.
                     {
                         if (readSelect == "1")
                         {
-                            List<EmployeePerm> employeeInfo = repoPerm.ReadAll();
-                            foreach (EmployeePerm employee in employeeInfo)
+                            List<PermanentEmployee> employeeInfo = repoPerm.ReadAll();
+                            foreach (PermanentEmployee employee in employeeInfo)
                             {
                                 Console.WriteLine(employee);
                             }
@@ -95,8 +95,8 @@ Please Select an Option Below.
                     {
                         if (readSelect == "1")
                         {
-                            List<EmployeeTemp> employeeInfo = repoTemp.ReadAll();
-                            foreach (EmployeeTemp employee in employeeInfo)
+                            List<TemporaryEmployee> employeeInfo = repoTemp.ReadAll();
+                            foreach (TemporaryEmployee employee in employeeInfo)
                             {
                                 Console.WriteLine(employee);
                             }

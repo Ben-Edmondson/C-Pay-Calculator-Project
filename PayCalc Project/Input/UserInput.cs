@@ -1,6 +1,6 @@
 ﻿namespace PayCalc_Project.Input
 {
-    class UserInput
+    public class UserInput
     {
         public string GetUserInput(string errorMessage)
         {

@@ -6,7 +6,7 @@ namespace PayCalc_Project.Repository
     {
         static Random rnd = new Random();
 
-        public List<TemporaryEmployee> employees = new List<TemporaryEmployee>()
+        private List<TemporaryEmployee> employees = new List<TemporaryEmployee>()
         {
             new TemporaryEmployee(){ID = rnd.Next(1111,10000), FirstName = "Clare", LastName = "Jones",DayRate = 350,WeeksWorked = 40} 
         };

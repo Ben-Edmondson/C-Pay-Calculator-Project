@@ -46,7 +46,7 @@ Please Select an Option Below.
                         var decSalary = userInput.GetUserDecimal("Please enter a valid Salary");
                         Console.WriteLine("Please enter a Bonus");
                         var decBonus = userInput.GetUserDecimal("Please enter a valid Bonus");
-                        repoPerm.employees.Add(repoPerm.Create(firstName, lastName, decSalary, decBonus, null, null));
+                        repoPerm.Create(firstName, lastName, decSalary, decBonus, null, null);
                         Console.WriteLine("Permanent Employee added!");
                     }
                     else
@@ -55,7 +55,7 @@ Please Select an Option Below.
                         var dayRate = userInput.GetUserDecimal("Please enter a valid Day Rate");
                         Console.WriteLine("Please enter Weeks Worked");
                         var weeksWorked = userInput.GetUserInt("Please enter a valid amount of weeks worked!");
-                        repoTemp.AddEmployee(repoTemp.Create(firstName, lastName, null, null, dayRate, weeksWorked));
+                        repoTemp.Create(firstName, lastName, null, null, dayRate, weeksWorked);
                         Console.WriteLine("Temporary Employee added!");
                     }
                 }
@@ -201,25 +201,27 @@ Please Select an Option Below.
                     {
                         Console.WriteLine("Please enter an ID");
                         var ID = userInput.GetUserInt("Please enter a valid number!");
-                        if (permCalculations.TotalAnnualPay(repoPerm.employees, ID) == null)
+                        PermanentEmployee? employee = repoPerm.ReadSingle(ID);
+                        if (employee == null)
                         {
                             Console.WriteLine("This was not a valid ID ");
                         }else
                         {
-                            Console.WriteLine(permCalculations.TotalAnnualPay(repoPerm.employees, ID));
+                            Console.WriteLine(permCalculations.TotalAnnualPay(employee));
                         }
                     }
                     else
                     {
                         Console.WriteLine("Please enter an ID");
                         var ID = userInput.GetUserInt("Please enter a valid number!");
-                        if (tempCalculations.TotalAnnualPay(repoTemp.employees, ID) == null)
+                        TemporaryEmployee? employee = repoTemp.ReadSingle(ID);
+                        if (employee == null)
                         {
                             Console.WriteLine("This was not a valid ID ");
                         }
                         else
                         {
-                            Console.WriteLine(permCalculations.TotalAnnualPay(repoPerm.employees, ID));
+                            Console.WriteLine(tempCalculations.TotalAnnualPay(employee));
                         }
                     }
                 }

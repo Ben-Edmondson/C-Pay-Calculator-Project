@@ -71,12 +71,8 @@ namespace PayCalc_Project.Repository
             Random idGen = new Random();
             int id = idGen.Next(1111, 10000);
             TemporaryEmployee employee = new TemporaryEmployee() { ID = id, FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };
-            return employee;
-        }
-
-        public void AddEmployee(TemporaryEmployee employee)
-        {
             employees.Add(employee);
+            return employee;
         }
     }
 }

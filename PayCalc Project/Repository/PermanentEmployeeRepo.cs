@@ -29,11 +29,8 @@ namespace PayCalc_Project.Repository
             Random idGen = new Random();
             int id = idGen.Next(1111, 10000);
             PermanentEmployee employee = new PermanentEmployee() { ID = id, FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus };
-            return employee;
-        }
-        public void AddEmployee(PermanentEmployee employee)
-        {
             employees.Add(employee);
+            return employee;
         }
         public List<PermanentEmployee> ReadAll()
         {

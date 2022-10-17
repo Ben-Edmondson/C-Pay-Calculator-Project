@@ -3,15 +3,11 @@ namespace PayCalc_Project.Services
 {
     public class TemporaryCalculations : ICalculations<TemporaryEmployee>
     {
-        public decimal? TotalAnnualPay(List<TemporaryEmployee> employees, int id)
+        public decimal? TotalAnnualPay(TemporaryEmployee employee)
         {
-            foreach (TemporaryEmployee employee in employees)
-            {
-                if(employee.ID == id)
-                {
                     int? days = 5;
-                    decimal? DayRate = employees[id].DayRate;
-                    int? WeeksWorked = employees[id].WeeksWorked;
+            decimal? DayRate = employee.DayRate;
+                    int? WeeksWorked = employee.WeeksWorked;
                     decimal? TotalPay = DayRate * (days * WeeksWorked);
                     var taxBands = new[]
                     {
@@ -33,8 +29,6 @@ namespace PayCalc_Project.Services
                     }
                     return taxToBePaid;
                 }
-            }
-            return null;
         }
     }
 }

@@ -2,7 +2,7 @@
 {   
     public interface ICalculations<T>
     {
-        public decimal? TotalAnnualPay(List<T> employees,int index);
+        public decimal? TotalAnnualPay(T employees);
 
     }
 }

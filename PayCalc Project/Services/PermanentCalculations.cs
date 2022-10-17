@@ -1,5 +1,4 @@
 ﻿using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
 
 namespace PayCalc_Project.Services
 {
@@ -28,7 +27,6 @@ namespace PayCalc_Project.Services
                 }
             }
             return taxToBePaid;
-        }
         }
     }
 }

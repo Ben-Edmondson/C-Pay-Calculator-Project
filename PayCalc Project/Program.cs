@@ -1,8 +1,7 @@
-﻿using PayCalc_Project.Models;
+﻿using PayCalc_Project.Input;
+using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
-using PayCalc_Project.Input;
-using System.Collections.Immutable;
 
 namespace PayCalc_Project
 {
@@ -10,10 +9,10 @@ namespace PayCalc_Project
     {
         static void Main(string[] args)
         {
-            PermanentEmployeeRepo repoPerm = new PermanentEmployeeRepo();
-            TemporaryEmployeeRepo repoTemp = new TemporaryEmployeeRepo();
-            PermanentCalculations permCalculations = new PermanentCalculations();
-            TemporaryCalculations tempCalculations = new TemporaryCalculations();
+            PermanentEmployeeRepo permanentRepository = new PermanentEmployeeRepo();
+            TemporaryEmployeeRepo temporaryRepository = new TemporaryEmployeeRepo();
+            PermanentCalculations permanentCalculations = new PermanentCalculations();
+            TemporaryCalculations temporaryCalculations = new TemporaryCalculations();
             UserInput userInput = new UserInput();
             var gameLoop = true;
             while (gameLoop == true)
@@ -27,9 +26,9 @@ Please Select an Option Below.
 4. Delete Employees
 5. Total Annual Salary
 6.Exit");
-                var Selection = Console.ReadLine();
+                var selection = Console.ReadLine();
                 Console.Clear();
-                if (Selection == "1")
+                if (selection == "1")
                 {
                     Console.WriteLine("Is employee permanent or temporary?");
                     var employeeType = userInput.GetUserInput("Please enter a valid employment type!");
@@ -46,7 +45,7 @@ Please Select an Option Below.
                         var decSalary = userInput.GetUserDecimal("Please enter a valid Salary");
                         Console.WriteLine("Please enter a Bonus");
                         var decBonus = userInput.GetUserDecimal("Please enter a valid Bonus");
-                        repoPerm.Create(firstName, lastName, decSalary, decBonus, null, null);
+                        permanentRepository.Create(firstName, lastName, decSalary, decBonus, null, null);
                         Console.WriteLine("Permanent Employee added!");
                     }
                     else
@@ -55,11 +54,11 @@ Please Select an Option Below.
                         var dayRate = userInput.GetUserDecimal("Please enter a valid Day Rate");
                         Console.WriteLine("Please enter Weeks Worked");
                         var weeksWorked = userInput.GetUserInt("Please enter a valid amount of weeks worked!");
-                        repoTemp.Create(firstName, lastName, null, null, dayRate, weeksWorked);
+                        temporaryRepository.Create(firstName, lastName, null, null, dayRate, weeksWorked);
                         Console.WriteLine("Temporary Employee added!");
                     }
                 }
-                else if (Selection == "2")
+                else if (selection == "2")
                 {
                     Console.WriteLine(@"1.Permanent employees
 2.Temporary employees");
@@ -71,7 +70,7 @@ Please Select an Option Below.
                     {
                         if (readSelect == "1")
                         {
-                            List<PermanentEmployee> employeeInfo = repoPerm.ReadAll();
+                            List<PermanentEmployee> employeeInfo = permanentRepository.ReadAll();
                             foreach (PermanentEmployee employee in employeeInfo)
                             {
                                 Console.WriteLine(employee);
@@ -80,10 +79,10 @@ Please Select an Option Below.
                         else if (readSelect == "2")
                         {
                             Console.WriteLine("Select an employee ID");
-                            var SelectID = userInput.GetUserInt("Please enter a valid number");
-                            if (repoPerm.ReadSingle(SelectID) != null)
+                            var selectID = userInput.GetUserInt("Please enter a valid number");
+                            if (permanentRepository.ReadSingle(selectID) != null)
                             {
-                                Console.WriteLine(repoPerm.ReadSingle(SelectID));
+                                Console.WriteLine(permanentRepository.ReadSingle(selectID));
                             }
                             else
                             {
@@ -95,7 +94,7 @@ Please Select an Option Below.
                     {
                         if (readSelect == "1")
                         {
-                            List<TemporaryEmployee> employeeInfo = repoTemp.ReadAll();
+                            List<TemporaryEmployee> employeeInfo = temporaryRepository.ReadAll();
                             foreach (TemporaryEmployee employee in employeeInfo)
                             {
                                 Console.WriteLine(employee);
@@ -105,9 +104,9 @@ Please Select an Option Below.
                         {
                             Console.WriteLine("Select an employee ID");
                             var selectID = userInput.GetUserInt("Select a valid number");
-                            if (repoTemp.ReadSingle(selectID) != null)
+                            if (temporaryRepository.ReadSingle(selectID) != null)
                             {
-                                Console.WriteLine(repoPerm.ReadSingle(selectID));
+                                Console.WriteLine(permanentRepository.ReadSingle(selectID));
                             }
                             else
                             {
@@ -120,12 +119,12 @@ Please Select an Option Below.
                         Console.WriteLine("This was not a valid choice.");
                     }
                 }
-                else if (Selection == "3")
+                else if (selection == "3")
                 {
-                    repoPerm.Update(1112, "Ben", "Edmondson", 60000, 5000, null, null);
+                    permanentRepository.Update(1112, "Ben", "Edmondson", 60000, 5000, null, null);
                     Console.WriteLine("Employee Updated!");
                 }
-                else if (Selection == "4")
+                else if (selection == "4")
                 {
                     Console.WriteLine(@"1.Delete Permanent employees
 2.Delete Temporary employees");
@@ -138,8 +137,8 @@ Please Select an Option Below.
                         if (delSec == "1")
                         {
                             Console.WriteLine("Please enter an ID");
-                            var ID = userInput.GetUserInt("Please enter a valid number!");
-                            if (repoPerm.Delete(ID) == false)
+                            var id = userInput.GetUserInt("Please enter a valid number!");
+                            if (permanentRepository.Delete(id) == false)
                             {
                                 Console.WriteLine("No Employee to be removed with this ID!"!);
                             }
@@ -150,7 +149,7 @@ Please Select an Option Below.
                         }
                         else if (delSec == "2")
                         {
-                            if (repoPerm.RemoveAll() == false)
+                            if (permanentRepository.RemoveAll() == false)
                             {
                                 Console.WriteLine("No Employees to be removed!");
                             }
@@ -165,8 +164,8 @@ Please Select an Option Below.
                         if (delSec == "1")
                         {
                             Console.WriteLine("Please enter an ID");
-                            var ID = userInput.GetUserInt("Please enter a valid number");
-                            if (repoTemp.Delete(ID) == false)
+                            var id = userInput.GetUserInt("Please enter a valid number");
+                            if (temporaryRepository.Delete(id) == false)
                             {
                                 Console.WriteLine("No Employee to be removed at location"!);
                             }
@@ -177,7 +176,7 @@ Please Select an Option Below.
                         }
                         else if (delSec == "2")
                         {
-                            if (repoTemp.RemoveAll() == false)
+                            if (temporaryRepository.RemoveAll() == false)
                             {
                                 Console.WriteLine("No Employees to be removed!");
                             }
@@ -192,7 +191,7 @@ Please Select an Option Below.
                         Console.WriteLine("This was not a valid option. Please try again.");
                     }
                 }
-                else if (Selection == "5")
+                else if (selection == "5")
                 {
                     Console.WriteLine(@"1.Permanent employees
 2.Temporary employees");
@@ -200,32 +199,33 @@ Please Select an Option Below.
                     if (readTempPerm.ToLower() == "permanent")
                     {
                         Console.WriteLine("Please enter an ID");
-                        var ID = userInput.GetUserInt("Please enter a valid number!");
-                        PermanentEmployee? employee = repoPerm.ReadSingle(ID);
-                        if (employee == null)
-                        {
-                            Console.WriteLine("This was not a valid ID ");
-                        }else
-                        {
-                            Console.WriteLine(permCalculations.TotalAnnualPay(employee));
-                        }
-                    }
-                    else
-                    {
-                        Console.WriteLine("Please enter an ID");
-                        var ID = userInput.GetUserInt("Please enter a valid number!");
-                        TemporaryEmployee? employee = repoTemp.ReadSingle(ID);
+                        var id = userInput.GetUserInt("Please enter a valid number!");
+                        PermanentEmployee? employee = permanentRepository.ReadSingle(id);
                         if (employee == null)
                         {
                             Console.WriteLine("This was not a valid ID ");
                         }
                         else
                         {
-                            Console.WriteLine(tempCalculations.TotalAnnualPay(employee));
+                            Console.WriteLine(permanentCalculations.TotalAnnualPay(employee));
+                        }
+                    }
+                    else
+                    {
+                        Console.WriteLine("Please enter an ID");
+                        var ID = userInput.GetUserInt("Please enter a valid number!");
+                        TemporaryEmployee? employee = temporaryRepository.ReadSingle(ID);
+                        if (employee == null)
+                        {
+                            Console.WriteLine("This was not a valid ID ");
+                        }
+                        else
+                        {
+                            Console.WriteLine(temporaryCalculations.TotalAnnualPay(employee));
                         }
                     }
                 }
-                else if (Selection == "6")
+                else if (selection == "6")
                 {
                     gameLoop = false;
                     Console.WriteLine("Now Exiting");

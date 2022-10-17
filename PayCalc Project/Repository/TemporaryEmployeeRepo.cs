@@ -1,5 +1,4 @@
 ﻿using PayCalc_Project.Models;
-using System.Runtime.Serialization;
 
 namespace PayCalc_Project.Repository
 {
@@ -9,7 +8,7 @@ namespace PayCalc_Project.Repository
 
         private List<TemporaryEmployee> employees = new List<TemporaryEmployee>();
 
-        TemporaryEmployeeRepo()
+        public TemporaryEmployeeRepo()
         {
             employees.Add(new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
         }
@@ -72,7 +71,7 @@ namespace PayCalc_Project.Repository
 
         public TemporaryEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-            TemporaryEmployee employee = new TemporaryEmployee() { ID = rnd.Next(1111,10000), FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };
+            TemporaryEmployee employee = new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };
             employees.Add(employee);
             return employee;
         }

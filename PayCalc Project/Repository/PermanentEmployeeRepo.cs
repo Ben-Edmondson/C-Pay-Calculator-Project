@@ -1,5 +1,4 @@
 ﻿using PayCalc_Project.Models;
-using System.Runtime.CompilerServices;
 
 namespace PayCalc_Project.Repository
 {
@@ -9,15 +8,15 @@ namespace PayCalc_Project.Repository
 
         private List<PermanentEmployee> employees = new List<PermanentEmployee>();
 
-        PermanentEmployeeRepo()
+        public PermanentEmployeeRepo()
         {
-            employees.Add( new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000});
-            employees.Add( new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
+            employees.Add(new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
+            employees.Add(new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
         }
 
         public bool Delete(int id)
-        {   
-            if (employees.Exists(x => x.ID == id) ==true)
+        {
+            if (employees.Exists(x => x.ID == id) == true)
             {
                 employees.Remove(employees.Find(x => x.ID == id));
                 return true;
@@ -65,7 +64,7 @@ namespace PayCalc_Project.Repository
                         employee.Salary = salary;
                     }
                     if (bonus != null)
-                    { 
+                    {
                         employee.Bonus = bonus;
                     }
                     return true;

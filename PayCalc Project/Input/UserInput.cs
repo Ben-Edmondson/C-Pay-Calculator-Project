@@ -15,25 +15,25 @@
         }
         public decimal GetUserDecimal(string errorMessage)
         {
-            var Salary = Console.ReadLine();
-            var DecSalary = 0M;
-                while (!decimal.TryParse(Salary,out DecSalary))
-                {
-                    Console.WriteLine(errorMessage);
-                    Salary = Console.ReadLine();
-                }
-            return DecSalary;
+            var numberToParse = Console.ReadLine();
+            var numberParsed = 0M;
+            while (!decimal.TryParse(numberToParse, out numberParsed))
+            {
+                Console.WriteLine(errorMessage);
+                numberToParse = Console.ReadLine();
+            }
+            return numberParsed;
         }
         public int GetUserInt(string errorMessage)
         {
-            var IntWeeksWorked = 0;
-            var WeeksWorked = Console.ReadLine();
-            while (!int.TryParse(WeeksWorked, out IntWeeksWorked))
+            var intParsed = 0;
+            var intToParse = Console.ReadLine();
+            while (!int.TryParse(intToParse, out intParsed))
             {
-                Console.WriteLine("Please enter a valid amount of Weeks Worked");
-                WeeksWorked = Console.ReadLine();
+                Console.WriteLine(errorMessage);
+                intToParse = Console.ReadLine();
             }
-            return IntWeeksWorked;
+            return intParsed;
         }
     }
 }

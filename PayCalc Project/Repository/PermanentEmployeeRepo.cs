@@ -37,17 +37,17 @@ namespace PayCalc_Project.Repository
         }
         public List<PermanentEmployee> ReadAll()
         {
-            List<PermanentEmployee> ReadAll = employees;
-            return ReadAll;
+            List<PermanentEmployee> readAll = employees;
+            return readAll;
         }
-        public PermanentEmployee? ReadSingle(int id)
+        public PermanentEmployee? Read(int id)
         {
-            PermanentEmployee? ReadSingle = employees.Find(x => x.ID == id);
-            return ReadSingle;
+            var readSingle = employees.Find(x => x.ID == id);
+            return readSingle;
         }
         public bool Update(int id, string? firstName, string? lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-            foreach (PermanentEmployee employee in employees)
+            foreach (var employee in employees)
             {
                 if (employee.ID == id)
                 {

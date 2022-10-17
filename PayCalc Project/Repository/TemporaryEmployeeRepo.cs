@@ -31,19 +31,19 @@ namespace PayCalc_Project.Repository
 
         public List<TemporaryEmployee> ReadAll()
         {
-            List<TemporaryEmployee> ReadAll = employees;
-            return ReadAll;
+            List<TemporaryEmployee> readAll = employees;
+            return readAll;
         }
 
-        public TemporaryEmployee? ReadSingle(int id)
+        public TemporaryEmployee? Read(int id)
         {
-            TemporaryEmployee? ReadSingle = employees.Find(x => x.ID == id);
-            return ReadSingle;
+            var readSingle = employees.Find(x => x.ID == id);
+            return readSingle;
         }
 
         public bool Update(int id, string? firstName, string? lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-            foreach (TemporaryEmployee employee in employees)
+            foreach (var employee in employees)
             {
                 if (employee.ID == id)
                 {

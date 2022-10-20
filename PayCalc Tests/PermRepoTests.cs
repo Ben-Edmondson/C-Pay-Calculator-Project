@@ -6,7 +6,7 @@ namespace PayCalc_Tests
     {
         PermanentEmployeeRepo _repoPerm = new PermanentEmployeeRepo();
         [Test]
-        public void UpdateTest()
+        public void Permanent_Repo_Can_Update()
         {
             //arrange
             decimal Sal = 55000;
@@ -20,7 +20,7 @@ namespace PayCalc_Tests
             Assert.That(_Bonus, Is.EqualTo(Bonus));
         }
         [Test]
-        public void AddTest()
+        public void Can_Add_To_Permanent_Repo()
         {
             //arrange
             int employeeCounter = _repoPerm.employees.Count() - 1;
@@ -31,12 +31,12 @@ namespace PayCalc_Tests
             Assert.That(employeeCounter, Is.EqualTo(_repoPerm.employees.Count()));
         }
         [Test]
-        public void RemoveAllTest()
+        public void Can_Clear_Permanent_Employees()
         {
             Assert.That(_repoPerm.RemoveAll(), Is.EqualTo(true));
         }
         [Test]
-        public void RemoveOne()
+        public void Can_Remove_One_Permanent_Employee_From_List()
         {
             Assert.That(_repoPerm.Delete(1112), Is.EqualTo(true));
             Assert.That(_repoPerm.Delete(1111), Is.EqualTo(false));

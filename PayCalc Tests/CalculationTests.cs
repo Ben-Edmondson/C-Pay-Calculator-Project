@@ -12,7 +12,7 @@ namespace PayCalc_Tests
         TemporaryCalculations _temporaryCalculations = new TemporaryCalculations();
         PermanentCalculations _permanentCalculations = new PermanentCalculations();
         [Test]
-        public void JoeBloggsCalculationTestForTax()
+        public void Can_Calculate_Permanent_Employee_Tax()
         {
             //arrange
             decimal tAP = 6486;
@@ -22,17 +22,7 @@ namespace PayCalc_Tests
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
         [Test]
-        public void JohnSmithDataCalculationTestForTax()
-        {
-            //arrange
-            decimal tAP = 6986;
-            //act
-            decimal tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay());
-            //assert
-            Assert.That(tAPCorrect, Is.EqualTo(tAP));
-        }
-        [Test]
-        public void ClareJonesCalculationTestForTax()
+        public void Can_Calculate_Temporary_Employee_Tax()
         {
             //arrange
             decimal tAP = 15431M;

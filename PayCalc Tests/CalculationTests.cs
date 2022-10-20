@@ -17,7 +17,7 @@ namespace PayCalc_Tests
             //arrange
             decimal tAP = 6486;
             //act
-            decimal tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay();
+            decimal tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay());
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -27,7 +27,7 @@ namespace PayCalc_Tests
             //arrange
             decimal tAP = 6986;
             //act
-            decimal tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay();
+            decimal tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay());
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -37,7 +37,7 @@ namespace PayCalc_Tests
             //arrange
             decimal tAP = 15431M;
             //act
-            decimal tAPCorrect = Math.Round((decimal)_temporaryCalculations.TotalAnnualPay();
+            decimal tAPCorrect = Math.Round((decimal)_temporaryCalculations.TotalAnnualPay());
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }

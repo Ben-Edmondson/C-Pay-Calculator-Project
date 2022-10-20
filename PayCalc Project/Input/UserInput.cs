@@ -10,7 +10,6 @@
                 Console.WriteLine(errorMessage);
                 userInput = Console.ReadLine();
             }
-
             return userInput;
         }
         public decimal GetUserDecimal(string errorMessage)

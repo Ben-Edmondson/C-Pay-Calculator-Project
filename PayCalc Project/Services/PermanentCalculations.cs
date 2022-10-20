@@ -2,7 +2,7 @@
 
 namespace PayCalc_Project.Services
 {
-    class PermanentCalculations : ICalculations<PermanentEmployee>
+    public class PermanentCalculations : ICalculations<PermanentEmployee>
     {
         public decimal? TotalAnnualPay(PermanentEmployee employee)
         {

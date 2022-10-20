@@ -9,13 +9,15 @@ namespace PayCalc_Tests
     {
         PermanentEmployeeRepo _repoPerm = new PermanentEmployeeRepo();
         TemporaryEmployeeRepo _repoTemp = new TemporaryEmployeeRepo();
+        TemporaryCalculations _temporaryCalculations = new TemporaryCalculations();
+        PermanentCalculations _permanentCalculations = new PermanentCalculations();
         [Test]
         public void JoeBloggsCalculationTestForTax()
         {
             //arrange
             decimal tAP = 6486;
             //act
-            decimal tAPCorrect = Math.Round((decimal)TemporaryCalculations.TotalAnnualPayPerm(_repoPerm.employees,0),0);
+            decimal tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay();
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -25,7 +27,7 @@ namespace PayCalc_Tests
             //arrange
             decimal tAP = 6986;
             //act
-            decimal tAPCorrect = Math.Round((decimal)TemporaryCalculations.TotalAnnualPayPerm(_repoPerm.employees,1),0);
+            decimal tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay();
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -35,7 +37,7 @@ namespace PayCalc_Tests
             //arrange
             decimal tAP = 15431M;
             //act
-            decimal tAPCorrect = Math.Round((decimal)TemporaryCalculations.TotalAnnualPayTemp(_repoTemp.employees, 0),0);
+            decimal tAPCorrect = Math.Round((decimal)_temporaryCalculations.TotalAnnualPay();
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }

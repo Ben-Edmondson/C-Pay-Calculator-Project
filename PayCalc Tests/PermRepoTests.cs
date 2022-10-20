@@ -25,7 +25,7 @@ namespace PayCalc_Tests
             //arrange
             int employeeCounter = _repoPerm.employees.Count() - 1;
             //act
-            _repoPerm.AddEmployee("Ben", "Edmondson", 25000, 3000, null, null);
+            _repoPerm.Create("Ben", "Edmondson", 25000, 3000, null, null);
             employeeCounter = employeeCounter + 1;
             //assert
             Assert.That(employeeCounter, Is.EqualTo(_repoPerm.employees.Count()));

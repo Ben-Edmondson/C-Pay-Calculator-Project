@@ -1,4 +1,5 @@
-﻿using PayCalc_Project.Repository;
+﻿using PayCalc_Project.Models;
+using PayCalc_Project.Repository;
 namespace PayCalc_Tests
 {
     [TestFixture]
@@ -6,6 +7,16 @@ namespace PayCalc_Tests
     {
         PermanentEmployeeRepo _repoPerm = new PermanentEmployeeRepo();
         [Test]
+        /*
+         * perm.Setup(x => x.Read(It.IsAny<string>())).Returns(new PermEmployeeData()
+            { 
+                EmployeeID = "007",
+                FName = "James",
+                LName = "Bond",
+                Salaryint = 23000,
+                Bonusint = 2000
+            });
+        */
         public void Permanent_Repo_Can_Update()
         {
             //arrange
@@ -13,22 +24,24 @@ namespace PayCalc_Tests
             decimal Bonus = 5000m;
             //act
             _repoPerm.Update(1112, "Ben", "Edmondson", Sal, Bonus, null, null);
-            decimal? _Sal = _repoPerm.employees[0].Salary;
-            decimal? _Bonus = _repoPerm.employees[0].Bonus;
+            decimal? _Sal;//get employee salary
+            decimal? _Bonus; //get employee bonus
             //assert
             Assert.That(_Sal, Is.EqualTo(Sal));
             Assert.That(_Bonus, Is.EqualTo(Bonus));
         }
+
         [Test]
         public void Can_Add_To_Permanent_Repo()
         {
+            List<PermanentEmployee> employees = _repoPerm.ReadAll();
             //arrange
-            int employeeCounter = _repoPerm.employees.Count() - 1;
+            int employeeCounter = employees.Count() - 1;
             //act
             _repoPerm.Create("Ben", "Edmondson", 25000, 3000, null, null);
             employeeCounter = employeeCounter + 1;
             //assert
-            Assert.That(employeeCounter, Is.EqualTo(_repoPerm.employees.Count()));
+            Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
         }
         [Test]
         public void Can_Clear_Permanent_Employees()

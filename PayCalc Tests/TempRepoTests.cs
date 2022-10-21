@@ -1,4 +1,5 @@
-﻿using PayCalc_Project.Repository;
+﻿using PayCalc_Project.Models;
+using PayCalc_Project.Repository;
 namespace PayCalc_Tests
 {
     [TestFixture]
@@ -22,13 +23,14 @@ namespace PayCalc_Tests
         [Test]
         public void Can_Add_To_Temporary_Repo()
         {
+            List<TemporaryEmployee> employees = _repoTemp.ReadAll();
             //arrange
-            int employeeCounter = _repoTemp.employees.Count() - 1;
+            int employeeCounter = employees.Count() - 1;
             //act
             _repoTemp.Create("Ben", "Edmondson", null, null, 500, 52);
             employeeCounter = employeeCounter + 1;
             //assert
-            Assert.That(employeeCounter, Is.EqualTo(_repoTemp.employees.Count()));
+            Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
         }
         [Test]
         public void Can_Clear_Temporary_Employees()

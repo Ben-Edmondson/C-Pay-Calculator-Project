@@ -5,25 +5,25 @@ namespace PayCalc_Tests
     [TestFixture]
     public class PermRepoTests
     {
-        PermanentEmployeeRepo _repoPerm = new PermanentEmployeeRepo();
         [Test]
-        /*
-         * perm.Setup(x => x.Read(It.IsAny<string>())).Returns(new PermEmployeeData()
-            { 
-                EmployeeID = "007",
-                FName = "James",
-                LName = "Bond",
-                Salaryint = 23000,
-                Bonusint = 2000
-            });
-        */
         public void Permanent_Repo_Can_Update()
         {
             //arrange
-            decimal Sal = 55000;
-            decimal Bonus = 5000m;
+            PermanentEmployee employee = new PermanentEmployee()
+            {
+                ID = 1001,
+                FirstName = "Steven",
+                LastName = "Tester",
+                Salary = 25000,
+                Bonus = 5000
+            };
+            List<PermanentEmployee> employeeList = new List<PermanentEmployee>();
+            employeeList.Add(employee);
+            var repoPermanentEmployee = new PermanentEmployeeRepo(employeeList);
+            decimal Sal = 23000;
+            decimal Bonus = 2000m;
             //act
-            _repoPerm.Update(1112, "Ben", "Edmondson", Sal, Bonus, null, null);
+            repoPermanentEmployee.Update(1001, "Ben", "Edmondson", Sal, Bonus, null, null);
             decimal? _Sal;//get employee salary
             decimal? _Bonus; //get employee bonus
             //assert

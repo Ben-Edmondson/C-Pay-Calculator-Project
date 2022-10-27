@@ -1,4 +1,3 @@
-using PayCalc_Project;
 using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
 namespace PayCalc_Tests

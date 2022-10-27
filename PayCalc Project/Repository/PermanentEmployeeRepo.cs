@@ -13,7 +13,10 @@ namespace PayCalc_Project.Repository
             employees.Add(new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
             employees.Add(new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
         }
-
+        public PermanentEmployeeRepo(IEnumerable<PermanentEmployee>temp)
+        {
+            employees.AddRange(temp);
+        }
         public bool Delete(int id)
         {
             if (employees.Exists(x => x.ID == id) == true)

@@ -23,7 +23,7 @@ namespace PayCalc_Tests
             employeeList.Add(employee);
             var _repoTemp = new TemporaryEmployeeRepo(employeeList);
             //act
-            _repoTemp.Update(1001, "Ben", "Edmondson", null,null,DayRate,WeeksWorked);
+            _repoTemp.Update(1001, "Ben", "Edmondson", null, null, DayRate, WeeksWorked);
             TemporaryEmployee employeeRead = _repoTemp.Read(1001);
             decimal? _DayRate = employeeRead.DayRate;
             int? _WeeksWorked = employeeRead.WeeksWorked;

@@ -3,6 +3,5 @@
     public interface ICalculations<T>
     {
         public decimal? TotalAnnualPay(T employees);
-
     }
 }

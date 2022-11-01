@@ -40,10 +40,16 @@ namespace PayCalc_Tests
             //arrange
             var employeeCounter = employees.Count();
             //act
-            _repoPerm.Create("Ben", "Edmondson", 25000, 3000, null, null);
+            PermanentEmployee createTest = _repoPerm.Create("Ben", "Edmondson", 25000, 3000, null, null);
+            PermanentEmployee _createTest = new PermanentEmployee() { ID = createTest.ID, FirstName = "Ben", LastName = "Edmondson", Salary = 25000, Bonus = 3000 };
             employeeCounter = employeeCounter + 1;
             //assert
             Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
+            Assert.That(createTest.FirstName,Is.SameAs(_createTest.FirstName));
+            Assert.That(createTest.LastName,Is.SameAs(_createTest.LastName));
+            Assert.That(createTest.Salary, Is.EqualTo(_createTest.Salary));
+            Assert.That(createTest.Bonus, Is.EqualTo(_createTest.Bonus));
+            Assert.That(createTest, Is.Not.Null);
         }
         [Test]
         public void Can_Clear_Permanent_Employees()

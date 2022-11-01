@@ -39,8 +39,7 @@ namespace PayCalc_Project.Repository
         }
         public List<PermanentEmployee> ReadAll()
         {
-            List<PermanentEmployee> readAll = employees;
-            return readAll;
+            return employees;
         }
         public PermanentEmployee? Read(int id)
         {

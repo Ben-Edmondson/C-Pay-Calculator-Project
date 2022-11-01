@@ -35,8 +35,7 @@ namespace PayCalc_Project.Repository
 
         public List<TemporaryEmployee> ReadAll()
         {
-            List<TemporaryEmployee> readAll = employees;
-            return readAll;
+            return employees;
         }
 
         public TemporaryEmployee? Read(int id)

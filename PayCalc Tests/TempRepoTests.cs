@@ -39,10 +39,17 @@ namespace PayCalc_Tests
             //arrange
             var employeeCounter = employees.Count();
             //act
-            _repoTemp.Create("Ben", "Edmondson", null, null, 500, 52);
+            TemporaryEmployee createTest = _repoTemp.Create("Ben", "Edmondson", null, null, 500, 52);
+            TemporaryEmployee _createTest = new TemporaryEmployee() {ID = createTest.ID, FirstName = "Ben", LastName = "Edmondson", DayRate = 500, WeeksWorked = 52 };
             employeeCounter = employeeCounter + 1;
             //assert
             Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
+            Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
+            Assert.That(createTest.FirstName, Is.SameAs(_createTest.FirstName));
+            Assert.That(createTest.LastName, Is.SameAs(_createTest.LastName));
+            Assert.That(createTest.DayRate, Is.EqualTo(_createTest.DayRate));
+            Assert.That(createTest.WeeksWorked, Is.EqualTo(_createTest.WeeksWorked));
+            Assert.That(createTest.ID, Is.AtLeast(1111));
         }
         [Test]
         public void Can_Clear_Temporary_Employees()

@@ -49,7 +49,7 @@ namespace PayCalc_Tests
             Assert.That(createTest.LastName,Is.SameAs(_createTest.LastName));
             Assert.That(createTest.Salary, Is.EqualTo(_createTest.Salary));
             Assert.That(createTest.Bonus, Is.EqualTo(_createTest.Bonus));
-            Assert.That(createTest, Is.Not.Null);
+            Assert.That(createTest.ID, Is.AtLeast(1111));
         }
         [Test]
         public void Can_Clear_Permanent_Employees()

@@ -27,7 +27,7 @@ namespace PayCalc_Project.Services
                     taxToBePaid += taxThisBand;
                 }
             }
-            return taxToBePaid;
+            return Math.Round((decimal)taxToBePaid);
         }
     }
 }

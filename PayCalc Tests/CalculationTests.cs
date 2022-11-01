@@ -12,9 +12,9 @@ namespace PayCalc_Tests
             //arrange
             PermanentEmployee permanentEmployee = new PermanentEmployee() { ID = 1001, FirstName = "Ben", LastName = "Edmondson", Bonus = 5000, Salary = 40000 };
             PermanentCalculations _permanentCalculations = new PermanentCalculations();
-            decimal tAP = 6486;
+            var tAP = 6486M;
             //act
-            decimal tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay(permanentEmployee));
+            var tAPCorrect = Math.Round((decimal)_permanentCalculations.TotalAnnualPay(permanentEmployee));
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -24,9 +24,9 @@ namespace PayCalc_Tests
             //arrange
             TemporaryEmployee temporaryEmployee = new TemporaryEmployee() { ID = 1001, FirstName = "Ben", LastName = "Edmondson", DayRate = 350, WeeksWorked = 40 };
             TemporaryCalculations _temporaryCalculations = new TemporaryCalculations();
-            decimal tAP = 15431M;
+            var tAP = 15431M;
             //act
-            decimal tAPCorrect = Math.Round((decimal)_temporaryCalculations.TotalAnnualPay(temporaryEmployee));
+            var tAPCorrect = Math.Round((decimal)_temporaryCalculations.TotalAnnualPay(temporaryEmployee));
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }

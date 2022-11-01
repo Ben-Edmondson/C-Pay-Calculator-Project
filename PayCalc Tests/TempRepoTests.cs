@@ -9,8 +9,8 @@ namespace PayCalc_Tests
         public void Temporary_Repo_Can_Update()
         {
             //arrange
-            decimal? DayRate = 200;
-            int? WeeksWorked = 40;
+            var DayRate = 200;
+            var WeeksWorked = 40;
             TemporaryEmployee employee = new TemporaryEmployee()
             {
                 ID = 1001,
@@ -25,8 +25,8 @@ namespace PayCalc_Tests
             //act
             _repoTemp.Update(1001, "Ben", "Edmondson", null, null, DayRate, WeeksWorked);
             TemporaryEmployee employeeRead = _repoTemp.Read(1001);
-            decimal? _DayRate = employeeRead.DayRate;
-            int? _WeeksWorked = employeeRead.WeeksWorked;
+            var _DayRate = employeeRead.DayRate;
+            var _WeeksWorked = employeeRead.WeeksWorked;
             //assert
             Assert.That(_DayRate, Is.EqualTo(DayRate));
             Assert.That(_WeeksWorked, Is.EqualTo(WeeksWorked));
@@ -37,7 +37,7 @@ namespace PayCalc_Tests
             TemporaryEmployeeRepo _repoTemp = new TemporaryEmployeeRepo();
             List<TemporaryEmployee> employees = _repoTemp.ReadAll();
             //arrange
-            int employeeCounter = employees.Count();
+            var employeeCounter = employees.Count();
             //act
             _repoTemp.Create("Ben", "Edmondson", null, null, 500, 52);
             employeeCounter = employeeCounter + 1;

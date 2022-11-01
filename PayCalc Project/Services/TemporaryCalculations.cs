@@ -5,10 +5,10 @@ namespace PayCalc_Project.Services
     {
         public decimal? TotalAnnualPay(TemporaryEmployee employee)
         {
-            int? days = 5;
-            decimal? dayRate = employee.DayRate;
-            int? weeksWorked = employee.WeeksWorked;
-            decimal? totalPay = dayRate * (days * weeksWorked);
+            var days = 5;
+            var dayRate = employee.DayRate;
+            var weeksWorked = employee.WeeksWorked;
+            var totalPay = dayRate * (days * weeksWorked);
             var taxBands = new[]
             {
             new { Lower = 0m, Upper = 12570m, Rate = 0.0m },
@@ -16,14 +16,14 @@ namespace PayCalc_Project.Services
             new { Lower = 50271m, Upper = 150000m, Rate = 0.4m },
             new { Lower = 150001m, Upper = decimal.MaxValue, Rate = 0.45m }
             };
-            decimal? taxToBePaid = 0m;
+            var taxToBePaid = 0m;
 
             foreach (var band in taxBands)
             {
                 if (totalPay > band.Lower)
                 {
-                    decimal? taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)totalPay - band.Lower);
-                    decimal? taxThisBand = taxableAtThisRate * band.Rate;
+                    var taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)totalPay - band.Lower);
+                    var taxThisBand = taxableAtThisRate * band.Rate;
                     taxToBePaid += taxThisBand;
                 }
             }

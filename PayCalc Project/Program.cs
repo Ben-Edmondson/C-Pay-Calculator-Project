@@ -128,7 +128,7 @@ Please Select an Option Below.
                 {
                     Console.WriteLine(@"1.Delete Permanent employees
 2.Delete Temporary employees");
-                    string? delSelect = Console.ReadLine();
+                    var delSelect = Console.ReadLine();
                     Console.WriteLine(@"1.One Employee
 2.All Employees");
                     var delSec = Console.ReadLine();

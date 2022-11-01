@@ -20,13 +20,13 @@ namespace PayCalc_Tests
             List<PermanentEmployee> employeeList = new List<PermanentEmployee>();
             employeeList.Add(employee);
             var repoPermanentEmployee = new PermanentEmployeeRepo(employeeList);
-            decimal Sal = 25000;
-            decimal Bonus = 5000m;
+            var Sal = 25000M;
+            var Bonus = 5000m;
             //act
             PermanentEmployee employeeRead = repoPermanentEmployee.Read(1001);
             repoPermanentEmployee.Update(1001, "Ben", "Edmondson", Sal, Bonus, null, null);
-            decimal? _Sal = employeeRead.Salary;
-            decimal? _Bonus = employeeRead.Bonus;
+            var _Sal = employeeRead.Salary;
+            var _Bonus = employeeRead.Bonus;
             //assert
             Assert.That(_Sal, Is.EqualTo(Sal));
             Assert.That(_Bonus, Is.EqualTo(Bonus));
@@ -38,7 +38,7 @@ namespace PayCalc_Tests
             var _repoPerm = new PermanentEmployeeRepo();
             List<PermanentEmployee> employees = _repoPerm.ReadAll();
             //arrange
-            int employeeCounter = employees.Count();
+            var employeeCounter = employees.Count();
             //act
             _repoPerm.Create("Ben", "Edmondson", 25000, 3000, null, null);
             employeeCounter = employeeCounter + 1;

@@ -5,10 +5,10 @@ namespace PayCalc_Tests
     [TestFixture]
     public class PermRepoTests
     {
-        [Test]
-        public void Permanent_Repo_Can_Update()
+        private PermanentEmployeeRepo repoPermanentEmployee = new PermanentEmployeeRepo();
+        [SetUp]
+        public void Init()
         {
-            //arrange
             PermanentEmployee employee = new PermanentEmployee()
             {
                 ID = 1001,
@@ -19,7 +19,13 @@ namespace PayCalc_Tests
             };
             List<PermanentEmployee> employeeList = new List<PermanentEmployee>();
             employeeList.Add(employee);
-            var repoPermanentEmployee = new PermanentEmployeeRepo(employeeList);
+            repoPermanentEmployee = new PermanentEmployeeRepo(employeeList);
+        }
+        [Test]
+        public void Permanent_Repo_Can_Update()
+        {
+            //arrange
+
             var Sal = 25000M;
             var Bonus = 5000m;
             //act
@@ -60,19 +66,8 @@ namespace PayCalc_Tests
         [Test]
         public void Can_Remove_One_Permanent_Employee_From_List()
         {
-            PermanentEmployee employee = new PermanentEmployee()
-            {
-                ID = 1001,
-                FirstName = "Steven",
-                LastName = "Tester",
-                Salary = 25000,
-                Bonus = 5000
-            };
-            List<PermanentEmployee> employeeList = new List<PermanentEmployee>();
-            employeeList.Add(employee);
-            var _repoPerm = new PermanentEmployeeRepo(employeeList);
-            Assert.That(_repoPerm.Delete(1001), Is.EqualTo(true));
-            Assert.That(_repoPerm.Delete(1111), Is.EqualTo(false));
+            Assert.That(repoPermanentEmployee.Delete(1001), Is.EqualTo(true));
+            Assert.That(repoPermanentEmployee.Delete(1111), Is.EqualTo(false));
 
         }
     }

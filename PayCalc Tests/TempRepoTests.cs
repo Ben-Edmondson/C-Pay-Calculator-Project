@@ -5,12 +5,11 @@ namespace PayCalc_Tests
     [TestFixture]
     public class TempRepoTests
     {
-        [Test]
-        public void Temporary_Repo_Can_Update()
+        private TemporaryEmployeeRepo _repoTemp = new TemporaryEmployeeRepo();
+       
+        [SetUp]
+        public void Init()
         {
-            //arrange
-            var DayRate = 200;
-            var WeeksWorked = 40;
             TemporaryEmployee employee = new TemporaryEmployee()
             {
                 ID = 1001,
@@ -21,7 +20,16 @@ namespace PayCalc_Tests
             };
             List<TemporaryEmployee> employeeList = new List<TemporaryEmployee>();
             employeeList.Add(employee);
-            var _repoTemp = new TemporaryEmployeeRepo(employeeList);
+            _repoTemp = new TemporaryEmployeeRepo(employeeList);
+
+        }
+        [Test]
+        public void Temporary_Repo_Can_Update()
+        {
+            //arrange
+
+            var DayRate = 200;
+            var WeeksWorked = 40;
             //act
             _repoTemp.Update(1001, "Ben", "Edmondson", null, null, DayRate, WeeksWorked);
             TemporaryEmployee employeeRead = _repoTemp.Read(1001);
@@ -60,17 +68,6 @@ namespace PayCalc_Tests
         [Test]
         public void Can_Remove_One_Temporary_Employee_From_List()
         {
-            TemporaryEmployee employee = new TemporaryEmployee()
-            {
-                ID = 1001,
-                FirstName = "Steven",
-                LastName = "Tester",
-                DayRate = 200,
-                WeeksWorked = 52
-            };
-            List<TemporaryEmployee> employeeList = new List<TemporaryEmployee>();
-            employeeList.Add(employee);
-            TemporaryEmployeeRepo _repoTemp = new TemporaryEmployeeRepo(employeeList);
             Assert.That(_repoTemp.Delete(1001), Is.EqualTo(true));
             Assert.That(_repoTemp.Delete(1112), Is.EqualTo(false));
         }

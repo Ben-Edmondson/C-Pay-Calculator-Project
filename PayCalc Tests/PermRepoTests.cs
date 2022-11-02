@@ -51,11 +51,7 @@ namespace PayCalc_Tests
             employeeCounter = employeeCounter + 1;
             //assert
             Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
-            Assert.That(createTest.FirstName,Is.SameAs(_createTest.FirstName));
-            Assert.That(createTest.LastName,Is.SameAs(_createTest.LastName));
-            Assert.That(createTest.Salary, Is.EqualTo(_createTest.Salary));
-            Assert.That(createTest.Bonus, Is.EqualTo(_createTest.Bonus));
-            Assert.That(createTest.ID, Is.AtLeast(1111));
+            Assert.That(createTest, Is.SameAs(_createTest));
         }
         [Test]
         public void Can_Clear_Permanent_Employees()

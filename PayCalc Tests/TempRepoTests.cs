@@ -27,7 +27,6 @@ namespace PayCalc_Tests
         public void Temporary_Repo_Can_Update()
         {
             //arrange
-
             var DayRate = 200;
             var WeeksWorked = 40;
             //act
@@ -42,7 +41,6 @@ namespace PayCalc_Tests
         [Test]
         public void Can_Add_To_Temporary_Repo()
         {
-            TemporaryEmployeeRepo _repoTemp = new TemporaryEmployeeRepo();
             List<TemporaryEmployee> employees = _repoTemp.ReadAll();
             //arrange
             var employeeCounter = employees.Count();
@@ -52,17 +50,11 @@ namespace PayCalc_Tests
             employeeCounter = employeeCounter + 1;
             //assert
             Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
-            Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
-            Assert.That(createTest.FirstName, Is.SameAs(_createTest.FirstName));
-            Assert.That(createTest.LastName, Is.SameAs(_createTest.LastName));
-            Assert.That(createTest.DayRate, Is.EqualTo(_createTest.DayRate));
-            Assert.That(createTest.WeeksWorked, Is.EqualTo(_createTest.WeeksWorked));
-            Assert.That(createTest.ID, Is.AtLeast(1111));
+            Assert.That(createTest, Is.EqualTo(_createTest));
         }
         [Test]
         public void Can_Clear_Temporary_Employees()
         {
-            TemporaryEmployeeRepo _repoTemp = new TemporaryEmployeeRepo();
             Assert.That(_repoTemp.RemoveAll(), Is.EqualTo(true));
         }
         [Test]

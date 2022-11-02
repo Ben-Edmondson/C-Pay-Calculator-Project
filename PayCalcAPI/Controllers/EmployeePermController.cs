@@ -11,12 +11,12 @@ namespace PayCalcAPI.Controllers
     [ApiController]
     public class EmployeePermController : ControllerBase
     {
-        EmployeePermRepo _employeePermanentRepository = new EmployeePermRepo();
+        PermanentEmployeeRepo _employeePermanentRepository = new PermanentEmployeeRepo();
         // GET: api/<EmployeeController>
         [HttpGet]
         public IActionResult GetAll() 
         {
-            List<EmployeePerm> employees = _employeePermanentRepository.ReadAll();
+            List<PermanentEmployee> employees = _employeePermanentRepository.ReadAll();
             var x = JsonSerializer.Serialize(employees);
             if (employees.Count() <= 0)
             {
@@ -28,7 +28,7 @@ namespace PayCalcAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var ReadSingle = JsonSerializer.Serialize(_employeePermanentRepository.ReadSingle(id));
+            var ReadSingle = JsonSerializer.Serialize(_employeePermanentRepository.Read(id));
             if (ReadSingle == null)
             {
                 return NotFound();
@@ -39,16 +39,15 @@ namespace PayCalcAPI.Controllers
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
-            _employeePermanentRepository.employees.Add(_employeePermanentRepository.AddEmployee(FirstName, Surname, Salary, Bonus, null, null));
+            _employeePermanentRepository.Create(FirstName, Surname, Salary, Bonus, null, null);
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
-            if (_employeePermanentRepository.employees.Count() >= id)
+            if (_employeePermanentRepository.Update(id, FirstName, Surname, Salary, Bonus, null, null) == true)
             {
-                _employeePermanentRepository.employees[id] = _employeePermanentRepository.Update(id, FirstName, Surname, Salary, Bonus, null, null);
                 return NoContent();
             }
             else
@@ -73,8 +72,8 @@ namespace PayCalcAPI.Controllers
         [HttpDelete]
         public IActionResult DeleteAll()
         {
-            _employeePermanentRepository.RemoveAll();
-            if (_employeePermanentRepository.employees.Count() == 0)
+            
+            if (_employeePermanentRepository.RemoveAll() == true)
             {
                 return NoContent();
             }

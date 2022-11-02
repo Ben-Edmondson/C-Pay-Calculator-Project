@@ -9,12 +9,12 @@ namespace PayCalcAPI.Controllers
     [ApiController]
     public class EmployeeTempController : ControllerBase
     {
-        EmployeeTempRepo _employeeTemporaryRepository = new EmployeeTempRepo();
+        TemporaryEmployeeRepo _employeeTemporaryRepository = new TemporaryEmployeeRepo();
         // GET: api/<EmployeeTempController>
         [HttpGet]
         public IActionResult GetAll()
         {
-            List<EmployeeTemp> employees = _employeeTemporaryRepository.ReadAll();
+            List<TemporaryEmployee> employees = _employeeTemporaryRepository.ReadAll();
             var x = JsonSerializer.Serialize(employees);
             if (employees.Count() <= 0)
             {
@@ -26,7 +26,7 @@ namespace PayCalcAPI.Controllers
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {
-            var ReadSingle = JsonSerializer.Serialize(_employeeTemporaryRepository.ReadSingle(id));
+            var ReadSingle = JsonSerializer.Serialize(_employeeTemporaryRepository.Read(id));
             if (ReadSingle == null)
             {
                 return NotFound();
@@ -37,16 +37,15 @@ namespace PayCalcAPI.Controllers
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         { 
-            _employeeTemporaryRepository.employees.Add(_employeeTemporaryRepository.AddEmployee(FirstName, Surname, null, null, DayRate, WeeksWorked));
+            _employeeTemporaryRepository.Create(FirstName, Surname, null, null, DayRate, WeeksWorked));
             return NoContent();
         }
         // PUT api/<EmployeeTempController>/5
         [HttpPut("{id}")]
         public IActionResult Put(int id, string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         {
-            if (_employeeTemporaryRepository.employees.Count() >= id)
+            if (_employeeTemporaryRepository.Update(id, FirstName, Surname, null, null, DayRate, WeeksWorked) == true)
             {
-                _employeeTemporaryRepository.employees[id] = _employeeTemporaryRepository.Update(id, FirstName, Surname, null, null, DayRate, WeeksWorked);
                 return NoContent();
             }
             else
@@ -71,8 +70,7 @@ namespace PayCalcAPI.Controllers
         [HttpDelete]
         public IActionResult DeleteAll()
         {
-            _employeeTemporaryRepository.RemoveAll();
-            if (_employeeTemporaryRepository.employees.Count() == 0)
+            if (_employeeTemporaryRepository.RemoveAll() == true)
             {
                 return NoContent();
             }

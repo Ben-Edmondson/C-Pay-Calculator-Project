@@ -36,8 +36,8 @@ namespace PayCalcAPI.Controllers
         // POST api/<EmployeeTempController>
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
-        { 
-            _employeeTemporaryRepository.Create(FirstName, Surname, null, null, DayRate, WeeksWorked));
+        {
+            _employeeTemporaryRepository.Create(FirstName, Surname, null, null, DayRate, WeeksWorked);
             return NoContent();
         }
         // PUT api/<EmployeeTempController>/5

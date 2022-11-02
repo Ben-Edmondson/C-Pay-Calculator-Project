@@ -1,41 +1,32 @@
-using PayCalc_Project;
-using PayCalc_Project.Repository;
+using PayCalc_Project.Models;
 using PayCalc_Project.Services;
+
 namespace PayCalc_Tests
 {
-    //Moq this
     [TestFixture]
     public class CalculationTests
     {
-        PermanentEmployeeRepo _repoPerm = new PermanentEmployeeRepo();
-        TemporaryEmployeeRepo _repoTemp = new TemporaryEmployeeRepo();
         [Test]
-        public void JoeBloggsCalculationTestForTax()
+        public void Can_Calculate_Permanent_Employee_Tax()
         {
             //arrange
-            decimal tAP = 6486;
+            PermanentEmployee permanentEmployee = new PermanentEmployee() { ID = 1001, FirstName = "Ben", LastName = "Edmondson", Bonus = 5000, Salary = 40000 };
+            PermanentCalculations _permanentCalculations = new PermanentCalculations();
+            var tAP = 6486M;
             //act
-            decimal tAPCorrect = Math.Round((decimal)TemporaryCalculations.TotalAnnualPayPerm(_repoPerm.employees,0),0);
+            var tAPCorrect = _permanentCalculations.TotalAnnualPay(permanentEmployee);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
         [Test]
-        public void JohnSmithDataCalculationTestForTax()
+        public void Can_Calculate_Temporary_Employee_Tax()
         {
             //arrange
-            decimal tAP = 6986;
+            TemporaryEmployee temporaryEmployee = new TemporaryEmployee() { ID = 1001, FirstName = "Ben", LastName = "Edmondson", DayRate = 350, WeeksWorked = 40 };
+            TemporaryCalculations _temporaryCalculations = new TemporaryCalculations();
+            var tAP = 15431M;
             //act
-            decimal tAPCorrect = Math.Round((decimal)TemporaryCalculations.TotalAnnualPayPerm(_repoPerm.employees,1),0);
-            //assert
-            Assert.That(tAPCorrect, Is.EqualTo(tAP));
-        }
-        [Test]
-        public void ClareJonesCalculationTestForTax()
-        {
-            //arrange
-            decimal tAP = 15431M;
-            //act
-            decimal tAPCorrect = Math.Round((decimal)TemporaryCalculations.TotalAnnualPayTemp(_repoTemp.employees, 0),0);
+            var tAPCorrect = _temporaryCalculations.TotalAnnualPay(temporaryEmployee);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }

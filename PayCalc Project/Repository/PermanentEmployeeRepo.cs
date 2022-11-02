@@ -13,7 +13,10 @@ namespace PayCalc_Project.Repository
             employees.Add(new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 });
             employees.Add(new PermanentEmployee { ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 });
         }
-
+        public PermanentEmployeeRepo(IEnumerable<PermanentEmployee> temp)
+        {
+            employees.AddRange(temp);
+        }
         public bool Delete(int id)
         {
             if (employees.Exists(x => x.ID == id) == true)
@@ -30,15 +33,13 @@ namespace PayCalc_Project.Repository
         }
         public PermanentEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-
             PermanentEmployee employee = new PermanentEmployee() { ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus };
             employees.Add(employee);
             return employee;
         }
         public List<PermanentEmployee> ReadAll()
         {
-            List<PermanentEmployee> readAll = employees;
-            return readAll;
+            return employees;
         }
         public PermanentEmployee? Read(int id)
         {

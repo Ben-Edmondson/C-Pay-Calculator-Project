@@ -80,9 +80,9 @@ Please Select an Option Below.
                         {
                             Console.WriteLine("Select an employee ID");
                             var selectID = userInput.GetUserInt("Please enter a valid number");
-                            if (permanentRepository.ReadSingle(selectID) != null)
+                            if (permanentRepository.Read(selectID) != null)
                             {
-                                Console.WriteLine(permanentRepository.ReadSingle(selectID));
+                                Console.WriteLine(permanentRepository.Read(selectID));
                             }
                             else
                             {
@@ -104,9 +104,9 @@ Please Select an Option Below.
                         {
                             Console.WriteLine("Select an employee ID");
                             var selectID = userInput.GetUserInt("Select a valid number");
-                            if (temporaryRepository.ReadSingle(selectID) != null)
+                            if (temporaryRepository.Read(selectID) != null)
                             {
-                                Console.WriteLine(permanentRepository.ReadSingle(selectID));
+                                Console.WriteLine(permanentRepository.Read(selectID));
                             }
                             else
                             {
@@ -128,7 +128,7 @@ Please Select an Option Below.
                 {
                     Console.WriteLine(@"1.Delete Permanent employees
 2.Delete Temporary employees");
-                    string? delSelect = Console.ReadLine();
+                    var delSelect = Console.ReadLine();
                     Console.WriteLine(@"1.One Employee
 2.All Employees");
                     var delSec = Console.ReadLine();
@@ -200,7 +200,7 @@ Please Select an Option Below.
                     {
                         Console.WriteLine("Please enter an ID");
                         var id = userInput.GetUserInt("Please enter a valid number!");
-                        PermanentEmployee? employee = permanentRepository.ReadSingle(id);
+                        PermanentEmployee? employee = permanentRepository.Read(id);
                         if (employee == null)
                         {
                             Console.WriteLine("This was not a valid ID ");
@@ -214,7 +214,7 @@ Please Select an Option Below.
                     {
                         Console.WriteLine("Please enter an ID");
                         var ID = userInput.GetUserInt("Please enter a valid number!");
-                        TemporaryEmployee? employee = temporaryRepository.ReadSingle(ID);
+                        TemporaryEmployee? employee = temporaryRepository.Read(ID);
                         if (employee == null)
                         {
                             Console.WriteLine("This was not a valid ID ");

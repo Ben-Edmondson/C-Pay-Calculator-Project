@@ -2,7 +2,7 @@
 
 namespace PayCalc_Project.Services
 {
-    class PermanentCalculations : ICalculations<PermanentEmployee>
+    public class PermanentCalculations : ICalculations<PermanentEmployee>
     {
         public decimal? TotalAnnualPay(PermanentEmployee employee)
         {
@@ -15,18 +15,18 @@ namespace PayCalc_Project.Services
             };
             var salary = employee.Salary + employee.Bonus;
 
-            decimal? taxToBePaid = 0m;
+            var taxToBePaid = 0m;
 
             foreach (var band in taxBands)
             {
                 if (salary > band.Lower)
                 {
-                    decimal? taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)salary - band.Lower);
-                    decimal? taxThisBand = taxableAtThisRate * band.Rate;
+                    var taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)salary - band.Lower);
+                    var taxThisBand = taxableAtThisRate * band.Rate;
                     taxToBePaid += taxThisBand;
                 }
             }
-            return taxToBePaid;
+            return Math.Round((decimal)taxToBePaid);
         }
     }
 }

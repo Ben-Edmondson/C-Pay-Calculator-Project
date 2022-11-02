@@ -12,6 +12,10 @@ namespace PayCalc_Project.Repository
         {
             employees.Add(new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
         }
+        public TemporaryEmployeeRepo(IEnumerable<TemporaryEmployee> temp)
+        {
+            employees.AddRange(temp);
+        }
 
         public bool Delete(int id)
         {
@@ -31,8 +35,7 @@ namespace PayCalc_Project.Repository
 
         public List<TemporaryEmployee> ReadAll()
         {
-            List<TemporaryEmployee> readAll = employees;
-            return readAll;
+            return employees;
         }
 
         public TemporaryEmployee? Read(int id)

@@ -19,6 +19,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\PayCalc Class Library\PayCalc Class Library\PayCalc Class Library.csproj" />
     <ProjectReference Include="..\PayCalc Project\PayCalc Project.csproj" />
   </ItemGroup>
 

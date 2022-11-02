@@ -50,7 +50,11 @@ namespace PayCalc_Tests
             employeeCounter = employeeCounter + 1;
             //assert
             Assert.That(employeeCounter, Is.EqualTo(employees.Count()));
-            Assert.That(createTest, Is.EqualTo(_createTest));
+            Assert.That(createTest.FirstName, Is.EquivalentTo(_createTest.FirstName));
+            Assert.That(createTest.LastName, Is.EquivalentTo(_createTest.LastName));
+            Assert.That(createTest.ID, Is.EqualTo(_createTest.ID));
+            Assert.That(createTest.DayRate, Is.EqualTo(_createTest.DayRate));
+            Assert.That(createTest.WeeksWorked, Is.EqualTo(_createTest.WeeksWorked));
         }
         [Test]
         public void Can_Clear_Temporary_Employees()

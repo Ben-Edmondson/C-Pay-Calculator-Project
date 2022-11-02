@@ -44,7 +44,7 @@ namespace PayCalcAPI.Controllers
         }
         // PUT api/<EmployeeController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, string FirstName, string Surname, decimal? Salary, decimal? Bonus)
+        public IActionResult Put(int id, string? FirstName, string? Surname, decimal? Salary, decimal? Bonus)
         {
             if (_employeePermanentRepository.Update(id, FirstName, Surname, Salary, Bonus, null, null) == true)
             {

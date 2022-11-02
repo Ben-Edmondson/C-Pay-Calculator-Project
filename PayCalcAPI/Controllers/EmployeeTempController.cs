@@ -42,7 +42,7 @@ namespace PayCalcAPI.Controllers
         }
         // PUT api/<EmployeeTempController>/5
         [HttpPut("{id}")]
-        public IActionResult Put(int id, string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
+        public IActionResult Put(int id, string? FirstName, string? Surname, decimal? DayRate, int? WeeksWorked)
         {
             if (_employeeTemporaryRepository.Update(id, FirstName, Surname, null, null, DayRate, WeeksWorked) == true)
             {

@@ -1,8 +1,6 @@
-﻿using System.Xml.Linq;
-
-namespace PayCalc_Project.Models
+﻿namespace PayCalc_Project.Models
 {
-    public class EmployeePerm : Employee
+    public class PermanentEmployee : Employee
     {
         public decimal? Salary { get; set; }
         public decimal? Bonus { get; set; }

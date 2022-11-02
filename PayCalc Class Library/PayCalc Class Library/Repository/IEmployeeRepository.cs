@@ -2,12 +2,11 @@
 {
     public interface IEmployeeRepository<T>
     {
-        public T AddEmployee(string FirstName, string Surname, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked);
-        public List<T> ReadAll(); 
-        public T ReadSingle(int id); //string.ConCat
-        public T Update(int id, string FirstName, string LastName, decimal? Salary, decimal? Bonus, decimal? DayRate, int? WeeksWorked);
+        public T Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked);
+        public List<T> ReadAll();
+        public T? Read(int id);
+        public bool Update(int id, string? firstName, string? lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked);
         public bool Delete(int id);
         public bool RemoveAll();
-
     }
 }

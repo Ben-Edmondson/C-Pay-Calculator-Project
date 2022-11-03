@@ -11,7 +11,12 @@ namespace PayCalcAPI.Controllers
     [ApiController]
     public class EmployeePermController : ControllerBase
     {
-        PermanentEmployeeRepo _employeePermanentRepository = new PermanentEmployeeRepo();
+         private readonly IEmployeeRepository<PermanentEmployee> _employeePermanentRepository;
+
+        public EmployeePermController(IEmployeeRepository<PermanentEmployee> employeePermanentRepository)
+        {
+            _employeePermanentRepository = employeePermanentRepository;
+        }
         // GET: api/<EmployeeController>
         [HttpGet]
         public IActionResult GetAll() 

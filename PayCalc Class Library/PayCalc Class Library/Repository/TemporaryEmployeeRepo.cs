@@ -4,13 +4,15 @@ namespace PayCalc_Project.Repository
 {
     public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
-        private Random rnd = new Random();
+        static Random rnd = new Random();
 
-        private List<TemporaryEmployee> employees = new List<TemporaryEmployee>();
+        private List<TemporaryEmployee> employees = new List<TemporaryEmployee>()
+        {
+            new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
+        };
 
         public TemporaryEmployeeRepo()
         {
-            employees.Add(new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
         }
         public TemporaryEmployeeRepo(IEnumerable<TemporaryEmployee> temp)
         {

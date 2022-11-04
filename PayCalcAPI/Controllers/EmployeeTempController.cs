@@ -9,7 +9,12 @@ namespace PayCalcAPI.Controllers
     [ApiController]
     public class EmployeeTempController : ControllerBase
     {
-        TemporaryEmployeeRepo _employeeTemporaryRepository = new TemporaryEmployeeRepo();
+        private readonly IEmployeeRepository<TemporaryEmployee> _employeeTemporaryRepository;
+
+        public EmployeeTempController(IEmployeeRepository<TemporaryEmployee> employeeTemporaryRepository)
+        {
+            _employeeTemporaryRepository = employeeTemporaryRepository;
+        }
         // GET: api/<EmployeeTempController>
         [HttpGet]
         public IActionResult GetAll()

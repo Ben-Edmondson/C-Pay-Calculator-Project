@@ -13,6 +13,7 @@ namespace PayCalc_Project.Repository
 
         public TemporaryEmployeeRepo()
         {
+
         }
         public TemporaryEmployeeRepo(IEnumerable<TemporaryEmployee> temp)
         {

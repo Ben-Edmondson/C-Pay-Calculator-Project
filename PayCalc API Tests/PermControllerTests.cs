@@ -1,6 +1,6 @@
 namespace PayCalc_API_Tests
 {
-    public class Tests
+    public class PermControllerTests
     {
         [SetUp]
         public void Setup()

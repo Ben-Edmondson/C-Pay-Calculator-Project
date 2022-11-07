@@ -9,7 +9,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayCalc Tests", "PayCalc Te
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayCalc Class Library", "PayCalc Class Library\PayCalc Class Library\PayCalc Class Library.csproj", "{3EA56A5A-5B0B-46B9-9A11-9A9550EAC428}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayCalcAPI", "PayCalcAPI\PayCalcAPI.csproj", "{20D566FB-9AFF-408E-B66F-E4C8D1C1A88B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayCalcAPI", "PayCalcAPI\PayCalcAPI.csproj", "{20D566FB-9AFF-408E-B66F-E4C8D1C1A88B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayCalc API Tests", "PayCalc API Tests\PayCalc API Tests.csproj", "{679635DD-22F2-4297-8E9B-6134B46A739D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{20D566FB-9AFF-408E-B66F-E4C8D1C1A88B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{20D566FB-9AFF-408E-B66F-E4C8D1C1A88B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{20D566FB-9AFF-408E-B66F-E4C8D1C1A88B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{679635DD-22F2-4297-8E9B-6134B46A739D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{679635DD-22F2-4297-8E9B-6134B46A739D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{679635DD-22F2-4297-8E9B-6134B46A739D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{679635DD-22F2-4297-8E9B-6134B46A739D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

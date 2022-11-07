@@ -4,7 +4,7 @@ namespace PayCalc_Project.Repository
 {
     public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>
     {
-         static Random rnd = new Random();
+        static Random rnd = new Random();
 
         private List<PermanentEmployee> employees = new List<PermanentEmployee>()
         {
@@ -14,7 +14,7 @@ namespace PayCalc_Project.Repository
 
         public PermanentEmployeeRepo()
         {
-
+            
         }
         public PermanentEmployeeRepo(IEnumerable<PermanentEmployee> temp)
         {

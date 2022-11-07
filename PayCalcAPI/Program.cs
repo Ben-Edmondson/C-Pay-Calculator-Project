@@ -11,7 +11,6 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddSingleton<IEmployeeRepository<PermanentEmployee>, PermanentEmployeeRepo>();
 builder.Services.AddSingleton<IEmployeeRepository<TemporaryEmployee>, TemporaryEmployeeRepo>();
 
-//builder services singleton
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

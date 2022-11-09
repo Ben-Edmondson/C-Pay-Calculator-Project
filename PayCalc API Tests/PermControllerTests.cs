@@ -20,10 +20,10 @@ namespace PayCalc_API_Tests
             mockPermanentRepository.Setup(y => y.Read(
                 It.IsAny<int>())).Returns((int i) => employees.Where(
                 x => x.ID == i).Single());
-            mockPermanentRepository.Setup(z => z.Delete);
-            mockPermanentRepository.Setup(x => x.Create);
-            mockPermanentRepository.Setup(x => x.Update);
-            mockPermanentRepository.Setup(x => x.RemoveAll);
+            mockPermanentRepository.Setup(z => z.Delete().Returns(true));
+            mockPermanentRepository.Setup(x => x.Create());
+            mockPermanentRepository.Setup(x => x.Update());
+            mockPermanentRepository.Setup(x => x.RemoveAll());
             EmployeePermController permController = new EmployeePermController(mockPermanentRepository);
         }
 

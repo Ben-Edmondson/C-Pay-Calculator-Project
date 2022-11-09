@@ -18,4 +18,9 @@
     <PackageReference Include="coverlet.collector" Version="3.1.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PayCalc Class Library\PayCalc Class Library\PayCalc Class Library.csproj" />
+    <ProjectReference Include="..\PayCalcAPI\PayCalcAPI.csproj" />
+  </ItemGroup>
+
 </Project>

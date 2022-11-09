@@ -1,3 +1,4 @@
+using Moq;
 namespace PayCalc_API_Tests
 {
     public class PermControllerTests
@@ -8,9 +9,9 @@ namespace PayCalc_API_Tests
         }
 
         [Test]
-        public void Test1()
+        public void API_Should_Return_All()
         {
-            Assert.Pass();
+            Assert.Fail();
         }
     }
 }

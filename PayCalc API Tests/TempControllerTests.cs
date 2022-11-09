@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿using Moq;
 namespace PayCalc_API_Tests
 {
     class TempControllerTests
@@ -14,9 +9,9 @@ namespace PayCalc_API_Tests
         }
 
         [Test]
-        public void Test1()
+        public void API_Should_Return_All()
         {
-            Assert.Pass();
+            Assert.Fail();
         }
     }
 }

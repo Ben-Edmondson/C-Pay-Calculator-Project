@@ -22,10 +22,6 @@ namespace PayCalc_API_Tests
             _mockPermanentRepository = new Mock<IEmployeeRepository<PermanentEmployee>>();
 
             _mockPermanentRepository
-                .Setup(x => x.Read(It.IsAny<int>())).Returns(employees[0]);
-            _mockPermanentRepository
-                .Setup(x => x.Delete(It.IsAny<int>())).Returns(true);
-            _mockPermanentRepository
                 .Setup(x => x.Create("Ben","Edmondson", 50000,5000,null,null))
                 .Returns(new PermanentEmployee { ID = 1112, FirstName = "Ben", LastName = "Edmondson", Salary = 50000, Bonus = 5000});
             _mockPermanentRepository.Setup(x => x.RemoveAll());
@@ -70,6 +66,26 @@ namespace PayCalc_API_Tests
                 Assert.IsNotNull(contentResult);
                 Assert.That(statusCode, Is.EqualTo(200));
             });
+        }
+
+        [Test]
+        public void API_Should_Delete_Employee_Return_Code_204()
+        {
+            _mockPermanentRepository
+                .Setup(x => x.Delete(It.IsAny<int>())).Returns(true);
+
+            var response = permanentEmployeeController.Delete(1111);
+            var contentResult = response as NoContentResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockPermanentRepository
+                    .Verify(x => x.Delete(1111), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(204));
+            }
+            );
         }
     }
 }

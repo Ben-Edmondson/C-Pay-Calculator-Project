@@ -42,6 +42,7 @@ namespace PayCalc_Project.Repository
         }
         public List<PermanentEmployee> ReadAll()
         {
+            //return null if empty
             return employees;
         }
         public PermanentEmployee? Read(int id)

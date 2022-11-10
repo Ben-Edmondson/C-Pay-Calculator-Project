@@ -51,5 +51,25 @@ namespace PayCalc_API_Tests
                 Assert.That(statusCode, Is.EqualTo(200));
             });
         }
+
+
+        [Test]
+        public void API_Should_Return_Single_Employee_Status_Code_200()
+        {
+            _mockPermanentRepository
+                .Setup(x => x.Read(It.IsAny<int>())).Returns(employees[0]);
+
+            var response = permanentEmployeeController.Get(1111);
+            var contentResult = response as OkObjectResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockPermanentRepository
+                    .Verify(x => x.Read(1111), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(200));
+            });
+        }
     }
 }

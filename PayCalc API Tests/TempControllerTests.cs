@@ -77,8 +77,7 @@ namespace PayCalc_API_Tests
                     .Verify(x => x.Delete(1111), Times.Once());
                 Assert.IsNotNull(contentResult);
                 Assert.That(statusCode, Is.EqualTo(204));
-            }
-            );
+            });
         }
     }
 }

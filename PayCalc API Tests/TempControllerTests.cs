@@ -79,5 +79,23 @@ namespace PayCalc_API_Tests
                 Assert.That(statusCode, Is.EqualTo(204));
             });
         }
+
+        [Test]
+        public void API_Should_Delete_All_Employees_Code_204()
+        {
+            _mockTemporaryRepository.Setup(x => x.RemoveAll()).Returns(true);
+
+            var response = temporaryEmployeeController.DeleteAll();
+            var contentResult = response as NoContentResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockTemporaryRepository
+                    .Verify(x => x.RemoveAll(), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(204));
+            });
+        }
     }
 }

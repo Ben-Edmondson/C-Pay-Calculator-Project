@@ -45,17 +45,19 @@ namespace PayCalc_API_Tests
         [Test]
         public void API_Should_Return_Single_Employee_Status_Code_200()
         {
-            _mockTemporaryRepository
-                .Setup(x => x.Read(It.IsAny<int>())).Returns(employees[0]);
+            int employeeID = 1111;
 
-            var response = temporaryEmployeeController.Get(1111);
+            _mockTemporaryRepository
+                .Setup(x => x.Read(employeeID)).Returns(employees[0]);
+
+            var response = temporaryEmployeeController.Get(employeeID);
             var contentResult = response as OkObjectResult;
             var statusCode = contentResult?.StatusCode;
 
             Assert.Multiple(() =>
             {
                 _mockTemporaryRepository
-                    .Verify(x => x.Read(1111), Times.Once());
+                    .Verify(x => x.Read(employeeID), Times.Once());
                 Assert.IsNotNull(contentResult);
                 Assert.That(statusCode, Is.EqualTo(200));
             });
@@ -93,6 +95,26 @@ namespace PayCalc_API_Tests
             {
                 _mockTemporaryRepository
                     .Verify(x => x.RemoveAll(), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(204));
+            });
+        }
+
+        [Test]
+        public void API_Should_Create_Employee_Code_204()
+        {
+            _mockTemporaryRepository
+                .Setup(x => x.Create("Ben", "Edmondson", null, null, 350, 52))
+                .Returns(new TemporaryEmployee { ID = 1112, FirstName = "Ben", LastName = "Edmondson", DayRate = 350, WeeksWorked = 52 });
+
+            var response = temporaryEmployeeController.Post("Ben", "Edmondson", 350,52);
+            var contentResult = response as NoContentResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockTemporaryRepository
+                    .Verify(x => x.Create("Ben", "Edmondson", null, null, 350, 52), Times.Once());
                 Assert.IsNotNull(contentResult);
                 Assert.That(statusCode, Is.EqualTo(204));
             });

@@ -119,5 +119,25 @@ namespace PayCalc_API_Tests
                 Assert.That(statusCode, Is.EqualTo(204));
             });
         }
+
+        [Test]
+        public void API_Should_Update_Employee_Code_204()
+        {
+            _mockTemporaryRepository
+                .Setup(x => x.Update(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), null, null, It.IsAny<decimal>(), It.IsAny<int>()))
+                .Returns(true);
+
+            var response = temporaryEmployeeController.Put(1112, "Ben", "Edmondson", 500, 35);
+            var contentResult = response as NoContentResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockTemporaryRepository
+                    .Verify(x => x.Update(1112, "Ben", "Edmondson", null, null, 500, 35), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(204));
+            });
+        }
     }
 }

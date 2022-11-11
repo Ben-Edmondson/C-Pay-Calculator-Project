@@ -104,7 +104,7 @@ namespace PayCalc_API_Tests
         public void API_Should_Create_Employee_Code_204()
         {
             _mockTemporaryRepository
-                .Setup(x => x.Create("Ben", "Edmondson", null, null, 350, 52))
+                .Setup(x => x.Create(It.IsAny<string>(), It.IsAny<string>(), null, null, 350, 52))
                 .Returns(new TemporaryEmployee { ID = 1112, FirstName = "Ben", LastName = "Edmondson", DayRate = 350, WeeksWorked = 52 });
 
             var response = temporaryEmployeeController.Post("Ben", "Edmondson", 350,52);

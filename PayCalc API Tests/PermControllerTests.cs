@@ -103,7 +103,7 @@ namespace PayCalc_API_Tests
         public void API_Should_Create_Employee_Code_204()
         {
             _mockPermanentRepository
-                .Setup(x => x.Create(It.IsAny<string>(), It.IsAny<string>(), 50000, 5000, null, null))
+                .Setup(x => x.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<decimal>(), It.IsAny<decimal>(), null, null))
                 .Returns(new PermanentEmployee { ID = 1112, FirstName = "Ben", LastName = "Edmondson", Salary = 50000, Bonus = 5000 });
 
             var response = permanentEmployeeController.Post("Ben", "Edmondson", 50000, 5000);

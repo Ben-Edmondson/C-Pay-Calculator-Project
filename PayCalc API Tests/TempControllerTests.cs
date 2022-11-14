@@ -162,27 +162,6 @@ namespace PayCalc_API_Tests
         }
 
         [Test]
-        public void API_Should_Return_Single_Employee_Status_Code_404()
-        {
-            int employeeID = 1111;
-
-            _mockTemporaryRepository
-                .Setup(x => x.Read(employeeID)).Returns(employees[0]);
-
-            var response = temporaryEmployeeController.Get(employeeID);
-            var contentResult = response as NotFoundResult;
-            var statusCode = contentResult?.StatusCode;
-
-            Assert.Multiple(() =>
-            {
-                _mockTemporaryRepository
-                    .Verify(x => x.Read(employeeID), Times.Once());
-                Assert.IsNotNull(contentResult);
-                Assert.That(statusCode, Is.EqualTo(404));
-            });
-        }
-
-        [Test]
         public void API_Should_Delete_Employee_Return_Code_404()
         {
             _mockTemporaryRepository

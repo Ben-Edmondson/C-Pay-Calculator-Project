@@ -34,10 +34,6 @@ namespace PayCalcAPI.Controllers
         public IActionResult Get(int id)
         {
             var ReadSingle = JsonSerializer.Serialize(_employeePermanentRepository.Read(id));
-            if (ReadSingle == null)
-            {
-                return NotFound();
-            }
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeController>

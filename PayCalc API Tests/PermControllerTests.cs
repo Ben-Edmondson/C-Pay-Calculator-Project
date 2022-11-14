@@ -165,7 +165,7 @@ namespace PayCalc_API_Tests
         public void API_Should_Return_Single_Employee_Status_Code_404()
         {
             _mockPermanentRepository
-                .Setup(x => x.Read(It.IsAny<int>())).Returns();
+                .Setup(x => x.Read(It.IsAny<int>())).Returns(employees[1]);
 
             //response comes back as OkObjectResult in debugging fix later.
             var response = permanentEmployeeController.Get(1111);

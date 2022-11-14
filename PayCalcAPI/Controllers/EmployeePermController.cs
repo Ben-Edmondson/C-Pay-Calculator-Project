@@ -23,7 +23,7 @@ namespace PayCalcAPI.Controllers
         {
             List<PermanentEmployee> employees = _employeePermanentRepository.ReadAll();
             var x = JsonSerializer.Serialize(employees);
-            if (employees.Count() <= 0)
+            if (employees.Count() == 0)
             {
                 return NotFound();
             }

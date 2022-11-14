@@ -22,6 +22,7 @@ namespace PayCalc_API_Tests
             permanentEmployeeController = new EmployeePermController(_mockPermanentRepository.Object);
         }
 
+
         [Test]
         public void API_Should_Return_All_With_Status200()
         {
@@ -136,6 +137,104 @@ namespace PayCalc_API_Tests
                     .Verify(x => x.Update(1112, "Ben", "Edmondson", 50000, 5000, null, null), Times.Once());
                 Assert.IsNotNull(contentResult);
                 Assert.That(statusCode, Is.EqualTo(204));
+            });
+        }
+
+        [Test]
+        public void API_Should_Return_All_With_Status404()
+        {
+            employees.Clear();
+            //arrange
+            _mockPermanentRepository
+                .Setup(x => x.ReadAll()).Returns(employees);
+            //act
+            var response = permanentEmployeeController.GetAll();
+            var contentResult = response as NotFoundResult;
+            var statusCode = contentResult?.StatusCode;
+            //assert
+            Assert.Multiple(() =>
+            {
+                _mockPermanentRepository
+                    .Verify(x => x.ReadAll(), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(404));
+            });
+        }
+
+        [Test]
+        public void API_Should_Return_Single_Employee_Status_Code_404()
+        {
+            _mockPermanentRepository
+                .Setup(x => x.Read(It.IsAny<int>())).Returns();
+
+            //response comes back as OkObjectResult in debugging fix later.
+            var response = permanentEmployeeController.Get(1111);
+            var contentResult = response as NotFoundResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockPermanentRepository
+                    .Verify(x => x.Read(1111), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(404));
+            });
+        }
+
+        [Test]
+        public void API_Should_Delete_Employee_Return_Code_404()
+        {
+            _mockPermanentRepository
+                .Setup(x => x.Delete(It.IsAny<int>())).Returns(false);
+
+            var response = permanentEmployeeController.Delete(1111);
+            var contentResult = response as NotFoundResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockPermanentRepository
+                    .Verify(x => x.Delete(1111), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(404));
+            });
+        }
+
+        [Test]
+        public void API_Should_Delete_All_Employees_Code_404()
+        {
+            _mockPermanentRepository.Setup(x => x.RemoveAll()).Returns(false);
+
+            var response = permanentEmployeeController.DeleteAll();
+            var contentResult = response as NotFoundResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockPermanentRepository
+                    .Verify(x => x.RemoveAll(), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(404));
+            });
+        }
+
+        [Test]
+        public void API_Should_Update_Employee_Code_404()
+        {
+            _mockPermanentRepository
+                .Setup(x => x.Update(It.IsAny<int>(), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<decimal>(), It.IsAny<decimal>(), null, null))
+                .Returns(false);
+
+            var response = permanentEmployeeController.Put(1112, "Ben", "Edmondson", 50000, 5000);
+            var contentResult = response as NotFoundResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                _mockPermanentRepository
+                    .Verify(x => x.Update(1112, "Ben", "Edmondson", 50000, 5000, null, null), Times.Once());
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(404));
             });
         }
     }

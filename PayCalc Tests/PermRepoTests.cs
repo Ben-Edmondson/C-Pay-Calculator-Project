@@ -70,5 +70,19 @@ namespace PayCalc_Tests
             Assert.That(repoPermanentEmployee.Delete(1111), Is.EqualTo(false));
 
         }
+
+        [Test]
+        public void Can_Read_Single_Emp()
+        {
+            var readSingle = repoPermanentEmployee.Read(1001);
+            Assert.That(readSingle, Is.Not.Null);
+        }
+
+        [Test]
+        public void No_Employee_To_Read()
+        {
+            var readSingle = repoPermanentEmployee.Read(1000);
+            Assert.That(readSingle, Is.Null);
+        }
     }
 }

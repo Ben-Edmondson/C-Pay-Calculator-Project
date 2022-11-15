@@ -162,6 +162,23 @@ namespace PayCalc_API_Tests
         }
 
         [Test]
+        public void API_Should_Return_Single_Employee_Status_Code_404()
+        {
+            _mockPermanentRepository
+                .Setup(x => x.Read(It.IsAny<int>())).Returns((PermanentEmployee)null);
+
+            var response = permanentEmployeeController.Get(1111);
+            var contentResult = response as NotFoundResult;
+            var statusCode = contentResult?.StatusCode;
+
+            Assert.Multiple(() =>
+            {
+                Assert.IsNotNull(contentResult);
+                Assert.That(statusCode, Is.EqualTo(404));
+            });
+        }
+
+        [Test]
         public void API_Should_Delete_Employee_Return_Code_404()
         {
             _mockPermanentRepository

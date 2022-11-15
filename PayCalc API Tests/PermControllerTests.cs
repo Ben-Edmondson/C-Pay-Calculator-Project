@@ -173,6 +173,8 @@ namespace PayCalc_API_Tests
 
             Assert.Multiple(() =>
             {
+                _mockPermanentRepository
+                    .Verify(x => x.Read(1111), Times.Once());
                 Assert.IsNotNull(contentResult);
                 Assert.That(statusCode, Is.EqualTo(404));
             });

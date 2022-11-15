@@ -32,7 +32,7 @@ namespace PayCalcAPI.Controllers
         public IActionResult Get(int id)
         {
             TemporaryEmployee? emp = _employeeTemporaryRepository.Read(id);
-            var ReadSingle = JsonSerializer.Serialize(_employeeTemporaryRepository.Read(id));
+            var ReadSingle = JsonSerializer.Serialize(emp);
             if(emp == null)
             {
                 return NotFound();

@@ -14,12 +14,12 @@ namespace PayCalc_API_Tests
         };
 
         private Mock<IEmployeeRepository<TemporaryEmployee>> _mockTemporaryRepository;
-        private EmployeeTempController temporaryEmployeeController;
+        private TemporaryEmployeeController temporaryEmployeeController;
         [SetUp]
         public void Setup()
         {
             _mockTemporaryRepository = new Mock<IEmployeeRepository<TemporaryEmployee>>();
-            temporaryEmployeeController = new EmployeeTempController(_mockTemporaryRepository.Object);
+            temporaryEmployeeController = new TemporaryEmployeeController(_mockTemporaryRepository.Object);
         }
 
         [Test]

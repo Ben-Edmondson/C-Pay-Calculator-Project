@@ -13,13 +13,13 @@ namespace PayCalc_API_Tests
             new PermanentEmployee(){ ID = 1111, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 }};
 
         private Mock<IEmployeeRepository<PermanentEmployee>> _mockPermanentRepository;
-        private EmployeePermController permanentEmployeeController;
+        private PermanentEmployeeController permanentEmployeeController;
 
         [SetUp]
         public void Setup()
         {
             _mockPermanentRepository = new Mock<IEmployeeRepository<PermanentEmployee>>();
-            permanentEmployeeController = new EmployeePermController(_mockPermanentRepository.Object);
+            permanentEmployeeController = new PermanentEmployeeController(_mockPermanentRepository.Object);
         }
 
 

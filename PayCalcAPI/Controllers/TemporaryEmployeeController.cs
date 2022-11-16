@@ -7,16 +7,16 @@ namespace PayCalcAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeeTempController : ControllerBase
+    public class TemporaryEmployeeController : ControllerBase
     {
         private readonly IEmployeeRepository<TemporaryEmployee> _employeeTemporaryRepository;
 
-        public EmployeeTempController(IEmployeeRepository<TemporaryEmployee> employeeTemporaryRepository)
+        public TemporaryEmployeeController(IEmployeeRepository<TemporaryEmployee> employeeTemporaryRepository)
         {
             _employeeTemporaryRepository = employeeTemporaryRepository;
         }
         // GET: api/<EmployeeTempController>
-        [Route ("~/api/TemporaryEmployee/GetAllEmployees")]
+        [Route ("~/api/[controller]/GetAllEmployees")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -29,7 +29,7 @@ namespace PayCalcAPI.Controllers
             return Ok(x);
         }
         // GET api/<EmployeeTempController>/5
-        [Route("~/api/TemporaryEmployee/GetEmployee/{id}")]
+        [Route("~/api/[controller]/GetEmployee/{id}")]
         [HttpGet]
         public IActionResult Get(int id)
         {
@@ -42,7 +42,7 @@ namespace PayCalcAPI.Controllers
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeTempController>
-        [Route("~/api/TemporaryEmployee/AddEmployee")]
+        [Route("~/api/[controller]/AddEmployee")]
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         {
@@ -50,7 +50,7 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeTempController>/5
-        [Route("~/api/TemporaryEmployee/UpdateEmployee/{id}")]
+        [Route("~/api/[controller]/UpdateEmployee/{id}")]
         [HttpPut]
         public IActionResult Put(int id, string? FirstName, string? Surname, decimal? DayRate, int? WeeksWorked)
         {
@@ -64,7 +64,7 @@ namespace PayCalcAPI.Controllers
             }
         }
         // DELETE api/<EmployeeTempController>/5
-        [Route("~/api/TemporaryEmployee/DeleteEmployee/{id}")]
+        [Route("~/api/[controller]/DeleteEmployee/{id}")]
         [HttpDelete]
         public IActionResult Delete(int id)
         {
@@ -78,7 +78,7 @@ namespace PayCalcAPI.Controllers
             }
 
         }
-        [Route("~/api/TemporaryEmployee/DeleteAllEmployees")]
+        [Route("~/api/[controller]/DeleteAllEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {

@@ -9,16 +9,16 @@ namespace PayCalcAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class EmployeePermController : ControllerBase
+    public class PermanentEmployeeController : ControllerBase
     {
          private readonly IEmployeeRepository<PermanentEmployee> _employeePermanentRepository;
 
-        public EmployeePermController(IEmployeeRepository<PermanentEmployee> employeePermanentRepository)
+        public PermanentEmployeeController(IEmployeeRepository<PermanentEmployee> employeePermanentRepository)
         {
             _employeePermanentRepository = employeePermanentRepository;
         }
         // GET: api/<EmployeeController>
-        [Route("~/api/PermanentEmployee/GetAllEmployees")]
+        [Route("GetAllEmployees")]
         [HttpGet]
         public IActionResult GetAll() 
         {
@@ -31,8 +31,8 @@ namespace PayCalcAPI.Controllers
             return Ok(x);
         }
         // GET api/<EmployeeController>/5
-        [Route("~/api/PermanentEmployee/GetEmployee")]
-        [HttpGet("{id}")]
+        [Route("GetEmployee/{id}")]
+        [HttpGet]
         public IActionResult Get(int id)
         {   
             PermanentEmployee? emp = _employeePermanentRepository.Read(id);
@@ -44,7 +44,7 @@ namespace PayCalcAPI.Controllers
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeController>
-        [Route("~/api/PermanentEmployee/AddEmployee")]
+        [Route("AddEmployee")]
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
@@ -52,8 +52,8 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
-        [Route("~/api/PermanentEmployee/UpdateEmployee")]
-        [HttpPut("{id}")]
+        [Route("UpdateEmployee/{id}")]
+        [HttpPut]
         public IActionResult Put(int id, string? FirstName, string? Surname, decimal? Salary, decimal? Bonus)
         {
             if (_employeePermanentRepository.Update(id, FirstName, Surname, Salary, Bonus, null, null) == true)
@@ -66,8 +66,8 @@ namespace PayCalcAPI.Controllers
             }
         }
         // DELETE api/<EmployeeController>/5
-        [Route("~/api/PermanentEmployee/DeleteEmployee")]
-        [HttpDelete("{id}")]
+        [Route("DeleteEmployee/{id}")]
+        [HttpDelete]
         public IActionResult Delete(int id)
         {
             if (_employeePermanentRepository.Delete(id) == true)
@@ -81,7 +81,7 @@ namespace PayCalcAPI.Controllers
 
         }
 
-        [Route("~/api/PermanentEmployee/DeleteAllEmployees")]
+        [Route("DeleteAllEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {

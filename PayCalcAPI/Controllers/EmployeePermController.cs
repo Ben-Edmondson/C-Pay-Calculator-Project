@@ -18,6 +18,7 @@ namespace PayCalcAPI.Controllers
             _employeePermanentRepository = employeePermanentRepository;
         }
         // GET: api/<EmployeeController>
+        [Route("~/api/PermanentEmployee/GetAllEmployees")]
         [HttpGet]
         public IActionResult GetAll() 
         {
@@ -30,6 +31,7 @@ namespace PayCalcAPI.Controllers
             return Ok(x);
         }
         // GET api/<EmployeeController>/5
+        [Route("~/api/PermanentEmployee/GetEmployee")]
         [HttpGet("{id}")]
         public IActionResult Get(int id)
         {   
@@ -42,6 +44,7 @@ namespace PayCalcAPI.Controllers
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeController>
+        [Route("~/api/PermanentEmployee/AddEmployee")]
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
@@ -49,6 +52,7 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
+        [Route("~/api/PermanentEmployee/UpdateEmployee")]
         [HttpPut("{id}")]
         public IActionResult Put(int id, string? FirstName, string? Surname, decimal? Salary, decimal? Bonus)
         {
@@ -62,6 +66,7 @@ namespace PayCalcAPI.Controllers
             }
         }
         // DELETE api/<EmployeeController>/5
+        [Route("~/api/PermanentEmployee/DeleteEmployee")]
         [HttpDelete("{id}")]
         public IActionResult Delete(int id)
         {
@@ -75,6 +80,8 @@ namespace PayCalcAPI.Controllers
             }
 
         }
+
+        [Route("~/api/PermanentEmployee/DeleteAllEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {

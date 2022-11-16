@@ -16,6 +16,7 @@ namespace PayCalcAPI.Controllers
             _employeeTemporaryRepository = employeeTemporaryRepository;
         }
         // GET: api/<EmployeeTempController>
+        [Route ("~/api/TemporaryEmployee/GetAllEmployees")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -28,7 +29,8 @@ namespace PayCalcAPI.Controllers
             return Ok(x);
         }
         // GET api/<EmployeeTempController>/5
-        [HttpGet("{id}")]
+        [Route("~/api/TemporaryEmployee/GetEmployee/{id}")]
+        [HttpGet]
         public IActionResult Get(int id)
         {
             TemporaryEmployee? emp = _employeeTemporaryRepository.Read(id);
@@ -40,6 +42,7 @@ namespace PayCalcAPI.Controllers
             return Ok(ReadSingle);
         }
         // POST api/<EmployeeTempController>
+        [Route("~/api/TemporaryEmployee/AddEmployee")]
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         {
@@ -47,7 +50,8 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeTempController>/5
-        [HttpPut("{id}")]
+        [Route("~/api/TemporaryEmployee/UpdateEmployee/{id}")]
+        [HttpPut]
         public IActionResult Put(int id, string? FirstName, string? Surname, decimal? DayRate, int? WeeksWorked)
         {
             if (_employeeTemporaryRepository.Update(id, FirstName, Surname, null, null, DayRate, WeeksWorked) == true)
@@ -60,7 +64,8 @@ namespace PayCalcAPI.Controllers
             }
         }
         // DELETE api/<EmployeeTempController>/5
-        [HttpDelete("{id}")]
+        [Route("~/api/TemporaryEmployee/DeleteEmployee/{id}")]
+        [HttpDelete]
         public IActionResult Delete(int id)
         {
             if (_employeeTemporaryRepository.Delete(id) == true)
@@ -73,6 +78,7 @@ namespace PayCalcAPI.Controllers
             }
 
         }
+        [Route("~/api/TemporaryEmployee/DeleteAllEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {

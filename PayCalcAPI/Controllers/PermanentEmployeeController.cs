@@ -37,7 +37,7 @@ namespace PayCalcAPI.Controllers
         {
             PermanentEmployee? employee = _employeePermanentRepository.Read(id);
             if(employee != null) {
-                PermamentEmployeeSalary? empWSal = new PermamentEmployeeSalary { Employee = employee, SalaryAfterTax = employee.Salary - permCalc.TotalAnnualPay(employee) };
+                PermamentEmployeeSalary? empWSal = new PermamentEmployeeSalary { Employee = employee, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee) };
                 var ReadSingle = JsonSerializer.Serialize(empWSal);
                 return Ok(ReadSingle);
             }

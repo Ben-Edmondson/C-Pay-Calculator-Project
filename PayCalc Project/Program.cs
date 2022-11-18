@@ -207,7 +207,7 @@ Please Select an Option Below.
                         }
                         else
                         {
-                            Console.WriteLine(permanentCalculations.TotalAnnualPay(employee));
+                            Console.WriteLine(permanentCalculations.TotalTaxPaid(employee));
                         }
                     }
                     else
@@ -221,7 +221,7 @@ Please Select an Option Below.
                         }
                         else
                         {
-                            Console.WriteLine(temporaryCalculations.TotalAnnualPay(employee));
+                            Console.WriteLine(temporaryCalculations.TotalTaxPaid(employee));
                         }
                     }
                 }

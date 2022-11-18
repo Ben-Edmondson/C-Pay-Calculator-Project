@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
+using PayCalc_Project.Services;
 using System.Text.Json;
 
 namespace PayCalcAPI.Controllers
@@ -10,7 +11,7 @@ namespace PayCalcAPI.Controllers
     public class TemporaryEmployeeController : ControllerBase
     {
         private readonly IEmployeeRepository<TemporaryEmployee> _employeeTemporaryRepository;
-
+        TemporaryCalculations tempCalc = new TemporaryCalculations();
         public TemporaryEmployeeController(IEmployeeRepository<TemporaryEmployee> employeeTemporaryRepository)
         {
             _employeeTemporaryRepository = employeeTemporaryRepository;
@@ -33,13 +34,17 @@ namespace PayCalcAPI.Controllers
         [HttpGet]
         public IActionResult Get(int id)
         {
-            TemporaryEmployee? emp = _employeeTemporaryRepository.Read(id);
-            var ReadSingle = JsonSerializer.Serialize(emp);
-            if(emp == null)
+            TemporaryEmployee? employee = _employeeTemporaryRepository.Read(id);
+            if (employee != null)
+            {
+                TemporaryEmployeeSalary emp = new TemporaryEmployeeSalary { Employee = employee, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
+                var ReadSingle = JsonSerializer.Serialize(emp);
+                return Ok(ReadSingle);
+            }
+            else
             {
                 return NotFound();
             }
-            return Ok(ReadSingle);
         }
         // POST api/<EmployeeTempController>
         [Route("~/api/[controller]/AddEmployee")]

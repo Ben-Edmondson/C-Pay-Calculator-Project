@@ -12,7 +12,7 @@ namespace PayCalcAPI.Controllers
     public class PermanentEmployeeController : ControllerBase
     {
         PermanentCalculations permCalc = new PermanentCalculations();
-         private readonly IEmployeeRepository<PermanentEmployee> _employeePermanentRepository;
+        private readonly IEmployeeRepository<PermanentEmployee> _employeePermanentRepository;
         public PermanentEmployeeController(IEmployeeRepository<PermanentEmployee> employeePermanentRepository)
         {
             _employeePermanentRepository = employeePermanentRepository;
@@ -20,7 +20,7 @@ namespace PayCalcAPI.Controllers
         // GET: api/<EmployeeController>
         [Route("GetAllEmployees")]
         [HttpGet]
-        public IActionResult GetAll() 
+        public IActionResult GetAll()
         {
             List<PermanentEmployee> employees = _employeePermanentRepository.ReadAll();
             var x = JsonSerializer.Serialize(employees);
@@ -36,16 +36,13 @@ namespace PayCalcAPI.Controllers
         public IActionResult Get(int id)
         {
             PermanentEmployee? employee = _employeePermanentRepository.Read(id);
-            if(employee != null) {
+            if (employee != null)
+            {
                 PermamentEmployeeSalary? empWSal = new PermamentEmployeeSalary { Employee = employee, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee) };
                 var ReadSingle = JsonSerializer.Serialize(empWSal);
                 return Ok(ReadSingle);
             }
-            else
-            {
-                return NotFound();
-            }
-
+            return NotFound();
         }
         // POST api/<EmployeeController>
         [Route("AddEmployee")]
@@ -64,10 +61,7 @@ namespace PayCalcAPI.Controllers
             {
                 return NoContent();
             }
-            else
-            {
-                return NotFound();
-            }
+            return NotFound();
         }
         // DELETE api/<EmployeeController>/5
         [Route("DeleteEmployee/{id}")]
@@ -78,26 +72,18 @@ namespace PayCalcAPI.Controllers
             {
                 return NoContent();
             }
-            else
-            {
-                return NotFound();
-            }
-
+            return NotFound();
         }
 
         [Route("DeleteAllEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {
-            
             if (_employeePermanentRepository.RemoveAll() == true)
             {
                 return NoContent();
             }
-            else
-            {
-                return NotFound() ;
-            }
+            return NotFound();
         }
     }
 }

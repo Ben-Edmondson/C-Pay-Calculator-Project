@@ -107,7 +107,7 @@ namespace PayCalc_API_Tests
                 .Setup(x => x.Create(It.IsAny<string>(), It.IsAny<string>(), null, null, It.IsAny<decimal>(), It.IsAny<int>()))
                 .Returns(new TemporaryEmployee { ID = 1112, FirstName = "Ben", LastName = "Edmondson", DayRate = 350, WeeksWorked = 52 });
 
-            var response = temporaryEmployeeController.Post("Ben", "Edmondson", 350,52);
+            var response = temporaryEmployeeController.Post("Ben", "Edmondson", 350, 52);
             var contentResult = response as NoContentResult;
             var statusCode = contentResult?.StatusCode;
 

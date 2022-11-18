@@ -17,7 +17,7 @@ namespace PayCalcAPI.Controllers
             _employeeTemporaryRepository = employeeTemporaryRepository;
         }
         // GET: api/<EmployeeTempController>
-        [Route ("~/api/[controller]/GetAllEmployees")]
+        [Route("~/api/[controller]/GetAllEmployees")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -41,10 +41,7 @@ namespace PayCalcAPI.Controllers
                 var ReadSingle = JsonSerializer.Serialize(emp);
                 return Ok(ReadSingle);
             }
-            else
-            {
-                return NotFound();
-            }
+            return NotFound();
         }
         // POST api/<EmployeeTempController>
         [Route("~/api/[controller]/AddEmployee")]
@@ -63,10 +60,7 @@ namespace PayCalcAPI.Controllers
             {
                 return NoContent();
             }
-            else
-            {
-                return NotFound();
-            }
+            return NotFound();
         }
         // DELETE api/<EmployeeTempController>/5
         [Route("~/api/[controller]/DeleteEmployee/{id}")]
@@ -77,11 +71,7 @@ namespace PayCalcAPI.Controllers
             {
                 return NoContent();
             }
-            else
-            {
-                return NotFound();
-            }
-
+            return NotFound();
         }
         [Route("~/api/[controller]/DeleteAllEmployees")]
         [HttpDelete]
@@ -91,10 +81,7 @@ namespace PayCalcAPI.Controllers
             {
                 return NoContent();
             }
-            else
-            {
-                return NotFound();
-            }
+            return NotFound();
         }
     }
 }

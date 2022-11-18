@@ -4,13 +4,12 @@ namespace PayCalc_Project.Repository
 {
     public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
-        static Random rnd = new Random();
+        private static Random rnd = new Random();
 
         private List<TemporaryEmployee> employees = new List<TemporaryEmployee>()
         {
             new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
         };
-
         public TemporaryEmployeeRepo()
         {
 
@@ -19,7 +18,6 @@ namespace PayCalc_Project.Repository
         {
             employees.AddRange(temp);
         }
-
         public bool Delete(int id)
         {
             if (employees.Exists(x => x.ID == id) == true)
@@ -29,24 +27,20 @@ namespace PayCalc_Project.Repository
             }
             return false;
         }
-
         public bool RemoveAll()
         {
             employees.Clear();
             return true;
         }
-
         public List<TemporaryEmployee> ReadAll()
         {
             return employees;
         }
-
         public TemporaryEmployee? Read(int id)
         {
             var readSingle = employees.Find(x => x.ID == id);
             return readSingle;
         }
-
         public bool Update(int id, string? firstName, string? lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             foreach (var employee in employees)
@@ -74,7 +68,6 @@ namespace PayCalc_Project.Repository
             }
             return false;
         }
-
         public TemporaryEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             TemporaryEmployee employee = new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };

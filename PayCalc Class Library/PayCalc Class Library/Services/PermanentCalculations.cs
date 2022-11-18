@@ -4,7 +4,7 @@ namespace PayCalc_Project.Services
 {
     public class PermanentCalculations : ICalculations<PermanentEmployee>
     {
-        public decimal? TotalAnnualPay(PermanentEmployee employee)
+        public decimal? TotalTaxPaid(PermanentEmployee employee)
         {
             var taxBands = new[]
             {

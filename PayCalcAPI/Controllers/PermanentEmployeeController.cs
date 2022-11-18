@@ -1,18 +1,18 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
+using PayCalc_Project.Services;
 using System.Text.Json;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-//Postman
 namespace PayCalcAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
     public class PermanentEmployeeController : ControllerBase
     {
+        PermanentCalculations permCalc = new PermanentCalculations();
          private readonly IEmployeeRepository<PermanentEmployee> _employeePermanentRepository;
-
         public PermanentEmployeeController(IEmployeeRepository<PermanentEmployee> employeePermanentRepository)
         {
             _employeePermanentRepository = employeePermanentRepository;
@@ -34,14 +34,18 @@ namespace PayCalcAPI.Controllers
         [Route("GetEmployee/{id}")]
         [HttpGet]
         public IActionResult Get(int id)
-        {   
-            PermanentEmployee? emp = _employeePermanentRepository.Read(id);
-            var ReadSingle = JsonSerializer.Serialize(emp);
-            if (emp == null)
+        {
+            PermanentEmployee? employee = _employeePermanentRepository.Read(id);
+            if(employee != null) {
+                PermamentEmployeeSalary? empWSal = new PermamentEmployeeSalary { Employee = employee, SalaryAfterTax = employee.Salary - permCalc.TotalAnnualPay(employee) };
+                var ReadSingle = JsonSerializer.Serialize(empWSal);
+                return Ok(ReadSingle);
+            }
+            else
             {
                 return NotFound();
             }
-            return Ok(ReadSingle);
+
         }
         // POST api/<EmployeeController>
         [Route("AddEmployee")]

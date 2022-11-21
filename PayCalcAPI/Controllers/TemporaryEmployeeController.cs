@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace PayCalcAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class TemporaryEmployeeController : ControllerBase
     {
@@ -17,7 +17,7 @@ namespace PayCalcAPI.Controllers
             _employeeTemporaryRepository = employeeTemporaryRepository;
         }
         // GET: api/<EmployeeTempController>
-        [Route("~/api/[controller]/GetAllEmployees")]
+        [Route("TemporaryEmployees")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -30,7 +30,7 @@ namespace PayCalcAPI.Controllers
             return Ok(x);
         }
         // GET api/<EmployeeTempController>/5
-        [Route("~/api/[controller]/GetEmployee/{id}")]
+        [Route("TemporaryEmployee/{id}")]
         [HttpGet]
         public IActionResult Get(int id)
         {
@@ -44,7 +44,7 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
         // POST api/<EmployeeTempController>
-        [Route("~/api/[controller]/AddEmployee")]
+        [Route("AddTemporaryEmployee")]
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         {
@@ -52,7 +52,7 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeTempController>/5
-        [Route("~/api/[controller]/UpdateEmployee/{id}")]
+        [Route("UpdateTemporaryEmployee/{id}")]
         [HttpPut]
         public IActionResult Put(int id, string? FirstName, string? Surname, decimal? DayRate, int? WeeksWorked)
         {
@@ -63,7 +63,7 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
         // DELETE api/<EmployeeTempController>/5
-        [Route("~/api/[controller]/DeleteEmployee/{id}")]
+        [Route("DeleteTemporaryEmployee/{id}")]
         [HttpDelete]
         public IActionResult Delete(int id)
         {
@@ -73,7 +73,7 @@ namespace PayCalcAPI.Controllers
             }
             return NotFound();
         }
-        [Route("~/api/[controller]/DeleteAllEmployees")]
+        [Route("WipeEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {

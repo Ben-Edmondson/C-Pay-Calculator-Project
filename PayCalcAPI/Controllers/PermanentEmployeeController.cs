@@ -7,7 +7,7 @@ using System.Text.Json;
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace PayCalcAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api")]
     [ApiController]
     public class PermanentEmployeeController : ControllerBase
     {
@@ -18,7 +18,7 @@ namespace PayCalcAPI.Controllers
             _employeePermanentRepository = employeePermanentRepository;
         }
         // GET: api/<EmployeeController>
-        [Route("GetAllEmployees")]
+        [Route("PermanentEmployees")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -31,7 +31,7 @@ namespace PayCalcAPI.Controllers
             return Ok(x);
         }
         // GET api/<EmployeeController>/5
-        [Route("GetEmployee/{id}")]
+        [Route("PermanentEmployee/{id}")]
         [HttpGet]
         public IActionResult Get(int id)
         {
@@ -45,7 +45,7 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
         // POST api/<EmployeeController>
-        [Route("AddEmployee")]
+        [Route("NewPermanentEmployee")]
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
@@ -53,7 +53,7 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
-        [Route("UpdateEmployee/{id}")]
+        [Route("UpdatePermanentEmployee/{id}")]
         [HttpPut]
         public IActionResult Put(int id, string? FirstName, string? Surname, decimal? Salary, decimal? Bonus)
         {
@@ -64,7 +64,7 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
         // DELETE api/<EmployeeController>/5
-        [Route("DeleteEmployee/{id}")]
+        [Route("DeletePermanentEmployee/{id}")]
         [HttpDelete]
         public IActionResult Delete(int id)
         {
@@ -75,7 +75,7 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
 
-        [Route("DeleteAllEmployees")]
+        [Route("WipeEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {

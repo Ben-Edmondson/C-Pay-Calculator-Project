@@ -2,21 +2,24 @@
 
 namespace PayCalc_Project.Repository
 {
-    public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
+    public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>
     {
-        private Random rnd = new Random();
+        private static Random rnd = new Random();
 
-        private List<TemporaryEmployee> employees = new List<TemporaryEmployee>();
-
-        public TemporaryEmployeeRepo()
+        private List<PermanentEmployee> employees = new List<PermanentEmployee>()
         {
-            employees.Add(new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 });
+            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
+            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 }
+        };
+
+        public PermanentEmployeeRepo()
+        {
+
         }
-        public TemporaryEmployeeRepo(IEnumerable<TemporaryEmployee> temp)
+        public PermanentEmployeeRepo(IEnumerable<PermanentEmployee> temp)
         {
             employees.AddRange(temp);
         }
-
         public bool Delete(int id)
         {
             if (employees.Exists(x => x.ID == id) == true)
@@ -26,24 +29,26 @@ namespace PayCalc_Project.Repository
             }
             return false;
         }
-
         public bool RemoveAll()
         {
             employees.Clear();
             return true;
         }
-
-        public List<TemporaryEmployee> ReadAll()
+        public PermanentEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
+        {
+            PermanentEmployee employee = new PermanentEmployee() { ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus };
+            employees.Add(employee);
+            return employee;
+        }
+        public List<PermanentEmployee> ReadAll()
         {
             return employees;
         }
-
-        public TemporaryEmployee? Read(int id)
+        public PermanentEmployee? Read(int id)
         {
             var readSingle = employees.Find(x => x.ID == id);
             return readSingle;
         }
-
         public bool Update(int id, string? firstName, string? lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             foreach (var employee in employees)
@@ -58,25 +63,18 @@ namespace PayCalc_Project.Repository
                     {
                         employee.LastName = lastName;
                     }
-                    if (dayRate != null)
+                    if (salary != null)
                     {
-                        employee.DayRate = dayRate;
+                        employee.Salary = salary;
                     }
-                    if (weeksWorked != null)
+                    if (bonus != null)
                     {
-                        employee.WeeksWorked = weeksWorked;
+                        employee.Bonus = bonus;
                     }
                     return true;
                 }
             }
             return false;
-        }
-
-        public TemporaryEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
-        {
-            TemporaryEmployee employee = new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };
-            employees.Add(employee);
-            return employee;
         }
     }
 }

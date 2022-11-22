@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>net6.0</TargetFramework>
-    <RootNamespace>PayCalc_Tests</RootNamespace>
+    <RootNamespace>PayCalc_API_Tests</RootNamespace>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
 
@@ -20,7 +20,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\PayCalc Class Library\PayCalc Class Library\PayCalc Class Library.csproj" />
-    <ProjectReference Include="..\PayCalc Project\PayCalc Project.csproj" />
+    <ProjectReference Include="..\PayCalcAPI\PayCalcAPI.csproj" />
   </ItemGroup>
 
 </Project>

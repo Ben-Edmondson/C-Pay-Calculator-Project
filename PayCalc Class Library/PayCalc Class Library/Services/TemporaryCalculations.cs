@@ -3,7 +3,7 @@ namespace PayCalc_Project.Services
 {
     public class TemporaryCalculations : ICalculations<TemporaryEmployee>
     {
-        public decimal? TotalAnnualPay(TemporaryEmployee employee)
+        public decimal? TotalTaxPaid(TemporaryEmployee employee)
         {
             var days = 5;
             var dayRate = employee.DayRate;

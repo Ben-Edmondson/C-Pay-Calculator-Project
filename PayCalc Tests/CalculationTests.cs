@@ -14,7 +14,7 @@ namespace PayCalc_Tests
             PermanentCalculations _permanentCalculations = new PermanentCalculations();
             var tAP = 6486M;
             //act
-            var tAPCorrect = _permanentCalculations.TotalAnnualPay(permanentEmployee);
+            var tAPCorrect = _permanentCalculations.TotalTaxPaid(permanentEmployee);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }
@@ -26,7 +26,7 @@ namespace PayCalc_Tests
             TemporaryCalculations _temporaryCalculations = new TemporaryCalculations();
             var tAP = 15431M;
             //act
-            var tAPCorrect = _temporaryCalculations.TotalAnnualPay(temporaryEmployee);
+            var tAPCorrect = _temporaryCalculations.TotalTaxPaid(temporaryEmployee);
             //assert
             Assert.That(tAPCorrect, Is.EqualTo(tAP));
         }

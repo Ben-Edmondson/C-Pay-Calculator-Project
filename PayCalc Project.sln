@@ -11,7 +11,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayCalc Class Library", "Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayCalcAPI", "PayCalcAPI\PayCalcAPI.csproj", "{20D566FB-9AFF-408E-B66F-E4C8D1C1A88B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PayCalc API Tests", "PayCalc API Tests\PayCalc API Tests.csproj", "{679635DD-22F2-4297-8E9B-6134B46A739D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayCalc API Tests", "PayCalc API Tests\PayCalc API Tests.csproj", "{679635DD-22F2-4297-8E9B-6134B46A739D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

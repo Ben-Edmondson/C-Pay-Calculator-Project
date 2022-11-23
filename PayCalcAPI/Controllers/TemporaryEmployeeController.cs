@@ -6,7 +6,7 @@ using System.Text.Json;
 
 namespace PayCalcAPI.Controllers
 {
-    [Route("api")]
+    [Route("api[controller]")]
     [ApiController]
     public class TemporaryEmployeeController : ControllerBase
     {

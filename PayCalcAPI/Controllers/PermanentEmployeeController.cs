@@ -3,7 +3,6 @@ using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
 using log4net;
-using log4net.Config;
 using System.Text.Json;
 using System.Reflection;
 

@@ -9,7 +9,7 @@ using System.Reflection;
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
 
 ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
-_log.Info(":)");
+_log.Info("Hello there :)");
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

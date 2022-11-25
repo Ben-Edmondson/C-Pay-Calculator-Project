@@ -1,8 +1,7 @@
 ﻿namespace PayCalc_Project.Models
 {
-    public class PermamentEmployeeSalary
+    public class PermamentEmployeeSalary : PermanentEmployee
     {
-        public PermanentEmployee? Employee { get; set; }
         public decimal? SalaryAfterTax { get; set; }
     }
 }

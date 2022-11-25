@@ -1,9 +1,8 @@
 ﻿namespace PayCalc_Project.Models
 
 {
-    public class TemporaryEmployeeSalary
+    public class TemporaryEmployeeSalary : TemporaryEmployee
     {
-        public TemporaryEmployee? Employee { get; set; }
         public decimal? SalaryAfterTax { get; set; }
     }
 }

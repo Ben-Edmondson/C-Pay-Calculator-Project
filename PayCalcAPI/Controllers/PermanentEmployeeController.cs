@@ -23,7 +23,6 @@ namespace PayCalcAPI.Controllers
         }
 
         // GET: api/<EmployeeController>
-        [Route("PermanentEmployees")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -39,7 +38,7 @@ namespace PayCalcAPI.Controllers
             return Ok(x);
         }
         // GET api/<EmployeeController>/5
-        [Route("PermanentEmployee/{id}")]
+        [Route("{id}")]
         [HttpGet]
         public IActionResult Get(int id)
         {
@@ -56,7 +55,6 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
         // POST api/<EmployeeController>
-        [Route("NewPermanentEmployee")]
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
@@ -66,7 +64,7 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeController>/5
-        [Route("UpdatePermanentEmployee/{id}")]
+        [Route("{id}")]
         [HttpPut]
         public IActionResult Put(int id, string? FirstName, string? Surname, decimal? Salary, decimal? Bonus)
         {
@@ -80,7 +78,7 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
         // DELETE api/<EmployeeController>/5
-        [Route("DeletePermanentEmployee/{id}")]
+        [Route("{id}")]
         [HttpDelete]
         public IActionResult Delete(int id)
         {
@@ -93,8 +91,6 @@ namespace PayCalcAPI.Controllers
             _log.Warn("HTTP:404 - Failed to delete Permanent Employee with ID not found.");
             return NotFound();
         }
-
-        [Route("WipeEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {

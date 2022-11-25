@@ -22,7 +22,6 @@ namespace PayCalcAPI.Controllers
 
         }
         // GET: api/<EmployeeTempController>
-        [Route("TemporaryEmployees")]
         [HttpGet]
         public IActionResult GetAll()
         {
@@ -38,7 +37,7 @@ namespace PayCalcAPI.Controllers
             return Ok(x);
         }
         // GET api/<EmployeeTempController>/5
-        [Route("TemporaryEmployee/{id}")]
+        [Route("{id}")]
         [HttpGet]
         public IActionResult Get(int id)
         {
@@ -55,7 +54,6 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
         // POST api/<EmployeeTempController>
-        [Route("AddTemporaryEmployee")]
         [HttpPost]
         public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         {
@@ -65,7 +63,7 @@ namespace PayCalcAPI.Controllers
             return NoContent();
         }
         // PUT api/<EmployeeTempController>/5
-        [Route("UpdateTemporaryEmployee/{id}")]
+        [Route("{id}")]
         [HttpPut]
         public IActionResult Put(int id, string? FirstName, string? Surname, decimal? DayRate, int? WeeksWorked)
         {
@@ -80,7 +78,7 @@ namespace PayCalcAPI.Controllers
             return NotFound();
         }
         // DELETE api/<EmployeeTempController>/5
-        [Route("DeleteTemporaryEmployee/{id}")]
+        [Route("{id}")]
         [HttpDelete]
         public IActionResult Delete(int id)
         {
@@ -93,7 +91,6 @@ namespace PayCalcAPI.Controllers
             _log.Warn("HTTP:404 - Failed to delete Temporary Employee with ID not found.");
             return NotFound();
         }
-        [Route("WipeEmployees")]
         [HttpDelete]
         public IActionResult DeleteAll()
         {

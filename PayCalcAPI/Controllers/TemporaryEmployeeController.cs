@@ -45,7 +45,7 @@ namespace PayCalcAPI.Controllers
             TemporaryEmployee? employee = _employeeTemporaryRepository.Read(id);
             if (employee != null)
             {
-                TemporaryEmployeeSalary emp = new TemporaryEmployeeSalary { Employee = employee, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
+                TemporaryEmployeeSalary emp = new TemporaryEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
                 var ReadSingle = JsonSerializer.Serialize(emp);
                 _log.Debug("HTTP:200 - Obtained temporary employee.");
                 return Ok(ReadSingle);

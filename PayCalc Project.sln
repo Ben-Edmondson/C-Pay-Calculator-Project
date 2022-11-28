@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayCalcAPI", "PayCalcAPI\Pa
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PayCalc API Tests", "PayCalc API Tests\PayCalc API Tests.csproj", "{679635DD-22F2-4297-8E9B-6134B46A739D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web", "Web\Web.csproj", "{4EF258A4-5E67-4044-AC06-DE4B12F6A16B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -39,6 +41,10 @@ Global
 		{679635DD-22F2-4297-8E9B-6134B46A739D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{679635DD-22F2-4297-8E9B-6134B46A739D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{679635DD-22F2-4297-8E9B-6134B46A739D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4EF258A4-5E67-4044-AC06-DE4B12F6A16B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4EF258A4-5E67-4044-AC06-DE4B12F6A16B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4EF258A4-5E67-4044-AC06-DE4B12F6A16B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4EF258A4-5E67-4044-AC06-DE4B12F6A16B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

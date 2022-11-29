@@ -1,7 +1,12 @@
 using PayCalc_Project.Repository;
 using PayCalc_Project.Models;
-using PayCalc_Project.Services;
+using log4net;
+using System.Reflection;
 
+[assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
+
+ILog _log = LogManager.GetLogger(MethodBase.GetCurrentMethod().DeclaringType);
+_log.Info("Hello there :)");
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.

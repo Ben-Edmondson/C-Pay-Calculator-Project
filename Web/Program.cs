@@ -1,8 +1,12 @@
+using PayCalc_Project.Models;
+using PayCalc_Project.Repository;
+
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
 
+// Add services to the container.
+builder.Services.AddScoped<IEmployeeRepository<PermanentEmployee>, PermanentEmployeeRepo>();
+builder.Services.AddControllersWithViews();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\PayCalc Class Library\PayCalc Class Library\PayCalc Class Library.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
 using System.Diagnostics;
 using Web.Models;
@@ -8,9 +9,9 @@ namespace Web.Controllers
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
-        private readonly IEmployeeRepository<PermanentEmployeeRepo> _permRepo;
+        private readonly IEmployeeRepository<PermanentEmployee> _permRepo;
 
-        public HomeController(ILogger<HomeController> logger, IEmployeeRepository<PermanentEmployeeRepo> permRepo)
+        public HomeController(ILogger<HomeController> logger, IEmployeeRepository<PermanentEmployee> permRepo)
         {
             _logger = logger;
             _permRepo = permRepo;

@@ -1,9 +1,9 @@
 ﻿@{
     ViewData["Title"] = "Home Page";
 }
-@model IEnumerable<PayCalc_Project.Models.PermanentEmployee>
+@model HomeViewModel
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
+    <h1 class="display-4">Permanent Employees</h1>
 
         <div>
             <table class="table">
@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                @foreach (var employee in Model)
+                @foreach (var employee in Model.PermanentEmployees)
                 {
                     <tr>
                     <td>@employee.ID</td>
@@ -26,10 +26,9 @@
                     <td>@employee.Salary</td>
                     <td>@employee.Bonus</td>
                     </tr>
-                    }
+                }
                 </tbody>
             </table>
 
         </div>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
 </div>

@@ -19,8 +19,9 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
-            return View(_permRepo.ReadAll());
-        }
+            HomeViewModel employeeView = new HomeViewModel(_permRepo.ReadAll());
+            return View(employeeView);
+        }   
 
         public IActionResult Privacy()
         {

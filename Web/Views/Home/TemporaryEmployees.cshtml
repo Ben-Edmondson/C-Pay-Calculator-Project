@@ -1,0 +1,34 @@
+﻿@{
+    ViewData["Title"] = "TemporaryEmployee";
+}
+@model TemporaryEmployeeViewModel
+<div class="text-center">
+    <h1 class="display-4">Temporary Employees</h1>
+
+    <div>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">DayRate</th>
+                    <th scope="col">WeeksWorked</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.TemporaryEmployees)
+                {
+                    <tr>
+                        <td>@employee.ID</td>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@employee.DayRate</td>
+                        <td>@employee.WeeksWorked</td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>
+</div>

@@ -4,7 +4,7 @@ namespace Web.Models
 {
     public class TemporaryEmployeeViewModel
     {
-        public IEnumerable<TemporaryEmployee> TemporaryEmployees { get; }
+        public IEnumerable<TemporaryEmployee>? TemporaryEmployees { get; }
 
         public TemporaryEmployeeViewModel(IEnumerable<TemporaryEmployee>? temporaryEmployees)
         {

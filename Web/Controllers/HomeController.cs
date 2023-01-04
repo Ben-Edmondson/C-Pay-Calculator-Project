@@ -23,12 +23,7 @@ namespace Web.Controllers
             return View(employeeView);
         }   
 
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-
-        public IActionResult PermanentEmployee()
+        public IActionResult PermanentEmployees()
         {
             PermanentEmployeeViewModel permView = new PermanentEmployeeViewModel(_permRepo.ReadAll());
             return View(permView);

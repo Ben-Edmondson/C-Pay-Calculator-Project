@@ -3,7 +3,7 @@
 }
 @model HomeViewModel
 <div class="text-center">
-    <h1 class="display-4">Permanent Employees</h1>
+    <h1 class="display-4">Complete Employee List</h1>
 
         <div>
             <table class="table">
@@ -25,6 +25,27 @@
                     <td>@employee.LastName</td>
                     <td>@employee.Salary</td>
                     <td>@employee.Bonus</td>
+                    </tr>
+                }
+                </tbody>
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Day Rate</th>
+                        <th scope="col">Weeks Worked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var employee in Model.TemporaryEmployees)
+                {
+                    <tr>
+                        <td>@employee.ID</td>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@employee.DayRate</td>
+                        <td>@employee.WeeksWorked</td>
                     </tr>
                 }
                 </tbody>

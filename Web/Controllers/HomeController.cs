@@ -19,7 +19,7 @@ namespace Web.Controllers
 
         public IActionResult Index()
         {
-            HomeViewModel employeeView = new HomeViewModel(_permRepo.ReadAll());
+            HomeViewModel employeeView = new HomeViewModel(_permRepo.ReadAll(), _temporaryRepo.ReadAll());
             return View(employeeView);
         }   
 

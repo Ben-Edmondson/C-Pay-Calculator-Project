@@ -23,18 +23,6 @@ namespace Web.Controllers
             return View(employeeView);
         }   
 
-        public IActionResult PermanentEmployees()
-        {
-            PermanentEmployeeViewModel permView = new PermanentEmployeeViewModel(_permRepo.ReadAll());
-            return View(permView);
-        }
-
-        public IActionResult TemporaryEmployees()
-        {
-            TemporaryEmployeeViewModel tempView = new TemporaryEmployeeViewModel(_temporaryRepo.ReadAll());
-            return View(tempView);
-        }
-
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

@@ -18,5 +18,15 @@ namespace Web.Controllers
             PermanentEmployeeViewModel permView = new PermanentEmployeeViewModel(_permRepo.ReadAll());
             return View(permView);
         }
+        public IActionResult AddEmployee()
+        {
+            return View();
+        }
+        [HttpPost]  
+        public async Task<IActionResult> Add(string inputFirstName, string inputLastName, decimal inputSalary, decimal inputBonus)
+        {
+            _permRepo.Create(inputFirstName, inputLastName, inputSalary, inputBonus, null, null);
+            return View("EmployeeList");
+        }
     }
 }

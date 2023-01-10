@@ -1,0 +1,34 @@
+﻿@model PayCalc_Project.Models.PermanentEmployee
+@{
+    ViewData["Title"] = "Add Permanent Employee";
+}
+<div class="text-center">
+    <h1 class="display-4">Add Permanent Employee</h1>
+
+    <form asp-action="Add">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="form-group">
+            <label asp-for="FirstName" class="control-label">First Name</label>
+            <input asp-for="FirstName" class="form-control" placeholder="First Name">
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="control-label">Last Name</label>
+            <input asp-for="LastName" class="form-control" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <label asp-for="Salary" class="control-label">Salary</label>
+            <input asp-for="Salary" class="form-control" placeholder="Salary">
+        </div>
+        <div class="form-group">
+            <label asp-for="Bonus">Bonus</label>
+            <input asp-for="Bonus" class="form-control" placeholder="Bonus">
+        </div>
+        <button type="submit" class="btn btn-primary" value="Submit">Submit</button>
+    </form>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

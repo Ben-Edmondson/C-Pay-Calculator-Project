@@ -23,10 +23,10 @@ namespace Web.Controllers
             return View();
         }
         [HttpPost]  
-        public async Task<IActionResult> Add(string inputFirstName, string inputLastName, decimal inputSalary, decimal inputBonus)
+        public IActionResult AddEmployee(PermanentEmployee inputEmployee)
         {
-            _permRepo.Create(inputFirstName, inputLastName, inputSalary, inputBonus, null, null);
-            return View("EmployeeList");
+            _permRepo.Create(inputEmployee.FirstName, inputEmployee.LastName, inputEmployee.Salary, inputEmployee.Bonus, null, null);
+            return RedirectToAction("EmployeeList");
         }
     }
 }

@@ -19,5 +19,15 @@ namespace Web.Controllers
             TemporaryEmployeeViewModel tempView = new TemporaryEmployeeViewModel(_temporaryRepo.ReadAll());
             return View(tempView);
         }
+        public IActionResult AddEmployee()
+        {
+            return View();
+        }
+        [HttpPost]
+        public IActionResult AddEmployee(TemporaryEmployee inputEmployee)
+        {
+            _temporaryRepo.Create(inputEmployee.FirstName, inputEmployee.LastName, null, null, inputEmployee.DayRate, inputEmployee.WeeksWorked);
+            return RedirectToAction("EmployeeList");
+        }
     }
 }

@@ -1,9 +1,9 @@
-﻿@model PayCalc_Project.Models.PermanentEmployee
+﻿@model PayCalc_Project.Models.TemporaryEmployee
 @{
-    ViewData["Title"] = "Add Permanent Employee";
+    ViewData["Title"] = "Add Temporary Employee";
 }
 <div class="text-center">
-    <h1 class="display-4">Add Permanent Employee</h1>
+    <h1 class="display-4">Add Temporary Employee</h1>
 
     <form asp-action="AddEmployee" method="post" role="form">
         <div class="form-group">
@@ -15,15 +15,15 @@
             <input asp-for="LastName" class="form-control" placeholder="Last Name">
         </div>
         <div class="form-group">
-            <label asp-for="Salary" class="form-label">Salary</label>
-            <input asp-for="Salary" class="form-control" placeholder="Salary">
+            <label asp-for="DayRate" class="form-label">Day Rate</label>
+            <input asp-for="DayRate" class="form-control" placeholder="Day Rate">
         </div>
         <div class="form-group">
-            <label asp-for="Bonus" class="form-label"> Bonus</label>
-            <input asp-for="Bonus" class="form-control" placeholder="Bonus">
+            <label asp-for="WeeksWorked" class="form-label"> Weeks Worked</label>
+            <input asp-for="WeeksWorked" class="form-control" placeholder="Weeks Worked">
         </div>
         <div class="form-group">
-            <input type="submit" class="btn btn-primary" value="AddEmployee"/>
+            <input type="submit" class="btn btn-primary" value="AddEmployee" />
         </div>
     </form>
 </div>

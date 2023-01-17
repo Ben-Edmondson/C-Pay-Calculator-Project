@@ -29,5 +29,11 @@ namespace Web.Controllers
             _temporaryRepo.Create(inputEmployee.FirstName, inputEmployee.LastName, null, null, inputEmployee.DayRate, inputEmployee.WeeksWorked);
             return RedirectToAction("EmployeeList");
         }
+
+        public IActionResult DeleteEmployee(int id)
+        {
+            _temporaryRepo.Delete(id);
+            return RedirectToAction("EmployeeList");
+        }
     }
 }

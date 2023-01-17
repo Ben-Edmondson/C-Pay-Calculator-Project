@@ -28,5 +28,11 @@ namespace Web.Controllers
             _permRepo.Create(inputEmployee.FirstName, inputEmployee.LastName, inputEmployee.Salary, inputEmployee.Bonus, null, null);
             return RedirectToAction("EmployeeList");
         }
+
+        public IActionResult DeleteEmployee(int id)
+        {
+            _permRepo.Delete(id);
+            return RedirectToAction("EmployeeList");
+        }
     }
 }

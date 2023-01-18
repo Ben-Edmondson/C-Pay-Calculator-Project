@@ -34,5 +34,17 @@ namespace Web.Controllers
             _permRepo.Delete(id);
             return RedirectToAction("EmployeeList");
         }
+
+        public IActionResult UpdateEmployee(int id)
+        {
+            return View(_permRepo.Read(id));
+        }
+
+        [HttpPost]
+        public IActionResult UpdateEmployee(PermanentEmployee updateEmployee)
+        {
+            _permRepo.Update(updateEmployee.ID,updateEmployee.FirstName,updateEmployee.LastName,updateEmployee.Salary,updateEmployee.Bonus,null,null);
+            return RedirectToAction("EmployeeList");
+        }
     }
 }

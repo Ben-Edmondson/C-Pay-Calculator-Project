@@ -35,5 +35,17 @@ namespace Web.Controllers
             _temporaryRepo.Delete(id);
             return RedirectToAction("EmployeeList");
         }
+
+        public IActionResult UpdateEmployee(int id)
+        {
+            return View(_temporaryRepo.Read(id));
+        }
+
+        [HttpPost]
+        public IActionResult UpdateEmployee(TemporaryEmployee updateEmployee)
+        {
+            _temporaryRepo.Update(updateEmployee.ID, updateEmployee.FirstName, updateEmployee.LastName, null,null,updateEmployee.DayRate,updateEmployee.WeeksWorked);
+            return RedirectToAction("EmployeeList");
+        }
     }
 }

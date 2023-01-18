@@ -1,0 +1,29 @@
+﻿@model PayCalc_Project.Models.PermanentEmployee
+@{
+    ViewData["Title"] = "Update Permanent Employee";
+}
+<div class="text-center">
+    <h1 class="display-4">Update Permanent Employee</h1>
+
+    <form asp-action="UpdateEmployee" method="post" role="form">
+        <div class="form-group">
+            <label asp-for="FirstName" class="form-label">First Name</label>
+            <input asp-for="FirstName" class="form-control" placeholder="First Name">
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="form-label">Last Name</label>
+            <input asp-for="LastName" class="form-control" placeholder="Last Name">
+        </div>
+        <div class="form-group">
+            <label asp-for="Salary" class="form-label">Salary</label>
+            <input asp-for="Salary" class="form-control" placeholder="Salary">
+        </div>
+        <div class="form-group">
+            <label asp-for="Bonus" class="form-label"> Bonus</label>
+            <input asp-for="Bonus" class="form-control" placeholder="Bonus">
+        </div>
+        <div class="form-group">
+            <input type="submit" class="btn btn-primary" value="Update Employee" />
+        </div>
+    </form>
+</div>

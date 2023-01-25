@@ -41,7 +41,15 @@ namespace Web.Controllers
 
         public IActionResult UpdateEmployee(int id)
         {
-            return View(_permRepo.Read(id));
+            List<PermanentEmployee> employees = new List<PermanentEmployee>(_permRepo.ReadAll());
+            if (employees.Exists(x => x.ID == id) == true)
+            {
+                return View(_permRepo.Read(id));
+            }
+            else
+            {
+                return RedirectToAction("InvalidID", "Home");
+            }
         }
 
         [HttpPost]
@@ -53,9 +61,18 @@ namespace Web.Controllers
 
         public IActionResult ReadEmployee(int id)
         {
-            PermanentEmployee? employee = _permRepo.Read(id);
-            PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee) };
-            return View(empWSal);
+            List<PermanentEmployee> employees = new List<PermanentEmployee>(_permRepo.ReadAll());
+            if (employees.Exists(x => x.ID == id) == true)
+            {
+                PermanentEmployee? employee = _permRepo.Read(id);
+                PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee) };
+                return View(empWSal);
+            }
+            else
+            {
+                return RedirectToAction("InvalidID", "Home");
+            }
+ 
         }
     }
 }

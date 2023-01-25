@@ -40,7 +40,14 @@ namespace Web.Controllers
 
         public IActionResult UpdateEmployee(int id)
         {
-            return View(_temporaryRepo.Read(id));
+            List<TemporaryEmployee> employees = new List<TemporaryEmployee>(_temporaryRepo.ReadAll());
+            if(employees.Exists(x => x.ID == id) == true){
+                return View(_temporaryRepo.Read(id));
+            }
+            else
+            {
+                return RedirectToAction("InvalidID", "Home");
+            }
         }
 
         [HttpPost]
@@ -51,9 +58,17 @@ namespace Web.Controllers
         }
         public IActionResult ReadEmployee(int id)
         {
-            TemporaryEmployee? employee = _temporaryRepo.Read(id);
-            TemporaryEmployeeSalary? empWSal = new TemporaryEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, DayRate = employee.DayRate, WeeksWorked = employee.WeeksWorked, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
-            return View(empWSal);
+            List<TemporaryEmployee> employees = new List<TemporaryEmployee>(_temporaryRepo.ReadAll());
+            if (employees.Exists(x => x.ID == id) == true)
+            {
+                TemporaryEmployee? employee = _temporaryRepo.Read(id);
+                TemporaryEmployeeSalary? empWSal = new TemporaryEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, DayRate = employee.DayRate, WeeksWorked = employee.WeeksWorked, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
+                return View(empWSal);
+            }
+            else
+            {
+                return RedirectToAction("InvalidID", "Home");
+            }
         }
     }
 }

@@ -1,12 +1,14 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayCalc_Project.Models;
 using PayCalc_Project.Repository;
+using PayCalc_Project.Services;
 using Web.Models;
 
 namespace Web.Controllers
 {
     public class TemporaryEmployeeController : Controller
     {
+        TemporaryCalculations tempCalc = new TemporaryCalculations();
         private readonly IEmployeeRepository<TemporaryEmployee> _temporaryRepo;
 
         public TemporaryEmployeeController(IEmployeeRepository<TemporaryEmployee> tempRepo)
@@ -46,6 +48,12 @@ namespace Web.Controllers
         {
             _temporaryRepo.Update(updateEmployee.ID, updateEmployee.FirstName, updateEmployee.LastName, null,null,updateEmployee.DayRate,updateEmployee.WeeksWorked);
             return RedirectToAction("EmployeeList");
+        }
+        public IActionResult ReadEmployee(int id)
+        {
+            TemporaryEmployee? employee = _temporaryRepo.Read(id);
+            TemporaryEmployeeSalary? empWSal = new TemporaryEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, DayRate = employee.DayRate, WeeksWorked = employee.WeeksWorked, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
+            return View(empWSal);
         }
     }
 }

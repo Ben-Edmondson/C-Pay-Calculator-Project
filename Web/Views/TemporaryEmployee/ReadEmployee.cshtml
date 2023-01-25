@@ -1,0 +1,30 @@
+﻿@model PayCalc_Project.Models.TemporaryEmployeeSalary
+@{
+    ViewData["Title"] = "Read Employee";
+}
+<div class="text-center">
+    <h1 class="display-4"></h1>
+
+    <form asp-action="ReadEmployee" method="post" role="form">
+        <div class="form-group">
+            <label asp-for="FirstName" class="form-label">First Name</label>
+            <input asp-for="FirstName" class="form-control" placeholder="First Name" readonly>
+        </div>
+        <div class="form-group">
+            <label asp-for="LastName" class="form-label">Last Name</label>
+            <input asp-for="LastName" class="form-control" placeholder="Readonly Last Name" readonly>
+        </div>
+        <div class="form-group">
+            <label asp-for="DayRate" class="form-label">Day Rate</label>
+            <input asp-for="DayRate" class="form-control" placeholder="Day Rate" readonly>
+        </div>
+        <div class="form-group">
+            <label asp-for="WeeksWorked" class="form-label">Weeks Worked</label>
+            <input asp-for="WeeksWorked" class="form-control" placeholder="Weeks Worked" readonly>
+        </div>
+        <div class="form-group">
+            <label asp-for="SalaryAfterTax" class="form-label"> SalaryAfterTax</label>
+            <input asp-for="SalaryAfterTax" class="form-control" placeholder="Salary After Tax" readonly>
+        </div>
+    </form>
+</div>

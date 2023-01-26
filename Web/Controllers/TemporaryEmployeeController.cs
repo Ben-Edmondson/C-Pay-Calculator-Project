@@ -34,8 +34,11 @@ namespace Web.Controllers
 
         public IActionResult DeleteEmployee(int id)
         {
-            _temporaryRepo.Delete(id);
-            return RedirectToAction("EmployeeList");
+            if (_temporaryRepo.Delete(id) == true)
+            {
+                return RedirectToAction("EmployeeList");
+            }
+            return RedirectToAction("InvalidID", "Home");
         }
 
         public IActionResult UpdateEmployee(int id)

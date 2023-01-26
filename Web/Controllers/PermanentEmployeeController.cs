@@ -35,8 +35,11 @@ namespace Web.Controllers
 
         public IActionResult DeleteEmployee(int id)
         {
-            _permRepo.Delete(id);
-            return RedirectToAction("EmployeeList");
+            if(_permRepo.Delete(id) == true)
+            {
+                return RedirectToAction("EmployeeList");
+            }
+            return RedirectToAction("InvalidID", "Home");
         }
 
         public IActionResult UpdateEmployee(int id)

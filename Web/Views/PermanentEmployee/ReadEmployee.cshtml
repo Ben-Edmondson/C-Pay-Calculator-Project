@@ -5,26 +5,21 @@
 <div class="text-center">
     <h1 class="display-4"></h1>
 
-    <form asp-action="ReadEmployee" method="post" role="form">
-        <div class="form-group">
-            <label asp-for="FirstName" class="form-label">First Name</label>
-            <input asp-for="FirstName" class="form-control" placeholder="First Name" readonly>
-        </div>
-        <div class="form-group">
-            <label asp-for="LastName" class="form-label">Last Name</label>
-            <input asp-for="LastName" class="form-control" placeholder="Readonly Last Name" readonly>
-        </div>
-        <div class="form-group">
-            <label asp-for="Salary" class="form-label">Salary</label>
-            <input asp-for="Salary" class="form-control" placeholder="Salary" readonly>
-        </div>
-        <div class="form-group">
-            <label asp-for="Bonus" class="form-label"> Bonus</label>
-            <input asp-for="Bonus" class="form-control" placeholder="Bonus" readonly>
-        </div>
-        <div class="form-group">
-            <label asp-for="SalaryAfterTax" class="form-label"> SalaryAfterTax</label>
-            <input asp-for="SalaryAfterTax" class="form-control" placeholder="Salary After Tax" readonly>
-        </div>
-    </form>
+    <div  class="card" style="width: 18rem;">
+  <div class="card-body">
+    <h5 class="card-title">Employee</h5>
+    <p class="card-text">Information about employee</p>
+  </div>
+  <ul class="list-group list-group-flush">
+            <li class="list-group-item">@Model.FirstName</li>
+            <li class="list-group-item">@Model.LastName</li>
+            <li class="list-group-item">@Model.Salary</li>
+            <li class="list-group-item">@Model.Bonus</li>
+            <li class="list-group-item">@Model.SalaryAfterTax</li>
+  </ul>
+  <div class="card-body">
+    <a href="#" class="card-link">Card link</a>
+    <a href="#" class="card-link">Another link</a>
+  </div>
+</div>
 </div>

@@ -7,15 +7,15 @@
 
     <div  class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">Employee</h5>
-    <p class="card-text">Information about employee</p>
+    <h5 class="card-title">Employee Card</h5>
+    <p class="card-text">@Model.Fullname</p>
   </div>
   <ul class="list-group list-group-flush">
-            <li class="list-group-item">@Model.FirstName</li>
-            <li class="list-group-item">@Model.LastName</li>
-            <li class="list-group-item">@Model.Salary</li>
-            <li class="list-group-item">@Model.Bonus</li>
-            <li class="list-group-item">@Model.SalaryAfterTax</li>
+            <li class="list-group-item">First Name: @Model.FirstName</li>
+            <li class="list-group-item">Last Name: @Model.LastName</li>
+            <li class="list-group-item">Salary: @Model.Salary</li>
+            <li class="list-group-item">Bonus: @Model.Bonus</li>
+            <li class="list-group-item">Income After Tax: @Model.SalaryAfterTax</li>
   </ul>
   <div class="card-body">
             <a asp-area="" asp-controller="PermanentEmployee" asp-action="EmployeeList" class="card-link">Go Back</a>

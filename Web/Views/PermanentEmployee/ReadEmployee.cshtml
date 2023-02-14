@@ -19,7 +19,8 @@
   </ul>
   <div class="card-body">
             <a asp-area="" asp-controller="PermanentEmployee" asp-action="EmployeeList" class="card-link">Go Back</a>
-    <a href="#" class="card-link">Another link</a>
+            <a asp-controller="PermanentEmployee" asp-action="UpdateEmployee" asp-route-id="@Model.ID" class="card-link">Update Employee</a>
+            <a asp-controller="PermanentEmployee" asp-action="DeleteEmployee" asp-route-id="@Model.ID" class="card-link">Delete Employee</a>
   </div>
 </div>
 </div>

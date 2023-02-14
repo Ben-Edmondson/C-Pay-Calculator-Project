@@ -8,7 +8,7 @@
 
     <div class="card" style="width: 18rem;">
         <div class="card-body">
-            <h5 class="card-title">Employee</h5>
+            <h5 class="card-title">@Model.Fullname</h5>
             <p class="card-text">Information about employee</p>
         </div>
         <ul class="list-group list-group-flush">
@@ -20,7 +20,8 @@
         </ul>
         <div class="card-body">
             <a asp-area="" asp-controller="TemporaryEmployee" asp-action="EmployeeList" class="card-link">Go Back</a>
-            <a href="#" class="card-link">Another link</a>
+            <a asp-controller="TemporaryEmployee" asp-action="UpdateEmployee" asp-route-id="@Model.ID" class="card-link">Update Employee</a>
+            <a asp-controller="TemporaryEmployee" asp-action="DeleteEmployee" asp-route-id="@Model.ID" class="card-link">Delete Employee</a>
         </div>
     </div>
 </div>

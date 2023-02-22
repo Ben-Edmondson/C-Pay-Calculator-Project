@@ -8,8 +8,8 @@ namespace PayCalc_Project.Repository
 
         private List<PermanentEmployee> employees = new List<PermanentEmployee>()
         {
-            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
-            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 }
+            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000.00m, Bonus = 5000.00m },
+            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000.00m, Bonus = 2500.00m }
         };
 
         public PermanentEmployeeRepo()

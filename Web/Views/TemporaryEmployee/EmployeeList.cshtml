@@ -4,7 +4,9 @@
 @model TemporaryEmployeeViewModel
 <div class="text-center">
     <h1 class="display-4">Temporary Employees</h1>
-
+    <div class="alert alert-success" id="alertDeleteSuccess" role="alert" onclick="AlertSuccess">
+        Employee removed successfully.
+    </div>
     <div>
         <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="TemporaryEmployee" asp-action="AddEmployee" role="button">Add Temporary Employee</a>
         <table class="table">

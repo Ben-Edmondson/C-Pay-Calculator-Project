@@ -1,8 +1,5 @@
 ﻿function AlertSuccess() {
-    var x = document.getElementByID("alertDeleteSuccess");
-    if (x.style.display === "none") {
-        x.style.display = "block";
-    } else {
-        x.style.display = "none";
-    }
+    var x = document.getElementById("alertDeleteSuccess")
+    console.log(x)
+    x.classList.toggle("alertDeleteSuccessHide")
 }

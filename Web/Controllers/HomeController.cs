@@ -22,10 +22,5 @@ namespace Web.Controllers
             HomeViewModel employeeView = new HomeViewModel(_permRepo.ReadAll(), _temporaryRepo.ReadAll());
             return View(employeeView);
         }   
-
-        public IActionResult InvalidID()
-        {
-            return View();
-        }
     }
 }

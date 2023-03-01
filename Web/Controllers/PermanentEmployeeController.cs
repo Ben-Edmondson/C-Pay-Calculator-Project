@@ -39,7 +39,7 @@ namespace Web.Controllers
             {
                 return RedirectToAction("EmployeeList");
             }
-            return RedirectToAction("InvalidID", "Home");
+            return RedirectToAction("InvalidID", "Error");
         }
 
         public IActionResult UpdateEmployee(int id)
@@ -51,7 +51,7 @@ namespace Web.Controllers
             }
             else
             {
-                return RedirectToAction("InvalidID", "Home");
+                return RedirectToAction("InvalidID", "Error");
             }
         }
 
@@ -73,7 +73,7 @@ namespace Web.Controllers
             }
             else
             {
-                return RedirectToAction("InvalidID", "Home");
+                return RedirectToAction("InvalidID", "Error");
             }
  
         }

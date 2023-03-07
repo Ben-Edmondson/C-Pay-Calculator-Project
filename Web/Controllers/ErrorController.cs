@@ -9,9 +9,10 @@ namespace Web.Controllers
             return View();
         }
 
-        public IActionResult Error()
+        public IActionResult Error(int? statusCode = null)
         {
-            return View("NotFound");
+                ViewBag.StatusCode = statusCode.Value;
+                return View();
         }
     }
 }

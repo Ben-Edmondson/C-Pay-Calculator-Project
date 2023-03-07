@@ -36,6 +36,7 @@ namespace Web.Controllers
         {
             if (_temporaryRepo.Delete(id) == true)
             {
+
                 return RedirectToAction("EmployeeList");
             }
             return RedirectToAction("InvalidID", "Error");

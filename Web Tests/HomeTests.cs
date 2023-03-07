@@ -36,8 +36,10 @@ namespace Web_Tests
             _mockPermanentRepository
                 .Setup(x => x.ReadAll()).Returns(employeesPerm);
             var result = controller.Index() as ViewResult;
+            var test = result.ViewData.ModelMetadata.Properties.Count();
             Assert.IsNotNull(result);
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.HomeViewModel"));
+            Assert.That(test, Is.EqualTo(employeesTemp.Count() + employeesPerm.Count() - 1));
         }
     }
 }

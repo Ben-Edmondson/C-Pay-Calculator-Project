@@ -29,7 +29,7 @@ namespace Web_Tests
         }
 
         [Test]
-        public void IndexTest()
+        public void IndexPageLoadTest()
         {
             _mockTemporaryRepository
                 .Setup(x => x.ReadAll()).Returns(employeesTemp);

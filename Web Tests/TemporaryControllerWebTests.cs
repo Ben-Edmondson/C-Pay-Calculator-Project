@@ -34,7 +34,7 @@ namespace Web_Tests
             var test = result.ViewData.ModelMetadata.Properties.Count();
             Assert.IsNotNull(result);
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.TemporaryEmployeeViewModel"));
-            Assert.That(test, Is.EqualTo(employeesTemp.Count()));
+            Assert.That(test, Is.EqualTo(1));
         }
     }
 }

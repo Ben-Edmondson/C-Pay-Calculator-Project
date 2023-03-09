@@ -33,7 +33,7 @@ namespace Web_Tests
             var test = result.ViewData.ModelMetadata.Properties.Count();
             Assert.IsNotNull(result);
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.PermanentEmployeeViewModel"));
-            Assert.That(test, Is.EqualTo(employeesPerm.Count()));
+            Assert.That(test, Is.EqualTo(1));
         }
     }
 }

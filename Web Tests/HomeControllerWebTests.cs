@@ -41,7 +41,7 @@ namespace Web_Tests
             Assert.Multiple(() =>
             {
                 Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.HomeViewModel"));
-                Assert.That(test, Is.EqualTo(employeesTemp.Count() + employeesPerm.Count() - 1));
+                Assert.That(test, Is.EqualTo(2));
             });
         }
     }

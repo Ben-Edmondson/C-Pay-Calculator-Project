@@ -22,13 +22,14 @@ namespace Web_Tests
         {
             _mockTemporaryRepository = new Mock<IEmployeeRepository<TemporaryEmployee>>();
             _employeeController = new TemporaryEmployeeController(_mockTemporaryRepository.Object);
+            _mockTemporaryRepository
+                .Setup(x => x.ReadAll()).Returns(employeesTemp);
         }
 
         [Test]
         public void TemporaryEmployeeList()
         {
-            _mockTemporaryRepository
-                .Setup(x => x.ReadAll()).Returns(employeesTemp);
+
             var result = _employeeController.EmployeeList() as ViewResult;
             var test = result.ViewData.ModelMetadata.Properties.Count();
             Assert.IsNotNull(result);

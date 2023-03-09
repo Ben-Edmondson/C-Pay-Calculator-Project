@@ -7,7 +7,7 @@ using Web.Controllers;
 
 namespace Web_Tests
 {
-    public class Tests
+    public class HomeControllerWebTests
     {
         private List<PermanentEmployee> employeesPerm = new List<PermanentEmployee>() {
             new PermanentEmployee(){ ID = 1000, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
@@ -26,20 +26,23 @@ namespace Web_Tests
             _mockTemporaryRepository = new Mock<IEmployeeRepository<TemporaryEmployee>>();
             _mockPermanentRepository = new Mock<IEmployeeRepository<PermanentEmployee>>();
             controller = new HomeController(_mockPermanentRepository.Object, _mockTemporaryRepository.Object);
+            _mockTemporaryRepository
+                .Setup(x => x.ReadAll()).Returns(employeesTemp);
+            _mockPermanentRepository
+                .Setup(x => x.ReadAll()).Returns(employeesPerm);
         }
 
         [Test]
         public void IndexPageLoadTest()
         {
-            _mockTemporaryRepository
-                .Setup(x => x.ReadAll()).Returns(employeesTemp);
-            _mockPermanentRepository
-                .Setup(x => x.ReadAll()).Returns(employeesPerm);
             var result = controller.Index() as ViewResult;
             var test = result.ViewData.ModelMetadata.Properties.Count();
             Assert.IsNotNull(result);
-            Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.HomeViewModel"));
-            Assert.That(test, Is.EqualTo(employeesTemp.Count() + employeesPerm.Count() - 1));
+            Assert.Multiple(() =>
+            {
+                Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.HomeViewModel"));
+                Assert.That(test, Is.EqualTo(employeesTemp.Count() + employeesPerm.Count() - 1));
+            });
         }
     }
 }

@@ -21,13 +21,14 @@ namespace Web_Tests
         {
             _mockPermanentRepository = new Mock<IEmployeeRepository<PermanentEmployee>>();
             _employeeController = new PermanentEmployeeController(_mockPermanentRepository.Object);
+            _mockPermanentRepository
+                .Setup(x => x.ReadAll()).Returns(employeesPerm);
         }
 
         [Test]
         public void PermanentEmployeeListLoads() 
         {
-            _mockPermanentRepository
-                .Setup(x => x.ReadAll()).Returns(employeesPerm);
+
             var result = _employeeController.EmployeeList() as ViewResult;
             var test = result.ViewData.ModelMetadata.Properties.Count();
             Assert.IsNotNull(result);

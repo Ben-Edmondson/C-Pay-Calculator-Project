@@ -35,5 +35,68 @@ namespace Web_Tests
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.PermanentEmployeeViewModel"));
             Assert.That(test, Is.EqualTo(1));
         }
+        [Test]
+        public void AddPermanentEmployeeTest()
+        {
+            PermanentEmployee employee = new PermanentEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                Salary = 50000,
+                Bonus = 5200,
+                ID = 1111
+            };
+            _mockPermanentRepository.Setup(x => x.Create("Test", "Test", null, null, 350, 52)).Returns(employee);
+            var result = _employeeController.AddEmployee() as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void UpdatePermanentEmployeeTest()
+        {
+            PermanentEmployee employee = new PermanentEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                Salary = 50000,
+                Bonus = 5200,
+                ID = 1111
+            };
+            _mockPermanentRepository.Setup(x => x.Update(1111, "Test", "Test", null, null, 350, 52)).Returns(true);
+            var result = _employeeController.UpdateEmployee(1111) as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void DeletePermanentEmployeeTest()
+        {
+            PermanentEmployee employee = new PermanentEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                Salary = 50000,
+                Bonus = 5200,
+                ID = 1111
+            };
+            _mockPermanentRepository.Setup(x => x.Delete(1111)).Returns(true);
+            var result = _employeeController.DeleteEmployee(1111) as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void DetailedPermanentEmployeeInfoTest()
+        {
+            PermanentEmployee employee = new PermanentEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                Salary = 50000,
+                Bonus = 5200,
+                ID = 1111
+            };
+            _mockPermanentRepository.Setup(x => x.Read(1111)).Returns(employee);
+            var result = _employeeController.ReadEmployee(1111) as ViewResult;
+            Assert.IsNotNull(result);
+        }
     }
 }

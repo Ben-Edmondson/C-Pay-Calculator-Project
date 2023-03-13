@@ -29,12 +29,75 @@ namespace Web_Tests
         [Test]
         public void TemporaryEmployeeList()
         {
-
             var result = _employeeController.EmployeeList() as ViewResult;
             var test = result.ViewData.ModelMetadata.Properties.Count();
             Assert.IsNotNull(result);
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.TemporaryEmployeeViewModel"));
             Assert.That(test, Is.EqualTo(1));
+        }
+
+        [Test]
+        public void AddTemporaryEmployeeTest()
+        {
+            TemporaryEmployee employee = new TemporaryEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                DayRate = 350,
+                WeeksWorked = 52,
+                ID = 1111
+            };
+            _mockTemporaryRepository.Setup(x => x.Create("Test","Test",null,null,350,52)).Returns(employee);
+            var result = _employeeController.AddEmployee() as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void UpdateTemporaryEmployeeTest()
+        {
+            TemporaryEmployee employee = new TemporaryEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                DayRate = 350,
+                WeeksWorked = 52,
+                ID = 1111
+            };
+            _mockTemporaryRepository.Setup(x => x.Create("Test", "Test", null, null, 350, 52)).Returns(employee);
+            var result = _employeeController.AddEmployee() as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void DeleteTemporaryEmployeeTest()
+        {
+            TemporaryEmployee employee = new TemporaryEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                DayRate = 350,
+                WeeksWorked = 52,
+                ID = 1111
+            };
+            _mockTemporaryRepository.Setup(x => x.Delete(1111)).Returns(true);
+            var result = _employeeController.DeleteEmployee(1111) as ViewResult;
+            Assert.IsNotNull(result);
+        }
+
+        [Test]
+        public void DetailedTemporaryEmployeeInfoTest()
+        {
+            TemporaryEmployee employee = new TemporaryEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                DayRate = 350,
+                WeeksWorked = 52,
+                ID = 1111
+            };
+            _mockTemporaryRepository.Setup(x => x.Read(1111)).Returns(employee);
+            var result = _employeeController.ReadEmployee(1111) as ViewResult;
+            Assert.IsNotNull(result);
         }
     }
 }

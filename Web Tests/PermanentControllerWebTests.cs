@@ -15,7 +15,7 @@ namespace Web_Tests
         private List<PermanentEmployee> employeesPerm = new List<PermanentEmployee>() {
             new PermanentEmployee(){ ID = 1000, FirstName = "Joe", LastName = "Bloggs", Salary = 40000, Bonus = 5000 },
             new PermanentEmployee(){ ID = 1111, FirstName = "John", LastName = "Smith", Salary = 45000, Bonus = 2500 }};
-
+        PermanentEmployee employee;
         [SetUp]
         public void SetUp()
         {
@@ -23,22 +23,7 @@ namespace Web_Tests
             _employeeController = new PermanentEmployeeController(_mockPermanentRepository.Object);
             _mockPermanentRepository
                 .Setup(x => x.ReadAll()).Returns(employeesPerm);
-        }
-
-        [Test]
-        public void PermanentEmployeeListLoads() 
-        {
-
-            var result = _employeeController.EmployeeList() as ViewResult;
-            var test = result.ViewData.ModelMetadata.Properties.Count();
-            Assert.IsNotNull(result);
-            Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.PermanentEmployeeViewModel"));
-            Assert.That(test, Is.EqualTo(1));
-        }
-        [Test]
-        public void AddPermanentEmployeeTest()
-        {
-            PermanentEmployee employee = new PermanentEmployee()
+            employee = new PermanentEmployee()
             {
                 FirstName = "Test",
                 LastName = "Tester",
@@ -46,6 +31,22 @@ namespace Web_Tests
                 Bonus = 5200,
                 ID = 1111
             };
+        }
+
+        [Test]
+        public void PermanentEmployeeListLoads() 
+        {
+
+            var result = _employeeController.EmployeeList() as ViewResult;
+            var test = ((PermanentEmployeeViewModel)((ViewResult)result).Model).PermanentEmployees.Count();
+            Assert.IsNotNull(result);
+            Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.PermanentEmployeeViewModel"));
+            Assert.That(test, Is.EqualTo(2));
+        }
+        [Test]
+        public void AddPermanentEmployeeTest()
+        {
+
             _mockPermanentRepository.Setup(x => x.Create("Test", "Test", null, null, 350, 52)).Returns(employee);
             var result = _employeeController.AddEmployee() as ViewResult;
             Assert.IsNotNull(result);
@@ -54,14 +55,6 @@ namespace Web_Tests
         [Test]
         public void UpdatePermanentEmployeeTest()
         {
-            PermanentEmployee employee = new PermanentEmployee()
-            {
-                FirstName = "Test",
-                LastName = "Tester",
-                Salary = 50000,
-                Bonus = 5200,
-                ID = 1111
-            };
             _mockPermanentRepository.Setup(x => x.Update(1111, "Test", "Test", null, null, 350, 52)).Returns(true);
             var result = _employeeController.UpdateEmployee(1111) as ViewResult;
             Assert.IsNotNull(result);
@@ -70,14 +63,6 @@ namespace Web_Tests
         [Test]
         public void DeletePermanentEmployeeTest()
         {
-            PermanentEmployee employee = new PermanentEmployee()
-            {
-                FirstName = "Test",
-                LastName = "Tester",
-                Salary = 50000,
-                Bonus = 5200,
-                ID = 1111
-            };
             _mockPermanentRepository.Setup(x => x.Delete(1111)).Returns(true);
             var result = _employeeController.DeleteEmployee(1111) as ViewResult;
             Assert.IsNotNull(result);
@@ -86,14 +71,6 @@ namespace Web_Tests
         [Test]
         public void DetailedPermanentEmployeeInfoTest()
         {
-            PermanentEmployee employee = new PermanentEmployee()
-            {
-                FirstName = "Test",
-                LastName = "Tester",
-                Salary = 50000,
-                Bonus = 5200,
-                ID = 1111
-            };
             _mockPermanentRepository.Setup(x => x.Read(1111)).Returns(employee);
             var result = _employeeController.ReadEmployee(1111) as ViewResult;
             Assert.IsNotNull(result);

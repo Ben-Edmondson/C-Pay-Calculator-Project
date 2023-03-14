@@ -37,7 +37,7 @@ namespace Web_Tests
 
 
         [Test]
-        public void TemporaryEmployeeList()
+        public void TemporaryEmployeeLoadsList()
         {
             var result = _employeeController.EmployeeList() as ViewResult;
             var test = ((TemporaryEmployeeViewModel)((ViewResult)result).Model).TemporaryEmployees.Count();
@@ -47,7 +47,7 @@ namespace Web_Tests
         }
 
         [Test]
-        public void AddTemporaryEmployeeTest()
+        public void AddTemporaryEmployeeLoadsTest()
         {
             _mockTemporaryRepository.Setup(x => x.Create("Test","Test",null,null,350,52)).Returns(employee);
             var result = _employeeController.AddEmployee() as ViewResult;
@@ -55,7 +55,7 @@ namespace Web_Tests
         }
 
         [Test]
-        public void UpdateTemporaryEmployeeTest()
+        public void UpdateTemporaryEmployeeLoadsTest()
         {
             _mockTemporaryRepository.Setup(x => x.Create("Test", "Test", null, null, 350, 52)).Returns(employee);
             var result = _employeeController.AddEmployee() as ViewResult;
@@ -71,7 +71,7 @@ namespace Web_Tests
         }
 
         [Test]
-        public void DetailedTemporaryEmployeeInfoTest()
+        public void DetailedTemporaryEmployeeInfoLoadsTest()
         {
             _mockTemporaryRepository.Setup(x => x.Read(1111)).Returns(employee);
             var result = _employeeController.ReadEmployee(1111) as ViewResult;

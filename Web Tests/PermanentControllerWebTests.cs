@@ -48,7 +48,7 @@ namespace Web_Tests
             Assert.That(test, Is.EqualTo(2));
         }
         [Test]
-        public void AddPermanentEmployeeTest()
+        public void AddPermanentEmployeeLoadsTest()
         {
 
             _mockPermanentRepository
@@ -59,12 +59,12 @@ namespace Web_Tests
         }
 
         [Test]
-        public void UpdatePermanentEmployeeTest()
+        public void UpdatePermanentEmployeeLoadsTest()
         {
             _mockPermanentRepository
                 .Setup(x => x.Update(1111, "Test", "Test", null, null, 350, 52))
                 .Returns(true);
-            var result = _employeeController.UpdateEmployee(1111) as ViewResult;
+            var result = _employeeController.UpdateEmployee(1111) as ViewResult;;
             Assert.IsNotNull(result);
         }
 
@@ -79,7 +79,7 @@ namespace Web_Tests
         }
 
         [Test]
-        public void DetailedPermanentEmployeeInfoTest()
+        public void DetailedPermanentEmployeeInfoLoadsTest()
         {
             _mockPermanentRepository
                 .Setup(x => x.Read(1111))

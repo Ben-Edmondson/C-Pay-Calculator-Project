@@ -75,7 +75,9 @@ namespace Web_Tests
         {
             _mockTemporaryRepository.Setup(x => x.Read(1111)).Returns(employee);
             var result = _employeeController.ReadEmployee(1111) as ViewResult;
+            var testData = ((TemporaryEmployee)((ViewResult)result).Model).FirstName;
             Assert.IsNotNull(result);
+            Assert.That(testData, Is.EqualTo("Test"));
         }
     }
 }

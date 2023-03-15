@@ -24,7 +24,8 @@ namespace Web_Tests
             _mockTemporaryRepository = new Mock<IEmployeeRepository<TemporaryEmployee>>();
             _employeeController = new TemporaryEmployeeController(_mockTemporaryRepository.Object);
             _mockTemporaryRepository
-                .Setup(x => x.ReadAll()).Returns(employeesTemp);
+                .Setup(x => x.ReadAll())
+                .Returns(employeesTemp);
             employee = new TemporaryEmployee()
             {
                 FirstName = "Test",
@@ -49,7 +50,9 @@ namespace Web_Tests
         [Test]
         public void AddTemporaryEmployeeLoadsTest()
         {
-            _mockTemporaryRepository.Setup(x => x.Create("Test","Test",null,null,350,52)).Returns(employee);
+            _mockTemporaryRepository
+                .Setup(x => x.Create("Test","Test",null,null,350,52))
+                .Returns(employee);
             var result = _employeeController.AddEmployee() as ViewResult;
             Assert.IsNotNull(result);
         }
@@ -57,7 +60,9 @@ namespace Web_Tests
         [Test]
         public void UpdateTemporaryEmployeeLoadsTest()
         {
-            _mockTemporaryRepository.Setup(x => x.Create("Test", "Test", null, null, 350, 52)).Returns(employee);
+            _mockTemporaryRepository
+                .Setup(x => x.Create("Test", "Test", null, null, 350, 52))
+                .Returns(employee);
             var result = _employeeController.AddEmployee() as ViewResult;
             Assert.IsNotNull(result);
         }
@@ -65,7 +70,9 @@ namespace Web_Tests
         [Test]
         public void DeleteTemporaryEmployeeTest()
         {
-            _mockTemporaryRepository.Setup(x => x.Delete(1111)).Returns(true);
+            _mockTemporaryRepository
+                .Setup(x => x.Delete(1111))
+                .Returns(true);
             var result = _employeeController.DeleteEmployee(1111) as ViewResult;
             Assert.IsNotNull(result);
         }
@@ -73,7 +80,9 @@ namespace Web_Tests
         [Test]
         public void DetailedTemporaryEmployeeInfoLoadsTest()
         {
-            _mockTemporaryRepository.Setup(x => x.Read(1111)).Returns(employee);
+            _mockTemporaryRepository
+                .Setup(x => x.Read(1111))
+                .Returns(employee);
             var result = _employeeController.ReadEmployee(1111) as ViewResult;
             var testData = ((TemporaryEmployee)((ViewResult)result).Model).FirstName;
             Assert.IsNotNull(result);

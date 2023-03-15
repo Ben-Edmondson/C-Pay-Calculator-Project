@@ -47,7 +47,8 @@ namespace Web.Controllers
             List<PermanentEmployee> employees = new List<PermanentEmployee>(_permRepo.ReadAll());
             if (employees.Exists(x => x.ID == id) == true)
             {
-                return View(_permRepo.Read(id));
+                PermanentEmployee employee = _permRepo.Read(id);
+                return View(employee);
             }
             else
             {

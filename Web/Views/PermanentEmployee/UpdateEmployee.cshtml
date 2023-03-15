@@ -7,20 +7,20 @@
 
     <form asp-action="UpdateEmployee" method="post" role="form">
         <div class="form-group">
-            <label asp-for="FirstName" class="form-label">First Name</label>
-            <input asp-for="FirstName" class="form-control" placeholder="First Name">
+            <label asp-for="@Model.FirstName" class="form-label">First Name</label>
+            <input asp-for="@Model.FirstName" class="form-control" placeholder="First Name">
         </div>
         <div class="form-group">
-            <label asp-for="LastName" class="form-label">Last Name</label>
-            <input asp-for="LastName" class="form-control" placeholder="Last Name">
+            <label asp-for="@Model.LastName" class="form-label">Last Name</label>
+            <input asp-for="@Model.LastName" class="form-control" placeholder="Last Name">
         </div>
         <div class="form-group">
-            <label asp-for="Salary" class="form-label">Salary</label>
-            <input asp-for="Salary" class="form-control" placeholder="Salary">
+            <label asp-for="@Model.Salary" class="form-label">Salary</label>
+            <input asp-for="@Model.Salary" class="form-control" placeholder="Salary">
         </div>
         <div class="form-group">
-            <label asp-for="Bonus" class="form-label"> Bonus</label>
-            <input asp-for="Bonus" class="form-control" placeholder="Bonus">
+            <label asp-for="@Model.Bonus" class="form-label"> Bonus</label>
+            <input asp-for="@Model.Bonus" class="form-control" placeholder="Bonus">
         </div>
         <div class="form-group">
             <input type="submit" class="btn btn-primary" value="Update Employee" />

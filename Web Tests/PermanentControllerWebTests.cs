@@ -22,11 +22,23 @@ namespace Web_Tests
         [SetUp]
         public void SetUp()
         {
+            employee = new PermanentEmployee()
+            {
+                FirstName = "Test",
+                LastName = "Tester",
+                Salary = 50000,
+                Bonus = 5200,
+                ID = 1111
+            };
+
             _mockPermanentRepository = new Mock<IEmployeeRepository<PermanentEmployee>>();
             _employeeController = new PermanentEmployeeController(_mockPermanentRepository.Object);
             _mockPermanentRepository
                 .Setup(x => x.ReadAll())
                 .Returns(employeesPerm);
+            _mockPermanentRepository
+                .Setup(x => x.Read(1111))
+                .Returns(employee);
             employee = new PermanentEmployee()
             {
                 FirstName = "Test",
@@ -43,7 +55,7 @@ namespace Web_Tests
 
             var result = _employeeController.EmployeeList() as ViewResult;
             var test = ((PermanentEmployeeViewModel)((ViewResult)result).Model).PermanentEmployees.Count();
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.PermanentEmployeeViewModel"));
             Assert.That(test, Is.EqualTo(2));
         }
@@ -55,7 +67,7 @@ namespace Web_Tests
                 .Setup(x => x.Create("Test", "Test", null, null, 350, 52))
                 .Returns(employee);
             var result = _employeeController.AddEmployee() as ViewResult;
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
         }
 
         [Test]
@@ -64,8 +76,8 @@ namespace Web_Tests
             _mockPermanentRepository
                 .Setup(x => x.Update(1111, "Test", "Test", null, null, 350, 52))
                 .Returns(true);
-            var result = _employeeController.UpdateEmployee(1111) as ViewResult;;
-            Assert.IsNotNull(result);
+            var result = _employeeController.UpdateEmployee(1111) as ViewResult;
+            Assert.That(result, Is.Not.Null);
         }
 
         [Test]
@@ -74,19 +86,16 @@ namespace Web_Tests
             _mockPermanentRepository
                 .Setup(x => x.Delete(1111))
                 .Returns(true);
-            var result = _employeeController.DeleteEmployee(1111) as ViewResult;
-            Assert.IsNotNull(result);
+            var result = _employeeController.DeleteEmployee(1111) as RedirectToActionResult;
+            Assert.That(result, Is.Not.Null);
         }
 
         [Test]
         public void DetailedPermanentEmployeeInfoLoadsTest()
         {
-            _mockPermanentRepository
-                .Setup(x => x.Read(1111))
-                .Returns(employee);
             var result = _employeeController.ReadEmployee(1111) as ViewResult;
             var testData = ((PermanentEmployee)((ViewResult)result).Model).FirstName;
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             Assert.That(testData, Is.EqualTo("Test"));
         }
     }

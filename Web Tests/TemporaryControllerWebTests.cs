@@ -21,11 +21,6 @@ namespace Web_Tests
         [SetUp]
         public void SetUp()
         {
-            _mockTemporaryRepository = new Mock<IEmployeeRepository<TemporaryEmployee>>();
-            _employeeController = new TemporaryEmployeeController(_mockTemporaryRepository.Object);
-            _mockTemporaryRepository
-                .Setup(x => x.ReadAll())
-                .Returns(employeesTemp);
             employee = new TemporaryEmployee()
             {
                 FirstName = "Test",
@@ -34,6 +29,17 @@ namespace Web_Tests
                 WeeksWorked = 52,
                 ID = 1111
             };
+
+            _mockTemporaryRepository = new Mock<IEmployeeRepository<TemporaryEmployee>>();
+            _employeeController = new TemporaryEmployeeController(_mockTemporaryRepository.Object);
+
+            _mockTemporaryRepository
+                .Setup(x => x.ReadAll())
+                .Returns(employeesTemp);
+            _mockTemporaryRepository
+                .Setup(x => x.Read(1111))
+                .Returns(employee);
+            
         }
 
 
@@ -42,7 +48,7 @@ namespace Web_Tests
         {
             var result = _employeeController.EmployeeList() as ViewResult;
             var test = ((TemporaryEmployeeViewModel)((ViewResult)result).Model).TemporaryEmployees.Count();
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.TemporaryEmployeeViewModel"));
             Assert.That(test, Is.EqualTo(1));
         }
@@ -54,17 +60,17 @@ namespace Web_Tests
                 .Setup(x => x.Create("Test","Test",null,null,350,52))
                 .Returns(employee);
             var result = _employeeController.AddEmployee() as ViewResult;
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
         }
 
         [Test]
         public void UpdateTemporaryEmployeeLoadsTest()
         {
             _mockTemporaryRepository
-                .Setup(x => x.Create("Test", "Test", null, null, 350, 52))
-                .Returns(employee);
-            var result = _employeeController.AddEmployee() as ViewResult;
-            Assert.IsNotNull(result);
+                .Setup(x => x.Update(1111, "Test", "Test", null, null, 350, 52))
+                .Returns(true);
+            var result = _employeeController.UpdateEmployee(1111) as ViewResult;
+            Assert.That(result, Is.Not.Null);
         }
 
         [Test]
@@ -73,19 +79,16 @@ namespace Web_Tests
             _mockTemporaryRepository
                 .Setup(x => x.Delete(1111))
                 .Returns(true);
-            var result = _employeeController.DeleteEmployee(1111) as ViewResult;
-            Assert.IsNotNull(result);
+            var result = _employeeController.DeleteEmployee(1111) as RedirectToActionResult;
+            Assert.That(result, Is.Not.Null);
         }
 
         [Test]
         public void DetailedTemporaryEmployeeInfoLoadsTest()
         {
-            _mockTemporaryRepository
-                .Setup(x => x.Read(1111))
-                .Returns(employee);
             var result = _employeeController.ReadEmployee(1111) as ViewResult;
             var testData = ((TemporaryEmployee)((ViewResult)result).Model).FirstName;
-            Assert.IsNotNull(result);
+            Assert.That(result, Is.Not.Null);
             Assert.That(testData, Is.EqualTo("Test"));
         }
     }

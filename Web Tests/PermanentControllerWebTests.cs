@@ -77,7 +77,9 @@ namespace Web_Tests
                 .Setup(x => x.Update(1111, "Test", "Test", null, null, 350, 52))
                 .Returns(true);
             var result = _employeeController.UpdateEmployee(1111) as ViewResult;
+            var testData = ((PermanentEmployee)((ViewResult)result).Model).FirstName;
             Assert.That(result, Is.Not.Null);
+            Assert.That(testData, Is.EqualTo("Test"));
         }
 
         [Test]

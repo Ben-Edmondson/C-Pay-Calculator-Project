@@ -39,7 +39,6 @@ namespace Web_Tests
             _mockTemporaryRepository
                 .Setup(x => x.Read(1111))
                 .Returns(employee);
-            
         }
 
 
@@ -70,7 +69,9 @@ namespace Web_Tests
                 .Setup(x => x.Update(1111, "Test", "Test", null, null, 350, 52))
                 .Returns(true);
             var result = _employeeController.UpdateEmployee(1111) as ViewResult;
+            var testData = ((TemporaryEmployee)((ViewResult)result).Model).FirstName;
             Assert.That(result, Is.Not.Null);
+            Assert.That(testData, Is.EqualTo("Test"));
         }
 
         [Test]

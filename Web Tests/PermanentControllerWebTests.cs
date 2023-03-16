@@ -66,7 +66,7 @@ namespace Web_Tests
         {
             //act
             var result = _employeeController.UpdateEmployee(1111) as ViewResult;
-            var testData = ((PermanentEmployee)((ViewResult)result).Model).FirstName;
+            var testData = ((PermanentEmployee)result.Model).FirstName;
             //assert
             Assert.That(result, Is.Not.Null);
             Assert.That(testData, Is.EqualTo("Test"));
@@ -90,7 +90,7 @@ namespace Web_Tests
         {
             //act
             var result = _employeeController.ReadEmployee(1111) as ViewResult;
-            var testData = ((PermanentEmployee)((ViewResult)result).Model).FirstName;
+            var testData = ((PermanentEmployee)result.Model).FirstName;
             //assert
             Assert.That(result, Is.Not.Null);
             Assert.That(testData, Is.EqualTo("Test"));

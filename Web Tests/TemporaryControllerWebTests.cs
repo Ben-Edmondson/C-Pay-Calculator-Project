@@ -47,7 +47,7 @@ namespace Web_Tests
         {
             //act
             var result = _employeeController.EmployeeList() as ViewResult;
-            var test = ((TemporaryEmployeeViewModel)((ViewResult)result).Model).TemporaryEmployees.Count();
+            var test = ((TemporaryEmployeeViewModel)(result).Model).TemporaryEmployees.Count();
             //assert
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.TemporaryEmployeeViewModel"));
@@ -57,7 +57,7 @@ namespace Web_Tests
         [Test]
         public void AddTemporaryEmployeeLoadsTest()
         {
-            //act
+            //act   
             var result = _employeeController.AddEmployee() as ViewResult;
             //assert
             Assert.That(result, Is.Not.Null);
@@ -68,7 +68,7 @@ namespace Web_Tests
         {
             //act
             var result = _employeeController.UpdateEmployee(1111) as ViewResult;
-            var testData = ((TemporaryEmployee)((ViewResult)result).Model).FirstName;
+            var testData = ((TemporaryEmployee)(result).Model).FirstName;
             //assert
             Assert.That(result, Is.Not.Null);
             Assert.That(testData, Is.EqualTo("Test"));

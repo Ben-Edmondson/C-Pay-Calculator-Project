@@ -4,7 +4,10 @@
 @model PermanentEmployeeViewModel
 <div class="text-center">
     <h1 class="display-4">Permanent Employees</h1>
-
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="alertDeleteSuccess">
+        Employee removed successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
         <div>
         <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="PermanentEmployee" asp-action="AddEmployee" role="button">Add Permanent Employee</a>
             <table class="table">

@@ -82,6 +82,7 @@ namespace Web_Tests
                 .Returns(true);
             var result = _employeeController.DeleteEmployee(1111) as RedirectToActionResult;
             Assert.That(result, Is.Not.Null);
+            Assert.That(result.ActionName, Is.EqualTo("EmployeeList"));
         }
 
         [Test]

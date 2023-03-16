@@ -55,9 +55,6 @@ namespace Web_Tests
         [Test]
         public void AddTemporaryEmployeeLoadsTest()
         {
-            _mockTemporaryRepository
-                .Setup(x => x.Create("Test","Test",null,null,350,52))
-                .Returns(employee);
             var result = _employeeController.AddEmployee() as ViewResult;
             Assert.That(result, Is.Not.Null);
         }
@@ -92,6 +89,17 @@ namespace Web_Tests
             var testData = ((TemporaryEmployee)((ViewResult)result).Model).FirstName;
             Assert.That(result, Is.Not.Null);
             Assert.That(testData, Is.EqualTo("Test"));
+        }
+
+        [Test]
+        public void EmployeeAddedAndPageRedirects()
+        {
+            _mockTemporaryRepository
+                .Setup(x => x.Create("Test", "Test", null, null, 350, 52))
+                .Returns(employee);
+            var result = _employeeController.AddEmployee(employee) as RedirectToActionResult;
+            Assert.That(result, Is.Not.Null);
+            Assert.That(result.ActionName, Is.EqualTo("EmployeeList"));
         }
     }
 }

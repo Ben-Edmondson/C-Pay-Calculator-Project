@@ -26,6 +26,12 @@ namespace Web.Controllers
             return View();
         }
 
+        public IActionResult EmployeeListDeleteConfirmed()
+        {
+            PermanentEmployeeViewModel permView = new PermanentEmployeeViewModel(_permRepo.ReadAll());
+            return View(permView);
+        }
+
         [HttpPost]  
         public IActionResult AddEmployee(PermanentEmployee inputEmployee)
         {
@@ -37,7 +43,7 @@ namespace Web.Controllers
         {
             if(_permRepo.Delete(id) == true)
             {
-                return RedirectToAction("EmployeeList");
+                return RedirectToAction("EmployeeListDeleteConfirmed");
             }
             return RedirectToAction("InvalidID", "Error");
         }

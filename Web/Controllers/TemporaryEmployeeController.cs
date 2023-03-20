@@ -25,6 +25,13 @@ namespace Web.Controllers
         {
             return View();
         }
+
+        public IActionResult EmployeeListDeleteConfirmed()
+        {
+            TemporaryEmployeeViewModel tempView = new TemporaryEmployeeViewModel(_temporaryRepo.ReadAll());
+            return View(tempView);
+        }
+
         [HttpPost]
         public IActionResult AddEmployee(TemporaryEmployee inputEmployee)
         {
@@ -37,7 +44,7 @@ namespace Web.Controllers
             if (_temporaryRepo.Delete(id) == true)
             {
 
-                return RedirectToAction("EmployeeList");
+                return RedirectToAction("EmployeeListDeleteConfirmed");
             }
             return RedirectToAction("InvalidID", "Error");
         }

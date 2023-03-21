@@ -46,7 +46,7 @@ namespace Web_Tests
         {
             //act
             var result = _employeeController.EmployeeList() as ViewResult;
-            var test = ((PermanentEmployeeViewModel)((ViewResult)result).Model).PermanentEmployees.Count();
+            var test = ((PermanentEmployeeViewModel)result.Model).PermanentEmployees.Count();
             //assert
             Assert.That(result, Is.Not.Null);
             Assert.That(result.Model.ToString(), Is.EqualTo("Web.Models.PermanentEmployeeViewModel"));
@@ -82,7 +82,7 @@ namespace Web_Tests
             var result = _employeeController.DeleteEmployee(1111) as RedirectToActionResult;
             //assert
             Assert.That(result, Is.Not.Null);
-            Assert.That(result.ActionName, Is.EqualTo("EmployeeList"));
+            Assert.That(result.ActionName, Is.EqualTo("EmployeeListDeleteConfirmed"));
         }
 
         [Test]

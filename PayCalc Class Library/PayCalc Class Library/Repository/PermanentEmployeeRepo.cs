@@ -8,8 +8,8 @@ namespace PayCalc_Project.Repository
 
         private List<PermanentEmployee> employees = new List<PermanentEmployee>()
         {
-            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000.00m, Bonus = 5000.00m },
-            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000.00m, Bonus = 2500.00m }
+            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "Joe", LastName = "Bloggs", Salary = 40000.00m, Bonus = 5000.00m, startDate = new DateTime(2000,8,3) },
+            new PermanentEmployee(){ ID = rnd.Next(1111, 10000), FirstName = "John", LastName = "Smith", Salary = 45000.00m, Bonus = 2500.00m, startDate = new DateTime(2000,10,3) }
         };
 
         public PermanentEmployeeRepo()
@@ -36,7 +36,7 @@ namespace PayCalc_Project.Repository
         }
         public PermanentEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-            PermanentEmployee employee = new PermanentEmployee() { ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus };
+            PermanentEmployee employee = new PermanentEmployee() { ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus, startDate = new DateTime(2003, 07, 3) };
             employees.Add(employee);
             return employee;
         }

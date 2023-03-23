@@ -10,6 +10,7 @@ namespace Web.Controllers
     {
         private readonly IEmployeeRepository<PermanentEmployee> _permRepo;
         PermanentCalculations permCalc = new PermanentCalculations();
+        DateCalculations dateCalculations = new DateCalculations();
         public PermanentEmployeeController(IEmployeeRepository<PermanentEmployee> permRepo)
         {
             _permRepo = permRepo;
@@ -75,8 +76,10 @@ namespace Web.Controllers
             if (employees.Exists(x => x.ID == id) == true)
             {
                 PermanentEmployee? employee = _permRepo.Read(id);
-                PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee) };
-                return View(empWSal);
+                int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee);
+                PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee), startDate = employee.startDate};
+                DetailedPermanentEmployeeViewModel viewModel = new DetailedPermanentEmployeeViewModel(empWSal, amountOfWeeksWorkedByEmployee);
+                return View(viewModel);
             }
             else
             {

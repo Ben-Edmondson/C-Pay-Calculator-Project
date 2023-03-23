@@ -2,7 +2,6 @@
 @{
     ViewData["Title"] = "Read Employee";
 }
-<!-- Have label to the left input to the right-->
 <div class="text-center">
     <h1 class="display-4"></h1>
 
@@ -17,6 +16,8 @@
             <li class="list-group-item">@Model.DayRate</li>
             <li class="list-group-item">@Model.WeeksWorked</li>
             <li class="list-group-item">@Model.SalaryAfterTax</li>
+            <li class="list-group-item">Start Date:</li>
+            <li class-"list-group-item">Weeks Worked Since Start Date:</li>
         </ul>
         <div class="card-body">
             <a asp-area="" asp-controller="TemporaryEmployee" asp-action="EmployeeList" class="card-link">Go Back</a>

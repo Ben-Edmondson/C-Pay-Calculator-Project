@@ -1,4 +1,4 @@
-﻿@model PayCalc_Project.Models.PermanentEmployeeSalary
+﻿@model DetailedPermanentEmployeeViewModel
 @{
     ViewData["Title"] = "Read Employee";
 }
@@ -7,20 +7,22 @@
 
     <div  class="card" style="width: 18rem;">
   <div class="card-body">
-    <h5 class="card-title">@Model.Fullname</h5>
+    <h5 class="card-title">@Model.Employee.Fullname</h5>
     <p class="card-text">Information about employee</p>
   </div>
   <ul class="list-group list-group-flush">
-            <li class="list-group-item">First Name: @Model.FirstName</li>
-            <li class="list-group-item">Last Name: @Model.LastName</li>
-            <li class="list-group-item">Salary: @Model.Salary</li>
-            <li class="list-group-item">Bonus: @Model.Bonus</li>
-            <li class="list-group-item">Income After Tax: @Model.SalaryAfterTax</li>
+            <li class="list-group-item">First Name: @Model.Employee.FirstName</li>
+            <li class="list-group-item">Last Name: @Model.Employee.LastName</li>
+            <li class="list-group-item">Salary: @Model.Employee.Salary</li>
+            <li class="list-group-item">Bonus: @Model.Employee.Bonus</li>
+            <li class="list-group-item">Income After Tax: @Model.Employee.SalaryAfterTax</li>
+            <li class="list-group-item">Start Date: @Model.Employee.startDate</li>
+            <li class-"list-group-item">Weeks Worked Since Start Date: @Model.WeeksWorkedSinceStartDate</li>
   </ul>
   <div class="card-body">
             <a asp-area="" asp-controller="PermanentEmployee" asp-action="EmployeeList" class="card-link">Go Back</a>
-            <a asp-controller="PermanentEmployee" asp-action="UpdateEmployee" asp-route-id="@Model.ID" class="card-link">Update Employee</a>
-            <a asp-controller="PermanentEmployee" asp-action="DeleteEmployee" asp-route-id="@Model.ID" class="card-link">Delete Employee</a>
+            <a asp-controller="PermanentEmployee" asp-action="UpdateEmployee" asp-route-id="@Model.Employee.ID" class="card-link">Update Employee</a>
+            <a asp-controller="PermanentEmployee" asp-action="DeleteEmployee" asp-route-id="@Model.Employee.ID" class="card-link">Delete Employee</a>
   </div>
 </div>
 </div>

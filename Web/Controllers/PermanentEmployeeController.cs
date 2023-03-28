@@ -36,7 +36,7 @@ namespace Web.Controllers
         [HttpPost]  
         public IActionResult AddEmployee(PermanentEmployee inputEmployee)
         {
-            _permRepo.Create(inputEmployee.FirstName, inputEmployee.LastName, inputEmployee.Salary, inputEmployee.Bonus, null, null);
+            _permRepo.Create(inputEmployee.StartDate, inputEmployee.FirstName, inputEmployee.LastName, inputEmployee.Salary, inputEmployee.Bonus, null, null);
             return RedirectToAction("EmployeeList");
         }
 
@@ -77,7 +77,7 @@ namespace Web.Controllers
             {
                 PermanentEmployee? employee = _permRepo.Read(id);
                 int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee);
-                PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee), startDate = employee.startDate};
+                PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee), StartDate = employee.StartDate};
                 DetailedPermanentEmployeeViewModel viewModel = new DetailedPermanentEmployeeViewModel(empWSal, amountOfWeeksWorkedByEmployee);
                 return View(viewModel);
             }

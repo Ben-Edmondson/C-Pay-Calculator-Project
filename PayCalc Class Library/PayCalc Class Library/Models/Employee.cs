@@ -6,7 +6,7 @@
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
 
-        public DateTime startDate { get; set; }
+        public DateTime StartDate { get; set; }
         public string? Fullname => $"{FirstName} {LastName}";
     }
 }

@@ -6,7 +6,7 @@ namespace PayCalc_Project.Services
     {
         public int WeeksWorkedSinceStartDate(Employee employee)
         {
-            DateTime startDate = employee.startDate;
+            DateTime startDate = employee.StartDate;
             TimeSpan totalDays = DateTime.Today - startDate;
             int totalWeeks = (int)totalDays.TotalDays / 7;
             return totalWeeks;

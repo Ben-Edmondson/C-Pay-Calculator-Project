@@ -9,6 +9,7 @@ namespace Web.Controllers
     public class TemporaryEmployeeController : Controller
     {
         TemporaryCalculations tempCalc = new TemporaryCalculations();
+        DateCalculations dateCalculations = new DateCalculations();
         private readonly IEmployeeRepository<TemporaryEmployee> _temporaryRepo;
 
         public TemporaryEmployeeController(IEmployeeRepository<TemporaryEmployee> tempRepo)
@@ -35,7 +36,7 @@ namespace Web.Controllers
         [HttpPost]
         public IActionResult AddEmployee(TemporaryEmployee inputEmployee)
         {
-            _temporaryRepo.Create(inputEmployee.FirstName, inputEmployee.LastName, null, null, inputEmployee.DayRate, inputEmployee.WeeksWorked);
+            _temporaryRepo.Create(inputEmployee.StartDate, inputEmployee.FirstName, inputEmployee.LastName, null, null, inputEmployee.DayRate, inputEmployee.WeeksWorked);
             return RedirectToAction("EmployeeList");
         }
 
@@ -71,10 +72,12 @@ namespace Web.Controllers
         {
             List<TemporaryEmployee> employees = new List<TemporaryEmployee>(_temporaryRepo.ReadAll());
             if (employees.Exists(x => x.ID == id) == true)
-            {
+            { 
                 TemporaryEmployee? employee = _temporaryRepo.Read(id);
-                TemporaryEmployeeSalary? empWSal = new TemporaryEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, DayRate = employee.DayRate, WeeksWorked = employee.WeeksWorked, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
-                return View(empWSal);
+                int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee);
+                TemporaryEmployeeSalary? empWSal = new TemporaryEmployeeSalary {StartDate = employee.StartDate, ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, DayRate = employee.DayRate, WeeksWorked = employee.WeeksWorked, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
+                DetailedTemporaryEmployeeViewModel viewModel = new DetailedTemporaryEmployeeViewModel(empWSal, amountOfWeeksWorkedByEmployee);
+                return View(viewModel);
             }
             else
             {

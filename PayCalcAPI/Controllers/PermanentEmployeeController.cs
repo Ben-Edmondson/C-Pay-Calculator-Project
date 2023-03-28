@@ -56,10 +56,10 @@ namespace PayCalcAPI.Controllers
         }
         // POST api/<EmployeeController>
         [HttpPost]
-        public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
+        public IActionResult Post(DateTime startDate, string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
             _log.Info("Creating new permanent employee with provided details.");
-            _employeePermanentRepository.Create(FirstName, Surname, Salary, Bonus, null, null);
+            _employeePermanentRepository.Create(startDate, FirstName, Surname, Salary, Bonus, null, null);
             _log.Debug("HTTP:204 - Permanent Employee Created!");
             return NoContent();
         }

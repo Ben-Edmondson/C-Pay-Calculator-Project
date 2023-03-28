@@ -45,7 +45,7 @@ namespace PayCalc_Tests
             //arrange
             var employeeCounter = employees.Count();
             //act
-            TemporaryEmployee createTest = _repoTemp.Create("Ben", "Edmondson", null, null, 500, 52);
+            TemporaryEmployee createTest = _repoTemp.Create(new DateTime(2000, 1, 1), "Ben", "Edmondson", null, null, 500, 52);
             TemporaryEmployee _createTest = new TemporaryEmployee() {ID = createTest.ID, FirstName = "Ben", LastName = "Edmondson", DayRate = 500, WeeksWorked = 52 };
             employeeCounter = employeeCounter + 1;
             //assert

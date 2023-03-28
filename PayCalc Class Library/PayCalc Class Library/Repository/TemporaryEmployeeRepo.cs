@@ -8,7 +8,7 @@ namespace PayCalc_Project.Repository
 
         private List<TemporaryEmployee> employees = new List<TemporaryEmployee>()
         {
-            new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
+            new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40, StartDate = new DateTime(2003,1,1) }
         };
         public TemporaryEmployeeRepo()
         {

@@ -45,7 +45,7 @@ Please Select an Option Below.
                         var decSalary = userInput.GetUserDecimal("Please enter a valid Salary");
                         Console.WriteLine("Please enter a Bonus");
                         var decBonus = userInput.GetUserDecimal("Please enter a valid Bonus");
-                        permanentRepository.Create(firstName, lastName, decSalary, decBonus, null, null);
+                        permanentRepository.Create(new DateTime(2000, 1, 1), firstName, lastName, decSalary, decBonus, null, null);
                         Console.WriteLine("Permanent Employee added!");
                     }
                     else
@@ -54,7 +54,7 @@ Please Select an Option Below.
                         var dayRate = userInput.GetUserDecimal("Please enter a valid Day Rate");
                         Console.WriteLine("Please enter Weeks Worked");
                         var weeksWorked = userInput.GetUserInt("Please enter a valid amount of weeks worked!");
-                        temporaryRepository.Create(firstName, lastName, null, null, dayRate, weeksWorked);
+                        temporaryRepository.Create(new DateTime(2000, 1, 1), firstName, lastName, null, null, dayRate, weeksWorked);
                         Console.WriteLine("Temporary Employee added!");
                     }
                 }

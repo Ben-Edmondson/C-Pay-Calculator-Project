@@ -104,17 +104,17 @@ namespace PayCalc_API_Tests
         public void API_Should_Create_Employee_Code_204()
         {
             _mockPermanentRepository
-                .Setup(x => x.Create(It.IsAny<string>(), It.IsAny<string>(), It.IsAny<decimal>(), It.IsAny<decimal>(), null, null))
+                .Setup(x => x.Create(new DateTime(2000, 1, 1), It.IsAny<string>(), It.IsAny<string>(), It.IsAny<decimal>(), It.IsAny<decimal>(), null, null))
                 .Returns(new PermanentEmployee { ID = 1112, FirstName = "Ben", LastName = "Edmondson", Salary = 50000, Bonus = 5000 });
 
-            var response = permanentEmployeeController.Post("Ben", "Edmondson", 50000, 5000);
+            var response = permanentEmployeeController.Post(new DateTime(2000, 1, 1), "Ben", "Edmondson", 50000, 5000);
             var contentResult = response as NoContentResult;
             var statusCode = contentResult?.StatusCode;
 
             Assert.Multiple(() =>
             {
                 _mockPermanentRepository
-                    .Verify(x => x.Create("Ben", "Edmondson", 50000, 5000, null, null), Times.Once());
+                    .Verify(x => x.Create(new DateTime(2000, 1, 1), "Ben", "Edmondson", 50000, 5000, null, null), Times.Once());
                 Assert.IsNotNull(contentResult);
                 Assert.That(statusCode, Is.EqualTo(204));
             });

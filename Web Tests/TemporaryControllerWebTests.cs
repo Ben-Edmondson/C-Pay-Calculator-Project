@@ -92,7 +92,7 @@ namespace Web_Tests
         {
             //act
             var result = _employeeController.ReadEmployee(1111) as ViewResult;
-            var testData = ((TemporaryEmployee)result.Model).FirstName;
+            var testData = ((DetailedTemporaryEmployeeViewModel)result.Model).Employee.FirstName;
             //assert
             Assert.That(result, Is.Not.Null);
             Assert.That(testData, Is.EqualTo("Test"));
@@ -103,7 +103,7 @@ namespace Web_Tests
         {
             //arrange
             _mockTemporaryRepository
-                .Setup(x => x.Create("Test", "Test", null, null, 350, 52))
+                .Setup(x => x.Create(new DateTime(2000, 1, 1), "Test", "Test", null, null, 350, 52))
                 .Returns(employee);
             //act
             var result = _employeeController.AddEmployee(employee) as RedirectToActionResult;

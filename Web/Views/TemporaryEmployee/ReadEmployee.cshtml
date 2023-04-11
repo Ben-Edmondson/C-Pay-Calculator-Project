@@ -17,7 +17,7 @@
             <li class="list-group-item">Weeks Worked: @String.Format("{0:.##}", Model.Employee.WeeksWorked)</li>
             <li class="list-group-item">Income After Tax: @String.Format("{0:C}", Model.Employee.SalaryAfterTax)</li>
             <li class="list-group-item">Start Date: @Model.Employee.StartDate.ToShortDateString()</li>
-            <li class-"list-group-item">Weeks Worked Since Start Date: @Model.WeeksWorkedSinceStartDate</li>
+            <li class="list-group-item">Weeks Worked Since Start Date: @Model.WeeksWorkedSinceStartDate</li>
         </ul>
         <div class="card-body">
             <a asp-area="" asp-controller="TemporaryEmployee" asp-action="EmployeeList" class="card-link">Go Back</a>

@@ -28,8 +28,8 @@
                         <td>@employee.ID</td>
                         <td>@employee.FirstName</td>
                         <td>@employee.LastName</td>
-                        <td>@String.Format("{0:C}", employee.Salary)</td>
-                        <td>@String.Format("{0:C}", employee.Bonus)</td>
+                        <td>@string.Format("{0:C}", employee.Salary)</td>
+                        <td>@string.Format("{0:C}", employee.Bonus)</td>
                         <td>
                             <a asp-controller="PermanentEmployee" asp-action="UpdateEmployee" asp-route-id="@employee.ID">Update</a>
                             <a asp-controller="PermanentEmployee" asp-action="DeleteEmployee" asp-route-id="@employee.ID">Delete</a>

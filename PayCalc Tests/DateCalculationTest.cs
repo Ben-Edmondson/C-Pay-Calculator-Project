@@ -13,11 +13,10 @@ namespace PayCalc_Tests
             DateCalculations dateCalculations = new DateCalculations();
             PermanentEmployee employee = new PermanentEmployee() { FirstName = "Test", LastName = "Test", ID = 0001, StartDate = new DateTime(2022, 01, 01) };
             //act
-            int? weeksWorkedSinceStart = dateCalculations.WeeksWorkedSinceStartDate(employee);
+            var weeksWorkedSinceStart = dateCalculations.WeeksWorkedSinceStartDate(employee);
             TimeSpan timeSpan = DateTime.Today - employee.StartDate;
-            int checker = (int)timeSpan.TotalDays/7;
+            var checker = (int)timeSpan.TotalDays/7;
             //assert
-            Assert.That(weeksWorkedSinceStart, Is.Not.Null);
             Assert.That(weeksWorkedSinceStart, Is.EqualTo(checker));
 
         }

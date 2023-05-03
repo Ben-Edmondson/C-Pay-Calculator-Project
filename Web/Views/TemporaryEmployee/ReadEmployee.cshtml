@@ -13,9 +13,9 @@
         <ul class="list-group list-group-flush">
             <li class="list-group-item">First Name: @Model.Employee.FirstName</li>
             <li class="list-group-item">Last Name: @Model.Employee.LastName</li>
-            <li class="list-group-item">Day Rate: @String.Format("{0:C}", Model.Employee.DayRate)</li>
-            <li class="list-group-item">Weeks Worked: @String.Format("{0:.##}", Model.Employee.WeeksWorked)</li>
-            <li class="list-group-item">Income After Tax: @String.Format("{0:C}", Model.Employee.SalaryAfterTax)</li>
+            <li class="list-group-item">Day Rate: @string.Format("{0:C}", Model.Employee.DayRate)</li>
+            <li class="list-group-item">Weeks Worked: @string.Format("{0:.##}", Model.Employee.WeeksWorked)</li>
+            <li class="list-group-item">Income After Tax: @string.Format("{0:C}", Model.Employee.SalaryAfterTax)</li>
             <li class="list-group-item">Start Date: @Model.Employee.StartDate.ToShortDateString()</li>
             <li class="list-group-item">Weeks Worked Since Start Date: @Model.WeeksWorkedSinceStartDate</li>
         </ul>

@@ -14,7 +14,7 @@ namespace PayCalcAPI.Controllers
     {
         private readonly ILog _log;
         private readonly IEmployeeRepository<TemporaryEmployee> _employeeTemporaryRepository;
-        TemporaryCalculations tempCalc = new TemporaryCalculations();
+        TemporaryEmployeeTaxCaculator tempCalc = new TemporaryEmployeeTaxCaculator();
         public TemporaryEmployeeController(IEmployeeRepository<TemporaryEmployee> employeeTemporaryRepository)
         {
             _employeeTemporaryRepository = employeeTemporaryRepository;

@@ -11,8 +11,8 @@ namespace PayCalc_Project
         {
             PermanentEmployeeRepo permanentRepository = new PermanentEmployeeRepo();
             TemporaryEmployeeRepo temporaryRepository = new TemporaryEmployeeRepo();
-            PermanentCalculations permanentCalculations = new PermanentCalculations();
-            TemporaryCalculations temporaryCalculations = new TemporaryCalculations();
+            PermanentEmployeeTaxCalculator permanentCalculations = new PermanentEmployeeTaxCalculator();
+            TemporaryEmployeeTaxCaculator temporaryCalculations = new TemporaryEmployeeTaxCaculator();
             UserInput userInput = new UserInput();
             var gameLoop = true;
             while (gameLoop == true)

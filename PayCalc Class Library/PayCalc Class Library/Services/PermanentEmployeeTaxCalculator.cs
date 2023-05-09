@@ -1,14 +1,11 @@
 ﻿using PayCalc_Project.Models;
+
 namespace PayCalc_Project.Services
 {
-    public class TemporaryCalculations : ICalculations<TemporaryEmployee>
+    public class PermanentEmployeeTaxCalculator : ITaxCalculator<PermanentEmployee>
     {
-        public decimal? TotalTaxPaid(TemporaryEmployee employee)
+        public decimal? TotalTaxPaid(PermanentEmployee employee)
         {
-            var days = 5;
-            var dayRate = employee.DayRate;
-            var weeksWorked = employee.WeeksWorked;
-            var totalPay = dayRate * (days * weeksWorked);
             var taxBands = new[]
             {
             new { Lower = 0m, Upper = 12570m, Rate = 0.0m },
@@ -16,13 +13,15 @@ namespace PayCalc_Project.Services
             new { Lower = 50271m, Upper = 150000m, Rate = 0.4m },
             new { Lower = 150001m, Upper = decimal.MaxValue, Rate = 0.45m }
             };
+            var salary = employee.Salary + employee.Bonus;
+
             var taxToBePaid = 0m;
 
             foreach (var band in taxBands)
             {
-                if (totalPay > band.Lower)
+                if (salary > band.Lower)
                 {
-                    var taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)totalPay - band.Lower);
+                    var taxableAtThisRate = Math.Min(band.Upper - band.Lower, (decimal)salary - band.Lower);
                     var taxThisBand = taxableAtThisRate * band.Rate;
                     taxToBePaid += taxThisBand;
                 }

@@ -9,8 +9,8 @@ namespace Web.Controllers
     public class PermanentEmployeeController : Controller
     {
         private readonly IEmployeeRepository<PermanentEmployee> _permRepo;
-        PermanentCalculations permCalc = new PermanentCalculations();
-        DateCalculations dateCalculations = new DateCalculations();
+        PermanentEmployeeTaxCalculator permCalc = new PermanentEmployeeTaxCalculator();
+        DateCalculator dateCalculations = new DateCalculator();
         public PermanentEmployeeController(IEmployeeRepository<PermanentEmployee> permRepo)
         {
             _permRepo = permRepo;

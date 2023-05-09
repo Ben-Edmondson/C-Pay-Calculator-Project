@@ -14,7 +14,7 @@ namespace PayCalcAPI.Controllers
     public class PermanentEmployeeController : ControllerBase
     {
         private readonly ILog _log;
-        PermanentCalculations permCalc = new PermanentCalculations();
+        PermanentEmployeeTaxCalculator permCalc = new PermanentEmployeeTaxCalculator();
         private readonly IEmployeeRepository<PermanentEmployee> _employeePermanentRepository;
         public PermanentEmployeeController(IEmployeeRepository<PermanentEmployee> employeePermanentRepository)
         {

@@ -10,7 +10,7 @@ namespace PayCalc_Tests
         public void TestDateCalculation() 
         {
             //arrange
-            DateCalculations dateCalculations = new DateCalculations();
+            DateCalculator dateCalculations = new DateCalculator();
             PermanentEmployee employee = new PermanentEmployee() { FirstName = "Test", LastName = "Test", ID = 0001, StartDate = new DateTime(2022, 01, 01) };
             //act
             var weeksWorkedSinceStart = dateCalculations.WeeksWorkedSinceStartDate(employee);

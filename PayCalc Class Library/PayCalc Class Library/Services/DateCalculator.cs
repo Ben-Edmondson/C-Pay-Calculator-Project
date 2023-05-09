@@ -2,7 +2,7 @@
 
 namespace PayCalc_Project.Services
 {
-    public class DateCalculations : IDateCalculation<Employee>
+    public class DateCalculator : IDateCalculator<Employee>
     {
         public int WeeksWorkedSinceStartDate(Employee employee)
         {

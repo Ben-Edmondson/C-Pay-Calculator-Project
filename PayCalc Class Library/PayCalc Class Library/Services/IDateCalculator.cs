@@ -1,6 +1,6 @@
 ﻿namespace PayCalc_Project.Services
 {
-    public interface IDateCalculation<Employee>
+    public interface IDateCalculator<Employee>
     {
         public int WeeksWorkedSinceStartDate(Employee employee);
     }

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Web.Models;
 
 namespace Web.Controllers
 {
@@ -9,20 +10,22 @@ namespace Web.Controllers
             return View();
         }
 
-        public IActionResult Error(int? statusCode = null)
+        public IActionResult Error(int? statusCode = null, string? message = null)
         {
-            ViewBag.StatusCode = statusCode.Value;
+
             if (statusCode == 404)
             {
-                ViewBag.ErrorMessage = "Not Found";
+                message = "Not Found";
             }else if (statusCode == 400)
             {
-                ViewBag.ErrorMessage = "Bad Request";
+                message = "Bad Request";
             }else if (statusCode == 500)
             {
-                ViewBag.ErrorMessage = "Internal Server Error";
+                message = "Internal Server Error";
             }
-            return View();
+
+            var model = new ErrorCodeModel(statusCode, message);
+            return View(model);
         }
     }
 }

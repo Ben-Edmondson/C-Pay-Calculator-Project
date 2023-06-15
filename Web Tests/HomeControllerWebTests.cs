@@ -1,8 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
+using PayCalc_Class_Library.Repos;
 using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
 using Web.Controllers;
 
 namespace Web_Tests

@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
 using log4net;
 using System.Text.Json;
 using System.Reflection;
+using PayCalc_Class_Library.Repos;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace PayCalcAPI.Controllers

@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using PayCalc_Class_Library.Repos;
 using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
 using System.Diagnostics;
 using Web.Models;
 

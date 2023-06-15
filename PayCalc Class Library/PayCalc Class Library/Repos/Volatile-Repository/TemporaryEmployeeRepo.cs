@@ -1,6 +1,6 @@
 ﻿using PayCalc_Project.Models;
 
-namespace PayCalc_Project.Repository
+namespace PayCalc_Class_Library.Repos.Repository
 {
     public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
@@ -47,11 +47,11 @@ namespace PayCalc_Project.Repository
             {
                 if (employee.ID == id)
                 {
-                    if (String.IsNullOrEmpty(firstName) == false)
+                    if (string.IsNullOrEmpty(firstName) == false)
                     {
                         employee.FirstName = firstName;
                     }
-                    if (String.IsNullOrEmpty(lastName) == false)
+                    if (string.IsNullOrEmpty(lastName) == false)
                     {
                         employee.LastName = lastName;
                     }

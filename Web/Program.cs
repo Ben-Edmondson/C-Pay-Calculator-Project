@@ -1,10 +1,13 @@
+using PayCalc_Class_Library.Persistent_Repository;
+using PayCalc_Class_Library.Repos;
+using PayCalc_Class_Library.Repos.Repository;
 using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
 
 // Add services to the container.
+builder.Services.AddDbContext<MyDbContext>();
 builder.Services.AddSingleton<IEmployeeRepository<PermanentEmployee>, PermanentEmployeeRepo>();
 builder.Services.AddSingleton<IEmployeeRepository<TemporaryEmployee>, TemporaryEmployeeRepo>();
 builder.Services.AddControllersWithViews();

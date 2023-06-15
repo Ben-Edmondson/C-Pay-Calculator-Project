@@ -1,5 +1,5 @@
-﻿using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
+﻿using PayCalc_Class_Library.Repos.Repository;
+using PayCalc_Project.Models;
 namespace PayCalc_Tests
 {
     [TestFixture]

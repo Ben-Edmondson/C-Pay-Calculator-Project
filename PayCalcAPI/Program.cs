@@ -1,7 +1,8 @@
-using PayCalc_Project.Repository;
 using PayCalc_Project.Models;
 using log4net;
 using System.Reflection;
+using PayCalc_Class_Library.Repos.Repository;
+using PayCalc_Class_Library.Repos;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
 

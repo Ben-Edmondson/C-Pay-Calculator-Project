@@ -1,6 +1,6 @@
-﻿using PayCalc_Project.Input;
+﻿using PayCalc_Class_Library.Repos.Repository;
+using PayCalc_Project.Input;
 using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
 using PayCalc_Project.Services;
 
 namespace PayCalc_Project

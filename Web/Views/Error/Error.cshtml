@@ -1,0 +1,9 @@
+﻿@model ErrorCodeModel
+@{
+    ViewData["Title"] = "Error";
+}
+<h1 class="text-danger">Error.</h1>
+
+<p>HTTP Error @Model.StatusCode</p>
+<p class="text-danger">@Model.Message</p>
+

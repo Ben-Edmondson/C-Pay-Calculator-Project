@@ -14,7 +14,7 @@ namespace PayCalcAPI.Controllers
     {
         private readonly ILog _log;
         private readonly IEmployeeRepository<TemporaryEmployee> _employeeTemporaryRepository;
-        TemporaryCalculations tempCalc = new TemporaryCalculations();
+        TemporaryEmployeeTaxCaculator tempCalc = new TemporaryEmployeeTaxCaculator();
         public TemporaryEmployeeController(IEmployeeRepository<TemporaryEmployee> employeeTemporaryRepository)
         {
             _employeeTemporaryRepository = employeeTemporaryRepository;
@@ -55,10 +55,10 @@ namespace PayCalcAPI.Controllers
         }
         // POST api/<EmployeeTempController>
         [HttpPost]
-        public IActionResult Post(string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
+        public IActionResult Post(DateTime startDate, string FirstName, string Surname, decimal? DayRate, int? WeeksWorked)
         {
             _log.Info("Creating new temporary employee with provided details.");
-            _employeeTemporaryRepository.Create(FirstName, Surname, null, null, DayRate, WeeksWorked);
+            _employeeTemporaryRepository.Create(startDate, FirstName, Surname, null, null, DayRate, WeeksWorked);
             _log.Debug("HTTP:204 - temporary Employee Created!");
             return NoContent();
         }

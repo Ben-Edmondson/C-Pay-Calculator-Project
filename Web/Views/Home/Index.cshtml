@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+@model HomeViewModel
+<div class="text-center">
+    <h1 class="display-4">Complete Employee List</h1>
+
+        <div>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">Salary</th>
+                        <th scope="col">Bonus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var employee in Model.PermanentEmployees)
+                {
+                    <tr>
+                    <td>@employee.ID</td>
+                    <td>@employee.FirstName</td>
+                    <td>@employee.LastName</td>
+                    <td>@string.Format("{0:C}", employee.Salary)</td>
+                    <td>@string.Format("{0:C}", employee.Bonus)</td>
+                    </tr>
+                }
+                </tbody>
+                <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col"></th>
+                        <th scope="col">Day Rate</th>
+                        <th scope="col">Weeks Worked</th>
+                    </tr>
+                </thead>
+                <tbody>
+                @foreach (var employee in Model.TemporaryEmployees)
+                {
+                    <tr>
+                        <td>@employee.ID</td>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@String.Format("{0:C}", employee.DayRate)</td>
+                        <td>@String.Format("{0:.##}", employee.WeeksWorked)</td>
+                    </tr>
+                }
+                </tbody>
+            </table>
+
+        </div>
+</div>

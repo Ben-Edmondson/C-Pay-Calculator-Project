@@ -1,0 +1,43 @@
+﻿@{
+    ViewData["Title"] = "Temporary Employees";
+}
+@model TemporaryEmployeeViewModel
+<div class="text-center">
+    <h1 class="display-4">Temporary Employees</h1>
+    <div class="alert alert-success alert-dismissible fade show" role="alert" id="alertDeleteSuccess">
+        Employee removed successfully.
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <div>
+        <a class="btn btn-primary btn-lg btn-block" asp-area="" asp-controller="TemporaryEmployee" asp-action="AddEmployee" role="button">Add Temporary Employee</a>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th scope="col">ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">DayRate</th>
+                    <th scope="col">WeeksWorked</th>
+                    <th scope="col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var employee in Model.TemporaryEmployees)
+                {
+                    <tr>
+                        <td>@employee.ID</td>
+                        <td>@employee.FirstName</td>
+                        <td>@employee.LastName</td>
+                        <td>@string.Format("{0:C}", employee.DayRate)</td>
+                        <td>@string.Format("{0:.##}", employee.WeeksWorked)</td>
+                        <td>
+                            <a asp-controller="TemporaryEmployee" asp-action="UpdateEmployee" asp-route-id="@employee.ID">Update</a>
+                            <a asp-controller="TemporaryEmployee" asp-action="DeleteEmployee" asp-route-id="@employee.ID">Delete</a>
+                            <a asp-controller="TemporaryEmployee" asp-action="ReadEmployee" asp-route-id="@employee.ID">Details</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

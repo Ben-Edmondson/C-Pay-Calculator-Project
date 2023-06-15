@@ -1,0 +1,28 @@
+﻿@model DetailedTemporaryEmployeeViewModel
+@{
+    ViewData["Title"] = "Read Employee";
+}
+<div class="text-center">
+    <h1 class="display-4"></h1>
+
+    <div class="card">
+        <div class="card-body">
+            <h5 class="card-title">@Model.Employee.Fullname</h5>
+            <p class="card-text">Information about employee</p>
+        </div>
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">First Name: @Model.Employee.FirstName</li>
+            <li class="list-group-item">Last Name: @Model.Employee.LastName</li>
+            <li class="list-group-item">Day Rate: @string.Format("{0:C}", Model.Employee.DayRate)</li>
+            <li class="list-group-item">Weeks Worked: @string.Format("{0:.##}", Model.Employee.WeeksWorked)</li>
+            <li class="list-group-item">Income After Tax: @string.Format("{0:C}", Model.Employee.SalaryAfterTax)</li>
+            <li class="list-group-item">Start Date: @Model.Employee.StartDate.ToShortDateString()</li>
+            <li class="list-group-item">Weeks Worked Since Start Date: @Model.WeeksWorkedSinceStartDate</li>
+        </ul>
+        <div class="card-body">
+            <a asp-area="" asp-controller="TemporaryEmployee" asp-action="EmployeeList" class="card-link">Go Back</a>
+            <a asp-controller="TemporaryEmployee" asp-action="UpdateEmployee" asp-route-id="@Model.Employee.ID" class="card-link">Update Employee</a>
+            <a asp-controller="TemporaryEmployee" asp-action="DeleteEmployee" asp-route-id="@Model.Employee.ID" class="card-link">Delete Employee</a>
+        </div>
+    </div>
+</div>

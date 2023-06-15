@@ -46,7 +46,7 @@ namespace PayCalc_Tests
             //arrange
             var employeeCounter = employees.Count();
             //act
-            PermanentEmployee createTest = _repoPerm.Create("Ben", "Edmondson", 25000, 3000, null, null);
+            PermanentEmployee createTest = _repoPerm.Create(new DateTime(2000, 1, 1), "Ben", "Edmondson", 25000, 3000, null, null);
             PermanentEmployee _createTest = new PermanentEmployee() { ID = createTest.ID, FirstName = "Ben", LastName = "Edmondson", Salary = 25000, Bonus = 3000 };
             employeeCounter = employeeCounter + 1;
             //assert

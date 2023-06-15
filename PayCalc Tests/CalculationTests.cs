@@ -11,7 +11,7 @@ namespace PayCalc_Tests
         {
             //arrange
             PermanentEmployee permanentEmployee = new PermanentEmployee() { ID = 1001, FirstName = "Ben", LastName = "Edmondson", Bonus = 5000, Salary = 40000 };
-            PermanentCalculations _permanentCalculations = new PermanentCalculations();
+            PermanentEmployeeTaxCalculator _permanentCalculations = new PermanentEmployeeTaxCalculator();
             var tAP = 6486M;
             //act
             var tAPCorrect = _permanentCalculations.TotalTaxPaid(permanentEmployee);
@@ -23,7 +23,7 @@ namespace PayCalc_Tests
         {
             //arrange
             TemporaryEmployee temporaryEmployee = new TemporaryEmployee() { ID = 1001, FirstName = "Ben", LastName = "Edmondson", DayRate = 350, WeeksWorked = 40 };
-            TemporaryCalculations _temporaryCalculations = new TemporaryCalculations();
+            TemporaryEmployeeTaxCaculator _temporaryCalculations = new TemporaryEmployeeTaxCaculator();
             var tAP = 15431M;
             //act
             var tAPCorrect = _temporaryCalculations.TotalTaxPaid(temporaryEmployee);

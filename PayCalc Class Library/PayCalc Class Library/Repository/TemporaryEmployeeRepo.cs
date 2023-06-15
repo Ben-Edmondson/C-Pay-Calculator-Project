@@ -8,7 +8,7 @@ namespace PayCalc_Project.Repository
 
         private List<TemporaryEmployee> employees = new List<TemporaryEmployee>()
         {
-            new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40 }
+            new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = "Clare", LastName = "Jones", DayRate = 350, WeeksWorked = 40, StartDate = new DateTime(2003,1,1) }
         };
         public TemporaryEmployeeRepo()
         {
@@ -68,9 +68,9 @@ namespace PayCalc_Project.Repository
             }
             return false;
         }
-        public TemporaryEmployee Create(string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
+        public TemporaryEmployee Create(DateTime startDate, string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-            TemporaryEmployee employee = new TemporaryEmployee() { ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };
+            TemporaryEmployee employee = new TemporaryEmployee() { StartDate = startDate, ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, DayRate = dayRate, WeeksWorked = weeksWorked };
             employees.Add(employee);
             return employee;
         }

@@ -14,7 +14,7 @@ namespace PayCalcAPI.Controllers
     public class PermanentEmployeeController : ControllerBase
     {
         private readonly ILog _log;
-        PermanentCalculations permCalc = new PermanentCalculations();
+        PermanentEmployeeTaxCalculator permCalc = new PermanentEmployeeTaxCalculator();
         private readonly IEmployeeRepository<PermanentEmployee> _employeePermanentRepository;
         public PermanentEmployeeController(IEmployeeRepository<PermanentEmployee> employeePermanentRepository)
         {
@@ -46,7 +46,7 @@ namespace PayCalcAPI.Controllers
             PermanentEmployee? employee = _employeePermanentRepository.Read(id);
             if (employee != null)
             {
-                PermamentEmployeeSalary? empWSal = new PermamentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName,LastName = employee.LastName, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee) };
+                PermanentEmployeeSalary empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName,LastName = employee.LastName, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee) };
                 var ReadSingle = JsonSerializer.Serialize(empWSal);
                 _log.Debug("HTTP:200 - Obtained permanent employee.");
                 return Ok(ReadSingle);
@@ -56,10 +56,10 @@ namespace PayCalcAPI.Controllers
         }
         // POST api/<EmployeeController>
         [HttpPost]
-        public IActionResult Post(string FirstName, string Surname, decimal? Salary, decimal? Bonus)
+        public IActionResult Post(DateTime startDate, string FirstName, string Surname, decimal? Salary, decimal? Bonus)
         {
             _log.Info("Creating new permanent employee with provided details.");
-            _employeePermanentRepository.Create(FirstName, Surname, Salary, Bonus, null, null);
+            _employeePermanentRepository.Create(startDate, FirstName, Surname, Salary, Bonus, null, null);
             _log.Debug("HTTP:204 - Permanent Employee Created!");
             return NoContent();
         }

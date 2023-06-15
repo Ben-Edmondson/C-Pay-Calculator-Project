@@ -2,6 +2,6 @@
 {
     public interface IDateCalculator<Employee>
     {
-        public int WeeksWorkedSinceStartDate(Employee employee);
+        public int WeeksWorkedSinceStartDate(Employee employee, DateTime endDate);
     }
 }

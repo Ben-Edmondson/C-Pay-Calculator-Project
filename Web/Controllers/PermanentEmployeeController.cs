@@ -76,7 +76,7 @@ namespace Web.Controllers
             if (employees.Exists(x => x.ID == id) == true)
             {
                 PermanentEmployee? employee = _permRepo.Read(id);
-                int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee);
+                int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee, DateTime.Today);
                 PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee), StartDate = employee.StartDate};
                 DetailedPermanentEmployeeViewModel viewModel = new DetailedPermanentEmployeeViewModel(empWSal, amountOfWeeksWorkedByEmployee);
                 return View(viewModel);

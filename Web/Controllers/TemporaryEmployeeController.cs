@@ -74,7 +74,7 @@ namespace Web.Controllers
             if (employees.Exists(x => x.ID == id) == true)
             { 
                 TemporaryEmployee? employee = _temporaryRepo.Read(id);
-                int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee);
+                int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee, DateTime.Today);
                 TemporaryEmployeeSalary? empWSal = new TemporaryEmployeeSalary {StartDate = employee.StartDate, ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, DayRate = employee.DayRate, WeeksWorked = employee.WeeksWorked, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
                 DetailedTemporaryEmployeeViewModel viewModel = new DetailedTemporaryEmployeeViewModel(empWSal, amountOfWeeksWorkedByEmployee);
                 return View(viewModel);

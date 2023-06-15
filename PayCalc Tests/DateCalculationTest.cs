@@ -10,7 +10,8 @@ namespace PayCalc_Tests
         [TestCase("2023-02-01", 4)]
         [TestCase("2023-03-01", 8)]
         [TestCase("2023-04-01", 12)]
-        public void TestDateCalculation(DateTime endDate, int weeksWorkedExpected)
+        [TestCase(null, 17)]
+        public void TestDateCalculation(DateTime? endDate, int weeksWorkedExpected)
         {
             // Arrange
             DateCalculator dateCalculations = new DateCalculator();
@@ -24,7 +25,7 @@ namespace PayCalc_Tests
             };
 
             // Act
-            var weeksWorkedSinceStart = dateCalculations.WeeksWorkedSinceStartDate(employee);
+            var weeksWorkedSinceStart = dateCalculations.WeeksWorkedSinceStartDate(employee, new DateTime(2023,05,01));
 
             // Assert
             Assert.That(weeksWorkedSinceStart, Is.EqualTo(weeksWorkedExpected));

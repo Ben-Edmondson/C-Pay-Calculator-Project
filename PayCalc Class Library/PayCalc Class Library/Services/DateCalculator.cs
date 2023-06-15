@@ -4,13 +4,13 @@ namespace PayCalc_Project.Services
 {
     public class DateCalculator : IDateCalculator<Employee>
     {
-        public int WeeksWorkedSinceStartDate(Employee employee)
+        public int WeeksWorkedSinceStartDate(Employee employee, DateTime currentDate)
         {
             DateTime startDate = employee.StartDate;
             TimeSpan totalDays;
             if(employee.EndDate == null)
             {
-                totalDays = DateTime.Today - startDate;
+                totalDays = currentDate - startDate;
             }
             else
             {

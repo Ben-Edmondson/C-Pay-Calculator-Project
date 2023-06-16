@@ -16,7 +16,8 @@ namespace PayCalc_Project.Repository
         {
             if (_dbContext.TemporaryEmployees.Any(e => e.ID == id))
             {
-                _dbContext.Remove(id);
+                TemporaryEmployee emp = _dbContext.TemporaryEmployees.Find(id);
+                _dbContext.TemporaryEmployees.Remove(emp);
                 _dbContext.SaveChanges();
                 return true;
             }

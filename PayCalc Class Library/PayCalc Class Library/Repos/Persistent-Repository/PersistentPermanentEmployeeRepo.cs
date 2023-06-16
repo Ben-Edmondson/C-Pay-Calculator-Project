@@ -16,7 +16,8 @@ namespace PayCalc_Project.Repository
         {
             if (_dbContext.PermanentEmployees.Any(e => e.ID == id))
             {
-                _dbContext.Remove(id);
+                PermanentEmployee employee = _dbContext.PermanentEmployees.Find(id);
+                _dbContext.PermanentEmployees.Remove(employee);
                 _dbContext.SaveChanges();
                 return true;
             }

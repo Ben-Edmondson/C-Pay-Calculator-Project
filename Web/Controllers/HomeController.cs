@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayCalc_Class_Library.Repos;
-using PayCalc_Class_Library.Repos.Persistent_Repository;
 using PayCalc_Project.Models;
 using System.Diagnostics;
 using Web.Models;
@@ -9,8 +8,8 @@ namespace Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly IPersistentEmployeeRepository<PermanentEmployee> _permRepo;
-        private readonly IPersistentEmployeeRepository<TemporaryEmployee> _temporaryRepo;
+        private readonly IEmployeeRepository<PermanentEmployee> _permRepo;
+        private readonly IEmployeeRepository<TemporaryEmployee> _temporaryRepo;
 
         public HomeController(IEmployeeRepository<PermanentEmployee> permRepo, IEmployeeRepository<TemporaryEmployee> tempRepo)
         {

@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using PayCalc_Class_Library.Repos;
-using PayCalc_Class_Library.Repos.Persistent_Repository;
 using PayCalc_Project.Models;
 using PayCalc_Project.Services;
 using Web.Models;
@@ -11,7 +10,7 @@ namespace Web.Controllers
     {
         TemporaryEmployeeTaxCaculator tempCalc = new TemporaryEmployeeTaxCaculator();
         DateCalculator dateCalculations = new DateCalculator();
-        private readonly IPersistentEmployeeRepository<TemporaryEmployee> _temporaryRepo;
+        private readonly IEmployeeRepository<TemporaryEmployee> _temporaryRepo;
 
         public TemporaryEmployeeController(IEmployeeRepository<TemporaryEmployee> tempRepo)
         {
@@ -51,10 +50,11 @@ namespace Web.Controllers
             return RedirectToAction("InvalidID", "Error");
         }
 
-        public IActionResult UpdateEmployee(TemporaryEmployee temporaryEmployee)
+        public IActionResult UpdateEmployee(int id)
         {
             List<TemporaryEmployee> employees = new List<TemporaryEmployee>(_temporaryRepo.ReadAll());
-            if(employees.Exists(x => x.ID == id) == true){
+            if (employees.Exists(x => x.ID == id) == true)
+            {
                 return View(_temporaryRepo.Read(id));
             }
             else
@@ -66,17 +66,17 @@ namespace Web.Controllers
         [HttpPost]
         public IActionResult UpdateEmployee(TemporaryEmployee updateEmployee)
         {
-            _temporaryRepo.UpdateEmployee(updateEmployee);
+            _temporaryRepo.Update(updateEmployee.ID, updateEmployee.FirstName, updateEmployee.LastName, null, null, updateEmployee.DayRate, updateEmployee.WeeksWorked);
             return RedirectToAction("EmployeeList");
         }
         public IActionResult ReadEmployee(int id)
         {
             List<TemporaryEmployee> employees = new List<TemporaryEmployee>(_temporaryRepo.ReadAll());
             if (employees.Exists(x => x.ID == id) == true)
-            { 
+            {
                 TemporaryEmployee? employee = _temporaryRepo.Read(id);
                 int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee, DateTime.Today);
-                TemporaryEmployeeSalary? empWSal = new TemporaryEmployeeSalary {StartDate = employee.StartDate, ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, DayRate = employee.DayRate, WeeksWorked = employee.WeeksWorked, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
+                TemporaryEmployeeSalary? empWSal = new TemporaryEmployeeSalary { StartDate = employee.StartDate, ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, DayRate = employee.DayRate, WeeksWorked = employee.WeeksWorked, SalaryAfterTax = (employee.DayRate * (5 * employee.WeeksWorked)) - tempCalc.TotalTaxPaid(employee) };
                 DetailedTemporaryEmployeeViewModel viewModel = new DetailedTemporaryEmployeeViewModel(empWSal, amountOfWeeksWorkedByEmployee);
                 return View(viewModel);
             }

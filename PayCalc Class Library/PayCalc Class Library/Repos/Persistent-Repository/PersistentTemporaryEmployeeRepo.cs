@@ -1,48 +1,79 @@
-﻿using Microsoft.EntityFrameworkCore;
-using PayCalc_Class_Library.Persistent_Repository;
+﻿using PayCalc_Class_Library.Persistent_Repository;
+using PayCalc_Class_Library.Repos;
 using PayCalc_Project.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace PayCalc_Class_Library.Repos.Persistent_Repository
+namespace PayCalc_Project.Repository
 {
-    public class PersistentTemporaryEmployeeRepo : IPersistentEmployeeRepository<TemporaryEmployee>
+    public class PersistentTemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
+
         private readonly MyDbContext _dbContext;
         public PersistentTemporaryEmployeeRepo(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }
-        public void AddEmployee(TemporaryEmployee employee)
+        public bool Delete(int id)
         {
-            _dbContext.Add(employee);
+            if (_dbContext.TemporaryEmployees.Any(e => e.ID == id))
+            {
+                _dbContext.Remove(id);
+                _dbContext.SaveChanges();
+                return true;
+            }
+            return false;
+        }
+        public bool RemoveAll()
+        {
+            //This was implemented for usage ONLY in a volatile setting. Do not implement this.
+            return false;
+        }
+        public TemporaryEmployee Create(DateTime startDate, string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
+        {
+            TemporaryEmployee employee = new TemporaryEmployee() { StartDate = startDate, FirstName = firstName, LastName = lastName ,DayRate = dayRate, WeeksWorked = weeksWorked };
+            _dbContext.TemporaryEmployees.Add(employee);
             _dbContext.SaveChanges();
+            return employee;
         }
-
-        public void DeleteEmployee(TemporaryEmployee employee)
+        public List<TemporaryEmployee> ReadAll()
         {
-            _dbContext.Remove(employee);
-            _dbContext.SaveChanges();
+            var employees = _dbContext.TemporaryEmployees.ToList();
+            return employees;
         }
-
-        public TemporaryEmployee GetEmployee(int id)
+        public TemporaryEmployee? Read(int id)
         {
-            return _dbContext.Find<TemporaryEmployee>(id);
+            if (_dbContext.PermanentEmployees.Any(e => e.ID == id))
+            {
+                TemporaryEmployee readSingle = _dbContext.TemporaryEmployees.Find(id);
+                return readSingle;
+            }
+            return null;
         }
-
-        public IEnumerable<TemporaryEmployee> ReadAllEmployees()
+        public bool Update(int id, string? firstName, string? lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
-            return _dbContext.TemporaryEmployees.ToList();
-        }
+            if (_dbContext.TemporaryEmployees.Any(e => e.ID == id))
+            {
+                TemporaryEmployee? employee = Read(id);
 
-        public void UpdateEmployee(TemporaryEmployee employee)
-        {
-            _dbContext.Attach(employee);
-            _dbContext.Entry(employee).State = EntityState.Modified;
-            _dbContext.SaveChanges();
+                if (String.IsNullOrEmpty(firstName) == false)
+                {
+                    employee.FirstName = firstName;
+                }
+                if (String.IsNullOrEmpty(lastName) == false)
+                {
+                    employee.LastName = lastName;
+                }
+                if (dayRate != null)
+                {
+                    employee.DayRate = dayRate;
+                }
+                if (bonus != null)
+                {
+                    employee.WeeksWorked = weeksWorked;
+                }
+                _dbContext.SaveChanges();
+                return true;
+            }
+            return false;
         }
     }
 }

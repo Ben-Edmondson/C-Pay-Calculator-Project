@@ -42,7 +42,7 @@ namespace PayCalc_Project.Repository
         }
         public TemporaryEmployee? Read(int id)
         {
-            if (_dbContext.PermanentEmployees.Any(e => e.ID == id))
+            if (_dbContext.TemporaryEmployees.Any(e => e.ID == id))
             {
                 TemporaryEmployee readSingle = _dbContext.TemporaryEmployees.Find(id);
                 return readSingle;

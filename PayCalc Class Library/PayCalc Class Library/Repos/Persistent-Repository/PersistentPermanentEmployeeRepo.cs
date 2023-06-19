@@ -55,11 +55,11 @@ namespace PayCalc_Project.Repository
             {
                 PermanentEmployee? employee = Read(id);
 
-                if (String.IsNullOrEmpty(firstName) == false)
+                if (string.IsNullOrEmpty(firstName) == false)
                 {
                     employee.FirstName = firstName;
                 }
-                if (String.IsNullOrEmpty(lastName) == false)
+                if (string.IsNullOrEmpty(lastName) == false)
                 {
                     employee.LastName = lastName;
                 }

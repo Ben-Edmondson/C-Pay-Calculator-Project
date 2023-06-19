@@ -8,9 +8,9 @@ namespace Web.Controllers
 {
     public class TemporaryEmployeeController : Controller
     {
+        private readonly IEmployeeRepository<TemporaryEmployee> _temporaryRepo;
         TemporaryEmployeeTaxCaculator tempCalc = new TemporaryEmployeeTaxCaculator();
         DateCalculator dateCalculations = new DateCalculator();
-        private readonly IEmployeeRepository<TemporaryEmployee> _temporaryRepo;
 
         public TemporaryEmployeeController(IEmployeeRepository<TemporaryEmployee> tempRepo)
         {

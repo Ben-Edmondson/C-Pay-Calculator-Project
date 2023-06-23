@@ -1,6 +1,6 @@
 ﻿using PayCalc_Project.Models;
 
-namespace PayCalc_Class_Library.Repos.Repository
+namespace PayCalc_Project.Repos.Volatile
 {
     public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>
     {

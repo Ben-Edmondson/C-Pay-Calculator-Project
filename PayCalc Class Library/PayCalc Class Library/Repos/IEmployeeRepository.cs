@@ -1,4 +1,4 @@
-﻿namespace PayCalc_Class_Library.Repos
+﻿namespace PayCalc_Project.Repos
 {
     public interface IEmployeeRepository<T>
     {

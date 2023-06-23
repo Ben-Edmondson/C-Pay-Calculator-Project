@@ -1,14 +1,14 @@
-﻿using PayCalc_Class_Library.Persistent_Repository;
-using PayCalc_Class_Library.Repos;
+﻿using PayCalc_Class_Library.dbContext;
+using PayCalc_Project.Repos;
 using PayCalc_Project.Models;
 
-namespace PayCalc_Project.Repository
+namespace PayCalc_Project.Repos.Persistent
 {
-    public class PersistentTemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
+    public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
 
         private readonly MyDbContext _dbContext;
-        public PersistentTemporaryEmployeeRepo(MyDbContext dbContext)
+        public TemporaryEmployeeRepo(MyDbContext dbContext)
         {
             _dbContext = dbContext;
         }

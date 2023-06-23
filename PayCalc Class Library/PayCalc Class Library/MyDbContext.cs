@@ -1,8 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 using PayCalc_Project.Models;
 
-namespace PayCalc_Class_Library.Persistent_Repository
+namespace PayCalc_Class_Library.dbContext
 {
     public class MyDbContext : DbContext
     {

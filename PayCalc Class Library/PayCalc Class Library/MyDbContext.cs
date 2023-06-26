@@ -14,9 +14,14 @@ namespace PayCalc.ClassLibrary.dbContext
 
         public MyDbContext(DbContextOptions<MyDbContext> options, bool useInMemory = false) : base(options)
         {
-            var folder = Environment.SpecialFolder.LocalApplicationData;
-            var path = Environment.GetFolderPath(folder);
-            DbPath = Path.Join(path, "employees.db");
+            _useInMemory = useInMemory;
+
+            if (!_useInMemory)
+            {
+                var folder = Environment.SpecialFolder.LocalApplicationData;
+                var path = Environment.GetFolderPath(folder);
+                DbPath = Path.Join(path, "employees.db");
+            }
         }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)

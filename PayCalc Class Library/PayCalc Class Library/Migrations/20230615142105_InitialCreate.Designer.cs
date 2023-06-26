@@ -2,10 +2,11 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
-using PayCalc_Class_Library.dbContext;
+using PayCalc.ClassLibrary.dbContext;
+
 #nullable disable
 
-namespace PayCalc_Class_Library.Migrations
+namespace PayCalc.ClassLibrary.Migrations
 {
     [DbContext(typeof(MyDbContext))]
     [Migration("20230615142105_InitialCreate")]

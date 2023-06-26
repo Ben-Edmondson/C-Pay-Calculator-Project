@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using PayCalc_Project.Models;
-
+using PayCalc.ClassLibrary.Models;
 namespace PayCalc.ClassLibrary.dbContext
 {
     public class MyDbContext : DbContext

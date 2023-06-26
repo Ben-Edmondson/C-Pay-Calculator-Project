@@ -12,10 +12,17 @@ namespace PayCalc.ClassLibrary.dbContext
 
         private string DbPath;
 
+        public MyDbContext()
+        {
+            _useInMemory = false;
+            var folder = Environment.SpecialFolder.LocalApplicationData;
+            var path = Environment.GetFolderPath(folder);
+            DbPath = Path.Join(path, "employees.db");
+        }
+
         public MyDbContext(DbContextOptions<MyDbContext> options, bool useInMemory = false) : base(options)
         {
             _useInMemory = useInMemory;
-
             if (!_useInMemory)
             {
                 var folder = Environment.SpecialFolder.LocalApplicationData;

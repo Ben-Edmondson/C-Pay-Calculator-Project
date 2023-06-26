@@ -66,7 +66,7 @@ namespace PayCalc.ClassLibrary.Repos.Persistent
                 {
                     employee.DayRate = dayRate;
                 }
-                if (bonus != null)
+                if (weeksWorked != null)
                 {
                     employee.WeeksWorked = weeksWorked;
                 }

@@ -1,7 +1,7 @@
-using PayCalc_Class_Library.dbContext;
-using PayCalc_Project.Repos;
-using PayCalc_Project.Models;
-using PayCalc_Project.Repos.Persistent;
+using PayCalc.ClassLibrary.dbContext;
+using PayCalc.ClassLibrary.Repos;
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Repos.Persistent;
 
 var builder = WebApplication.CreateBuilder(args);
 

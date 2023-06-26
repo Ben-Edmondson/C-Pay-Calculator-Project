@@ -1,4 +1,4 @@
-﻿using PayCalc_Project.Models;
+﻿using PayCalc.ClassLibrary.Models;
 namespace Web.Models
 {
     public class PermanentEmployeeViewModel

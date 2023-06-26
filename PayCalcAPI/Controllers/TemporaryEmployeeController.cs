@@ -1,8 +1,8 @@
 ﻿using log4net;
 using Microsoft.AspNetCore.Mvc;
-using PayCalc_Class_Library.Repos;
-using PayCalc_Project.Models;
-using PayCalc_Project.Services;
+using PayCalc.ClassLibrary.Repos;
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Services;
 using System.Reflection;
 using System.Text.Json;
 

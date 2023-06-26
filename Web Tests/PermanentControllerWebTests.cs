@@ -1,8 +1,8 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
-using PayCalc_Class_Library.Repos;
-using PayCalc_Project.Models;
+using PayCalc.ClassLibrary.Repos;
+using PayCalc.ClassLibrary.Models;
 using Web.Controllers;
 using Web.Models;
 

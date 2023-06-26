@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PayCalc_Project.Models;
-using PayCalc_Project.Repos;
-using PayCalc_Project.Services;
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Repos;
+using PayCalc.ClassLibrary.Services;
 using Web.Models;
 
 namespace Web.Controllers

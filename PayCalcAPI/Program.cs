@@ -1,8 +1,8 @@
-using PayCalc_Project.Models;
+using PayCalc.ClassLibrary.Models;
 using log4net;
 using System.Reflection;
-using PayCalc_Class_Library.Repos.Repository;
-using PayCalc_Class_Library.Repos;
+using PayCalc.ClassLibrary.Repos;
+using PayCalc.ClassLibrary.Repos.Volatile;
 
 [assembly: log4net.Config.XmlConfigurator(ConfigFile = "log4net.config")]
 
@@ -16,8 +16,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddSingleton<IEmployeeRepository<PermanentEmployee>, PermanentEmployeeRepo>();
-builder.Services.AddSingleton<IEmployeeRepository<TemporaryEmployee>, TemporaryEmployeeRepo>();
+builder.Services.AddScoped<IEmployeeRepository<PermanentEmployee>, PermanentEmployeeRepo>();
+builder.Services.AddScoped<IEmployeeRepository<TemporaryEmployee>, TemporaryEmployeeRepo>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

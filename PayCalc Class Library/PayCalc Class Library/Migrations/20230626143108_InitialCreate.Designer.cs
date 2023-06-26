@@ -11,7 +11,7 @@ using PayCalc.ClassLibrary.dbContext;
 namespace PayCalc.ClassLibrary.Migrations
 {
     [DbContext(typeof(MyDbContext))]
-    [Migration("20230626113145_InitialCreate")]
+    [Migration("20230626143108_InitialCreate")]
     partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)

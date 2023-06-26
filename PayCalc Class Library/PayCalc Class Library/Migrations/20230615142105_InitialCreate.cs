@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace PayCalc_Class_Library.Migrations
+namespace PayCalc.ClassLibrary.Migrations
 {
     public partial class InitialCreate : Migration
     {

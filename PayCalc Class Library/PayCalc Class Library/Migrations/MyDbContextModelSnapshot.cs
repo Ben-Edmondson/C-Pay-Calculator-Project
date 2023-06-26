@@ -2,11 +2,11 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using PayCalc_Class_Library.dbContext;
+using PayCalc.ClassLibrary.dbContext;
 
 #nullable disable
 
-namespace PayCalc_Class_Library.Migrations
+namespace PayCalc.ClassLibrary.Migrations
 {
     [DbContext(typeof(MyDbContext))]
     partial class MyDbContextModelSnapshot : ModelSnapshot

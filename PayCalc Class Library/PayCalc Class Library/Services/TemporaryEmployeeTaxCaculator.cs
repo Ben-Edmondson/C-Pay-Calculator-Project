@@ -1,5 +1,5 @@
-﻿using PayCalc_Project.Models;
-namespace PayCalc_Project.Services
+﻿using PayCalc.ClassLibrary.Models;
+namespace PayCalc.ClassLibrary.Services
 {
     public class TemporaryEmployeeTaxCaculator : ITaxCalculator<TemporaryEmployee>
     {

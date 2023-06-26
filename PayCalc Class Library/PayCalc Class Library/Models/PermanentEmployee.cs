@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
 
-namespace PayCalc_Project.Models
+namespace PayCalc.ClassLibrary.Models
 {
     public class PermanentEmployee : Employee
     {

@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace PayCalc_Project.Models
+namespace PayCalc.ClassLibrary.Models
 {
     public abstract class Employee
     {

@@ -1,4 +1,4 @@
-﻿namespace PayCalc_Project.Input
+﻿namespace PayCalc.ClassLibrary.Input
 {
     public class UserInput
     {

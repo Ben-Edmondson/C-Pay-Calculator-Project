@@ -1,5 +1,6 @@
-using PayCalc_Project.Models;
-using PayCalc_Project.Services;
+
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Services;
 
 namespace PayCalc_Tests
 {

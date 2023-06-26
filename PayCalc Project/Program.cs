@@ -1,7 +1,8 @@
-﻿using PayCalc_Class_Library.Repos.Repository;
-using PayCalc_Project.Input;
-using PayCalc_Project.Models;
-using PayCalc_Project.Services;
+﻿
+using PayCalc.ClassLibrary.Input;
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Repos.Volatile;
+using PayCalc.ClassLibrary.Services;
 
 namespace PayCalc_Project
 {

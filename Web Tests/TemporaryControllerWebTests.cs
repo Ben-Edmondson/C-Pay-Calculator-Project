@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Moq;
 using PayCalc_Class_Library.Repos;
 using PayCalc_Project.Models;

@@ -1,6 +1,6 @@
-﻿using PayCalc_Project.Models;
+﻿using PayCalc.ClassLibrary.Models;
 
-namespace PayCalc_Project.Services
+namespace PayCalc.ClassLibrary.Services
 {
     public class PermanentEmployeeTaxCalculator : ITaxCalculator<PermanentEmployee>
     {

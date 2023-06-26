@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using Microsoft.EntityFrameworkCore;
+using NUnit.Framework;
 using PayCalc.ClassLibrary.dbContext;
 using PayCalc.ClassLibrary.Models;
 using PayCalc.ClassLibrary.Repos.Persistent;
@@ -14,7 +15,11 @@ namespace PayCalc_Project.Tests
         [SetUp]
         public void SetUp()
         {
-            _dbContext = new MyDbContext();
+            var options = new DbContextOptionsBuilder<MyDbContext>()
+                .UseInMemoryDatabase(databaseName: "InMemoryDatabase")
+                .Options;
+
+            _dbContext = new MyDbContext(options, useInMemory: true);
             _employeeRepo = new PermanentEmployeeRepo(_dbContext);
         }
 

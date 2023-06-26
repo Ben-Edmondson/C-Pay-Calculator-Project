@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using PayCalc.ClassLibrary.Models;
+
 namespace PayCalc.ClassLibrary.dbContext
 {
     public class MyDbContext : DbContext
@@ -7,9 +8,11 @@ namespace PayCalc.ClassLibrary.dbContext
         public DbSet<PermanentEmployee>? PermanentEmployees { get; set; }
         public DbSet<TemporaryEmployee>? TemporaryEmployees { get; set; }
 
-        public string DbPath { get; }
+        private readonly bool _useInMemory;
 
-        public MyDbContext()
+        private string DbPath;
+
+        public MyDbContext(DbContextOptions<MyDbContext> options, bool useInMemory = false) : base(options)
         {
             var folder = Environment.SpecialFolder.LocalApplicationData;
             var path = Environment.GetFolderPath(folder);
@@ -20,9 +23,17 @@ namespace PayCalc.ClassLibrary.dbContext
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlite($"Data Source={DbPath}");
+                if (_useInMemory)
+                {
+                    optionsBuilder.UseInMemoryDatabase(databaseName: "InMemoryDatabase");
+                }
+                else
+                {
+                    optionsBuilder.UseSqlite($"Data Source={DbPath}");
+                }
             }
         }
-
     }
 }
+
+

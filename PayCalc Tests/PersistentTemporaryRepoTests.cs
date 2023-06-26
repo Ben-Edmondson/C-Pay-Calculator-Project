@@ -2,6 +2,7 @@
 using PayCalc.ClassLibrary.dbContext;
 using PayCalc.ClassLibrary.Repos.Persistent;
 using PayCalc.ClassLibrary.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace PayCalc_Project.Tests
 {
@@ -14,7 +15,11 @@ namespace PayCalc_Project.Tests
         [SetUp]
         public void SetUp()
         {
-            _dbContext = new MyDbContext();
+            var options = new DbContextOptionsBuilder<MyDbContext>()
+                .UseInMemoryDatabase(databaseName: "InMemoryDatabase")
+                .Options;
+
+            _dbContext = new MyDbContext(options, useInMemory: true);
             _employeeRepo = new TemporaryEmployeeRepo(_dbContext);
         }
 

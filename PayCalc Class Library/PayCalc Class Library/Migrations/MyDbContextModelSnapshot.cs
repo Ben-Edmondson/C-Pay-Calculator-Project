@@ -2,6 +2,7 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using PayCalc.ClassLibrary.dbContext;
 
 #nullable disable
@@ -16,7 +17,7 @@ namespace PayCalc.ClassLibrary.Migrations
 #pragma warning disable 612, 618
             modelBuilder.HasAnnotation("ProductVersion", "6.0.18");
 
-            modelBuilder.Entity("PayCalc_Project.Models.PermanentEmployee", b =>
+            modelBuilder.Entity("PayCalc.ClassLibrary.Models.PermanentEmployee", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -45,7 +46,7 @@ namespace PayCalc.ClassLibrary.Migrations
                     b.ToTable("PermanentEmployees");
                 });
 
-            modelBuilder.Entity("PayCalc_Project.Models.TemporaryEmployee", b =>
+            modelBuilder.Entity("PayCalc.ClassLibrary.Models.TemporaryEmployee", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()

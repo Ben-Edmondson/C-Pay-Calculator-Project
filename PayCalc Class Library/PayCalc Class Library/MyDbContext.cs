@@ -5,8 +5,8 @@ namespace PayCalc.ClassLibrary.dbContext
 {
     public class MyDbContext : DbContext
     {
-        public DbSet<PermanentEmployee>? PermanentEmployees { get; set; }
-        public DbSet<TemporaryEmployee>? TemporaryEmployees { get; set; }
+        public virtual DbSet<PermanentEmployee>? PermanentEmployees { get; set; }
+        public virtual DbSet<TemporaryEmployee>? TemporaryEmployees { get; set; }
 
         private readonly bool _useInMemory;
 

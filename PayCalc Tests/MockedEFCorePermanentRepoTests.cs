@@ -36,6 +36,12 @@ namespace PayCalc_Tests
         [Test]
         public void Create_New_Employee_Test()
         {
+
+        }
+
+        [Test]
+        public void Get_Employees_Test()
+        {
             //Arrange
             var permEmployeeRepo = new PermanentEmployeeRepo(mockedDbContext.Object);
 
@@ -44,12 +50,6 @@ namespace PayCalc_Tests
 
             //Assert
             Assert.That(employees, Is.EqualTo(permanentEmployees));
-        }
-
-        [Test]
-        public void Get_Employee_Test()
-        {
-
         }
     }
 }

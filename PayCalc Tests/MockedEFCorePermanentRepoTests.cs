@@ -39,7 +39,7 @@ namespace PayCalc_Tests
         public void Get_Individual_Employee_Test()
         {
             //Arrange
-
+            mockedDbContext.Setup(x => x.PermanentEmployees.Find(1111)).Returns(employees[0]);
             //Act
             var permanentEmployee = permEmployeeRepo.Read(1111);
 

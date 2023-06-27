@@ -39,6 +39,7 @@ namespace PayCalc_Tests
         public void Get_Individual_Employee_Test()
         {
             //Arrange
+            mockedDbContext.Setup(x => x.TemporaryEmployees.Find(1111)).Returns(employees[0]);
 
             //Act
             var temporaryEmployee = tempEmployeeRepo.Read(1111);

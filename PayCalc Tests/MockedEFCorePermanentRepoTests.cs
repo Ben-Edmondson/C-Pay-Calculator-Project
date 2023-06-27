@@ -19,6 +19,7 @@ namespace PayCalc_Tests
     {
         Mock<MyDbContext> mockedDbContext;
         List<PermanentEmployee> employees;
+        PermanentEmployeeRepo permEmployeeRepo;
         [SetUp]
         public void SetUp()
         {
@@ -30,26 +31,56 @@ namespace PayCalc_Tests
             mockedDbContext = new Mock<MyDbContext>();
 
             mockedDbContext.Setup(x => x.PermanentEmployees).ReturnsDbSet(employees);
+            permEmployeeRepo = new PermanentEmployeeRepo(mockedDbContext.Object);
         }
 
 
         [Test]
-        public void Create_New_Employee_Test()
+        public void Get_Individual_Employee_Test()
         {
+            //Arrange
 
+            //Act
+            var permanentEmployee = permEmployeeRepo.Read(1111);
+
+            //Assert
+            Assert.That(permanentEmployee, Is.EqualTo(employees[0]));
         }
 
         [Test]
         public void Get_Employees_Test()
         {
             //Arrange
-            var permEmployeeRepo = new PermanentEmployeeRepo(mockedDbContext.Object);
-
+            
             //Act
             var permanentEmployees = permEmployeeRepo.ReadAll();
 
             //Assert
             Assert.That(employees, Is.EqualTo(permanentEmployees));
+        }
+
+        [Test]
+        public void Create_Employee_Test()
+        {
+            //Arrange
+            DateTime startDate = DateTime.Now;
+            string firstName = "John";
+            string lastName = "Doe";
+            decimal? salary = 5000;
+            decimal? bonus = 1000;
+
+            //Act
+            var employee = permEmployeeRepo.Create(startDate, firstName, lastName, salary, bonus, null, null);
+
+            //Assert
+            Assert.Multiple(() =>
+            {
+                Assert.That(employee.StartDate, Is.EqualTo(startDate));
+                Assert.That(employee.FirstName, Is.EqualTo(firstName));
+                Assert.That(employee.LastName, Is.EqualTo(lastName));
+                Assert.That(employee.Salary, Is.EqualTo(salary));
+                Assert.That(employee.Bonus, Is.EqualTo(bonus));
+            });
         }
     }
 }

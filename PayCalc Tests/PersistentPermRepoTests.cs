@@ -45,11 +45,11 @@ namespace PayCalc_Project.Tests
 
             // Assert
             Assert.IsNotNull(createdEmployee);
-            Assert.AreEqual(startDate, createdEmployee.StartDate);
-            Assert.AreEqual(firstName, createdEmployee.FirstName);
-            Assert.AreEqual(lastName, createdEmployee.LastName);
-            Assert.AreEqual(salary, createdEmployee.Salary);
-            Assert.AreEqual(bonus, createdEmployee.Bonus);
+            Assert.That(createdEmployee.StartDate, Is.EqualTo(startDate));
+            Assert.That(createdEmployee.FirstName, Is.EqualTo(firstName));
+            Assert.That(createdEmployee.LastName, Is.EqualTo(lastName));
+            Assert.That(createdEmployee.Salary, Is.EqualTo(salary));
+            Assert.That(createdEmployee.Bonus, Is.EqualTo(bonus));
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace PayCalc_Project.Tests
             var employees = _employeeRepo.ReadAll();
 
             // Assert
-            Assert.AreEqual(2, employees.Count);
+            Assert.That(employees.Count, Is.EqualTo(2));
             Assert.IsTrue(employees.Any(e => e.FirstName == "John" && e.LastName == "Doe"));
             Assert.IsTrue(employees.Any(e => e.FirstName == "Jane" && e.LastName == "Smith"));
         }
@@ -83,10 +83,10 @@ namespace PayCalc_Project.Tests
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual("John", result.FirstName);
-            Assert.AreEqual("Doe", result.LastName);
-            Assert.AreEqual(5000, result.Salary);
-            Assert.AreEqual(1000, result.Bonus);
+            Assert.That(result.FirstName, Is.EqualTo("John"));
+            Assert.That(result.LastName, Is.EqualTo("Doe"));
+            Assert.That(result.Salary, Is.EqualTo(5000));
+            Assert.That(result.Bonus, Is.EqualTo(1000));
         }
 
         [Test]
@@ -103,10 +103,10 @@ namespace PayCalc_Project.Tests
 
             // Assert
             Assert.IsTrue(result);
-            Assert.AreEqual("UpdatedFirstName", updatedEmployee.FirstName);
-            Assert.AreEqual("UpdatedLastName", updatedEmployee.LastName);
-            Assert.AreEqual(6000, updatedEmployee.Salary);
-            Assert.AreEqual(2000, updatedEmployee.Bonus);
+            Assert.That(updatedEmployee.FirstName, Is.EqualTo("UpdatedFirstName"));
+            Assert.That(updatedEmployee.LastName, Is.EqualTo("UpdatedLastName"));
+            Assert.That(updatedEmployee.Salary, Is.EqualTo(6000));
+            Assert.That(updatedEmployee.Bonus, Is.EqualTo(2000));
         }
 
         [Test]

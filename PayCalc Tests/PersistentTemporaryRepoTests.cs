@@ -45,11 +45,11 @@ namespace PayCalc_Project.Tests
 
             // Assert
             Assert.IsNotNull(createdEmployee);
-            Assert.AreEqual(startDate, createdEmployee.StartDate);
-            Assert.AreEqual(firstName, createdEmployee.FirstName);
-            Assert.AreEqual(lastName, createdEmployee.LastName);
-            Assert.AreEqual(dayRate, createdEmployee.DayRate);
-            Assert.AreEqual(weeksWorked, createdEmployee.WeeksWorked);
+            Assert.That(createdEmployee.StartDate, Is.EqualTo(startDate));
+            Assert.That(createdEmployee.FirstName, Is.EqualTo(firstName));
+            Assert.That(createdEmployee.LastName, Is.EqualTo(lastName));
+            Assert.That(createdEmployee.DayRate, Is.EqualTo(dayRate));
+            Assert.That(createdEmployee.WeeksWorked, Is.EqualTo(weeksWorked));
         }
 
         [Test]
@@ -65,7 +65,7 @@ namespace PayCalc_Project.Tests
             var employees = _employeeRepo.ReadAll();
 
             // Assert
-            Assert.AreEqual(2, employees.Count);
+            Assert.That(employees.Count, Is.EqualTo(2));
             Assert.IsTrue(employees.Any(e => e.FirstName == "John" && e.LastName == "Doe"));
             Assert.IsTrue(employees.Any(e => e.FirstName == "Jane" && e.LastName == "Smith"));
         }
@@ -83,10 +83,10 @@ namespace PayCalc_Project.Tests
 
             // Assert
             Assert.IsNotNull(result);
-            Assert.AreEqual("John", result.FirstName);
-            Assert.AreEqual("Doe", result.LastName);
-            Assert.AreEqual(100, result.DayRate);
-            Assert.AreEqual(4, result.WeeksWorked);
+            Assert.That(result.FirstName, Is.EqualTo("John"));
+            Assert.That(result.LastName, Is.EqualTo("Doe"));
+            Assert.That(result.DayRate, Is.EqualTo(100));
+            Assert.That(result.WeeksWorked, Is.EqualTo(4));
         }
 
         [Test]
@@ -103,10 +103,10 @@ namespace PayCalc_Project.Tests
 
             // Assert
             Assert.IsTrue(result);
-            Assert.AreEqual("UpdatedFirstName", updatedEmployee.FirstName);
-            Assert.AreEqual("UpdatedLastName", updatedEmployee.LastName);
-            Assert.AreEqual(120, updatedEmployee.DayRate);
-            Assert.AreEqual(3, updatedEmployee.WeeksWorked);
+            Assert.That(updatedEmployee.FirstName, Is.EqualTo("UpdatedFirstName"));
+            Assert.That(updatedEmployee.LastName, Is.EqualTo("UpdatedLastName"));
+            Assert.That(updatedEmployee.DayRate, Is.EqualTo(120));
+            Assert.That(updatedEmployee.WeeksWorked, Is.EqualTo(3));
         }
 
         [Test]

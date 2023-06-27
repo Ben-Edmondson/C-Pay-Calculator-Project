@@ -22,11 +22,6 @@ namespace PayCalc.ClassLibrary.Repos.Persistent
             }
             return false;
         }
-        public bool RemoveAll()
-        {
-            //This was implemented for usage ONLY in a volatile setting. Do not implement this.
-            return false;
-        }
         public PermanentEmployee Create(DateTime startDate, string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             PermanentEmployee employee = new PermanentEmployee() { StartDate = startDate, FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus };

@@ -1,8 +1,9 @@
 ﻿using PayCalc.ClassLibrary.Models;
+using PayCalc_Class_Library.Repos;
 
 namespace PayCalc.ClassLibrary.Repos.Volatile
 {
-    public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>
+    public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>, IRemoveAll
     {
         private static Random rnd = new Random();
 

@@ -41,10 +41,10 @@ namespace PayCalc_Tests
             //Arrange
 
             //Act
-            var permanentEmployee = tempEmployeeRepo.Read(1111);
+            var temporaryEmployee = tempEmployeeRepo.Read(1111);
 
             //Assert
-            Assert.That(permanentEmployee, Is.EqualTo(employees[0]));
+            Assert.That(temporaryEmployee, Is.EqualTo(employees[0]));
         }
 
         [Test]
@@ -53,9 +53,9 @@ namespace PayCalc_Tests
             //Arrange
 
             //Act
-            var permanentEmployee = tempEmployeeRepo.Read(0000);
+            var temporaryEmployee = tempEmployeeRepo.Read(0000);
             //Assert
-            Assert.That(permanentEmployee, Is.Null);
+            Assert.That(temporaryEmployee, Is.Null);
         }
 
         [Test]
@@ -64,10 +64,10 @@ namespace PayCalc_Tests
             //Arrange
 
             //Act
-            var permanentEmployees = tempEmployeeRepo.ReadAll();
+            var temporaryEmployees = tempEmployeeRepo.ReadAll();
 
             //Assert
-            Assert.That(employees, Is.EqualTo(permanentEmployees));
+            Assert.That(employees, Is.EqualTo(temporaryEmployees));
         }
 
         [Test]

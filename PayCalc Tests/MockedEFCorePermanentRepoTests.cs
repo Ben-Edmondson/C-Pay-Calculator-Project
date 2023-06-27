@@ -44,7 +44,11 @@ namespace PayCalc_Tests
             var permanentEmployee = permEmployeeRepo.Read(1111);
 
             //Assert
-            Assert.That(permanentEmployee, Is.EqualTo(employees[0]));
+            Assert.Multiple(() =>
+            {
+                Assert.That(permanentEmployee, Is.EqualTo(employees[0]));
+                mockedDbContext.Verify(x => x.PermanentEmployees.Find(1111), Times.Once());
+            });
         }
 
         [Test]
@@ -55,7 +59,11 @@ namespace PayCalc_Tests
             //Act
             var permanentEmployee = permEmployeeRepo.Read(0000);
             //Assert
-            Assert.That(permanentEmployee, Is.Null);
+            Assert.Multiple(() => 
+            {
+                Assert.That(permanentEmployee, Is.Null);
+                mockedDbContext.Verify(x => x.PermanentEmployees.Find(It.IsAny<int>()), Times.Never());
+            });
         }
 
         [Test]
@@ -68,6 +76,7 @@ namespace PayCalc_Tests
 
             //Assert
             Assert.That(employees, Is.EqualTo(permanentEmployees));
+
         }
 
         [Test]

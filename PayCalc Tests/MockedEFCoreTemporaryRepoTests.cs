@@ -45,7 +45,11 @@ namespace PayCalc_Tests
             var temporaryEmployee = tempEmployeeRepo.Read(1111);
 
             //Assert
-            Assert.That(temporaryEmployee, Is.EqualTo(employees[0]));
+            Assert.Multiple(() =>
+            {
+                Assert.That(temporaryEmployee, Is.EqualTo(employees[0]));
+                mockedDbContext.Verify(x => x.TemporaryEmployees.Find(It.IsAny<int>()), Times.Never());
+            });
         }
 
         [Test]
@@ -56,7 +60,11 @@ namespace PayCalc_Tests
             //Act
             var temporaryEmployee = tempEmployeeRepo.Read(0000);
             //Assert
-            Assert.That(temporaryEmployee, Is.Null);
+            Assert.Multiple(() =>
+            {
+                Assert.That(temporaryEmployee, Is.Null);
+                mockedDbContext.Verify(x => x.TemporaryEmployees.Find(It.IsAny<int>()), Times.Never());
+            });
         }
 
         [Test]

@@ -83,24 +83,6 @@ namespace PayCalc_API_Tests
         }
 
         [Test]
-        public void API_Should_Delete_All_Employees_Code_204()
-        {
-            _mockPermanentRepository.Setup(x => x.RemoveAll()).Returns(true);
-
-            var response = permanentEmployeeController.DeleteAll();
-            var contentResult = response as NoContentResult;
-            var statusCode = contentResult?.StatusCode;
-
-            Assert.Multiple(() =>
-            {
-                _mockPermanentRepository
-                    .Verify(x => x.RemoveAll(), Times.Once());
-                Assert.IsNotNull(contentResult);
-                Assert.That(statusCode, Is.EqualTo(204));
-            });
-        }
-
-        [Test]
         public void API_Should_Create_Employee_Code_204()
         {
             _mockPermanentRepository
@@ -194,24 +176,6 @@ namespace PayCalc_API_Tests
             {
                 _mockPermanentRepository
                     .Verify(x => x.Delete(1111), Times.Once());
-                Assert.IsNotNull(contentResult);
-                Assert.That(statusCode, Is.EqualTo(404));
-            });
-        }
-
-        [Test]
-        public void API_Should_Delete_All_Employees_Code_404()
-        {
-            _mockPermanentRepository.Setup(x => x.RemoveAll()).Returns(false);
-
-            var response = permanentEmployeeController.DeleteAll();
-            var contentResult = response as NotFoundResult;
-            var statusCode = contentResult?.StatusCode;
-
-            Assert.Multiple(() =>
-            {
-                _mockPermanentRepository
-                    .Verify(x => x.RemoveAll(), Times.Once());
                 Assert.IsNotNull(contentResult);
                 Assert.That(statusCode, Is.EqualTo(404));
             });

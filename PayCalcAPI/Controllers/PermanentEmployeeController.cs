@@ -91,17 +91,5 @@ namespace PayCalcAPI.Controllers
             _log.Warn("HTTP:404 - Failed to delete Permanent Employee with ID not found.");
             return NotFound();
         }
-        [HttpDelete]
-        public IActionResult DeleteAll()
-        {
-            _log.Info("Deleting All Permanent Employees");
-            if (_employeePermanentRepository.RemoveAll() == true)
-            {
-                _log.Debug("HTTP:204 - Permanent Employees Wiped");
-                return NoContent();
-            }
-            _log.Warn("HTTP:404 - Failed to wipe Permanent Employees. List already empty.");
-            return NotFound();
-        }
     }
 }

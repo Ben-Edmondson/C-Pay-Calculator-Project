@@ -148,17 +148,6 @@ Please Select an Option Below.
                                 Console.WriteLine("Employee removed!");
                             }
                         }
-                        else if (delSec == "2")
-                        {
-                            if (permanentRepository.RemoveAll() == false)
-                            {
-                                Console.WriteLine("No Employees to be removed!");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Employees wiped!");
-                            }
-                        }
                     }
                     else if (delSelect == "2")
                     {
@@ -173,17 +162,6 @@ Please Select an Option Below.
                             else
                             {
                                 Console.WriteLine("Employee removed!");
-                            }
-                        }
-                        else if (delSec == "2")
-                        {
-                            if (temporaryRepository.RemoveAll() == false)
-                            {
-                                Console.WriteLine("No Employees to be removed!");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Employees wiped!");
                             }
                         }
                     }

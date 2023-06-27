@@ -1,9 +1,8 @@
 ﻿using PayCalc.ClassLibrary.Models;
-using PayCalc_Class_Library.Repos;
 
 namespace PayCalc.ClassLibrary.Repos.Volatile
 {
-    public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>, IRemoveAll
+    public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
         private static Random rnd = new Random();
 
@@ -27,11 +26,6 @@ namespace PayCalc.ClassLibrary.Repos.Volatile
                 return true;
             }
             return false;
-        }
-        public bool RemoveAll()
-        {
-            employees.Clear();
-            return true;
         }
         public List<TemporaryEmployee> ReadAll()
         {

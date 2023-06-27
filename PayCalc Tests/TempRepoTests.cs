@@ -57,11 +57,6 @@ namespace PayCalc_Tests
             Assert.That(createTest.WeeksWorked, Is.EqualTo(_createTest.WeeksWorked));
         }
         [Test]
-        public void Can_Clear_Temporary_Employees()
-        {
-            Assert.That(_repoTemp.RemoveAll(), Is.EqualTo(true));
-        }
-        [Test]
         public void Can_Remove_One_Temporary_Employee_From_List()
         {
             Assert.That(_repoTemp.Delete(1001), Is.EqualTo(true));

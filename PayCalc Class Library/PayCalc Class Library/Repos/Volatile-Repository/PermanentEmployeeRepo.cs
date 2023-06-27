@@ -1,9 +1,8 @@
 ﻿using PayCalc.ClassLibrary.Models;
-using PayCalc_Class_Library.Repos;
 
 namespace PayCalc.ClassLibrary.Repos.Volatile
 {
-    public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>, IRemoveAll
+    public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>
     {
         private static Random rnd = new Random();
 
@@ -29,11 +28,6 @@ namespace PayCalc.ClassLibrary.Repos.Volatile
                 return true;
             }
             return false;
-        }
-        public bool RemoveAll()
-        {
-            employees.Clear();
-            return true;
         }
         public PermanentEmployee Create(DateTime startDate, string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {

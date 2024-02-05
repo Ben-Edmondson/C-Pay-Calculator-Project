@@ -1,8 +1,11 @@
-﻿namespace PayCalc_Project.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PayCalc.ClassLibrary.Models
 {
     public abstract class Employee
     {
-        public int ID { get; set; }
+
+        [Key] public int ID { get; set; }
         public string? FirstName { get; set; }
         public string? LastName { get; set; }
 

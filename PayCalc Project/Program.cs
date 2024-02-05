@@ -1,7 +1,8 @@
-﻿using PayCalc_Project.Input;
-using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
-using PayCalc_Project.Services;
+﻿
+using PayCalc.ClassLibrary.Input;
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Repos.Volatile;
+using PayCalc.ClassLibrary.Services;
 
 namespace PayCalc_Project
 {
@@ -147,17 +148,6 @@ Please Select an Option Below.
                                 Console.WriteLine("Employee removed!");
                             }
                         }
-                        else if (delSec == "2")
-                        {
-                            if (permanentRepository.RemoveAll() == false)
-                            {
-                                Console.WriteLine("No Employees to be removed!");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Employees wiped!");
-                            }
-                        }
                     }
                     else if (delSelect == "2")
                     {
@@ -172,17 +162,6 @@ Please Select an Option Below.
                             else
                             {
                                 Console.WriteLine("Employee removed!");
-                            }
-                        }
-                        else if (delSec == "2")
-                        {
-                            if (temporaryRepository.RemoveAll() == false)
-                            {
-                                Console.WriteLine("No Employees to be removed!");
-                            }
-                            else
-                            {
-                                Console.WriteLine("Employees wiped!");
                             }
                         }
                     }

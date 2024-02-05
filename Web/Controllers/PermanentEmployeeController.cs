@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
-using PayCalc_Project.Services;
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Repos;
+using PayCalc.ClassLibrary.Services;
 using Web.Models;
 
 namespace Web.Controllers
@@ -33,7 +33,7 @@ namespace Web.Controllers
             return View(permView);
         }
 
-        [HttpPost]  
+        [HttpPost]
         public IActionResult AddEmployee(PermanentEmployee inputEmployee)
         {
             _permRepo.Create(inputEmployee.StartDate, inputEmployee.FirstName, inputEmployee.LastName, inputEmployee.Salary, inputEmployee.Bonus, null, null);
@@ -42,7 +42,7 @@ namespace Web.Controllers
 
         public IActionResult DeleteEmployee(int id)
         {
-            if(_permRepo.Delete(id) == true)
+            if (_permRepo.Delete(id) == true)
             {
                 return RedirectToAction("EmployeeListDeleteConfirmed");
             }
@@ -66,7 +66,7 @@ namespace Web.Controllers
         [HttpPost]
         public IActionResult UpdateEmployee(PermanentEmployee updateEmployee)
         {
-            _permRepo.Update(updateEmployee.ID,updateEmployee.FirstName,updateEmployee.LastName,updateEmployee.Salary,updateEmployee.Bonus,null,null);
+            _permRepo.Update(updateEmployee.ID, updateEmployee.FirstName, updateEmployee.LastName, updateEmployee.Salary, updateEmployee.Bonus, null, null);
             return RedirectToAction("EmployeeList");
         }
 
@@ -77,7 +77,7 @@ namespace Web.Controllers
             {
                 PermanentEmployee? employee = _permRepo.Read(id);
                 int amountOfWeeksWorkedByEmployee = dateCalculations.WeeksWorkedSinceStartDate(employee, DateTime.Today);
-                PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee), StartDate = employee.StartDate};
+                PermanentEmployeeSalary? empWSal = new PermanentEmployeeSalary { ID = employee.ID, FirstName = employee.FirstName, LastName = employee.LastName, Salary = employee.Salary, Bonus = employee.Bonus, SalaryAfterTax = employee.Salary - permCalc.TotalTaxPaid(employee), StartDate = employee.StartDate };
                 DetailedPermanentEmployeeViewModel viewModel = new DetailedPermanentEmployeeViewModel(empWSal, amountOfWeeksWorkedByEmployee);
                 return View(viewModel);
             }
@@ -85,7 +85,7 @@ namespace Web.Controllers
             {
                 return RedirectToAction("InvalidID", "Error");
             }
- 
+
         }
     }
 }

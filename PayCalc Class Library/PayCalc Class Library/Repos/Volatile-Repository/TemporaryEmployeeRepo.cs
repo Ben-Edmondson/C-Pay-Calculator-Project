@@ -1,6 +1,6 @@
-﻿using PayCalc_Project.Models;
+﻿using PayCalc.ClassLibrary.Models;
 
-namespace PayCalc_Project.Repository
+namespace PayCalc.ClassLibrary.Repos.Volatile
 {
     public class TemporaryEmployeeRepo : IEmployeeRepository<TemporaryEmployee>
     {
@@ -27,11 +27,6 @@ namespace PayCalc_Project.Repository
             }
             return false;
         }
-        public bool RemoveAll()
-        {
-            employees.Clear();
-            return true;
-        }
         public List<TemporaryEmployee> ReadAll()
         {
             return employees;
@@ -47,11 +42,11 @@ namespace PayCalc_Project.Repository
             {
                 if (employee.ID == id)
                 {
-                    if (String.IsNullOrEmpty(firstName) == false)
+                    if (string.IsNullOrEmpty(firstName) == false)
                     {
                         employee.FirstName = firstName;
                     }
-                    if (String.IsNullOrEmpty(lastName) == false)
+                    if (string.IsNullOrEmpty(lastName) == false)
                     {
                         employee.LastName = lastName;
                     }

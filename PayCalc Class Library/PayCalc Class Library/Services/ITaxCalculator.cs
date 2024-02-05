@@ -1,4 +1,4 @@
-﻿namespace PayCalc_Project.Services
+﻿namespace PayCalc.ClassLibrary.Services
 {
     public interface ITaxCalculator<T>
     {

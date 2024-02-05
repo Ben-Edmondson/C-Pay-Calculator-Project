@@ -1,5 +1,5 @@
-﻿using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
+﻿using PayCalc.ClassLibrary.Repos.Volatile;
+using PayCalc.ClassLibrary.Models;
 namespace PayCalc_Tests
 {
     [TestFixture]
@@ -57,12 +57,7 @@ namespace PayCalc_Tests
             Assert.That(createTest.Salary, Is.EqualTo(_createTest.Salary));
             Assert.That(createTest.Bonus, Is.EqualTo(_createTest.Bonus));
         }
-        [Test]
-        public void Can_Clear_Permanent_Employees()
-        {
-            var _repoPerm = new PermanentEmployeeRepo();
-            Assert.That(_repoPerm.RemoveAll(), Is.EqualTo(true));
-        }
+
         [Test]
         public void Can_Remove_One_Permanent_Employee_From_List()
         {

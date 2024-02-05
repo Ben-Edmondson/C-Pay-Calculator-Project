@@ -1,5 +1,5 @@
-﻿using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
+﻿using PayCalc.ClassLibrary.Repos.Volatile;
+using PayCalc.ClassLibrary.Models;
 namespace PayCalc_Tests
 {
     [TestFixture]
@@ -55,11 +55,6 @@ namespace PayCalc_Tests
             Assert.That(createTest.ID, Is.EqualTo(_createTest.ID));
             Assert.That(createTest.DayRate, Is.EqualTo(_createTest.DayRate));
             Assert.That(createTest.WeeksWorked, Is.EqualTo(_createTest.WeeksWorked));
-        }
-        [Test]
-        public void Can_Clear_Temporary_Employees()
-        {
-            Assert.That(_repoTemp.RemoveAll(), Is.EqualTo(true));
         }
         [Test]
         public void Can_Remove_One_Temporary_Employee_From_List()

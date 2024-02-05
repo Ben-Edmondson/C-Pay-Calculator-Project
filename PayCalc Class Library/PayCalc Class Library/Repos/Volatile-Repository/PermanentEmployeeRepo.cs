@@ -1,6 +1,6 @@
-﻿using PayCalc_Project.Models;
+﻿using PayCalc.ClassLibrary.Models;
 
-namespace PayCalc_Project.Repository
+namespace PayCalc.ClassLibrary.Repos.Volatile
 {
     public class PermanentEmployeeRepo : IEmployeeRepository<PermanentEmployee>
     {
@@ -29,11 +29,6 @@ namespace PayCalc_Project.Repository
             }
             return false;
         }
-        public bool RemoveAll()
-        {
-            employees.Clear();
-            return true;
-        }
         public PermanentEmployee Create(DateTime startDate, string firstName, string lastName, decimal? salary, decimal? bonus, decimal? dayRate, int? weeksWorked)
         {
             PermanentEmployee employee = new PermanentEmployee() { StartDate = startDate, ID = rnd.Next(1111, 10000), FirstName = firstName, LastName = lastName, Salary = salary, Bonus = bonus };
@@ -55,11 +50,11 @@ namespace PayCalc_Project.Repository
             {
                 if (employee.ID == id)
                 {
-                    if (String.IsNullOrEmpty(firstName) == false)
+                    if (string.IsNullOrEmpty(firstName) == false)
                     {
                         employee.FirstName = firstName;
                     }
-                    if (String.IsNullOrEmpty(lastName) == false)
+                    if (string.IsNullOrEmpty(lastName) == false)
                     {
                         employee.LastName = lastName;
                     }

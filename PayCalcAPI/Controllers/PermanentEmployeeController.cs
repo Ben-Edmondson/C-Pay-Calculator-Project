@@ -1,10 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
-using PayCalc_Project.Services;
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Services;
 using log4net;
 using System.Text.Json;
 using System.Reflection;
+using PayCalc.ClassLibrary.Repos;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 namespace PayCalcAPI.Controllers
@@ -89,18 +89,6 @@ namespace PayCalcAPI.Controllers
                 return NoContent();
             }
             _log.Warn("HTTP:404 - Failed to delete Permanent Employee with ID not found.");
-            return NotFound();
-        }
-        [HttpDelete]
-        public IActionResult DeleteAll()
-        {
-            _log.Info("Deleting All Permanent Employees");
-            if (_employeePermanentRepository.RemoveAll() == true)
-            {
-                _log.Debug("HTTP:204 - Permanent Employees Wiped");
-                return NoContent();
-            }
-            _log.Warn("HTTP:404 - Failed to wipe Permanent Employees. List already empty.");
             return NotFound();
         }
     }

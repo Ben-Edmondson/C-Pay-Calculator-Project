@@ -1,8 +1,8 @@
 ﻿using log4net;
 using Microsoft.AspNetCore.Mvc;
-using PayCalc_Project.Models;
-using PayCalc_Project.Repository;
-using PayCalc_Project.Services;
+using PayCalc.ClassLibrary.Repos;
+using PayCalc.ClassLibrary.Models;
+using PayCalc.ClassLibrary.Services;
 using System.Reflection;
 using System.Text.Json;
 
@@ -89,18 +89,6 @@ namespace PayCalcAPI.Controllers
                 return NoContent();
             }
             _log.Warn("HTTP:404 - Failed to delete Temporary Employee with ID not found.");
-            return NotFound();
-        }
-        [HttpDelete]
-        public IActionResult DeleteAll()
-        {
-            _log.Info("Deleting All Temporary Employees");
-            if (_employeeTemporaryRepository.RemoveAll() == true)
-            {
-                _log.Debug("HTTP:204 - Temporary Employees Wiped");
-                return NoContent();
-            }
-            _log.Warn("HTTP:404 - Failed to wipe Temporary Employees. List already empty.");
             return NotFound();
         }
     }
